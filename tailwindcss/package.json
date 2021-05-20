@@ -1,0 +1,10 @@
+{
+  "name": "@lojaintegrada/tailwindcss-config",
+  "version": "0.0.0",
+  "description": "TailwindCSS config for Loja Integrada admin",
+  "author": "Loja Integrada Front-End Team",
+  "license": "MIT",
+  "peerDependencies": {
+    "tailwindcss": "^2.1.2"
+  }
+}
