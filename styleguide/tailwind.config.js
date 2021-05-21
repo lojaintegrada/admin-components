@@ -1,10 +1,3 @@
-# Loja Integrada Admin TailwindCSS Config
-
-## Use
-
-tailwind.config.js
-
-```js
 const defaultSettings = require('@lojaintegrada/tailwindcss-config/dist/defaultSettings')
 
 module.exports = {
@@ -14,11 +7,3 @@ module.exports = {
     './stories/**/*.{js,ts,jsx,tsx}'
   ],
 }
-```
-
-## Commands
-
-```bash
-yarn build
-npm publish
-```

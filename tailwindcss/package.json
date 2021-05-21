@@ -1,10 +1,10 @@
 {
   "name": "@lojaintegrada/tailwindcss-config",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "TailwindCSS config for Loja Integrada admin",
   "author": "Loja Integrada Front-End Team",
   "license": "MIT",
-  "main": "dist/defaultSettings.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode=production"
@@ -13,6 +13,7 @@
     "tailwindcss": "^2.1.2"
   },
   "devDependencies": {
+    "merge-json-webpack-plugin": "^5.1.0",
     "webpack": "^5.37.1",
     "webpack-cli": "^4.7.0"
   }
