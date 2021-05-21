@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   stories: [
     '../stories/*.stories.mdx',
@@ -12,5 +14,24 @@ module.exports = {
   // https://storybook.js.org/docs/react/configure/typescript#mainjs-configuration
   typescript: {
     check: true, // type-check stories during Storybook build
-  }
+  },
+  webpackFinal: async (config) => {
+    config.module.rules.push({
+      test: /\,css&/,
+      use: [
+        {
+          loader: 'postcss-loader',
+          options: {
+            ident: 'postcss',
+            plugins: [
+              require('tailwindcss'),
+              require('autoprefixer')
+            ]
+          }
+        }
+      ],
+      include: path.resolve(__dirname, '../'),
+    })
+    return config
+  },
 };

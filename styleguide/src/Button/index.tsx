@@ -4,12 +4,11 @@ import React, { ReactNode } from 'react'
 //   Button as ReakitButton,
 //   ButtonProps as ReakitButtonProps,
 // } from 'reakit'
-import './../tailwind.css'
 
 export const Button = ({ children }: ButtonProps) => {
   return (
-    <div className="flex items-center justify-center w-5/6 m-auto text-2xl text-center text-pink-700 uppercase bg-base-1 shadow-xl rounded-3xl">
-      <button>{children}</button>
+    <div className="flex items-center justify-center w-5/6 m-auto text-2xl text-center text-pink-700 uppercase bg-success shadow-xl rounded-3xl">
+      <button>{children} - ola</button>
     </div>
   )
 }
