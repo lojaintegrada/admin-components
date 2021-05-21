@@ -1405,6 +1405,11 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
+"@lojaintegrada/tailwindcss-config@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@lojaintegrada/tailwindcss-config/-/tailwindcss-config-0.0.1.tgz#54a35caa30915b0342cc14b0f79a946a7df92de0"
+  integrity sha512-+IbjtDiQRiQqqWza2Nz2yzIRQNZxacQtphB1jrMDbRNiZJt4bBKJOnIGCgn6eYiTDnzblU52wxV4pQAazIpPEw==
+
 "@mdx-js/loader@^1.6.19":
   version "1.6.22"
   resolved "https://registry.yarnpkg.com/@mdx-js/loader/-/loader-1.6.22.tgz#d9e8fe7f8185ff13c9c8639c048b123e30d322c4"
