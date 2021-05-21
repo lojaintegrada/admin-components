@@ -50,7 +50,7 @@ export const Sidebar = () => {
   )
 }
 
-export interface ButtonProps {
+export interface SidebarProps {
   /** Size of the button
    * @default regular
    * */
@@ -68,5 +68,5 @@ export interface ButtonProps {
    * React children
    * Also support render prop
    */
-  children?: React.ReactNode | ((props: ButtonProps) => React.ReactNode)
+  children?: React.ReactNode | ((props: SidebarProps) => React.ReactNode)
 }
