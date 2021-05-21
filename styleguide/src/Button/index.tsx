@@ -4,6 +4,7 @@ import React, { ReactNode } from 'react'
 //   Button as ReakitButton,
 //   ButtonProps as ReakitButtonProps,
 // } from 'reakit'
+import './../tailwind.css'
 
 export const Button = ({ children }: ButtonProps) => {
   return (
