@@ -1,4 +1,6 @@
+const path = require('path')
 const postcss = require('rollup-plugin-postcss');
+const extractSelectors = require('./scripts/extract-selectors')
 
 module.exports = {
   rollup(config, options) {
@@ -12,6 +14,7 @@ module.exports = {
         inject: {
           insertAt: 'top',
         },
+        extract: !!options.writeMeta ? path.resolve('dist/tailwind.css') : false,
       })
     );
     return config;
