@@ -4,19 +4,21 @@ const extractSelectors = require('./scripts/extract-selectors')
 
 module.exports = {
   rollup(config, options) {
-    config.plugins.push(
-      postcss({
-        config: {
-          path: './postcss.config.js',
-        },
-        extensions: ['.css'],
-        minimize: true,
-        inject: {
-          insertAt: 'top',
-        },
-        extract: !!options.writeMeta ? path.resolve('dist/tailwind.css') : false,
-      })
-    );
+    if(!!options.writeMeta) {
+      config.plugins.push(
+        postcss({
+          config: {
+            path: './postcss.config.js',
+          },
+          extensions: ['.css'],
+          minimize: true,
+          inject: {
+            insertAt: 'top',
+          },
+          extract: path.resolve('dist/tailwind.css'),
+        })
+      );
+    }
     return config;
   },
 };
