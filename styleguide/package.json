@@ -15,7 +15,7 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "TAILWIND_MODE=build NODE_ENV=production tsdx build && yarn build:complete",
-    "build:complete": "node scripts/extract-selectors.js && echo 'CSS selectors extracted'",
+    "build:complete": "node scripts/extract-selectors.js",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
     "prepare": "yarn build",
