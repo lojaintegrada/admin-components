@@ -13,7 +13,7 @@ module.exports = {
         // inject: {
         //   insertAt: 'top',
         // },
-        extract: !!options.writeMeta ? path.resolve('dist/tailwind.css') : false,
+        extract: options.env === 'production' ? path.resolve('dist/tailwind.css') : true,
       })
     );
     return config;
