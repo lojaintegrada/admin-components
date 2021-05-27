@@ -78,12 +78,12 @@
     "react-is": "^17.0.1",
     "rollup-plugin-postcss": "^4.0.0",
     "size-limit": "^4.10.1",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "tsdx": "^0.14.1",
     "tslib": "^2.1.0",
     "typescript": "^4.2.3"
   },
   "dependencies": {
-    "@lojaintegrada/tailwindcss-config": "^0.0.2"
+    "@lojaintegrada/tailwindcss-config": "^0.0.2",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
   }
 }
