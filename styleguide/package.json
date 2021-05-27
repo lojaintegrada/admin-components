@@ -85,6 +85,6 @@
     "typescript": "^4.2.3"
   },
   "dependencies": {
-    "@lojaintegrada/tailwindcss-config": "^0.0.2"
+    "@lojaintegrada/tailwindcss-config": "^0.0.3"
   }
 }
