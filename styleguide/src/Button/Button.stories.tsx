@@ -11,7 +11,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<ButtonProps> = (args) => <Button {...args} />;
+const Template: Story<ButtonProps> = args => <Button {...args} />;
 
 export const Default: Story = () => {
   return (
@@ -19,19 +19,21 @@ export const Default: Story = () => {
       <Button>Regular Button</Button>
       <Button size="small">Small Button</Button>
     </>
-  )
-}
+  );
+};
 
 export const Large = Template.bind({});
 Large.args = {
-  size: 'large'
+  size: 'large',
 };
 
 export const Small = Template.bind({});
 Small.args = {
-  size: 'small'
+  size: 'small',
 };
 
 export const Inaccessible: Story = () => (
-  <button style={{ backgroundColor: 'red', color: 'darkRed' }}>Inaccessible button</button>
+  <button style={{ backgroundColor: 'red', color: 'darkRed' }}>
+    Inaccessible button
+  </button>
 );
