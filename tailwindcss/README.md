@@ -1,5 +1,7 @@
 # Loja Integrada Admin TailwindCSS Config
 
+Deploy apenas manual
+
 ## Use
 
 tailwind.config.js
