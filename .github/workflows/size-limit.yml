@@ -2,8 +2,8 @@ name: size Styleguide
 
 on:
   pull_request:
-    paths:
-      - "styleguide/**"
+    branches:
+      - main
 
 jobs:
   size:
@@ -15,3 +15,4 @@ jobs:
       - uses: andresz1/size-limit-action@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          directory: styleguide/
