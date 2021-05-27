@@ -4,7 +4,7 @@ import { Story, Meta } from '@storybook/react'
 import { Sidebar } from './index'
 
 export default {
-  title: 'Example/Sidebar',
+  title: 'Layout/Sidebar',
   component: Sidebar,
   argTypes: {
     backgroundColor: { control: 'color' }

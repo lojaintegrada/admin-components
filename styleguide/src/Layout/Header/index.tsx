@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { Button } from '../Button'
-import './../tailwind.css'
+import Button from '../../Components/Button'
+import './../../tailwind.css'
 
 export interface HeaderProps {
   user?: {}
