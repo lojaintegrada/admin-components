@@ -1,6 +1,15 @@
 # Loja Integrada Admin TailwindCSS Config
 
-## Use
+Deploy apenas manual
+
+## Commands
+
+```bash
+yarn build
+npm publish
+```
+
+## Usage
 
 tailwind.config.js
 
@@ -14,11 +23,4 @@ module.exports = {
     './stories/**/*.{js,ts,jsx,tsx}'
   ],
 }
-```
-
-## Commands
-
-```bash
-yarn build
-npm publish
 ```

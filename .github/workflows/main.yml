@@ -1,9 +1,10 @@
 name: CI Styleguide
 
-on:
-  push:
-    paths:
-      - "styleguide/**"
+on: [push]
+
+defaults:
+  run:
+    working-directory: styleguide
       
 jobs:
   build:
@@ -12,26 +13,31 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node: ['10.x', '12.x', '14.x']
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+        node: ['14.x']
+        os: [ubuntu-latest]
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
 
       - name: Use Node ${{ matrix.node }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node }}
 
       - name: Install deps and build (with cache)
         uses: bahmutov/npm-install@v1
+        with:
+          working-directory: styleguide
 
       - name: Lint
         run: yarn lint
+        working-directory: styleguide
 
       - name: Test
         run: yarn test --ci --coverage --maxWorkers=2
+        working-directory: styleguide
 
       - name: Build
         run: yarn build
+        working-directory: styleguide

@@ -1,17 +1,17 @@
-import React from 'react';
-import { Story, Meta } from '@storybook/react';
+import React from 'react'
+import { Story, Meta } from '@storybook/react'
 
-import { Button, ButtonProps } from './index';
+import { Button, ButtonProps } from './index'
 
 export default {
   title: 'Example/Button',
   component: Button,
   argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-} as Meta;
+    backgroundColor: { control: 'color' }
+  }
+} as Meta
 
-const Template: Story<ButtonProps> = (args) => <Button {...args} />;
+const Template: Story<ButtonProps> = args => <Button {...args} />
 
 export const Default: Story = () => {
   return (
@@ -22,16 +22,18 @@ export const Default: Story = () => {
   )
 }
 
-export const Large = Template.bind({});
+export const Large = Template.bind({})
 Large.args = {
   size: 'large'
-};
+}
 
-export const Small = Template.bind({});
+export const Small = Template.bind({})
 Small.args = {
   size: 'small'
-};
+}
 
 export const Inaccessible: Story = () => (
-  <button style={{ backgroundColor: 'red', color: 'darkRed' }}>Inaccessible button</button>
-);
+  <button style={{ backgroundColor: 'red', color: 'darkRed' }}>
+    Inaccessible button
+  </button>
+)
