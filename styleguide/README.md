@@ -1,4 +1,45 @@
-# TSDX React w/ Storybook User Guide
+# Admin Components / Styleguide
+
+## Comamnds
+
+### Storybook
+
+```bash
+yarn storybook
+```
+
+### Test
+
+```bash
+yarn test
+```
+
+### Lint
+
+```bash
+yarn lint
+```
+
+## Publish
+
+- Update version at `package.json`
+- Merge the PR to `main`
+- Create an [release](https://github.com/lojaintegrada/admin-components/releases) with the same version
+- Check result at GitHub Actions
+
+## Usage
+
+```js
+import { Button } from '@lojaintegrada/admin-components'
+
+<Button></Button>
+```
+
+
+
+
+
+
 
 Congrats! You just saved yourself hours of work by bootstrapping this project with TSDX. Let’s get you oriented with what’s here and how to use it.
 

@@ -1,6 +1,6 @@
 {
   "name": "@lojaintegrada/admin-components",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "Loja Integrada Front-End Team",
   "license": "MIT",
   "main": "dist/index.js",
@@ -22,8 +22,7 @@
     "size": "size-limit",
     "analyze": "size-limit --why",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "build:tailwind": "postcss src/scss/base.scss -o src/scss/tailwind.scss"
+    "build-storybook": "build-storybook"
   },
   "peerDependencies": {
     "react": ">=16"
@@ -34,10 +33,11 @@
     }
   },
   "prettier": {
-    "printWidth": 80,
-    "semi": true,
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": false,
     "singleQuote": true,
-    "trailingComma": "es5"
+    "bracketSpacing": true
   },
   "jest": {
     "moduleNameMapper": {
@@ -63,6 +63,7 @@
     "@storybook/addon-essentials": "^6.2.9",
     "@storybook/addon-info": "^5.3.21",
     "@storybook/addon-links": "^6.2.9",
+    "@storybook/addon-postcss": "^2.0.0",
     "@storybook/addons": "^6.2.9",
     "@storybook/react": "^6.2.9",
     "@types/react": "^17.0.3",

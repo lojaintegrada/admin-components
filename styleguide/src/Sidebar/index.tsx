@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 export const Sidebar = () => {
   return (
@@ -117,26 +117,26 @@ export const Sidebar = () => {
       </nav>
       <div className="animate__animated animate__fadeIn backdrop"></div>
     </div>
-  );
-};
+  )
+}
 
 export interface SidebarProps {
   /** Size of the button
    * @default regular
    * */
-  size?: 'regular' | 'large' | 'small';
+  size?: 'regular' | 'large' | 'small'
   /** Button variant
    * @default primary
    * */
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary'
   /**
    * Position of the icon
    * @default start
    */
-  iconPosition?: 'start' | 'end';
+  iconPosition?: 'start' | 'end'
   /**
    * React children
    * Also support render prop
    */
-  children?: React.ReactNode | ((props: SidebarProps) => React.ReactNode);
+  children?: React.ReactNode | ((props: SidebarProps) => React.ReactNode)
 }

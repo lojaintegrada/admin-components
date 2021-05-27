@@ -1,13 +1,13 @@
-import React from 'react';
+import React from 'react'
 
-import { Button } from '../Button';
-import './../tailwind.css';
+import { Button } from '../Button'
+import './../tailwind.css'
 
 export interface HeaderProps {
-  user?: {};
-  onLogin: () => void;
-  onLogout: () => void;
-  onCreateAccount: () => void;
+  user?: {}
+  onLogin: () => void
+  onLogout: () => void
+  onCreateAccount: () => void
 }
 
 export const Header: React.FC<HeaderProps> = ({ user }) => (
@@ -49,4 +49,4 @@ export const Header: React.FC<HeaderProps> = ({ user }) => (
       </div>
     </div>
   </header>
-);
+)

@@ -1,6 +1,10 @@
 name: CI Styleguide
 
 on: [push]
+
+defaults:
+  run:
+    working-directory: styleguide
       
 jobs:
   build:
@@ -11,10 +15,6 @@ jobs:
       matrix:
         node: ['14.x']
         os: [ubuntu-latest]
-
-    defaults:
-      run:
-        working-directory: styleguide
 
     steps:
       - name: Checkout repo

@@ -1,3 +1,3 @@
-export * from './Button';
-export * from './Header/Header';
-export * from './Sidebar';
+export * from './Button'
+export * from './Header/Header'
+export * from './Sidebar'

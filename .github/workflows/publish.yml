@@ -1,0 +1,32 @@
+name: Publish Styleguide
+
+on:
+  release:
+    types: [published]
+
+defaults:
+  run:
+    working-directory: styleguide
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14.x"
+
+      - name: Install deps and build (with cache)
+        uses: bahmutov/npm-install@v1
+        with:
+          working-directory: styleguide
+
+      - run: yarn build
+        working-directory: styleguide
+
+      - run: npm publish
+        working-directory: styleguide
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_STYLEGUIDE }}

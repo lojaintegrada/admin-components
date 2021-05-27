@@ -1,15 +1,15 @@
-import React from 'react';
-import { Story, Meta } from '@storybook/react';
+import React from 'react'
+import { Story, Meta } from '@storybook/react'
 
-import { Sidebar } from './index';
+import { Sidebar } from './index'
 
 export default {
   title: 'Example/Sidebar',
   component: Sidebar,
   argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-} as Meta;
+    backgroundColor: { control: 'color' }
+  }
+} as Meta
 
 export const Default: Story = () => {
   return (
@@ -20,5 +20,5 @@ export const Default: Story = () => {
         href="https://cdn.awsli.com.br/qa1/static-v2/painel/css/admin.css?v=c2e27d9"
       />
     </>
-  );
-};
+  )
+}
