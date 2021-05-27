@@ -1,6 +1,6 @@
 {
   "name": "@lojaintegrada/tailwindcss-config",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "TailwindCSS config for Loja Integrada admin",
   "author": "Loja Integrada Front-End Team",
   "license": "MIT",
