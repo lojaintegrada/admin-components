@@ -12,6 +12,10 @@ jobs:
         node: ['10.x', '12.x', '14.x']
         os: [ubuntu-latest, windows-latest, macOS-latest]
 
+    defaults:
+      run:
+        working-directory: styleguide
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
