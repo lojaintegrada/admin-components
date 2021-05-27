@@ -1,9 +1,6 @@
 name: CI Styleguide
 
-on:
-  push:
-    paths:
-      - "styleguide/**"
+on: [push]
       
 jobs:
   build:
@@ -26,12 +23,17 @@ jobs:
 
       - name: Install deps and build (with cache)
         uses: bahmutov/npm-install@v1
+        with:
+          working-directory: styleguide
 
       - name: Lint
         run: yarn lint
+        working-directory: styleguide
 
       - name: Test
         run: yarn test --ci --coverage --maxWorkers=2
+        working-directory: styleguide
 
       - name: Build
         run: yarn build
+        working-directory: styleguide
