@@ -1,0 +1,13 @@
+if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - id: next_version
+        uses: zwaldowski/semver-release-action@v1
+        with:
+          bump: patch
+          prefix: api_server_v
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - run: |-
+          cd api_server
+          echo "__vesrion__='${{ steps.next_version.outputs.version }}''\n" > ./amazon_scraper/__init__.py
