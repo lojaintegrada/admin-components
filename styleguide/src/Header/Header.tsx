@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Button } from '../Button';
+import './../tailwind.css'
 
 export interface HeaderProps {
   user?: {};
@@ -11,7 +12,7 @@ export interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ user }) => (
   <header>
-    <div className="wrapper">
+    <div className="wrapper LALALALA bg-danger">
       <div>
         <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
           <g fill="none" fillRule="evenodd">

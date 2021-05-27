@@ -1,3 +1,4 @@
+const path = require('path')
 const postcss = require('rollup-plugin-postcss');
 
 module.exports = {
@@ -9,9 +10,10 @@ module.exports = {
         },
         extensions: ['.css'],
         minimize: true,
-        inject: {
-          insertAt: 'top',
-        },
+        // inject: {
+        //   insertAt: 'top',
+        // },
+        extract: options.env === 'production' ? path.resolve('dist/tailwind.css') : true,
       })
     );
     return config;
