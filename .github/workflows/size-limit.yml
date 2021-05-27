@@ -16,14 +16,14 @@
 #           directory: styleguide/
 
 
-# name: Compressed Size Styleguide
-# on: [pull_request]
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
-#     - uses: actions/checkout@v2
-#     - uses: Arhia/action-check-compressed-size@v0.7
-#       with:
-#         repo-token: "${{ secrets.GITHUB_TOKEN }}"
-#         directory: styleguide/
+name: Compressed Size Styleguide
+on: [pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: Arhia/action-check-compressed-size@v0.7
+      with:
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+        directory: styleguide/
