@@ -59,6 +59,7 @@
   ],
   "devDependencies": {
     "@babel/core": "^7.13.10",
+    "@fullhuman/postcss-purgecss": "^4.0.3",
     "@size-limit/preset-small-lib": "^4.10.1",
     "@storybook/addon-a11y": "^6.2.9",
     "@storybook/addon-essentials": "^6.2.9",
