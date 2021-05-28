@@ -29,8 +29,8 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_STYLEGUIDE }}
 
-      - name: Install and Build 🔧
-        run: yarn deploy-storybook -- --ci
+      - name: Send to GitHub Pages 🔧
+        run: yarn deploy-storybook --ci --host-token-env-variable=GITHUB_TOKEN
         working-directory: styleguide
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
