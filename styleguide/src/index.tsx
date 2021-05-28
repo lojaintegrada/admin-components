@@ -1,3 +1,3 @@
-export * from './Button'
-export * from './Header/Header'
-export * from './Sidebar'
+export * from './Components/Button'
+export * from './Layout/Header'
+export * from './Layout/Sidebar'
