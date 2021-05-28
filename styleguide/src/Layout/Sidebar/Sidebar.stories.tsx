@@ -7,8 +7,8 @@ export default {
   title: 'Layout/Sidebar',
   component: Sidebar,
   argTypes: {
-    backgroundColor: { control: 'color' }
-  }
+    backgroundColor: { control: 'color' },
+  },
 } as Meta
 
 export const Default: Story = () => {

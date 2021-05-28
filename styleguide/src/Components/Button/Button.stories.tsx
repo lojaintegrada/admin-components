@@ -6,34 +6,32 @@ import { Button, ButtonProps } from './Button'
 export default {
   title: 'Components/Button',
   component: Button,
-  argTypes: {
-    backgroundColor: { control: 'color' }
-  }
+  args: {
+    children: 'Default Button',
+  },
 } as Meta
 
 const Template: Story<ButtonProps> = args => <Button {...args} />
 
-export const Default: Story = () => {
-  return (
-    <>
-      <Button>Regular Button</Button>
-      <Button size="small">Small Button</Button>
-    </>
-  )
-}
+export const Default = Template.bind({})
 
 export const Large = Template.bind({})
 Large.args = {
-  size: 'large'
+  size: 'large',
+  children: 'Large Button',
 }
 
 export const Small = Template.bind({})
 Small.args = {
-  size: 'small'
+  size: 'small',
+  children: 'Small Button',
 }
 
-export const Inaccessible: Story = () => (
-  <button style={{ backgroundColor: 'red', color: 'darkRed' }}>
-    Inaccessible button
-  </button>
-)
+export const Action = Template.bind({})
+Action.args = {
+  variant: 'danger',
+  children: 'Click me',
+  onClick: function() {
+    alert('Clicked!')
+  },
+}
