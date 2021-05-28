@@ -1,9 +1,4 @@
-import React, { ReactNode } from 'react'
-import {
-  Provider,
-  Button as ReakitButton,
-  ButtonProps as ReakitButtonProps,
-} from 'reakit'
+import React from 'react'
 import './../../tailwind.css'
 
 const listOfStylesHover = {
@@ -74,22 +69,20 @@ export const Button = React.memo(
     if (className) classes += className
 
     return (
-      <Provider>
-        <ReakitButton
-          id={id}
-          type={type}
-          className={classes}
-          disabled={disabled}
-          onClick={handleClick}
-        >
-          {!status && children}
-        </ReakitButton>
-      </Provider>
+      <button
+        id={id}
+        type={type}
+        className={classes}
+        disabled={disabled}
+        onClick={handleClick}
+      >
+        {!status && children}
+      </button>
     )
   }
 )
 
-export interface ButtonProps extends ReakitButtonProps {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /** Size of the button
    * @default default
    * */
@@ -109,12 +102,12 @@ export interface ButtonProps extends ReakitButtonProps {
   /**
    * Icon of the button
    */
-  icon?: ReactNode
+  // icon?: ReactNode
   /**
    * Position of the icon
    * @default start
    */
-  iconPosition?: 'start' | 'end'
+  // iconPosition?: 'start' | 'end'
   /**
    * React children
    * Also support render prop
