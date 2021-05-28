@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react'
 import {
   Provider,
   Button as ReakitButton,
-  ButtonProps as ReakitButtonProps,
+  ButtonProps as ReakitButtonProps
 } from 'reakit'
 import './../../tailwind.css'
 
@@ -13,28 +13,45 @@ const listOfStyles = {
   danger: `ba b--danger bg-danger white hover-bg-danger-dark hover-b--danger-dark   pointer `
 }
 
-export const Button = React.memo(({ children, status, variant, type, fullWidth, disabled, id, className, onClick }: ButtonProps) => {
+export const Button = React.memo(
+  ({
+    children,
+    status,
+    variant,
+    type,
+    fullWidth,
+    disabled,
+    id,
+    className,
+    onClick
+  }: ButtonProps) => {
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+      !disabled && onClick && onClick(event)
+    }
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    !disabled && onClick && onClick(event)
+    if (!variant) variant = 'primary'
+    let classes = `flex font-semibold items-center justify-center px-5 text-center no-underline transition `
+    classes += disabled
+      ? 'bg-base-3 cursor-default text-on-base-2 shadow-none ring-0 border-0 '
+      : `${listOfStyles[variant]} `
+    if (fullWidth) classes += 'w-100 '
+    if (className) classes += className
+
+    return (
+      <Provider>
+        <ReakitButton
+          id={id}
+          type={type}
+          className={classes}
+          disabled={disabled}
+          onClick={handleClick}
+        >
+          {!status && children}
+        </ReakitButton>
+      </Provider>
+    )
   }
-
-  if (!variant) variant = 'primary'
-  let classes = `flex font-semibold items-center justify-center px-5 text-center no-underline transition `
-  classes += disabled ? 'bg-base-3 cursor-default text-on-base-2 shadow-none ring-0 border-0 ' : `${listOfStyles[variant]} `
-  if (fullWidth) classes += 'w-100 '
-  if (className) classes += className
-  
-
-  return (
-    <Provider>
-      <ReakitButton id={id} type={type} className={classes} disabled={disabled} onClick={handleClick}>
-        
-        {!status && children}
-      </ReakitButton>
-    </Provider>
-  )
-})
+)
 
 export interface ButtonProps extends ReakitButtonProps {
   /** Size of the button
@@ -48,7 +65,7 @@ export interface ButtonProps extends ReakitButtonProps {
   /** Button status
    * @default null
    * */
-  status?: 'loading' | 'success' | 'error',
+  status?: 'loading' | 'success' | 'error'
   /**
    * Make button full width
    */

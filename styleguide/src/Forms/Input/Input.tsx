@@ -1,12 +1,9 @@
+import React, { Fragment } from 'react'
 
-import React, { Fragment } from 'react';
-
-interface IInputProps {
-
-}
+interface IInputProps {}
 
 const Input: React.FC<IInputProps> = () => {
-    return <Fragment></Fragment>;
+  return <Fragment></Fragment>
 }
 
-export default Input;
+export default Input

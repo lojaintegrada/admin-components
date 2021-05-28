@@ -30,7 +30,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "tsdx lint"
+      "pre-commit": "yarn lint"
     }
   },
   "prettier": {
