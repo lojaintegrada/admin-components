@@ -6,9 +6,7 @@ import { Button } from './Button'
 describe('Button tests', () => {
   it('should have overridable styles', () => {
     const { container } = render(
-      <Button data-testid="button">
-        Black Button
-      </Button>
+      <Button data-testid="button">Black Button</Button>
     )
 
     expect(container).toBeDefined()

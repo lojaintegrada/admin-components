@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react'
 import {
   Provider,
   Button as ReakitButton,
-  ButtonProps as ReakitButtonProps
+  ButtonProps as ReakitButtonProps,
 } from 'reakit'
 import './../../tailwind.css'
 
@@ -51,27 +51,27 @@ export const Button = React.memo(
     id,
     className,
     onClick,
-    size
+    size,
   }: ButtonProps) => {
-
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
       !disabled && onClick && onClick(event)
     }
 
-    if(!variant) variant = 'primary'
-    if(!size) size = 'default'
+    if (!variant) variant = 'primary'
+    if (!size) size = 'default'
 
     let classes = `flex font-semibold tracking-tight items-center justify-center px-5 text-center no-underline transition rounded after:align-middle focus:outline-none `
 
-    if(disabled) {
-      classes += 'bg-base-3 cursor-default text-on-base-2 shadow-none ring-0 border-0 hover:bg-base-3 hover:text-on-base-2'
+    if (disabled) {
+      classes +=
+        'bg-base-3 cursor-default text-on-base-2 shadow-none ring-0 border-0 hover:bg-base-3 hover:text-on-base-2'
     } else {
       classes += `${listOfStyles[variant]} `
     }
     classes += `${listOfSizes[size]} `
 
-    if(fullWidth) classes += 'w-full '
-    if(className) classes += className
+    if (fullWidth) classes += 'w-full '
+    if (className) classes += className
 
     return (
       <Provider>
