@@ -28,3 +28,9 @@ jobs:
         working-directory: styleguide
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_STYLEGUIDE }}
+
+      - name: Install and Build 🔧
+        run: yarn deploy-storybook -- --ci
+        working-directory: styleguide
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}

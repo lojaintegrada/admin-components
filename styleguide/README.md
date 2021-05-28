@@ -1,6 +1,7 @@
 # Admin Components / Styleguide
 
 Components for Loja Integrada admin.
+[https://lojaintegrada.github.io/admin-components/](https://lojaintegrada.github.io/admin-components/)
 
 ## Comamnds
 
@@ -34,6 +35,8 @@ npx tailwind-config-viewer
 - Merge the PR to `main`
 - Create an [release](https://github.com/lojaintegrada/admin-components/releases) with the same version
 - Check result at GitHub Actions
+
+Deploy to GitHub Pages is automatic after deploy to NPM
 
 ## Usage
 
