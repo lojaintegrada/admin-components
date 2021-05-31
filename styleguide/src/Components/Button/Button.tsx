@@ -51,7 +51,7 @@ export const Button = React.memo(
     size = 'default',
   }: ButtonProps) => {
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-      (!disabled || !loading) && onClick && onClick(event)
+      ;(!disabled || !loading) && onClick && onClick(event)
     }
 
     let classes = `flex font-semibold tracking-tight items-center justify-center px-5 text-center no-underline transition rounded after:align-middle focus:outline-none `
@@ -79,13 +79,16 @@ export const Button = React.memo(
         onClick={handleClick}
       >
         {children}
-        {loading && <Icon icon="loading" size={4} className="ml-3 inline-block" />}
+        {loading && (
+          <Icon icon="loading" size={4} className="ml-3 inline-block" />
+        )}
       </button>
     )
   }
 )
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /** Size of the button
    * @default default
    * */
