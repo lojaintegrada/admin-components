@@ -1,6 +1,8 @@
 import React from 'react'
 import './../../tailwind.css'
 
+import { Icon } from '../../Icons/Icon'
+
 const listOfStylesHover = {
   primary: `hover:bg-primary-dark`,
   secondary: `hover:bg-primary-light`,
@@ -38,28 +40,28 @@ const listOfSizes = {
 export const Button = React.memo(
   ({
     children,
-    status,
-    variant,
+    loading,
+    variant = 'primary',
     type,
     fullWidth,
     disabled,
     id,
     className,
     onClick,
-    size,
+    size = 'default',
   }: ButtonProps) => {
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-      !disabled && onClick && onClick(event)
+      (!disabled || !loading) && onClick && onClick(event)
     }
-
-    if (!variant) variant = 'primary'
-    if (!size) size = 'default'
 
     let classes = `flex font-semibold tracking-tight items-center justify-center px-5 text-center no-underline transition rounded after:align-middle focus:outline-none `
 
-    if (disabled) {
+    if (loading) {
       classes +=
-        'bg-base-3 cursor-default text-on-base-2 shadow-none ring-0 border-0 hover:bg-base-3 hover:text-on-base-2'
+        'bg-base-3 cursor-default text-on-base-2 pointer-events-none shadow-none ring-0 border-0 hover:bg-base-3 hover:text-on-base-2 focus:ring-0 '
+    } else if (disabled) {
+      classes +=
+        'bg-base-3 cursor-default text-on-base-2 shadow-none ring-0 border-0 hover:bg-base-3 hover:text-on-base-2 '
     } else {
       classes += `${listOfStyles[variant]} `
     }
@@ -76,7 +78,8 @@ export const Button = React.memo(
         disabled={disabled}
         onClick={handleClick}
       >
-        {!status && children}
+        {children}
+        {loading && <Icon icon="loading" size={4} className="ml-3 inline-block" />}
       </button>
     )
   }
@@ -91,10 +94,10 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
    * @default primary
    * */
   variant?: 'primary' | 'secondary' | 'tertiary' | 'info' | 'warning' | 'danger'
-  /** Button status
-   * @default null
+  /**
+   * Button is loading
    * */
-  status?: 'loading' | 'success' | 'error'
+  loading?: boolean
   /** Make button full width
    * @default false
    */
