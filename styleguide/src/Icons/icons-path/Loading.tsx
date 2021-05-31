@@ -2,9 +2,9 @@ import React from 'react'
 
 export const Loading = () => (
   <path
-    fill-rule="evenodd"
+    fillRule="evenodd"
     d="M9 0h-.25a.75.75 0 000 1.5H9c4.136 0 7.5 3.364 7.5 7.5v.25a.75.75 0 001.5 0V9a9 9 0 00-9-9z"
-    clip-rule="evenodd"
+    clipRule="evenodd"
   >
     <animateTransform
       attributeName="transform"

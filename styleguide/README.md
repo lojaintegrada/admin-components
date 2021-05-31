@@ -29,7 +29,7 @@ yarn lint
 npx tailwind-config-viewer
 ```
 
-## Publish
+## Publishing
 
 - Update version at `package.json`
 - Merge the PR to `main`
