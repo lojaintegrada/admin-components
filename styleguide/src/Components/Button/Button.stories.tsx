@@ -35,3 +35,15 @@ Action.args = {
     alert('Clicked!')
   },
 }
+
+export const Disabled = Template.bind({})
+Disabled.args = {
+  disabled: true,
+  children: 'Disabled Button',
+}
+
+export const Loading = Template.bind({})
+Loading.args = {
+  loading: true,
+  children: 'Loading Button',
+}
