@@ -1,6 +1,6 @@
 {
   "name": "@lojaintegrada/admin-components",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "author": "Loja Integrada Front-End Team",
   "license": "MIT",
   "main": "dist/index.js",
