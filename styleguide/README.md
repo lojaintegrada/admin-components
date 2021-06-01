@@ -21,6 +21,8 @@ yarn test
 
 ```bash
 yarn lint
+# Run before each commit
+yarn lint --fix
 ```
 
 ### Check tailwindcss configs
