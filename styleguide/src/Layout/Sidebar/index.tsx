@@ -1,10 +1,7 @@
-import React, { FunctionComponent } from 'react'
+import React from 'react'
 import { Icon } from '../../Icons/Icon'
 
-export const Sidebar: FunctionComponent<SidebarProps> = ({
-  children,
-  className,
-}: SidebarProps) => {
+export const Sidebar = React.memo(({ children, className }: SidebarProps) => {
   return (
     <div
       id="sidebar-menu"
@@ -26,7 +23,7 @@ export const Sidebar: FunctionComponent<SidebarProps> = ({
       <div className="animate__animated animate__fadeIn backdrop"></div>
     </div>
   )
-}
+})
 
 export interface SidebarProps {
   className?: string
