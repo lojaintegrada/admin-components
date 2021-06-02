@@ -27,15 +27,15 @@ export const BoxHeader = React.memo(
 
 export interface BoxHeaderProps {
   /**
-   * React children
+   * Title of the Box
    */
   title: string | React.ReactNode
   /**
-   * React children
+   * Subtitle of the Box
    */
   subtitle?: string | React.ReactNode
   /**
-   * React children
+   * React children, use to render actions in Header
    * Also support render prop
    */
   children?: React.ReactNode | ((props: BoxHeaderProps) => React.ReactNode)
