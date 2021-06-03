@@ -106,3 +106,7 @@ dist
 # Storybook statics
 storybook-static
 *.DS_Store
+
+# Cypress
+cypress/videos
+cypress/screenshots

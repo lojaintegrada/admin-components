@@ -15,6 +15,7 @@ yarn storybook
 
 ```bash
 yarn test
+yarn test:cypress
 ```
 
 ### Lint
