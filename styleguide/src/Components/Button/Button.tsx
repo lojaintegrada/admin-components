@@ -37,13 +37,18 @@ const listOfSizes = {
   large: `text-f5 h-14`,
 }
 
-const ButtonType = ({ as, ...props }: ButtonProps) => {
-  if (as === 'a' || props.href) return <a {...props} />
-  return <button {...props} />
-}
+const ButtonType = React.forwardRef(
+  (
+    { as, ...props }: ButtonProps,
+    ref: React.ForwardedRef<HTMLButtonAnchorElement>
+  ) => {
+    if (as === 'a' || props.href) return <a {...props} ref={ref} />
+    return <button {...props} ref={ref} />
+  }
+)
 
-export const Button = React.memo(
-  ({
+const ButtonComponent = (
+  {
     children,
     loading,
     variant = 'primary',
@@ -54,50 +59,55 @@ export const Button = React.memo(
     onClick,
     size = 'default',
     ...props
-  }: ButtonProps) => {
-    const handleClick = (
-      event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement>
-    ) => {
-      ;(!disabled || !loading) && onClick && onClick(event)
-    }
-
-    let classes = `flex font-semibold tracking-tight items-center justify-center px-5 text-center no-underline cursor-pointer transition rounded after:align-middle focus:outline-none `
-
-    if (loading) {
-      classes +=
-        'bg-base-3 cursor-default text-on-base-2 pointer-events-none shadow-none ring-0 border-0 hover:bg-base-3 hover:text-on-base-2 focus:ring-0 '
-    } else if (disabled) {
-      classes +=
-        'bg-base-3 cursor-default text-on-base-2 shadow-none ring-0 border-0 hover:bg-base-3 hover:text-on-base-2 '
-    } else {
-      classes += `${listOfStyles[variant]} `
-    }
-    classes += `${listOfSizes[size]} `
-
-    if (fullWidth) classes += 'w-full '
-    if (className) classes += className
-
-    return (
-      <ButtonType
-        className={classes}
-        disabled={disabled}
-        onClick={handleClick}
-        {...props}
-      >
-        {children}
-        {loading && (
-          <Icon icon="loading" size={4} className="ml-3 inline-block" />
-        )}
-        {icon && !loading && (
-          <Icon icon={icon} size={4} className="ml-3 inline-block" />
-        )}
-      </ButtonType>
-    )
+  }: ButtonProps,
+  ref: React.ForwardedRef<HTMLButtonAnchorElement>
+) => {
+  const handleClick = (event: React.MouseEvent<HTMLButtonAnchorElement>) => {
+    ;(!disabled || !loading) && onClick && onClick(event)
   }
-)
+
+  let classes = `inline-flex font-semibold tracking-tight items-center justify-center px-5 text-center no-underline cursor-pointer transition rounded after:align-middle focus:outline-none `
+
+  if (loading) {
+    classes +=
+      'bg-base-3 cursor-default text-on-base-2 pointer-events-none shadow-none ring-0 border-0 hover:bg-base-3 hover:text-on-base-2 focus:ring-0 '
+  } else if (disabled) {
+    classes +=
+      'bg-base-3 cursor-default text-on-base-2 shadow-none ring-0 border-0 hover:bg-base-3 hover:text-on-base-2 '
+  } else {
+    classes += `${listOfStyles[variant]} `
+  }
+  classes += `${listOfSizes[size]} `
+
+  if (fullWidth) classes += 'w-full '
+  if (className) classes += className
+
+  return (
+    <ButtonType
+      ref={ref}
+      className={classes}
+      disabled={disabled}
+      onClick={handleClick}
+      {...props}
+    >
+      {children}
+      {loading && (
+        <Icon icon="loading" size={4} className="ml-3 inline-block" />
+      )}
+      {icon && !loading && (
+        <Icon icon={icon} size={4} className="ml-3 inline-block" />
+      )}
+    </ButtonType>
+  )
+}
+const ButtonWithFowardRef = React.forwardRef(ButtonComponent)
+export const Button = React.memo(ButtonWithFowardRef)
 
 type ButtonAnchorProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
   React.AnchorHTMLAttributes<HTMLAnchorElement>
+
+type HTMLButtonAnchorElement = HTMLButtonElement & HTMLAnchorElement
+
 export interface ButtonProps extends ButtonAnchorProps {
   /** Type of component to use
    * @default button
