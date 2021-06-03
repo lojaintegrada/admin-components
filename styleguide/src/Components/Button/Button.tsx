@@ -1,7 +1,7 @@
 import React from 'react'
 import './../../tailwind.css'
 
-import { Icon } from '../../Icons/Icon'
+import { Icon, IconProps } from '../../Icons/Icon'
 
 const listOfStylesHover = {
   primary: `hover:bg-primary-dark`,
@@ -37,24 +37,31 @@ const listOfSizes = {
   large: `text-f5 h-14`,
 }
 
+const ButtonType = ({ as, ...props }: ButtonProps) => {
+  if (as === 'a' || props.href) return <a {...props} />
+  return <button {...props} />
+}
+
 export const Button = React.memo(
   ({
     children,
     loading,
     variant = 'primary',
-    type,
     fullWidth,
+    icon,
     disabled,
-    id,
     className,
     onClick,
     size = 'default',
+    ...props
   }: ButtonProps) => {
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const handleClick = (
+      event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement>
+    ) => {
       ;(!disabled || !loading) && onClick && onClick(event)
     }
 
-    let classes = `flex font-semibold tracking-tight items-center justify-center px-5 text-center no-underline transition rounded after:align-middle focus:outline-none `
+    let classes = `flex font-semibold tracking-tight items-center justify-center px-5 text-center no-underline cursor-pointer transition rounded after:align-middle focus:outline-none `
 
     if (loading) {
       classes +=
@@ -71,24 +78,31 @@ export const Button = React.memo(
     if (className) classes += className
 
     return (
-      <button
-        id={id}
-        type={type}
+      <ButtonType
         className={classes}
         disabled={disabled}
         onClick={handleClick}
+        {...props}
       >
         {children}
         {loading && (
           <Icon icon="loading" size={4} className="ml-3 inline-block" />
         )}
-      </button>
+        {icon && !loading && (
+          <Icon icon={icon} size={4} className="ml-3 inline-block" />
+        )}
+      </ButtonType>
     )
   }
 )
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+type ButtonAnchorProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
+  React.AnchorHTMLAttributes<HTMLAnchorElement>
+export interface ButtonProps extends ButtonAnchorProps {
+  /** Type of component to use
+   * @default button
+   * */
+  as?: 'a' | 'button'
   /** Size of the button
    * @default default
    * */
@@ -108,12 +122,7 @@ export interface ButtonProps
   /**
    * Icon of the button
    */
-  // icon?: ReactNode
-  /**
-   * Position of the icon
-   * @default start
-   */
-  // iconPosition?: 'start' | 'end'
+  icon?: IconProps['icon']
   /**
    * React children
    * Also support render prop

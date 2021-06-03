@@ -31,6 +31,7 @@ export const Action = Template.bind({})
 Action.args = {
   variant: 'danger',
   children: 'Click me',
+  type: 'submit',
   onClick: function() {
     alert('Clicked!')
   },
@@ -46,4 +47,11 @@ export const Loading = Template.bind({})
 Loading.args = {
   loading: true,
   children: 'Loading Button',
+}
+
+export const WithLink = Template.bind({})
+WithLink.args = {
+  children: 'External Link',
+  href: "https://google.com",
+  target: "_blank"
 }
