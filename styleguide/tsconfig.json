@@ -3,7 +3,9 @@
   "include": ["src", "types"],
   // exclude due to conflict with Cypress and Jest
   "exclude": [
-    "**/*.spec.(ts|tsx)"
+    "src/**/*.spec.(ts|tsx)",
+    "src/**/*.test.(ts|tsx)",
+    "cypress"
   ],
   "compilerOptions": {
     "module": "esnext",

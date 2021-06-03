@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 const babelLoaderConfig = {
   loader: 'babel-loader',
   options: {
@@ -19,6 +21,9 @@ const babelLoaderConfig = {
   }
 }
 
+/**
+ * @type {Cypress.PluginConfig}
+ */
 module.exports = (on, config) => {
   if (config.testingType === 'component') {
     require('@cypress/react/plugins/babel')(on, config, {
