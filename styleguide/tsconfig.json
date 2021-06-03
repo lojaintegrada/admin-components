@@ -1,7 +1,7 @@
 {
   // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
   "include": [
-    "src/**/*.(ts|tsx)",
+    "src",
     "types"
   ],
   // exclude due to conflict with Cypress and Jest
