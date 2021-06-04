@@ -1,6 +1,5 @@
 import React from 'react'
 
-// import { Button } from '../../Components/Button'
 import './../../tailwind.css'
 
 export const Topbar: React.FC<TopbarProps> = () => (
@@ -8,8 +7,5 @@ export const Topbar: React.FC<TopbarProps> = () => (
 )
 
 export interface TopbarProps {
-  user?: {}
-  onLogin?: () => void
-  onLogout?: () => void
-  onCreateAccount?: () => void
+  children?: any
 }

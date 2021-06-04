@@ -144,7 +144,8 @@
   "variants": {
     "extend": {
       "ringWidth": ["hover"],
-      "backgroundColor": ["active"]
+      "backgroundColor": ["active"],
+      "overflow": ["hover", "group-hover"]
     }
   },
   "plugins": []
