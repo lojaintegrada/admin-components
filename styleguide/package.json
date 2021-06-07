@@ -1,6 +1,6 @@
 {
   "name": "@lojaintegrada/admin-components",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "author": "Loja Integrada Front-End Team",
   "license": "MIT",
   "main": "dist/index.js",
@@ -100,6 +100,6 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
-    "@lojaintegrada/tailwindcss-config": "^0.0.4"
+    "@lojaintegrada/tailwindcss-config": "^0.0.5"
   }
 }
