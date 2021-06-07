@@ -15,6 +15,7 @@ yarn storybook
 
 ```bash
 yarn test
+yarn test:cypress
 ```
 
 ### Lint
@@ -39,6 +40,11 @@ npx tailwind-config-viewer
 - Check result at GitHub Actions
 
 Deploy to GitHub Pages is automatic after deploy to NPM
+
+## Testing
+
+This project works with both Jest or Cypress Components.
+Use `.spec.` for Cypress and `.teste.` for Jest
 
 ## Usage
 

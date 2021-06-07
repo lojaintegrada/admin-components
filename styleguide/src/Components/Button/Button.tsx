@@ -1,7 +1,7 @@
 import React from 'react'
 import './../../tailwind.css'
 
-import { Icon } from '../../Icons/Icon'
+import { Icon, IconProps } from '../../Icons/Icon'
 
 const listOfStylesHover = {
   primary: `hover:bg-primary-dark`,
@@ -37,58 +37,82 @@ const listOfSizes = {
   large: `text-f5 h-14`,
 }
 
-export const Button = React.memo(
-  ({
-    children,
-    loading,
-    variant = 'primary',
-    type,
-    fullWidth,
-    disabled,
-    id,
-    className,
-    onClick,
-    size = 'default',
-  }: ButtonProps) => {
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-      ;(!disabled || !loading) && onClick && onClick(event)
-    }
-
-    let classes = `flex font-semibold tracking-tight items-center justify-center px-5 text-center no-underline transition rounded after:align-middle focus:outline-none `
-
-    if (loading) {
-      classes +=
-        'bg-base-3 cursor-default text-on-base-2 pointer-events-none shadow-none ring-0 border-0 hover:bg-base-3 hover:text-on-base-2 focus:ring-0 '
-    } else if (disabled) {
-      classes +=
-        'bg-base-3 cursor-default text-on-base-2 shadow-none ring-0 border-0 hover:bg-base-3 hover:text-on-base-2 '
-    } else {
-      classes += `${listOfStyles[variant]} `
-    }
-    classes += `${listOfSizes[size]} `
-
-    if (fullWidth) classes += 'w-full '
-    if (className) classes += className
-
-    return (
-      <button
-        id={id}
-        type={type}
-        className={classes}
-        disabled={disabled}
-        onClick={handleClick}
-      >
-        {children}
-        {loading && (
-          <Icon icon="loading" size={4} className="ml-3 inline-block" />
-        )}
-      </button>
-    )
+const ButtonType = React.forwardRef(
+  (
+    { as, ...props }: ButtonProps,
+    ref: React.ForwardedRef<HTMLButtonAnchorElement>
+  ) => {
+    if (as === 'a' || props.href) return <a {...props} ref={ref} />
+    return <button {...props} ref={ref} />
   }
 )
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+const ButtonComponent = (
+  {
+    children,
+    loading,
+    variant = 'primary',
+    fullWidth,
+    icon,
+    disabled,
+    className,
+    onClick,
+    size = 'default',
+    ...props
+  }: ButtonProps,
+  ref: React.ForwardedRef<HTMLButtonAnchorElement>
+) => {
+  const handleClick = (event: React.MouseEvent<HTMLButtonAnchorElement>) => {
+    ;(!disabled || !loading) && onClick && onClick(event)
+  }
+
+  let classes = `inline-flex font-semibold tracking-tight items-center justify-center px-5 text-center no-underline cursor-pointer transition rounded after:align-middle focus:outline-none `
+
+  if (loading) {
+    classes +=
+      'bg-base-3 cursor-default text-on-base-2 pointer-events-none shadow-none ring-0 border-0 hover:bg-base-3 hover:text-on-base-2 focus:ring-0 '
+  } else if (disabled) {
+    classes +=
+      'bg-base-3 cursor-default text-on-base-2 shadow-none ring-0 border-0 hover:bg-base-3 hover:text-on-base-2 '
+  } else {
+    classes += `${listOfStyles[variant]} `
+  }
+  classes += `${listOfSizes[size]} `
+
+  if (fullWidth) classes += 'w-full '
+  if (className) classes += className
+
+  return (
+    <ButtonType
+      ref={ref}
+      className={classes}
+      disabled={disabled}
+      onClick={handleClick}
+      {...props}
+    >
+      {children}
+      {loading && (
+        <Icon icon="loading" size={4} className="ml-3 inline-block" />
+      )}
+      {icon && !loading && (
+        <Icon icon={icon} size={4} className="ml-3 inline-block" />
+      )}
+    </ButtonType>
+  )
+}
+const ButtonWithFowardRef = React.forwardRef(ButtonComponent)
+export const Button = React.memo(ButtonWithFowardRef)
+
+type ButtonAnchorProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
+  React.AnchorHTMLAttributes<HTMLAnchorElement>
+
+type HTMLButtonAnchorElement = HTMLButtonElement & HTMLAnchorElement
+
+export interface ButtonProps extends ButtonAnchorProps {
+  /** Type of component to use
+   * @default button
+   * */
+  as?: 'a' | 'button'
   /** Size of the button
    * @default default
    * */
@@ -108,12 +132,7 @@ export interface ButtonProps
   /**
    * Icon of the button
    */
-  // icon?: ReactNode
-  /**
-   * Position of the icon
-   * @default start
-   */
-  // iconPosition?: 'start' | 'end'
+  icon?: IconProps['icon']
   /**
    * React children
    * Also support render prop

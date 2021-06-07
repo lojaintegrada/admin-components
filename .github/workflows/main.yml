@@ -41,8 +41,12 @@ jobs:
         run: yarn lint
         working-directory: styleguide
 
-      - name: Test
-        run: yarn test --ci --coverage --maxWorkers=2
+      - name: Test Jest
+        run: yarn test:jest --ci --coverage --maxWorkers=2
+        working-directory: styleguide
+
+      - name: Test Cypress
+        run: yarn test:cypress:ci
         working-directory: styleguide
 
       - name: Build
