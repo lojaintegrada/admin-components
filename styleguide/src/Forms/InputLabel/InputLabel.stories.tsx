@@ -12,5 +12,5 @@ const Template: Story<InputLabelProps> = args => <InputLabel {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  title: 'Label'
+  label: 'Label'
 }

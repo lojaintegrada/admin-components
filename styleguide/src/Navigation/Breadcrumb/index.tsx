@@ -35,7 +35,9 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = React.memo(
     }
 
     return (
-      <div className={`header-navigation flex flex-wrap items-center justify-between mb-4 lg:mb-7 ${className}`}>
+      <div
+        className={`header-navigation flex flex-wrap items-center justify-between mb-4 lg:mb-7 ${className}`}
+      >
         <div className="header-navigation-breadcrumb max-w-full truncate">
           <div className="inline-flex self-center items-center font-semibold tracking-5 text-f5 sm:text-f4 lg:text-f3">
             {previousTitle && (
