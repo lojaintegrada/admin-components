@@ -1941,10 +1941,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@lojaintegrada/tailwindcss-config@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@lojaintegrada/tailwindcss-config/-/tailwindcss-config-0.0.5.tgz#3afb5baf66574fd25cbb77fb2b7f7a89224516d6"
-  integrity sha512-tow+WYI3P1HXwUMShww1Iuu+HeE4vvUku2RyJ9jgkN7zbmhlfld0Y7fyIqBE3YozTF1VwWUO1Bxt4qpifvDnkQ==
+"@lojaintegrada/tailwindcss-config@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@lojaintegrada/tailwindcss-config/-/tailwindcss-config-0.0.6.tgz#87bcaf0aa0a6500270a770f27a0a41c381a6d929"
+  integrity sha512-yzViSJ9RkKRmqKe6Um7yNfcg9S9ZNq7SXbXsLEJELaxlowvB+Opt9gVDR9EjK/vEbPHk80CRjuqTAobeHh28Yw==
 
 "@mdx-js/loader@^1.6.22":
   version "1.6.22"
@@ -3330,6 +3330,13 @@
   version "11.0.5"
   resolved "https://registry.yarnpkg.com/@types/react-syntax-highlighter/-/react-syntax-highlighter-11.0.5.tgz#0d546261b4021e1f9d85b50401c0a42acb106087"
   integrity sha512-VIOi9i2Oj5XsmWWoB72p3KlZoEbdRAcechJa8Ztebw7bDl2YmR+odxIqhtJGp1q2EozHs02US+gzxJ9nuf56qg==
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-table@^7.7.1":
+  version "7.7.1"
+  resolved "https://registry.yarnpkg.com/@types/react-table/-/react-table-7.7.1.tgz#cac73133fc185e152e31435f8e6fce89ab868661"
+  integrity sha512-oed13swLIS4Ffyo4jAjl9lGbYMaY0uavKoI9GNMvf2R6vh8JfpRUpizQ90X1VI4WrhfaMb/HMsN7TTBvkGOQXQ==
   dependencies:
     "@types/react" "*"
 
@@ -12730,6 +12737,11 @@ react-syntax-highlighter@^13.5.3:
     lowlight "^1.14.0"
     prismjs "^1.21.0"
     refractor "^3.1.0"
+
+react-table@^7.7.0:
+  version "7.7.0"
+  resolved "https://registry.yarnpkg.com/react-table/-/react-table-7.7.0.tgz#e2ce14d7fe3a559f7444e9ecfe8231ea8373f912"
+  integrity sha512-jBlj70iBwOTvvImsU9t01LjFjy4sXEtclBovl3mTiqjz23Reu0DKnRza4zlLtOPACx6j2/7MrQIthIK1Wi+LIA==
 
 react-textarea-autosize@^7.1.0:
   version "7.1.2"
