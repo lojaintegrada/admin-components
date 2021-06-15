@@ -9,6 +9,7 @@ import { Home } from './Home'
 import { Order } from './Order'
 import { PieChart } from './PieChart'
 import { Loading } from './Loading'
+import { Trash } from './Trash'
 
 export const icons = {
   angleLeft: AngleLeft,
@@ -22,4 +23,5 @@ export const icons = {
   order: Order,
   pieChart: PieChart,
   loading: Loading,
+  trash: Trash,
 }

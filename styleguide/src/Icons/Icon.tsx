@@ -21,7 +21,7 @@ export const Icon: FunctionComponent<IconProps> = React.memo(
     if (size) classes += `${iconSizes[size]} `
     if (className) classes += className
 
-    const Path = icons[icon]
+    const Path = icons[icon] || icons['ban']
 
     return (
       <svg
