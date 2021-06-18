@@ -145,7 +145,8 @@
     "extend": {
       "ringWidth": ["hover"],
       "backgroundColor": ["active"],
-      "overflow": ["hover", "group-hover"]
+      "overflow": ["hover", "group-hover"],
+      "borderRadius": ["first", "last"]
     }
   },
   "plugins": []

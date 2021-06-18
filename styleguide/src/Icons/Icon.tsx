@@ -17,11 +17,11 @@ const iconSizes = {
 export const Icon: FunctionComponent<IconProps> = React.memo(
   ({ icon, block = false, size = 5, className }: IconProps) => {
     let classes = `fill-current transform-gpu `
-    if (block) classes += `block `
+    classes += block ? `block ` : `inline-block `
     if (size) classes += `${iconSizes[size]} `
     if (className) classes += className
 
-    const Path = icons[icon]
+    const Path = icons[icon] || icons['ban']
 
     return (
       <svg
