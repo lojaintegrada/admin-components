@@ -2,10 +2,11 @@ import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
 import { Table, TableProps } from './Table'
+import { Icon } from '../../Icons'
 
 const Link = (props: any) => {
   return (
-    <a href="#a" className={props.className}>
+    <a href="#a" {...props}>
       {props.children}
     </a>
   )
@@ -26,25 +27,25 @@ const columns = [
     id: 'Price',
     label: <small>KA</small>,
     textAlign: 'center',
-    size: 15,
+    size: 'w-1/6',
     cellWrapper: Link
   },
   {
     id: 'Count',
     label: 'Count',
-    size: 10,
+    size: 'w-1/6',
     cellWrapper: Link
   },
   {
     id: 'Active',
     label: 'Active',
-    size: 10,
+    size: 'w-1/6',
     textAlign: 'center'
   },
   {
     id: 'Actions',
-    label: '',
-    size: 7,
+    label: 'Actions',
+    size: 'w-16',
     textAlign: 'center'
   }
 ]
@@ -62,20 +63,20 @@ const rows = [
         <span className="navy-60">$ 2299.00</span>
       </div>
     ),
-    Active: <input />,
+    Active: <Icon icon="trash" />,
     Actions: <div className="blue" />,
     cellWrapperProps: { page: 'admin/settings/view', params: { file_name: 1 } }
   },
   {
     id: 2,
     Name: 'Last Test',
-    Address: 'Just a big street',
+    Address: 'LongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLong Text',
     Price: (
       <span className="yellow">
         24 <div className="ml1 v-top" />
       </span>
     ),
-    Active: <input />,
+    Active: <Icon icon="cog" />,
     Actions: <div className="blue" />,
     bgColor: 'danger-light',
     cellWrapperProps: { page: 'admin/settings/view', params: { file_name: 2 } }
@@ -90,7 +91,7 @@ const rows = [
         <span className="navy-60 strike">$ 2399.00</span>
       </div>
     ),
-    Active: <input />,
+    Active: <Icon icon="copy" />,
     Actions: <div className="blue" />,
     cellWrapperProps: { page: 'admin/settings/view', params: { file_name: 3 } }
   },
@@ -103,40 +104,10 @@ const rows = [
         24 <div className="ml1 v-top" />
       </span>
     ),
-    Active: <input />,
+    Active: <Icon icon="edit" />,
     Actions: <div className="blue" />,
     bgColor: 'success-light',
     cellWrapperProps: { page: 'admin/settings/view', params: { file_name: 4 } }
-  }
-]
-
-const selectableData = [
-  {
-    id: 1,
-    Name: 'Example Test',
-    Address: 'Street of Test',
-    City: 'Example Town',
-    Count: 245,
-    Price: '2399.00',
-  },
-  {
-    id: 2,
-    Name: 'Last Test',
-    Address: 'Just a big street',
-    Count: 24,
-  },
-  {
-    id: 3,
-    Name: 'Example Test',
-    Address: 'Street of Test',
-    Count: 245,
-    Price: '2399.00'
-  },
-  {
-    id: 4,
-    Name: 'Last Test',
-    Address: 'Just a big street',
-    Count: 24,
   }
 ]
 
@@ -146,20 +117,21 @@ export default {
   args: {
     columns: columns,
     rows: rows,
-    data: selectableData,
-    selectable: true,
-    onChange: (selectedData: any) => {
-      console.log('Selected rows data: ', selectedData)
-    }
+    // selectable: true,
+    // onChange: (selectedData: any) => {
+    //   console.log('Selected rows data: ', selectedData)
+    // }
   },
+  parameters: {
+    layout: 'padded',
+  }
 } as Meta
 
 const Template: Story<TableProps> = args => <Table {...args} />
 
 export const Default = Template.bind({})
 
-export const Large = Template.bind({})
-Large.args = {
-  // size: 'large',
-  // children: 'Large Button',
+export const Loading = Template.bind({})
+Loading.args = {
+  isLoading: true,
 }
