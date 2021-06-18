@@ -76,7 +76,8 @@ const TableComponent = ({
         {...getTableProps()}
         className={`w-full table-fixed bg-base-1 rounded border-separate border border-card-stroke`}
         cellSpacing="0"
-        style={{ minWidth:700 }}
+        // #TODO: Don't use fixed number, need refactor
+        style={{ minWidth: 700 }}
       >
         <thead className={`text-left`}>
           {headerGroups.map(headerGroup => {
@@ -89,12 +90,15 @@ const TableComponent = ({
                 {headerGroup.headers.map(column => {
                   const { key, ...restHeaderProps } = column.getHeaderProps()
                   const columnAsAny = column as { [key: string]: any }
-                  const textAlign: TextAlignProp = columnAsAny.textAlign || 'left'
+                  const textAlign: TextAlignProp =
+                    columnAsAny.textAlign || 'left'
                   return (
                     <th
                       key={key}
                       {...restHeaderProps}
-                      className={`py-2 px-4 text-inverted-2 text-xs font-semibold first:rounded-tl last:rounded-tr ${textAligns[textAlign]} ${columnAsAny.size || ''}`}
+                      className={`py-2 px-4 text-inverted-2 text-xs font-semibold first:rounded-tl last:rounded-tr ${
+                        textAligns[textAlign]
+                      } ${columnAsAny.size || ''}`}
                     >
                       {column.render('Header')}
                     </th>
