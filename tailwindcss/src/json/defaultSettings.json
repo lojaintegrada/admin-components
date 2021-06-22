@@ -123,6 +123,7 @@
         "alpha": "lower-alpha"
       },
       "transitionProperty": {
+        "height": "height",
         "width": "width"
       },
       "transitionDuration": {
