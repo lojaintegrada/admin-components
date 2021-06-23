@@ -105,7 +105,7 @@
     "react-dom": ">=17.0.1"
   },
   "dependencies": {
-    "@lojaintegrada/tailwindcss-config": "^0.0.7",
+    "@lojaintegrada/tailwindcss-config": "^0.0.8",
     "react-table": "^7.7.0"
   }
 }

@@ -1,5 +1,6 @@
 import { AngleLeft } from './AngleLeft'
 import { ArrowLeft } from './ArrowLeft'
+import { ArrowRight } from './ArrowRight'
 import { Ban } from './Ban'
 import { Cog } from './Cog'
 import { Copy } from './Copy'
@@ -11,10 +12,12 @@ import { Order } from './Order'
 import { PieChart } from './PieChart'
 import { Loading } from './Loading'
 import { Trash } from './Trash'
+import { Minus } from './Minus'
 
 export const icons = {
   angleLeft: AngleLeft,
   arrowLeft: ArrowLeft,
+  arrowRight: ArrowRight,
   ban: Ban,
   cog: Cog,
   copy: Copy,
@@ -26,4 +29,5 @@ export const icons = {
   pieChart: PieChart,
   loading: Loading,
   trash: Trash,
+  minus: Minus
 }
