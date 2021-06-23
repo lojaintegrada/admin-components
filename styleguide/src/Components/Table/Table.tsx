@@ -91,7 +91,7 @@ const TableComponent = ({
                   const { key, ...restHeaderProps } = column.getHeaderProps()
                   const columnAsAny = column as { [key: string]: any }
                   const textAlign: TextAlignProp =
-                    columnAsAny.textAlign || 'right'
+                    columnAsAny.textAlign || 'left'
                   return (
                     <th
                       key={key}
