@@ -4,7 +4,7 @@ export interface TimelineItemInterface {
   /**
    * Item main title
    */
-  title: string
+  title: string | React.ReactNode
   /**
    * Item timestamp
    */
@@ -12,7 +12,7 @@ export interface TimelineItemInterface {
   /**
    * Item additional description
    */
-  description?: string
+  description?: string | React.ReactNode
   /**
    * Item icon
    */

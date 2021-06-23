@@ -8,12 +8,10 @@ const TimelineComponent = ({
   className = '',
   items,
   isLoading = false,
+  emptyTitle = 'Nenhum registro encontrado',
 }: TimelineProps) => {
-  if (isLoading) {
-    return <LoadingPlaceholder />
-  }
-  if (!items || !Array.isArray(items)) return null
-  
+  if (!isLoading && (!items || !Array.isArray(items))) return null
+
   return (
     <div
       className={`w-full bg-base-1 border border-card-stroke rounded p-6 ${className}`}
@@ -23,9 +21,31 @@ const TimelineComponent = ({
           className="timeline-line absolute -left-px top-0 bottom-0 bg-card-stroke ml-1"
           style={{ width: '2px' }}
         />
-        {items.map((item, index) => (
-          <TimelineItem key={`timeline-item-${index}`} item={item} lastItem={items.length === (index + 1)} />
-        ))}
+        {isLoading ? (
+          <TimelineItem
+            item={{
+              title: <LoadingPlaceholder className="mt-px pt-px w-1/2" />,
+              icon: 'loading',
+            }}
+            lastItem={true}
+          />
+        ) : items?.length === 0 ? (
+          <TimelineItem
+            item={{
+              title: emptyTitle,
+              icon: 'ban',
+            }}
+            lastItem={true}
+          />
+        ) : (
+          items?.map((item, index) => (
+            <TimelineItem
+              key={`timeline-item-${index}`}
+              item={item}
+              lastItem={items.length === index + 1}
+            />
+          ))
+        )}
       </ul>
     </div>
   )
@@ -46,4 +66,8 @@ export interface TimelineProps {
    * @default false
    */
   isLoading?: boolean
+  /** Text to show when items is empty
+   * @default 'Nenhum registro encontrado'
+   */
+  emptyTitle?: string
 }

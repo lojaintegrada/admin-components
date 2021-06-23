@@ -23,10 +23,19 @@ export const Icon: FunctionComponent<IconProps> = React.memo(
 
     const Path = icons[icon] || icons['ban']
 
+    let viewBox = '0 0 18 18'
+    try {
+      if (Path.name === 'Ban') {
+        viewBox = '0 0 16 16'
+      }
+    } catch (e) {
+      console.warn(e)
+    }
+
     return (
       <svg
         className={classes}
-        viewBox="0 0 18 18"
+        viewBox={viewBox}
         xmlns="http://www.w3.org/2000/svg"
       >
         <Path />
