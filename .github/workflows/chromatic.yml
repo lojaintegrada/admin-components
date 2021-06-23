@@ -2,13 +2,19 @@
 name: 'Chromatic'
 
 # Event for the workflow
-on: push
+on:
+  pull_request:
+    branches:
+      - main
 
 # List of jobs
 jobs:
   chromatic-deployment:
     # Operating System
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
     # Job steps
     steps:
       - uses: actions/checkout@v1
