@@ -29,5 +29,5 @@ export const icons = {
   pieChart: PieChart,
   loading: Loading,
   trash: Trash,
-  minus: Minus
+  minus: Minus,
 }
