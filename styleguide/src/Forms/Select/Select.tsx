@@ -94,7 +94,7 @@ export const SelectComponent = (
               {placeholder}
             </option>
           )}
-          {options.map(option => {
+          {options?.map(option => {
             return (
               <option
                 key={`${selectId}-${option.value}`}
