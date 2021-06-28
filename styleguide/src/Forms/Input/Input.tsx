@@ -1,21 +1,15 @@
 import React from 'react'
 
-import { InputLabel, InputLabelProps } from './../InputLabel'
-import { InputHelpText, InputHelpTextProps } from './../InputHelpText'
-
-const inputPlaceholderClasses = 'placeholder-on-base-2'
-const inputDisabledClasses = 'bg-base-3 pointer-events-none text-on-base-2'
-const inputReadonlyClasses = 'bg-base-2'
-const inputErrorClasses = 'border-danger focus:border-danger'
-const inputDefaultClasses = 'border-card-stroke'
-const inputFocusClasses = 'focus:border-inverted-1'
-const inputClasses = `appearance-none shadow-none outline-none bg-base-1 border px-4 rounded text-on-base text-sm tracking-4 min-w-0 w-full transition-border duration-75 ${inputFocusClasses} ${inputPlaceholderClasses}`
-const variantClasses = {
-  default: 'h-12',
-  small: 'h-8',
-  large: 'h-14',
-  xlarge: 'h-24',
-}
+import { InputLabel, InputLabelProps } from '../InputLabel'
+import { InputHelpText, InputHelpTextProps } from '../InputHelpText'
+import {
+  inputDisabledClasses,
+  inputReadonlyClasses,
+  inputErrorClasses,
+  inputDefaultClasses,
+  inputClasses,
+  variantClasses,
+} from '../commonStyles'
 
 export const InputComponent = (
   {
@@ -74,7 +68,7 @@ export const InputComponent = (
         <input
           ref={ref}
           type={type}
-          id={id}
+          id={inputId}
           name={name}
           required={required}
           disabled={disabled}

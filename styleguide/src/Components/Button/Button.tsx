@@ -39,11 +39,20 @@ const listOfSizes = {
 
 const ButtonType = React.forwardRef(
   (
-    { as, ...props }: ButtonProps,
+    { as, children, ...props }: ButtonProps,
     ref: React.ForwardedRef<HTMLButtonAnchorElement>
   ) => {
-    if (as === 'a' || props.href) return <a {...props} ref={ref} />
-    return <button {...props} ref={ref} />
+    if (as === 'a' || props.href)
+      return (
+        <a {...props} ref={ref}>
+          {children}
+        </a>
+      )
+    return (
+      <button {...props} ref={ref}>
+        {children}
+      </button>
+    )
   }
 )
 

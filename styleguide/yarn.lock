@@ -1973,10 +1973,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@lojaintegrada/tailwindcss-config@^0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@lojaintegrada/tailwindcss-config/-/tailwindcss-config-0.0.7.tgz#d2d1a8afe662c7f42f997a2b6e3c6d21b907af00"
-  integrity sha512-XcpP8lIW19SlLTPf+9wDACwVVZuhLggITDaQ8qFw7gmmv8ljxOl2kmntnClzaW95YniFMaqgP+WpUs4IQ87zUQ==
+"@lojaintegrada/tailwindcss-config@^0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@lojaintegrada/tailwindcss-config/-/tailwindcss-config-0.0.8.tgz#8e400e239e2feb47467f9f1a0ed3f9162aec4b2b"
+  integrity sha512-9CS2VsZJ12z3+gyF1ZHK9NtvfBet4O6rCEXnuf8/WDkvu1b1DcMWrzbMVIjzs0nRpYDHFjij3cCc+UZWVHZLGg==
 
 "@mdx-js/loader@^1.6.22":
   version "1.6.22"
