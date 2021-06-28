@@ -19,7 +19,7 @@ const Template: Story<PaginationProps> = args => <Pagination {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  currentItemsLength: 5,
+  currentItemsLength: 2,
   totalItemsLength: 123,
 }
 

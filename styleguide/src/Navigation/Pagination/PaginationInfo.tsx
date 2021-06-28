@@ -4,7 +4,7 @@ import { Select } from '../../Forms/Select'
 
 const PaginationInfoComponent = ({
   currentItemsLength,
-  totalItemsLength,
+  totalItemsLength = 0,
   itemsLengthOptions,
   onItemsLengthChange,
 }: PaginationInfoProps) => {
@@ -13,7 +13,9 @@ const PaginationInfoComponent = ({
     onItemsLengthChange && onItemsLengthChange(selectedOption)
   }
 
-  if (!currentItemsLength) return null
+  if (!currentItemsLength && currentItemsLength !== 0) return null
+
+  const maxItemsLength = Math.max(currentItemsLength, totalItemsLength)
 
   return (
     <div className="hidden sm:flex">
@@ -28,7 +30,7 @@ const PaginationInfoComponent = ({
         ) : (
           `Mostrando ${currentItemsLength}`
         )}{' '}
-        de {totalItemsLength || currentItemsLength} no total
+        de {maxItemsLength} no total
       </div>
     </div>
   )

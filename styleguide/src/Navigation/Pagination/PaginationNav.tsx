@@ -8,9 +8,12 @@ const PaginationNavComponent = ({
   onPageChange,
 }: PaginationNavProps) => {
   const inputEl = useRef<HTMLSpanElement>(null)
+  const maxTotalPages = Math.max(currentPage, totalPages)
+  const hasNext = currentPage < totalPages
+  const hasPrev = currentPage > 1
 
   const handleChange = (page: number) => {
-    page = page < 1 ? 1 : page > totalPages ? totalPages : page
+    page = page < 1 ? 1 : page > maxTotalPages ? maxTotalPages : page
     onPageChange && onPageChange(page)
   }
 
@@ -60,27 +63,31 @@ const PaginationNavComponent = ({
         <button
           className="focus:outline-none"
           onClick={() => {
-            if (currentPage !== totalPages) handleChange(totalPages)
+            if (currentPage !== maxTotalPages) handleChange(maxTotalPages)
           }}
         >
-          {totalPages}
+          {maxTotalPages}
         </button>
       </div>
       <div className="text-inverted-2 ml-5 flex items-center">
         <button
-          className="mr-3 duration-200 hover:text-inverted-1 focus:outline-none"
+          className={`mr-3 duration-200 focus:outline-none ${
+            hasPrev ? 'hover:text-inverted-1' : ''
+          }`}
           aria-label="Ir para página anterior"
           onClick={() => {
-            if (currentPage > 1) handleChange(currentPage - 1)
+            if (hasPrev) handleChange(currentPage - 1)
           }}
         >
           <Icon icon="arrowLeft" block size={4} />
         </button>
         <button
-          className="duration-200 hover:text-inverted-1 focus:outline-none"
+          className={`duration-200 focus:outline-none ${
+            hasNext ? 'hover:text-inverted-1' : ''
+          }`}
           aria-label="Ir para próxima página"
           onClick={() => {
-            if (currentPage < totalPages) handleChange(currentPage + 1)
+            if (hasNext) handleChange(currentPage + 1)
           }}
         >
           <Icon icon="arrowRight" block size={4} />
