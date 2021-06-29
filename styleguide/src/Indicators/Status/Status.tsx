@@ -9,14 +9,18 @@ const statusTypes = {
 
 const StatusComponent = ({ type = 'success', description }: StatusProps) => {
   return (
-    <div className="inline-block">
+    <div className="inline-block whitespace-nowrap min-w-0">
       <span
         className={`inline-block rounded-full ${statusTypes[type]}`}
         style={{
           padding: '0.313rem', // 5px
         }}
       />
-      {description && <span className="text-sm ml-2">{description}</span>}
+      {description && (
+        <span className="text-sm ml-2 whitespace-normal break-words">
+          {description}
+        </span>
+      )}
     </div>
   )
 }
