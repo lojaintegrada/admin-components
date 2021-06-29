@@ -1,5 +1,6 @@
 export * from './Components'
 export * from './Forms'
 export * from './Icons'
+export * from './Indicators'
 export * from './Layout'
 export * from './Navigation'
