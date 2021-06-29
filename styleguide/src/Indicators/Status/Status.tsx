@@ -7,24 +7,16 @@ const statusTypes = {
   danger: 'bg-danger',
 }
 
-const StatusComponent = (
-  {
-    type = 'success',
-    description,
-  }: StatusProps
-) => {
-
+const StatusComponent = ({ type = 'success', description }: StatusProps) => {
   return (
     <div className="inline-block">
       <span
         className={`inline-block rounded-full ${statusTypes[type]}`}
         style={{
-          padding: '0.313rem' // 5px
+          padding: '0.313rem', // 5px
         }}
       />
-      {description && (
-        <span className="text-sm ml-2">{description}</span>
-      )}
+      {description && <span className="text-sm ml-2">{description}</span>}
     </div>
   )
 }
