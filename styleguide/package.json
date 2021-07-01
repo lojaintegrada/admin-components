@@ -106,6 +106,7 @@
   },
   "dependencies": {
     "@lojaintegrada/tailwindcss-config": "^0.0.8",
-    "react-table": "^7.7.0"
+    "react-table": "^7.7.0",
+    "react-toastify": "^7.0.4"
   }
 }
