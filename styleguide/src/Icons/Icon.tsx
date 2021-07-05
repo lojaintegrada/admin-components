@@ -24,12 +24,8 @@ export const Icon: FunctionComponent<IconProps> = React.memo(
     const Path = icons[icon] || icons['ban']
 
     let viewBox = '0 0 18 18'
-    try {
-      if (Path.name === 'Ban') {
-        viewBox = '0 0 16 16'
-      }
-    } catch (e) {
-      console.warn(e)
+    if (icon === 'ban') {
+      viewBox = '0 0 16 16'
     }
 
     return (
