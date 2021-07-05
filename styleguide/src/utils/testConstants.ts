@@ -1,3 +1,3 @@
 export const defaultCSSforCypressTest = {
-  cssFile: 'dist/tailwind.css',
+  cssFile: 'src/tailwind.css',
 }

@@ -1,8 +1,6 @@
 import React from 'react'
 import { Icon } from '../../Icons/Icon'
 
-import './../../tailwind.css'
-
 export const Breadcrumb: React.FC<BreadcrumbProps> = React.memo(
   ({ Link, currentTitle, previousTitle, previousHref, className = '' }) => {
     const renderPrevTitle = (

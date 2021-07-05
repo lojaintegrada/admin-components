@@ -1,5 +1,4 @@
 import React from 'react'
-import './../../tailwind.css'
 
 const statusTypes = {
   success: 'bg-success',

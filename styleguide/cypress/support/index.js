@@ -16,5 +16,7 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 
-// Alternatively you can use CommonJS syntax:
-// require('./commands')
+import { setGlobalConfig } from "@storybook/testing-react"
+import * as sbPreview from "../../.storybook/preview"
+
+setGlobalConfig(sbPreview)

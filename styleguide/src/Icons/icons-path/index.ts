@@ -4,6 +4,7 @@ import { ArrowRight } from './ArrowRight'
 import { Ban } from './Ban'
 import { Cog } from './Cog'
 import { Copy } from './Copy'
+import { Close } from './Close'
 import { CreditCard } from './CreditCard'
 import { Edit } from './Edit'
 import { Eye } from './Eye'
@@ -21,6 +22,7 @@ export const icons = {
   ban: Ban,
   cog: Cog,
   copy: Copy,
+  close: Close,
   creditcard: CreditCard,
   edit: Edit,
   eye: Eye,

@@ -7,8 +7,9 @@ export const BoxHeader = React.memo(
         <div className="flex-1 min-w-0">
           {title && (
             <h3
-              className={`tracking-3 text-xl font-semibold break-words ${subtitle &&
-                '-mt-px'}`}
+              className={`tracking-3 text-xl font-semibold break-words ${
+                subtitle && '-mt-px'
+              }`}
             >
               {title}
             </h3>
