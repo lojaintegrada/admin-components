@@ -3238,6 +3238,11 @@
     shelljs "^0.8.1"
     yargs "^15.0.0"
 
+"@storybook/testing-react@^0.0.18":
+  version "0.0.18"
+  resolved "https://registry.yarnpkg.com/@storybook/testing-react/-/testing-react-0.0.18.tgz#6b69ff2835f8ba7d73c7b14c58fb745271d6e620"
+  integrity sha512-aKD0J162/6RiCdzA03ukJrEwGTYU8+l0R2S/SfKKg4xCP6+RgK6ygmZ74wR6ckh9gWvEw6VlpL8YPp+xlh2ETg==
+
 "@storybook/theming@5.3.21":
   version "5.3.21"
   resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-5.3.21.tgz#ae2dc101aa57c3be4df1724ae729e11bad118e0b"
@@ -7159,6 +7164,13 @@ eslint-plugin-prettier@^3.1.0:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-3.3.1.tgz#7079cfa2497078905011e6f82e8dd8453d1371b7"
   integrity sha512-Rq3jkcFY8RYeQLgk2cCwuc0P7SEFwDravPhsJZOQ5N4YI4DSg50NyqJ/9gdZHzQlHf8MvafSesbNJCcP/FF6pQ==
+  dependencies:
+    prettier-linter-helpers "^1.0.0"
+
+eslint-plugin-prettier@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-3.4.0.tgz#cdbad3bf1dbd2b177e9825737fe63b476a08f0c7"
+  integrity sha512-UDK6rJT6INSfcOo545jiaOwB701uAIt2/dR7WnFQoGCVl1/EMqdANBmwUaqqQ45aXprsTGzSa39LI1PyuRBxxw==
   dependencies:
     prettier-linter-helpers "^1.0.0"
 

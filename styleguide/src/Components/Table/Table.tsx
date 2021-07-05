@@ -43,7 +43,7 @@ const TableComponent = ({
 
   const columns = React.useMemo(
     () =>
-      columnsProps.map(column => {
+      columnsProps.map((column) => {
         return {
           Header: column.label as any,
           accessor: column.id as string,
@@ -80,14 +80,14 @@ const TableComponent = ({
         style={{ minWidth: 700 }}
       >
         <thead className={`text-left`}>
-          {headerGroups.map(headerGroup => {
+          {headerGroups.map((headerGroup) => {
             const {
               key,
               ...restHeaderGroupProps
             } = headerGroup.getHeaderGroupProps()
             return (
               <tr key={key} {...restHeaderGroupProps} className="bg-base-2">
-                {headerGroup.headers.map(column => {
+                {headerGroup.headers.map((column) => {
                   const { key, ...restHeaderProps } = column.getHeaderProps()
                   const columnAsAny = column as { [key: string]: any }
                   const textAlign: TextAlignProp =
@@ -118,12 +118,12 @@ const TableComponent = ({
               </td>
             </tr>
           ) : (
-            rows.map(row => {
+            rows.map((row) => {
               prepareRow(row)
               const { key, ...restRowProps } = row.getRowProps()
               return (
                 <tr key={key} {...restRowProps} className={`hover:bg-base-2`}>
-                  {row.cells.map(cell => {
+                  {row.cells.map((cell) => {
                     const { key, ...restCellProps } = cell.getCellProps()
                     const column = cell.column as { [key: string]: any }
                     const textAlign: TextAlignProp = column.textAlign || 'left'

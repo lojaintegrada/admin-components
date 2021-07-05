@@ -20,7 +20,7 @@ export const TimelineItem = ({ lastItem, item }: TimelineItemProps) => {
           className={`timeline-title group mb-1 py-1 text-sm text-inverted-1 font-semibold break-words ${
             item.description ? 'cursor-pointer' : ''
           }`}
-          onClick={() => item.description && setIsOpen(isOpen => !isOpen)}
+          onClick={() => item.description && setIsOpen((isOpen) => !isOpen)}
         >
           {item.description && (
             <button
