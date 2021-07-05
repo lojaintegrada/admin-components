@@ -1,17 +1,24 @@
 import React, { useEffect } from 'react'
-import { ToastContainer, toast as toastFunc, ToastContent, ToastOptions } from 'react-toastify'
+import { ToastContainer, toast as showToast, ToastContent, ToastOptions } from 'react-toastify'
 import { injectStyle } from "react-toastify/dist/inject-style"
-
-import './../../tailwind.css'
+import { Icon } from '../../Icons'
 
 const contextClass = {
   success: "bg-primary-light border-primary-dark",
-  danger: "bg-danger-light border-danger-dark",
   error: "bg-danger-light border-danger-dark",
-  info: "bg-info-light border-info",
+  info: "bg-secondary-light border-secondary",
   warning: "bg-warning-light border-warning-dark",
-  default: "bg-success-light border-success",
-  dark: "bg-success-light border-success",
+  default: "",
+  dark: "",
+}
+
+const progressClassName = {
+  success: "!bg-primary-dark",
+  error: "!bg-danger-dark",
+  info: "!bg-secondary-dark",
+  warning: "!bg-warning-dark",
+  default: "",
+  dark: "",
 }
 
 const Container = () => {
@@ -22,32 +29,28 @@ const Container = () => {
   return (
     <ToastContainer
       toastClassName={(props) => (
-        `mb-3 border flex items-center justify-between p-3 pr-4 relative rounded shadow-md text-sm text-on-base ${contextClass[props?.type || "default"]}`
+        `mb-3 border flex items-top justify-between p-3 pb-4 pr-4 relative rounded shadow-md ${contextClass[props?.type || "info"]}`
       )}
-      bodyClassName={(props) => (
-        `${props?.defaultClassName}`
+      bodyClassName={() => (
+        `max-w-[95%] text-sm text-on-base break-words`
       )}
       progressClassName={(props) => (
-        `${props?.defaultClassName} bg-primary-dark`
+        `${props?.defaultClassName} !h-1 ${progressClassName[props?.type || "info"]}`
       )}
+      closeButton={<div className="-mt-3 -mr-2 cursor-pointer text-on-base hover:text-on-base-2"><Icon icon="close" size={3} /></div>}
       position="top-right"
-
-      // autoClose={false}
     />
   )
 }
 
 const notify = (content: ToastContent, options?: ToastOptions) => {
-  const type = options?.type || 'success'
+  const type = options?.type || 'info'
   const autoClose = !(typeof options?.autoClose === 'boolean') ? options?.autoClose : options?.autoClose && 5000
 
-  toastFunc(content, {
+  showToast(content, {
     ...options,
     type: type,
     autoClose: autoClose,
-    // className: 'ba br2 ' + types[type].className,
-    // bodyClassName: "f6 lh-copy " + types[type].bodyClassName,
-    // progressClassName: types[type].progressClassName,
   })
 }
 

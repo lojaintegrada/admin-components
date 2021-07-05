@@ -1,5 +1,4 @@
 import React from 'react'
-import './../../tailwind.css'
 
 import { BoxHeader, BoxHeaderProps } from './BoxHeader'
 import { BoxContent, BoxContentProps } from './BoxContent'

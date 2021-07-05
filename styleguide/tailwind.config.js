@@ -2,6 +2,7 @@ const defaultSettings = require('@lojaintegrada/tailwindcss-config/dist/defaultS
 
 module.exports = {
   ...defaultSettings,
+  mode: 'jit',
   purge: [
     './src/**/*.{js,ts,jsx,tsx}',
     './stories/**/*.{js,ts,jsx,tsx}'

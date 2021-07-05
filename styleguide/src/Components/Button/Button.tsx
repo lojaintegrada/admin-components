@@ -1,5 +1,4 @@
 import React from 'react'
-import './../../tailwind.css'
 
 import { Icon, IconProps } from '../../Icons/Icon'
 

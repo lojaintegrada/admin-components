@@ -36,7 +36,7 @@ npx tailwind-config-viewer
 
 - Update version at `package.json`
 - Merge the PR to `main`
-- Create an [release](https://github.com/lojaintegrada/admin-components/releases) with the same version
+- Create an [release](https://github.com/lojaintegrada/admin-components/releases) with the same version at the `package.json`
 - Check result at GitHub Actions
 
 Deploy to GitHub Pages is automatic after deploy to NPM

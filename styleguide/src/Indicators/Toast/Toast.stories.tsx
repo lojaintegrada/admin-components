@@ -12,7 +12,12 @@ export default {
     title: 'Aprovado',
     type: 'success'
   },
-
+  argTypes: {
+    type: {
+      options: ['info', 'success', 'warning', 'error', 'default'],
+      control: { type: 'radio' }
+    }
+  }
 } as Meta
 
 const Template: Story<any> = ({ title, ...args }) => (
