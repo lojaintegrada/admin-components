@@ -11,7 +11,7 @@ export const InputLabel = React.memo(
     if (!label) return null
     return (
       <label
-        className={`text-f6 tracking-4 leading-6 font-semibold inline-flex mb-0.5 ${
+        className={`input-label text-f6 tracking-4 leading-6 font-semibold inline-flex mb-0.5 ${
           hasError ? 'text-danger' : 'text-on-base'
         } ${className}`}
         htmlFor={htmlFor}
