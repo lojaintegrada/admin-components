@@ -31,12 +31,13 @@ const PaginationInfoComponent = ({
           <span>
             Mostrando{' '}
             <span className="pagination-info-current">
-              ${currentItemsLength}
+              {currentItemsLength}
             </span>
           </span>
-        )}{' '}
-        de <span className="pagination-info-total">{maxItemsLength}</span> no
-        total
+        )}
+        &nbsp;de&nbsp;
+        <span className="pagination-info-total">{maxItemsLength}</span>
+        &nbsp;no total
       </div>
     </div>
   )
