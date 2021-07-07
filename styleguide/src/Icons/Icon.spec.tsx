@@ -5,7 +5,7 @@ import * as stories from "./Icon.stories"
 
 const { Example } = composeStories(stories)
 
-describe('Button tests', () => {
+describe('Icon tests', () => {
 
   it('Default', () => {
     mount(<Example icon="edit" />)

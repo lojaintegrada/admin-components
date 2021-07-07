@@ -5,7 +5,7 @@ import * as stories from "./InputHelpText.stories"
 
 const { Default } = composeStories(stories)
 
-describe('Button tests', () => {
+describe('InputHelpText tests', () => {
 
   it('Default', () => {
     mount(<Default />)

@@ -5,7 +5,7 @@ import * as stories from "./Select.stories"
 
 const { Default, Error, WithoutStyle } = composeStories(stories)
 
-describe('Button tests', () => {
+describe('Select tests', () => {
 
   it('Default', () => {
     mount(<Default />)

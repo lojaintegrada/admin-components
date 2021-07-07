@@ -5,7 +5,7 @@ import * as stories from "./InputLabel.stories"
 
 const { Default } = composeStories(stories)
 
-describe('Button tests', () => {
+describe('InputLabel tests', () => {
 
   it('Default', () => {
     mount(<Default />)

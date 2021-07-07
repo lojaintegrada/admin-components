@@ -18,7 +18,7 @@ const PaginationInfoComponent = ({
   const maxItemsLength = Math.max(currentItemsLength, totalItemsLength)
 
   return (
-    <div className="hidden sm:flex">
+    <div className="pagination-info hidden sm:flex">
       <div className="flex items-center mr-5 text-inverted-2 tracking-4 text-f6">
         {itemsLengthOptions ? (
           <Select
@@ -28,9 +28,9 @@ const PaginationInfoComponent = ({
             onChange={handleChange}
           />
         ) : (
-          `Mostrando ${currentItemsLength}`
+          <span>Mostrando <span className="pagination-info-current">${currentItemsLength}</span></span>
         )}{' '}
-        de {maxItemsLength} no total
+        de <span className="pagination-info-total">{maxItemsLength}</span> no total
       </div>
     </div>
   )

@@ -34,17 +34,18 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = React.memo(
 
     return (
       <div
+        aria-label="breadcrumbs"
         className={`header-navigation flex flex-wrap items-center justify-between mb-4 lg:mb-7 ${className}`}
       >
         <div className="header-navigation-breadcrumb max-w-full truncate">
           <div className="inline-flex self-center items-center font-semibold tracking-5 text-f5 sm:text-f4 lg:text-f3">
             {previousTitle && (
-              <span className="inline-flex items-center text-on-base-2 text-xl -mr-px">
+              <span className="header-navigation-previous inline-flex items-center text-on-base-2 text-xl -mr-px">
                 {renderPrevLink()}
                 <span className="hidden lg:inline px-2 -ml-px"> / </span>
               </span>
             )}
-            <span className="text-on-base">{currentTitle}</span>
+            <span className="header-navigation-current text-on-base">{currentTitle}</span>
           </div>
         </div>
         <div className="header-navigation-content flex items-center flex-grow justify-end">
