@@ -28,9 +28,15 @@ const PaginationInfoComponent = ({
             onChange={handleChange}
           />
         ) : (
-          <span>Mostrando <span className="pagination-info-current">${currentItemsLength}</span></span>
+          <span>
+            Mostrando{' '}
+            <span className="pagination-info-current">
+              ${currentItemsLength}
+            </span>
+          </span>
         )}{' '}
-        de <span className="pagination-info-total">{maxItemsLength}</span> no total
+        de <span className="pagination-info-total">{maxItemsLength}</span> no
+        total
       </div>
     </div>
   )

@@ -58,8 +58,8 @@ const PaginationNavComponent = ({
           onPaste={onPreventDefault}
         >
           {currentPage}
-        </span>
-        {' '}/{' '}
+        </span>{' '}
+        /{' '}
         <button
           className="pagination-nav-total focus:outline-none"
           onClick={() => {
