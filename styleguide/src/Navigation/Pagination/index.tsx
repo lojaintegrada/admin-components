@@ -15,7 +15,7 @@ const PaginationComponent = ({
 }: PaginationProps) => {
   return (
     <div
-      className={`flex flex-wrap justify-end items-center leading-4 sm:justify-between ${className}`}
+      className={`pagination flex flex-wrap justify-end items-center leading-4 sm:justify-between ${className}`}
     >
       <PaginationInfo
         currentItemsLength={currentItemsLength}

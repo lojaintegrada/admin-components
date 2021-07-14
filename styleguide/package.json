@@ -93,6 +93,7 @@
     "identity-obj-proxy": "^3.0.0",
     "list-selectors": "^2.0.0",
     "postcss": "^8",
+    "postcss-loader": "^4.2.0",
     "react-is": "^17.0.1",
     "rollup-plugin-postcss": "^4.0.0",
     "size-limit": "^4.11.0",

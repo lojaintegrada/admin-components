@@ -5,7 +5,7 @@ export const InputHelpText = React.memo(
     if (!helpText) return null
     return (
       <div
-        className={`text-xs tracking-4 leading-4 ${
+        className={`input-help-text text-xs tracking-4 leading-4 ${
           hasError ? 'text-danger' : 'text-on-base-2'
         } ${className}`}
       >

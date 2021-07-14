@@ -45,10 +45,10 @@ const PaginationNavComponent = ({
   }
 
   return (
-    <div className="flex items-center justify-between w-full sm:w-auto">
+    <div className="pagination-nav flex items-center justify-between w-full sm:w-auto">
       <div className="text-inverted-2 text-f6 tracking-4">
         <span
-          className="text-primary font-semibold"
+          className="pagination-nav-current text-primary font-semibold"
           ref={inputEl}
           contentEditable={true}
           suppressContentEditableWarning={true}
@@ -61,7 +61,7 @@ const PaginationNavComponent = ({
         </span>{' '}
         /{' '}
         <button
-          className="focus:outline-none"
+          className="pagination-nav-total focus:outline-none"
           onClick={() => {
             if (currentPage !== maxTotalPages) handleChange(maxTotalPages)
           }}
@@ -71,7 +71,7 @@ const PaginationNavComponent = ({
       </div>
       <div className="text-inverted-2 ml-5 flex items-center">
         <button
-          className={`mr-3 duration-200 focus:outline-none ${
+          className={`pagination-nav-previous mr-3 duration-200 focus:outline-none ${
             hasPrev ? 'hover:text-inverted-1' : ''
           }`}
           aria-label="Ir para página anterior"
@@ -82,7 +82,7 @@ const PaginationNavComponent = ({
           <Icon icon="arrowLeft" block size={4} />
         </button>
         <button
-          className={`duration-200 focus:outline-none ${
+          className={`pagination-nav-next duration-200 focus:outline-none ${
             hasNext ? 'hover:text-inverted-1' : ''
           }`}
           aria-label="Ir para próxima página"

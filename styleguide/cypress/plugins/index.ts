@@ -9,16 +9,21 @@ const babelLoaderConfig = {
       "@babel/preset-typescript"
     ],
     "plugins": [
-      [
-        "module-name-mapper",
-        {
-          "moduleNameMapper": {
-            "\\.(css|jpg|png)$": "<pkgDir>/cypress/plugins/cssTransform.js"
-          }
-        }
-      ]
+      // [
+      //   "module-name-mapper",
+      //   {
+      //     "moduleNameMapper": {
+      //       // "\\.(css|jpg|png)$": "<pkgDir>/cypress/plugins/cssTransform.js"
+      //     }
+      //   }
+      // ]
     ]
   }
+}
+
+const tailwindLoader = {
+  test: /\.css$/i,
+  use: ['style-loader', 'css-loader', 'postcss-loader'],
 }
 
 /**
@@ -38,6 +43,7 @@ module.exports = (on, config) => {
             babelLoaderConfig
           ]
         }
+        webpackConfig.module.rules.push(tailwindLoader)
         return webpackConfig
       }
     })

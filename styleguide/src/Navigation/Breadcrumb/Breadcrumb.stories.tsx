@@ -15,26 +15,26 @@ const Template: Story<BreadcrumbProps> = args => <Breadcrumb {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  currentTitle: 'Pagina atual',
-  previousTitle: 'Pagina anterior'
+  currentTitle: 'Página atual',
+  previousTitle: 'Página anterior'
 }
 
 export const NoPrevious = Template.bind({})
 NoPrevious.args = {
-  currentTitle: 'Pagina atual',
+  currentTitle: 'Página atual',
 }
 
 export const WithPrevious = Template.bind({})
 WithPrevious.args = {
-  currentTitle: 'Pagina atual',
-  previousTitle: 'Pagina anterior',
+  currentTitle: 'Página atual',
+  previousTitle: 'Página anterior',
   previousHref: 'https://www.google.com'
 }
 
 const Link = (props: any) => { return  <a href="https://www.google.com" target="_blank" className={`underline ` + props.className}>{props.children}</a> }
 export const WithPreviousCustom = Template.bind({})
 WithPreviousCustom.args = {
-  currentTitle: 'Pagina atual',
-  previousTitle: 'Pagina anterior',
+  currentTitle: 'Página atual',
+  previousTitle: 'Página anterior',
   Link: Link
 }

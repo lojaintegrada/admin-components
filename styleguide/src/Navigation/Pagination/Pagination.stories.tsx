@@ -21,6 +21,7 @@ export const Default = Template.bind({})
 Default.args = {
   currentItemsLength: 2,
   totalItemsLength: 123,
+  currentPage: 2,
 }
 
 export const WithoutItems = Template.bind({})

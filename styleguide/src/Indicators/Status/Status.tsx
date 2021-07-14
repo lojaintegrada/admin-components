@@ -8,7 +8,7 @@ const statusTypes = {
 
 const StatusComponent = ({ type = 'success', description }: StatusProps) => {
   return (
-    <div className="inline-block whitespace-nowrap min-w-0">
+    <div className="indicator-status inline-block whitespace-nowrap min-w-0">
       <span
         className={`inline-block rounded-full ${statusTypes[type]}`}
         style={{
