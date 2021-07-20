@@ -1243,6 +1243,11 @@ tailwind-config-viewer@^1.6.2:
     portfinder "^1.0.26"
     replace-in-file "^6.1.0"
 
+tailwindcss-padding-safe@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/tailwindcss-padding-safe/-/tailwindcss-padding-safe-1.0.5.tgz#0878bca1ec68fbd1664b02547d29f3db8248eede"
+  integrity sha512-ofAhVZ0Et3r3mygLBxaJjpjnmdg4gviovh9nX79+hPZ23evQeSa7BEVRFRmC3w7pE7fgofgm8EjH/LP0xaIJRw==
+
 tailwindcss@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-2.2.4.tgz#6a2e259b1e26125aeaa7cdc479963fd217c308b0"

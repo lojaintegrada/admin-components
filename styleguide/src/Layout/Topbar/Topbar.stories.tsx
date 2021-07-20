@@ -7,6 +7,9 @@ import { Topbar, TopbarProps } from '.'
 export default {
   title: 'Layout/Topbar',
   component: Topbar,
+  parameters: {
+    layout: 'fullscreen',
+  }
 } as Meta
 
 const Template: Story<TopbarProps> = args => <Topbar {...args} />

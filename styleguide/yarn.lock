@@ -2063,12 +2063,13 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@lojaintegrada/tailwindcss-config@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@lojaintegrada/tailwindcss-config/-/tailwindcss-config-1.0.0.tgz#9443add5cb3769825dee41ed0826108634a9bfc0"
-  integrity sha512-//taLzXz5EPtNMdeg1H4Bq3SidlguA4hm5OJvVSTlw0g+2y4LqJ2Itta0nisusISWK+h+6OSTNJHKMIEWe920w==
+"@lojaintegrada/tailwindcss-config@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@lojaintegrada/tailwindcss-config/-/tailwindcss-config-1.0.1.tgz#a505fa029fe5e7ab711b810058b66a9bdddc4754"
+  integrity sha512-bg1OZ5CMH/rQJ1rOKNdZqIfDqd16zgoAyy8zX7lI+kd9cjb0KUgGZFJfkmFRfVqqKr4nOaHnNA71bMZrPWH+uw==
   dependencies:
     tailwindcss "^2.2.4"
+    tailwindcss-padding-safe "^1.0.5"
 
 "@mdx-js/loader@^1.6.22":
   version "1.6.22"
@@ -15218,6 +15219,11 @@ table@^5.2.3:
     lodash "^4.17.14"
     slice-ansi "^2.1.0"
     string-width "^3.0.0"
+
+tailwindcss-padding-safe@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/tailwindcss-padding-safe/-/tailwindcss-padding-safe-1.0.5.tgz#0878bca1ec68fbd1664b02547d29f3db8248eede"
+  integrity sha512-ofAhVZ0Et3r3mygLBxaJjpjnmdg4gviovh9nX79+hPZ23evQeSa7BEVRFRmC3w7pE7fgofgm8EjH/LP0xaIJRw==
 
 tailwindcss@^2.2.4:
   version "2.2.4"
