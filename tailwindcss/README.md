@@ -1,26 +1,30 @@
 # Loja Integrada Admin TailwindCSS Config
 
-Deploy apenas manual
+<https://lojaintegrada-tailwind.vercel.app/>
+
+Manually deploy to NPM is required when updated.
+Deploy to preview is automatic at Vercel.
 
 ## Commands
 
 ```bash
-yarn build
+yarn tailwind-config-viewer
 npm publish
 ```
 
 ## Usage
 
-tailwind.config.js
+At yout `tailwind.config.js`
 
 ```js
-const defaultSettings = require('@lojaintegrada/tailwindcss-config/dist/defaultSettings')
-
 module.exports = {
-  ...defaultSettings,
-  purge: [
-    './src/**/*.{js,ts,jsx,tsx}',
-    './stories/**/*.{js,ts,jsx,tsx}'
+  presets: [
+    require('@lojaintegrada/tailwindcss-config/src/defaultPreset')
+    // or
+    // require('@lojaintegrada/tailwindcss-config/src/pagaLIPreset')
   ],
+  // mode: 'jit',
+  // purge: [],
+  // ...
 }
 ```

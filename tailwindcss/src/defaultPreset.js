@@ -1,4 +1,4 @@
-{
+module.exports = {
   "darkMode": false,
   "theme": {
     "colors": {
