@@ -3,7 +3,7 @@ import { SidebarItemProps } from './Item'
 // import { Icon } from '../../Icons/Icon'
 
 const sidebarMenuClasses = `flex-col bottom-0 top-0 max-w-full bg-base-3 transition-all z-1 w-0 lg:w-64`
-const sidebarContentClasses = `max-h-screen h-full py-3 overflow-y-auto shadow-card z-1 scroll lg:shadow-none lg:overflow-y-hidden hover:overflow-y-auto`
+const sidebarContentClasses = `max-h-screen h-full py-2.5 overflow-y-auto shadow-card z-1 scroll lg:shadow-none lg:overflow-y-hidden hover:overflow-y-auto`
 
 export const Sidebar = React.memo(
   ({ children, className = '', fixed }: SidebarProps) => {
