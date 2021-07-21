@@ -44,11 +44,14 @@ const Container = () => {
           progressClassName[props?.type || 'info']
         }`
       }
-      closeButton={
-        <div className="-mt-3 -mr-2 cursor-pointer text-on-base hover:text-on-base-2">
+      closeButton={({ closeToast }) => (
+        <div
+          className="-mt-3 -mr-2 cursor-pointer text-on-base hover:text-on-base-2"
+          onClick={closeToast}
+        >
           <Icon icon="close" size={3} />
         </div>
-      }
+      )}
       position="top-right"
     />
   )

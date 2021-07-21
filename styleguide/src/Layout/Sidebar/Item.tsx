@@ -3,7 +3,7 @@ import { Icon, IconProps } from '../../Icons/Icon'
 import { safeCSSId } from '../../utils'
 import { SidebarSubItemProps } from './ItemSub'
 
-const sidebarItemBtnClasses = `flex items-center relative px-6 py-2 text-sm tracking-4 font-semibold duration-200 group-hover:text-on-base`
+const sidebarItemBtnClasses = `flex items-center relative px-6 py-3.5 lg:py-2.5 text-sm tracking-4 font-semibold duration-200 group-hover:text-on-base`
 const sidebarItemBtnActiveClasses = (active: boolean | undefined) =>
   active ? `text-on-base` : `text-on-base-2`
 const sidebarItemBtnIconClasses = `w-4 h-6 flex-shrink-0`

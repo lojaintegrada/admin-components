@@ -1,4 +1,4 @@
-{
+module.exports = {
   "darkMode": false,
   "theme": {
     "colors": {
@@ -150,5 +150,7 @@
       "borderRadius": ["first", "last"]
     }
   },
-  "plugins": []
+  plugins: [
+    require("tailwindcss-padding-safe")()
+  ]
 }
