@@ -9,7 +9,6 @@ describe('Modal tests', () => {
 
   it('Default', () => {
     mount(<Default />)
-    
   })
 
 })
