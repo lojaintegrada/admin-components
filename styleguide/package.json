@@ -82,6 +82,7 @@
     "@types/node": "^15.12.0",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.2",
+    "@types/react-modal": "^3.12.1",
     "@types/react-table": "^7.7.1",
     "autoprefixer": "^9",
     "babel-loader": "^8.2.2",
@@ -109,6 +110,7 @@
   },
   "dependencies": {
     "@lojaintegrada/tailwindcss-config": "^1.0.1",
+    "react-modal": "^3.14.3",
     "react-table": "^7.7.0",
     "react-toastify": "^7.0.4"
   }
