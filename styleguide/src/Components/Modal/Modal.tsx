@@ -47,7 +47,7 @@ const ModalComponent = ({
         <div {...props}>
           <div className="ReactModal__header w-full flex justify-between items-start">
             <span
-              className={`min-w-0 text-sm break-words ${
+              className={`min-w-0 text-sm font-semibold uppercase break-words ${
                 headerTitle ? 'pb-3' : ''
               }`}
             >
@@ -95,7 +95,7 @@ export interface ModalProps {
   /**
    * Modal title
    * */
-  headerTitle?: string
+  headerTitle?: string | React.ReactNode
   /** Close text at header
    * @default 'Fechar'
    * */
