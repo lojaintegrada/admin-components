@@ -1,6 +1,8 @@
 {
   "component": {
     "componentFolder": "src",
-    "testFiles": "**/*spec.{js,jsx,ts,tsx}"
+    "testFiles": "**/*spec.{js,jsx,ts,tsx}",
+    "screenshotOnRunFailure": false,
+    "video": false
   }
 }

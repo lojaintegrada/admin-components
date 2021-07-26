@@ -1,4 +1,5 @@
 import { AngleLeft } from './AngleLeft'
+import { AngleRight } from './AngleRight'
 import { ArrowLeft } from './ArrowLeft'
 import { ArrowRight } from './ArrowRight'
 import { Ban } from './Ban'
@@ -17,6 +18,7 @@ import { Minus } from './Minus'
 
 export const icons = {
   angleLeft: AngleLeft,
+  angleRight: AngleRight,
   arrowLeft: ArrowLeft,
   arrowRight: ArrowRight,
   ban: Ban,
