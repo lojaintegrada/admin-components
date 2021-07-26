@@ -47,14 +47,14 @@ const ModalComponent = ({
         <div {...props}>
           <div className="ReactModal__header w-full flex justify-between items-start">
             <span
-              className={`min-w-0 text-sm font-semibold uppercase break-words ${
+              className={`min-w-0 text-inverted-2 text-xs font-semibold uppercase break-words ${
                 headerTitle ? 'pb-3' : ''
               }`}
             >
               {headerTitle}
             </span>
             <button
-              className="flex items-center p-2 pb-1 -mr-2 -mt-3 text-sm font-semibold text-inverted-1 hover:text-inverted-2"
+              className="flex items-center p-2 pb-1 -mr-2 -mt-3 text-sm font-semibold text-inverted-2 hover:text-inverted-1"
               onClick={handleRequestCloseFunc}
             >
               {headerClose !== false && (

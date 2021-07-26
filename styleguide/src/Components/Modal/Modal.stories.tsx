@@ -48,6 +48,7 @@ export const Default = Template.bind({})
 
 export const WithScroll = Template.bind({})
 WithScroll.args = {
+  headerTitle: "Modal title",
   children: (
     <div>
       <p>Modal Content</p>
