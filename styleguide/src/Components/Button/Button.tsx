@@ -90,7 +90,7 @@ const ButtonComponent = (
   if (fullWidth) classes += 'w-full '
   if (className) classes += className
 
-  const currentIcon = loading && 'loading' || icon
+  const currentIcon = (loading && 'loading') || icon
 
   return (
     <ButtonType
