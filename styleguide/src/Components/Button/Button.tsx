@@ -74,7 +74,7 @@ const ButtonComponent = (
     ;(!disabled || !loading) && onClick && onClick(event)
   }
 
-  let classes = `inline-flex font-semibold tracking-tight items-center justify-center px-5 text-center no-underline cursor-pointer transition rounded after:align-middle focus:outline-none `
+  let classes = `inline-flex leading-none font-semibold tracking-tight items-center justify-center px-5 text-center no-underline cursor-pointer transition rounded after:align-middle focus:outline-none `
 
   if (loading) {
     classes +=
@@ -90,6 +90,8 @@ const ButtonComponent = (
   if (fullWidth) classes += 'w-full '
   if (className) classes += className
 
+  const currentIcon = loading && 'loading' || icon
+
   return (
     <ButtonType
       ref={ref}
@@ -99,11 +101,8 @@ const ButtonComponent = (
       {...props}
     >
       {children}
-      {loading && (
-        <Icon icon="loading" size={4} className="ml-3 inline-block" />
-      )}
-      {icon && !loading && (
-        <Icon icon={icon} size={4} className="ml-3 inline-block" />
+      {currentIcon && (
+        <Icon icon={currentIcon} size={4} className="ml-3 inline-block" />
       )}
     </ButtonType>
   )
