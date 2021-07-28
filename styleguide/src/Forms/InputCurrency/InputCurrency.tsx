@@ -140,9 +140,7 @@ export const InputCurrencyComponent = (
   useEffect(() => {
     const currentValue = value || defaultValue || 0
     const [, maskedValue] = calculateValues(currentValue)
-
     setMaskedValue(maskedValue)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currency, value, defaultValue, config])
 
   return (

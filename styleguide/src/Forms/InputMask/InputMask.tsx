@@ -5,8 +5,29 @@ import ReactTextMask, {
 
 import { composeRefs } from '../../utils'
 import { Input, InputProps } from '../Input'
+import { formatValuePatterns } from './utils'
 
-export type MaskType = ReactMaskedInputProps['mask']
+function InputMaskComponent(
+  { formatValue = 'default', ...props }: InputMaskProps,
+  inputRef: React.ForwardedRef<HTMLInputElement>
+) {
+  const renderInput = (ref: (inputElement: HTMLElement) => void, p: any) => {
+    return <Input ref={composeRefs(inputRef, ref)} {...p} />
+  }
+  const formatValueProps = formatValuePatterns[formatValue] || {}
+
+  const mergedProps = {
+    ...props,
+    ...formatValueProps,
+  }
+  if (!mergedProps.mask) {
+    mergedProps.mask = false
+  }
+
+  return <ReactTextMask render={renderInput} {...mergedProps} />
+}
+
+export const InputMask = React.forwardRef(InputMaskComponent)
 
 export interface InputMaskProps
   extends Pick<
@@ -18,19 +39,11 @@ export interface InputMaskProps
       | 'pipe'
       | 'showMask'
     >,
-    InputProps {}
-
-function InputMaskComponent(
-  props: InputMaskProps,
-  inputRef: React.ForwardedRef<HTMLInputElement>
-) {
-  const { style, ...rest } = props
-
-  const renderInput = (ref: (inputElement: HTMLElement) => void, p: any) => {
-    return <Input style={style} ref={composeRefs(inputRef, ref)} {...p} />
-  }
-
-  return <ReactTextMask render={renderInput} {...rest} />
+    InputProps {
+  /**
+   * Predefined masks. When used, will replace passed `mask` attr
+   * */
+  formatValue?: keyof typeof formatValuePatterns
 }
 
-export const InputMask = React.forwardRef(InputMaskComponent)
+export type InputMaskType = ReactMaskedInputProps['mask']

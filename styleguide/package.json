@@ -115,7 +115,6 @@
     "react-modal": "^3.14.3",
     "react-table": "^7.7.0",
     "react-text-mask": "^5.4.3",
-    "react-toastify": "^7.0.4",
-    "text-mask-addons": "^3.8.0"
+    "react-toastify": "^7.0.4"
   }
 }

@@ -6,27 +6,35 @@ import { InputMask, InputMaskProps } from '.'
 export default {
   title: 'Forms/InputMask',
   component: InputMask,
+  args: {
+    label: 'Masked Input',
+  },
 } as Meta
 
 const Template: Story<InputMaskProps> = args => <InputMask {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  label: 'Meu Campo',
-  helpText: 'Texto de ajuda para preencher o campo',
-  defaultValue: '34,7',
   mask: [
-    '(',
     /\d/,
     /\d/,
     /\d/,
-    ')'
+    /\d/,
+    /\d/,
+    '-',
+    /\d/,
+    /\d/,
+    /\d/,
   ]
 }
 
-export const Error = Template.bind({})
-Error.args = {
-  label: 'Meu Campo',
-  helpText: 'Texto de ajuda para preencher o campo',
-  errorMessage: 'Campo obrigatório',
+export const Date = Template.bind({})
+Date.args = {
+  formatValue: 'date',
+  defaultValue: '10/11/1990',
+}
+
+export const OnlyNumbers = Template.bind({})
+OnlyNumbers.args = {
+  formatValue: 'onlyNumber',
 }
