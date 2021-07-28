@@ -84,6 +84,7 @@
     "@types/react-dom": "^17.0.2",
     "@types/react-modal": "^3.12.1",
     "@types/react-table": "^7.7.1",
+    "@types/react-text-mask": "^5.4.8",
     "autoprefixer": "^9",
     "babel-loader": "^8.2.2",
     "babel-plugin-module-name-mapper": "^1.2.0",
@@ -110,8 +111,11 @@
   },
   "dependencies": {
     "@lojaintegrada/tailwindcss-config": "^1.0.1",
+    "react-intl-currency-input": "^0.2.6",
     "react-modal": "^3.14.3",
     "react-table": "^7.7.0",
-    "react-toastify": "^7.0.4"
+    "react-text-mask": "^5.4.3",
+    "react-toastify": "^7.0.4",
+    "text-mask-addons": "^3.8.0"
   }
 }

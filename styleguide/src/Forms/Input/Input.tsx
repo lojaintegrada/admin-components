@@ -11,7 +11,7 @@ import {
   variantClasses,
 } from '../commonStyles'
 
-export const InputComponent = (
+const InputComponent = (
   {
     className = '',
     label,
