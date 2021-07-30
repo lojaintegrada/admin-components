@@ -3,8 +3,6 @@ name: Publish Styleguide
 on:
   release:
     types: [published]
-    # tags:
-    #   - styleguide@*
 
 defaults:
   run:
@@ -13,8 +11,9 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # if: ${{ github.ref == 'refs/heads/main' }}
-    if: ${{ startsWith('refs/tags/styleguide@', github.ref) }}
+    # if: ${{ startsWith('refs/tags/styleguide@', github.ref) }}
+    # if: "'refs/heads/main' == github.ref && startsWith(github.ref, 'refs/tags/styleguide@')"
+    if: ${{ github.ref == 'refs/heads/main' && startsWith(github.ref, 'refs/tags/styleguide@') }}
     steps:
       - uses: actions/checkout@v2
         with:
