@@ -15,6 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
+          token: ${{ secrets.PAT_COMMIT_MAIN }}
           ref: main
 
       - uses: actions/setup-node@v2
@@ -42,6 +43,7 @@ jobs:
         with:
           commit_message: Published tag ${GITHUB_REF#refs/tags/styleguide@}
           branch: main
+          push_options: --force
           file_pattern: styleguide/package.json
 
       - name: Send to GitHub Pages 🔧
