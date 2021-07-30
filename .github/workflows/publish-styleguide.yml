@@ -32,16 +32,16 @@ jobs:
         run: yarn version --new-version "${GITHUB_REF#refs/tags/styleguide@}" --no-git-tag-version
         working-directory: styleguide
 
-      # - name: Publish to NPM
-      #   run: yarn publish --access public
-      #   working-directory: styleguide
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_STYLEGUIDE }}
+      - name: Publish to NPM
+        run: yarn publish --access public
+        working-directory: styleguide
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_STYLEGUIDE }}
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Published tag ${GITHUB_REF#refs/tags/styleguide@}
+          commit_message: Published tag ${{ GITHUB_REF#refs/tags/styleguide@ }}
           branch: main
           push_options: --force
           file_pattern: styleguide/package.json
