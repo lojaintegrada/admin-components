@@ -3,6 +3,9 @@ name: Publish Styleguide
 on:
   release:
     types: [published]
+    branches: [main]
+    tags:
+      - styleguide@*
 
 defaults:
   run:
@@ -13,6 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
 
       - uses: actions/setup-node@v2
         with:
@@ -24,10 +29,21 @@ jobs:
         with:
           working-directory: styleguide
 
-      - run: npm publish
+      - name: Update version
+        run: yarn version --new-version "${GITHUB_REF:21}" --no-git-tag-version
+        working-directory: styleguide
+
+      - name: Publish to NPM
+        run: yarn publish --access public
         working-directory: styleguide
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_STYLEGUIDE }}
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Published tag ${GITHUB_REF:11}
+          file_pattern: styleguide/package.json
 
       - name: Send to GitHub Pages 🔧
         run: yarn deploy-storybook --ci --source-branch=main
