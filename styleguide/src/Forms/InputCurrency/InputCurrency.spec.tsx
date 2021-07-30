@@ -18,7 +18,7 @@ describe('Input Currency tests', () => {
   it('MaxValue', () => {
     mount(<MaxValue />)
     const val = '19.999,99'
-    const valMasked = '1.999,99'
+    const valMasked = '2.000,00'
     cy.get('input').type(val).should('have.value', valMasked)
   })
 
