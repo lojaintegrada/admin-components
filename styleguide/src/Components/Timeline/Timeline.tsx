@@ -27,7 +27,6 @@ const TimelineComponent = ({
               title: <LoadingPlaceholder className="mt-px pt-px w-1/2" />,
               icon: 'loading',
             }}
-            lastItem={true}
           />
         ) : items?.length === 0 ? (
           <TimelineItem
@@ -35,15 +34,10 @@ const TimelineComponent = ({
               title: emptyTitle,
               icon: 'ban',
             }}
-            lastItem={true}
           />
         ) : (
           items?.map((item, index) => (
-            <TimelineItem
-              key={`timeline-item-${index}`}
-              item={item}
-              lastItem={items.length === index + 1}
-            />
+            <TimelineItem key={`timeline-item-${index}`} item={item} />
           ))
         )}
       </ul>
