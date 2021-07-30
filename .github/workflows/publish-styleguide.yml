@@ -11,9 +11,9 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # if: ${{ startsWith('refs/tags/styleguide@', github.ref) }}
+    if: ${{ startsWith(github.ref, 'refs/tags/styleguide@') }}
     # if: "'refs/heads/main' == github.ref && startsWith(github.ref, 'refs/tags/styleguide@')"
-    if: ${{ github.ref == 'refs/heads/main' && startsWith(github.ref, 'refs/tags/styleguide@') }}
+    # if: ${{ github.ref == 'refs/heads/main' && startsWith(github.ref, 'refs/tags/styleguide@') }}
     steps:
       - uses: actions/checkout@v2
         with:
