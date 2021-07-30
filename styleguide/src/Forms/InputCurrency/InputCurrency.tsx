@@ -96,11 +96,13 @@ export const InputCurrencyComponent = (
   const updateValues = (value: any) => {
     const [calculatedValue, calculatedMaskedValue] = calculateValues(value)
 
-    if (!max || calculatedValue <= max) {
+    if ((!max && max !==0) || calculatedValue <= max) {
       setMaskedValue(calculatedMaskedValue)
       return [calculatedValue, calculatedMaskedValue]
     } else {
-      return [normalizeValue(maskedValue), maskedValue]
+      const [maxCalculatedValue, maxCalculatedMaskedValue] = calculateValues(max)
+      setMaskedValue(maxCalculatedMaskedValue)
+      return [maxCalculatedValue, maxCalculatedMaskedValue]
     }
   }
 
