@@ -41,7 +41,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Published tag ${GITHUB_REF#refs/tags/styleguide@}
-          branch: master
+          branch: main
           file_pattern: styleguide/package.json
 
       - name: Send to GitHub Pages 🔧
