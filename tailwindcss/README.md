@@ -2,15 +2,19 @@
 
 <https://lojaintegrada-tailwind.vercel.app/>
 
-Manually deploy to NPM is required when updated.
-Deploy to preview is automatic at Vercel.
-
 ## Commands
 
 ```bash
 yarn tailwind-config-viewer
-npm publish
 ```
+
+## Publishing
+
+- Merge the PR to `main`
+- Create an [release](https://github.com/lojaintegrada/admin-components/releases) with the pattern `tailwindcss@VERSION`, like `tailwindcss@1.0.2`
+- Check result at GitHub Actions
+
+Deploy to Vercel is automatic
 
 ## Usage
 
