@@ -37,10 +37,7 @@ const TimelineComponent = ({
           />
         ) : (
           items?.map((item, index) => (
-            <TimelineItem
-              key={`timeline-item-${index}`}
-              item={item}
-            />
+            <TimelineItem key={`timeline-item-${index}`} item={item} />
           ))
         )}
       </ul>
