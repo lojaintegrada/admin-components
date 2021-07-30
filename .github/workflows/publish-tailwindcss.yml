@@ -1,4 +1,4 @@
-name: Publish Styleguide
+name: Publish Tailwindcss
 
 on:
   release:
@@ -6,12 +6,12 @@ on:
 
 defaults:
   run:
-    working-directory: styleguide
+    working-directory: tailwindcss
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: ${{ startsWith(github.ref, 'refs/tags/styleguide@') }}
+    if: ${{ startsWith(github.ref, 'refs/tags/tailwindcss@') }}
     steps:
       - uses: actions/checkout@v2
         with:
@@ -26,28 +26,23 @@ jobs:
       - name: Install deps and build (with cache)
         uses: bahmutov/npm-install@v1
         with:
-          working-directory: styleguide
+          working-directory: tailwindcss
 
       - name: Update version
-        run: yarn version --new-version "${GITHUB_REF#refs/tags/styleguide@}" --no-git-tag-version
-        working-directory: styleguide
+        run: yarn version --new-version "${GITHUB_REF#refs/tags/tailwindcss@}" --no-git-tag-version
+        working-directory: tailwindcss
 
       - name: Publish to NPM
-        run: yarn publish --access public
-        working-directory: styleguide
+        run: npm publish
+        working-directory: tailwindcss
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_STYLEGUIDE }}
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Published tag for Styleguide
+          commit_message: Published tag for Tailwindcss
           branch: main
           push_options: --force
-          file_pattern: styleguide/package.json
+          file_pattern: tailwindcss/package.json
 
-      - name: Send to GitHub Pages 🔧
-        run: yarn deploy-storybook --ci --source-branch=main
-        working-directory: styleguide
-        env:
-          GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
