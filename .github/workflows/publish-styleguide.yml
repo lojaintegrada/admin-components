@@ -13,7 +13,7 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: ${{ github.ref == 'refs/heads/main' }}
+    # if: ${{ github.ref == 'refs/heads/main' }}
     steps:
       - uses: actions/checkout@v2
         with:
@@ -30,7 +30,7 @@ jobs:
           working-directory: styleguide
 
       - name: Update version
-        run: yarn version --new-version "${GITHUB_REF:21}" --no-git-tag-version
+        run: yarn version --new-version "${GITHUB_REF#refs/tags/styleguide@}" --no-git-tag-version
         working-directory: styleguide
 
       - name: Publish to NPM
