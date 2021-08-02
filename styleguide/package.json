@@ -111,7 +111,6 @@
   },
   "dependencies": {
     "@lojaintegrada/tailwindcss-config": "^1.0.1",
-    "react-intl-currency-input": "^0.2.6",
     "react-modal": "^3.14.3",
     "react-table": "^7.7.0",
     "react-text-mask": "^5.4.3",

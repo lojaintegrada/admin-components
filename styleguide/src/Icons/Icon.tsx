@@ -15,13 +15,13 @@ const iconSizes = {
 }
 
 export const Icon: FunctionComponent<IconProps> = React.memo(
-  ({ icon = 'ban', block = false, size = 5, className }: IconProps) => {
+  ({ icon = 'minus', block = false, size = 5, className }: IconProps) => {
     let classes = `${'icon-' + icon} fill-current transform-gpu `
     classes += block ? `block ` : `inline-block `
     if (size) classes += `${iconSizes[size]} `
     if (className) classes += className
 
-    const Path = icons[icon] || icons['ban']
+    const Path = icons[icon] || icons['minus']
 
     let viewBox = '0 0 18 18'
     if (icon === 'ban') {

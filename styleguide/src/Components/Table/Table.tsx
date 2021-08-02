@@ -74,10 +74,8 @@ const TableComponent = ({
     <div className="max-w-full overflow-x-auto">
       <table
         {...getTableProps()}
-        className={`w-full table-fixed bg-base-1 rounded border-separate border border-card-stroke`}
+        className={`w-full bg-base-1 rounded border-separate border border-card-stroke`}
         cellSpacing="0"
-        // #TODO: Don't use fixed number, need refactor
-        style={{ minWidth: 700 }}
       >
         <thead className={`text-left`}>
           {headerGroups.map((headerGroup) => {
