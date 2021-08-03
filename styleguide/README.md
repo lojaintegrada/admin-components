@@ -43,7 +43,7 @@ Deploy to GitHub Pages is automatic after deploy to NPM
 ## Testing
 
 This project works with both Jest or Cypress Components.
-Use `.spec.` for Cypress and `.teste.` for Jest
+Use `.spec.` for Cypress and `.test.` for Jest
 
 ## Usage
 
@@ -55,7 +55,7 @@ import { Button } from '@lojaintegrada/admin-components'
 
 ### Bundle analysis
 
-Calculates the real cost of your library using [size-limit](https://github.com/ai/size-limit) with `npm run size` and visulize it with `npm run analyze`.
+Calculates the real cost of your library using [size-limit](https://github.com/ai/size-limit) with `yarn size` and visulize it with `yarn analyze`.
 
 ## Module Formats
 
