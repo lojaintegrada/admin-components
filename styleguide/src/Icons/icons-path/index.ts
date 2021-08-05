@@ -1,15 +1,18 @@
 import { AngleLeft } from './AngleLeft'
 import { AngleRight } from './AngleRight'
+import { App } from './App'
 import { ArrowLeft } from './ArrowLeft'
 import { ArrowRight } from './ArrowRight'
 import { Ban } from './Ban'
 import { BarcodeRead } from './BarcodeRead'
+import { Bullhorn } from './Bullhorn'
 import { Cog } from './Cog'
 import { Copy } from './Copy'
 import { Clock } from './Clock'
 import { Close } from './Close'
 import { CheckCircle } from './CheckCircle'
 import { CreditCard } from './CreditCard'
+import { Product } from './Product'
 import { Edit } from './Edit'
 import { Eye } from './Eye'
 import { Home } from './Home'
@@ -19,20 +22,25 @@ import { Loading } from './Loading'
 import { Trash } from './Trash'
 import { TimesCircle } from './TimesCircle'
 import { Minus } from './Minus'
+import { Tv } from './Tv'
+import { UsdCircle } from './UsdCircle'
 
 export const icons = {
   angleLeft: AngleLeft,
   angleRight: AngleRight,
+  app: App,
   arrowLeft: ArrowLeft,
   arrowRight: ArrowRight,
   ban: Ban,
   barcodeRead: BarcodeRead,
+  bullhorn: Bullhorn,
   cog: Cog,
   copy: Copy,
   clock: Clock,
   close: Close,
   checkCircle: CheckCircle,
   creditcard: CreditCard,
+  product: Product,
   edit: Edit,
   eye: Eye,
   home: Home,
@@ -43,4 +51,6 @@ export const icons = {
   times: Close,
   timesCircle: TimesCircle,
   minus: Minus,
+  tv: Tv,
+  usdCircle: UsdCircle,
 }
