@@ -19,6 +19,7 @@ import { Home } from './Home'
 import { Order } from './Order'
 import { PieChart } from './PieChart'
 import { Loading } from './Loading'
+import { Pix } from './Pix'
 import { Trash } from './Trash'
 import { TimesCircle } from './TimesCircle'
 import { Minus } from './Minus'
@@ -47,6 +48,7 @@ export const icons = {
   order: Order,
   pieChart: PieChart,
   loading: Loading,
+  pix: Pix,
   trash: Trash,
   times: Close,
   timesCircle: TimesCircle,
