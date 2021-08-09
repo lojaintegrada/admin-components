@@ -7,6 +7,7 @@ import {
   BoxContent as BoxContentComponent,
   BoxContentProps,
 } from './BoxContent'
+import { BoxSeparator as BoxSeparatorComponent } from './BoxSeparator'
 
 export default {
   title: 'Layout/Box',
@@ -24,7 +25,11 @@ const BoxExample = (
         Custom Button
       </button>
     </Box.Header>
-    <Box.Content>Box Content</Box.Content>
+    <Box.Content>
+      Box Content
+      <Box.Separator />
+      Box Content
+    </Box.Content>
   </React.Fragment>
 )
 export const BoxFull = Template.bind({})
@@ -51,3 +56,8 @@ export const BoxContent = TemplateContent.bind({})
 BoxContent.args = {
   children: 'Box Content',
 }
+
+const TemplateSeparator: Story = () => (
+  <BoxSeparatorComponent />
+)
+export const BoxSeparator = TemplateSeparator.bind({})
