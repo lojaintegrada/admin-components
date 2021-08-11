@@ -2,39 +2,42 @@ import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
 import { Box, BoxProps } from './Box'
-import { BoxHeader as BoxHeaderComponent, BoxHeaderProps } from './BoxHeader'
-import {
-  BoxContent as BoxContentComponent,
-  BoxContentProps,
-} from './BoxContent'
-import { BoxSeparator as BoxSeparatorComponent } from './BoxSeparator'
+import { BoxHeaderProps } from './BoxHeader'
+import { BoxContentProps } from './BoxContent'
 
 import { Status } from '../../Indicators/Status'
+
+const BoxHeaderArgs = {
+  title: 'Box Title',
+  subtitle: 'Box SubTitle',
+  children: (
+    <Status type="success" description="Some status" inverted={true} />
+  ),
+}
+
+const BoxContentArgs = {
+  children: (
+    <div>
+      Box Content
+    </div>
+  )
+}
 
 export default {
   title: 'Layout/Box',
   component: Box,
-  argTypes:{
+  parameters: {
+    layout: 'padded',
+  },
+  argTypes: {
     children: {
       control: false
     }
   },
   args: {
-    BoxHeader: {
-      title: 'Box Title',
-      subtitle: 'Box SubTitle',
-      children: (
-        <Status type="success" description="Some status" inverted={true} />
-      ),
-    },
-    BoxContent: {
-      children: (
-        <div>
-          Box Content
-        </div>
-      )
-    },
-  }
+    BoxHeader: BoxHeaderArgs,
+    BoxContent: BoxContentArgs,
+  },
 } as Meta
 
 interface BoxFullProps extends BoxProps {
@@ -49,29 +52,12 @@ const Template: Story<BoxFullProps> = ({ BoxHeader, BoxContent, ...args }) => (
   </Box>
 )
 
-export const BoxFull = Template.bind({})
-BoxFull.parameters = {
-  layout: 'padded',
-}
+export const Default = Template.bind({})
 
-const TemplateHeader: Story<BoxHeaderProps> = args => (
-  <BoxHeaderComponent {...args} />
-)
-export const BoxHeader = TemplateHeader.bind({})
-BoxHeader.args = {
-  title: 'Box Title',
-  subtitle: 'Box SubTitle',
+export const WithTabs = Template.bind({})
+WithTabs.args = {
+  BoxHeader: {
+    ...BoxHeaderArgs,
+    tabs: 'small',
+  },
 }
-
-const TemplateContent: Story<BoxContentProps> = args => (
-  <BoxContentComponent {...args} />
-)
-export const BoxContent = TemplateContent.bind({})
-BoxContent.args = {
-  children: 'Box Content',
-}
-
-const TemplateSeparator: Story = () => (
-  <BoxSeparatorComponent />
-)
-export const BoxSeparator = TemplateSeparator.bind({})

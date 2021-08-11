@@ -1,16 +1,18 @@
 import React, { useContext } from 'react'
 
-// import { Tabs } from '../../Components/Tabs'
+import { Tabs, TabsProps } from '../../Components/Tabs'
 import { SharedContext, defaultPaddingVariants } from './utils'
 
 export const BoxHeader = React.memo(
-  ({ children, title, subtitle }: BoxHeaderProps) => {
+  ({ children, title, subtitle, tabs }: BoxHeaderProps) => {
     const sharedProps = useContext(SharedContext)
     const { variant } = sharedProps
 
+    const hasTabs = !!tabs?.items?.length
+
     return (
       <div
-        className={`box-header border-b border-card-stroke ${defaultPaddingVariants[variant]}`}
+        className={`box-header border-b border-card-stroke ${defaultPaddingVariants[variant]} ${hasTabs ? '!pb-0' : ''}`}
       >
         <div className={`flex justify-between items-center`}>
           <div className="flex-1 min-w-0 mr-2">
@@ -31,24 +33,11 @@ export const BoxHeader = React.memo(
           </div>
           {children}
         </div>
-        {/* <div className={`-mb-px`}>
-          <Tabs
-            activeItem="ac"
-            onChange={(id: string) => {
-              console.log('Selected ID:', id)
-            }}
-            items={[
-              {
-                id: 'ab',
-                title: 'Venda criada',
-              },
-              {
-                id: 'ac',
-                title: 'Venda criada',
-              },
-            ]}
-          />
-        </div> */}
+        {hasTabs && (
+          <div className={`-mb-px`}>
+            <Tabs {...tabs} />
+          </div>
+        )}
       </div>
     )
   }
@@ -68,4 +57,8 @@ export interface BoxHeaderProps {
    * Also support render prop
    */
   children?: React.ReactNode | ((props: BoxHeaderProps) => React.ReactNode)
+  /**
+   * Subtitle of the Box
+   */
+  tabs?: TabsProps
 }
