@@ -9,7 +9,7 @@ const listOfMarginVariants = {
 
 export const BoxSeparator = () => {
   const sharedProps = useContext(SharedContext)
-  const { variant = 'default' } = sharedProps
+  const { variant } = sharedProps
 
   return (
     <hr className={`border-card-stroke ${listOfMarginVariants[variant]}`} />

@@ -17,7 +17,10 @@ export class Box extends React.PureComponent<BoxProps> {
   }
 
   render() {
-    const { children, className = '', ...sharedProps } = this.props
+    const { children, className = '', variant = 'default' } = this.props
+    const sharedProps = {
+      variant,
+    }
     return (
       <SharedContext.Provider value={sharedProps}>
         <div
@@ -30,7 +33,7 @@ export class Box extends React.PureComponent<BoxProps> {
   }
 }
 
-export interface BoxProps extends SharedContextProps {
+export interface BoxProps extends Partial<SharedContextProps> {
   /**
    * Custom class name
    * */

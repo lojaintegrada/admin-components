@@ -27,7 +27,7 @@ describe('Tabs tests', () => {
       })
   })
 
-  it('Loading', () => {
+  it('Active', () => {
     mount(<Default activeItem="cupons" />)
     cy.get('.tabs .tabs-item.tabs-item-active')
       .should('have.length', 1)

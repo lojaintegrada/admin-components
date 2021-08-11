@@ -4,7 +4,7 @@ export interface SharedContextProps {
   /** Variant type
    * @default 'default'
    * */
-  variant?: 'default' | 'small'
+  variant: 'default' | 'small'
 }
 
 export const SharedContext = React.createContext<SharedContextProps>({

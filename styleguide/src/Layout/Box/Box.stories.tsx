@@ -9,33 +9,47 @@ import {
 } from './BoxContent'
 import { BoxSeparator as BoxSeparatorComponent } from './BoxSeparator'
 
+import { Status } from '../../Indicators/Status'
+
 export default {
   title: 'Layout/Box',
   component: Box,
+  argTypes:{
+    children: {
+      control: false
+    }
+  },
+  args: {
+    BoxHeader: {
+      title: 'Box Title',
+      subtitle: 'Box SubTitle',
+      children: (
+        <Status type="success" description="Some status" inverted={true} />
+      ),
+    },
+    BoxContent: {
+      children: (
+        <div>
+          Box Content
+        </div>
+      )
+    },
+  }
 } as Meta
 
-const Template: Story<BoxProps> = args => <Box {...args} />
-const BoxExample = (
-  <React.Fragment>
-    <Box.Header title="Box Title" subtitle="Box SubTitle">
-      <button
-        type="button"
-        className="text-on-base-2 text-f6 tracking-4 hover:text-on-base duration-200 transition-colors hidden sm:inline-flex items-center"
-      >
-        Custom Button
-      </button>
-    </Box.Header>
-    <Box.Content>
-      Box Content
-      <Box.Separator />
-      Box Content
-    </Box.Content>
-  </React.Fragment>
-)
-export const BoxFull = Template.bind({})
-BoxFull.args = {
-  children: BoxExample,
+interface BoxFullProps extends BoxProps {
+  BoxHeader: BoxHeaderProps
+  BoxContent: BoxContentProps
 }
+
+const Template: Story<BoxFullProps> = ({ BoxHeader, BoxContent, ...args }) => (
+  <Box {...args}>
+    <Box.Header {...BoxHeader} />
+    <Box.Content {...BoxContent} />
+  </Box>
+)
+
+export const BoxFull = Template.bind({})
 BoxFull.parameters = {
   layout: 'padded',
 }
