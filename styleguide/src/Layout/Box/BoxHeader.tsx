@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 
+import { Tabs } from '../../Components/Tabs'
 import { SharedContext, defaultPaddingVariants } from './utils'
 
 export const BoxHeader = React.memo(
@@ -9,25 +10,45 @@ export const BoxHeader = React.memo(
 
     return (
       <div
-        className={`box-header border-b border-card-stroke flex justify-between items-center ${defaultPaddingVariants[variant]}`}
+        className={`box-header border-b border-card-stroke ${defaultPaddingVariants[variant]} !pb-0`}
       >
-        <div className="flex-1 min-w-0 px-">
-          {title && (
-            <h3
-              className={`tracking-3 text-xl font-semibold break-words ${
-                subtitle && '-mt-px'
-              }`}
-            >
-              {title}
-            </h3>
-          )}
-          {subtitle && (
-            <h4 className="tracking-4 text-base text-on-base-2 leading-6 break-words mt-1 lg:mt-2">
-              {subtitle}
-            </h4>
-          )}
+        <div className={`flex justify-between items-center`}>
+          <div className="flex-1 min-w-0 px-">
+            {title && (
+              <h3
+                className={`tracking-3 text-xl font-semibold break-words ${
+                  subtitle && '-mt-px'
+                }`}
+              >
+                {title}
+              </h3>
+            )}
+            {subtitle && (
+              <h4 className="tracking-4 text-base text-on-base-2 leading-6 break-words mt-1 lg:mt-2">
+                {subtitle}
+              </h4>
+            )}
+          </div>
+          {children}
         </div>
-        {children}
+        <div className={`-mb-px`}>
+          <Tabs
+            activeItem="ac"
+            // onChange={(id: string) => {
+            //   console.log('Selected ID:', id)
+            // }}
+            items={[
+              {
+                id: 'ab',
+                title: 'Venda criada',
+              },
+              {
+                id: 'ac',
+                title: 'Venda criada',
+              },
+            ]}
+          />
+        </div>
       </div>
     )
   }
