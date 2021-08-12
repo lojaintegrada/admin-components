@@ -12,6 +12,8 @@ export const BoxSeparator = () => {
   const { variant } = sharedProps
 
   return (
-    <hr className={`border-card-stroke ${listOfMarginVariants[variant]}`} />
+    <hr
+      className={`box-content-separator border-card-stroke ${listOfMarginVariants[variant]}`}
+    />
   )
 }

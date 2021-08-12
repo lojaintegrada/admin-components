@@ -3,8 +3,8 @@ import { Story, Meta } from '@storybook/react'
 import { withDesign } from 'storybook-addon-designs'
 
 import { Box, BoxProps } from './Box'
-import { BoxHeaderProps } from './Components/BoxHeader'
-import { BoxContentProps } from './Components/BoxContent'
+import { BoxHeaderProps } from './Components/Header/BoxHeader'
+import { BoxContentProps } from './Components/Content/BoxContent'
 
 import { Status, StatusProps } from '../../Indicators/Status'
 import { Tabs, TabsProps } from '../../Components/Tabs'

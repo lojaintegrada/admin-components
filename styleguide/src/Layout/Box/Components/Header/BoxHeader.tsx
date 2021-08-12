@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 
-import { TabsProps } from '../../../Components/Tabs'
+import { TabsProps } from '../../../../Components/Tabs'
 import { SharedContext, defaultPaddingVariants } from '../utils'
 
 export const BoxHeader = React.memo(
@@ -19,7 +19,7 @@ export const BoxHeader = React.memo(
       >
         {hasTitle && (
           <div
-            className={`flex justify-between items-center ${
+            className={`box-header-title flex justify-between items-center ${
               !subtitle ? 'py-1' : ''
             }`}
           >

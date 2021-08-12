@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { BoxHeader, BoxHeaderProps } from './Components/BoxHeader'
-import { BoxContent, BoxContentProps } from './Components/BoxContent'
-import { BoxSeparator } from './Components/BoxSeparator'
-import { SharedContext, SharedContextProps } from './utils'
+import { BoxHeader, BoxHeaderProps } from './Components/Header/BoxHeader'
+import { BoxContent, BoxContentProps } from './Components/Content/BoxContent'
+import { BoxSeparator } from './Components/Separator/BoxSeparator'
+import { SharedContext, SharedContextProps } from './Components/utils'
 
 export class Box extends React.PureComponent<BoxProps> {
   static Header = (props: BoxHeaderProps) => {
