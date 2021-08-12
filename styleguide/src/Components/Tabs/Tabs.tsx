@@ -25,7 +25,7 @@ const TabsComponent = ({
 
   return (
     <div
-      className={`tabs w-full flex flex-wrap bg-base-1 border-b border-card-stroke ${className}`}
+      className={`tabs w-full flex flex-nowrap overflow-x-auto bg-base-1 border-b border-card-stroke ${className}`}
     >
       {items?.map((item, index) => {
         if (!item.id) {

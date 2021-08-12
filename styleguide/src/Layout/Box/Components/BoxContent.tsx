@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 
-import { SharedContext, defaultPaddingVariants } from './utils'
+import { SharedContext, defaultPaddingVariants } from '../utils'
 
 export const BoxContent = React.memo(({ children }: BoxContentProps) => {
   const sharedProps = useContext(SharedContext)

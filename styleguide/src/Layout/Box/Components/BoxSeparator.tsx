@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 
-import { SharedContext } from './utils'
+import { SharedContext } from '../utils'
 
 const listOfMarginVariants = {
   default: `my-4 -mx-6 lg:my-5 lg:-mx-10`,

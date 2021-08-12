@@ -9,6 +9,7 @@ export default {
   component: Tabs,
   decorators: [withDesign],
   parameters: {
+    layout: 'padded',
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/Z2WDD4SH8zwaJC2K5wbtMO/Sistema-Integrado?node-id=95%3A7532',

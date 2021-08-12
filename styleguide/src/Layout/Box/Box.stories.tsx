@@ -3,8 +3,8 @@ import { Story, Meta } from '@storybook/react'
 import { withDesign } from 'storybook-addon-designs'
 
 import { Box, BoxProps } from './Box'
-import { BoxHeaderProps } from './BoxHeader'
-import { BoxContentProps } from './BoxContent'
+import { BoxHeaderProps } from './Components/BoxHeader'
+import { BoxContentProps } from './Components/BoxContent'
 
 import { Status, StatusProps } from '../../Indicators/Status'
 import { Tabs, TabsProps } from '../../Components/Tabs'
@@ -60,7 +60,6 @@ export default {
     }
   },
   args: {
-    BoxHeader: BoxHeaderArgs,
     BoxContent: BoxContentArgs,
   },
 } as Meta
@@ -72,7 +71,7 @@ interface BoxFullProps extends BoxProps {
   Action: StatusProps
 }
 
-const Template: Story<BoxFullProps> = ({ BoxHeader, BoxContent, ...args }) => (
+const Template: Story<BoxFullProps> = ({ BoxHeader, BoxContent, Action: ActionArgs, Tabs: TabsArgs, ...args }) => (
   <Box {...args}>
     <Box.Header {...BoxHeader} Tabs={<Tabs {...TabsArgs} />}>
       <Status {...ActionArgs} />
@@ -83,6 +82,7 @@ const Template: Story<BoxFullProps> = ({ BoxHeader, BoxContent, ...args }) => (
 
 export const Default = Template.bind({})
 Default.args = {
+  BoxHeader: BoxHeaderArgs,
   Action: ActionArgs,
   Tabs: TabsArgs,
 }
@@ -97,6 +97,7 @@ const TemplateWithAction: Story<BoxFullProps> = ({ BoxHeader, BoxContent, Action
 )
 export const WithAction = TemplateWithAction.bind({})
 WithAction.args = {
+  BoxHeader: BoxHeaderArgs,
   Action: ActionArgs,
 }
 
@@ -108,5 +109,17 @@ const TemplateWithTabs: Story<BoxFullProps> = ({ BoxHeader, BoxContent, Tabs: Ta
 )
 export const WithTabs = TemplateWithTabs.bind({})
 WithTabs.args = {
+  BoxHeader: BoxHeaderArgs,
+  Tabs: TabsArgs,
+}
+
+const TemplateOnlyTabs: Story<BoxFullProps> = ({ BoxContent, Tabs: TabsArgs, ...args }) => (
+  <Box {...args}>
+    <Box.Header Tabs={<Tabs {...TabsArgs} />} />
+    <Box.Content {...BoxContent} />
+  </Box>
+)
+export const OnlyTabs = TemplateOnlyTabs.bind({})
+OnlyTabs.args = {
   Tabs: TabsArgs,
 }

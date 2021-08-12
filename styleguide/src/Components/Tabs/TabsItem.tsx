@@ -28,7 +28,7 @@ export const TabsItem = ({
     <button
       className={`tabs-item ${
         active ? 'tabs-item-active' : ''
-      } group overflow-x-hidden px-2 last:-mr-2 first:-ml-2`}
+      } group min-w-0 flex-shrink-0 overflow-x-hidden px-2 last:-mr-2 first:-ml-2`}
       onClick={() => onChange(id)}
     >
       <span

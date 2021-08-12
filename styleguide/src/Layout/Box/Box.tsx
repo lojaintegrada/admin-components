@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { BoxHeader, BoxHeaderProps } from './BoxHeader'
-import { BoxContent, BoxContentProps } from './BoxContent'
-import { BoxSeparator } from './BoxSeparator'
+import { BoxHeader, BoxHeaderProps } from './Components/BoxHeader'
+import { BoxContent, BoxContentProps } from './Components/BoxContent'
+import { BoxSeparator } from './Components/BoxSeparator'
 import { SharedContext, SharedContextProps } from './utils'
 
 export class Box extends React.PureComponent<BoxProps> {
