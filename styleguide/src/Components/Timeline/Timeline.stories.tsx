@@ -6,6 +6,9 @@ import { Timeline, TimelineProps } from './Timeline'
 export default {
   title: 'Components/Timeline',
   component: Timeline,
+  parameters: {
+    layout: 'padded',
+  },
   args: {
     items: [
       {
@@ -32,7 +35,7 @@ export default {
   },
 } as Meta
 
-const Template: Story<TimelineProps> = args => <div style={{ maxWidth: 500 }}><Timeline {...args} /></div>
+const Template: Story<TimelineProps> = args => <Timeline {...args} />
 
 export const Default = Template.bind({})
 

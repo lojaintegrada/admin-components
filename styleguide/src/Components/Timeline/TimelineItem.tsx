@@ -36,7 +36,7 @@ export const TimelineItem = ({ item }: TimelineItemProps) => {
               />
             </button>
           )}
-          <span className="inline-block w-11/12">{item.title}</span>
+          <span className="inline break-words">{item.title}</span>
         </div>
         {item.timestamp && (
           <div className="timeline-timestamp mb-1 text-xs text-inverted-2 break-words">
