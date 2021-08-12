@@ -8,11 +8,7 @@ export default {
   title: 'Layout/Box/Content',
   component: Box.Content,
   args: {
-    children: (
-      <div>
-        Box Content
-      </div>
-    )
+    children: 'Box Content'
   }
 } as Meta
 

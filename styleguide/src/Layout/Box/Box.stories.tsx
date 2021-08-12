@@ -5,22 +5,41 @@ import { Box, BoxProps } from './Box'
 import { BoxHeaderProps } from './BoxHeader'
 import { BoxContentProps } from './BoxContent'
 
-import { Status } from '../../Indicators/Status'
+import { Status, StatusProps } from '../../Indicators/Status'
+import { Tabs, TabsProps } from '../../Components/Tabs'
 
-const BoxHeaderArgs = {
+const BoxHeaderArgs: BoxHeaderProps = {
   title: 'Box Title',
   subtitle: 'Box SubTitle',
-  children: (
-    <Status type="success" description="Some status" inverted={true} />
-  ),
 }
 
-const BoxContentArgs = {
-  children: (
-    <div>
-      Box Content
-    </div>
-  )
+const BoxContentArgs: BoxContentProps = {
+  children: 'Box Content'
+}
+
+const TabsArgs: TabsProps = {
+  activeItem: 'item1',
+  onChange: (id) => console.log('ID:', id),
+  items: [
+    {
+      id: 'item1',
+      title: 'Item1',
+    },
+    {
+      id: 'item2',
+      title: 'Item2',
+    },
+    {
+      id: 'item3',
+      title: 'Item3',
+    },
+  ]
+}
+
+const ActionArgs: StatusProps = {
+  type: 'success',
+  description: 'Some status',
+  inverted: true,
 }
 
 export default {
@@ -43,21 +62,45 @@ export default {
 interface BoxFullProps extends BoxProps {
   BoxHeader: BoxHeaderProps
   BoxContent: BoxContentProps
+  Tabs: TabsProps
+  Action: StatusProps
 }
 
 const Template: Story<BoxFullProps> = ({ BoxHeader, BoxContent, ...args }) => (
   <Box {...args}>
-    <Box.Header {...BoxHeader} />
+    <Box.Header {...BoxHeader} Tabs={<Tabs {...TabsArgs} />}>
+      <Status {...ActionArgs} />
+    </Box.Header>
     <Box.Content {...BoxContent} />
   </Box>
 )
 
 export const Default = Template.bind({})
+Default.args = {
+  Action: ActionArgs,
+  Tabs: TabsArgs,
+}
 
-export const WithTabs = Template.bind({})
+const TemplateWithAction: Story<BoxFullProps> = ({ BoxHeader, BoxContent, Action: ActionArgs, ...args }) => (
+  <Box {...args}>
+    <Box.Header {...BoxHeader}>
+      <Status {...ActionArgs} />
+    </Box.Header>
+    <Box.Content {...BoxContent} />
+  </Box>
+)
+export const WithAction = TemplateWithAction.bind({})
+WithAction.args = {
+  Action: ActionArgs,
+}
+
+const TemplateWithTabs: Story<BoxFullProps> = ({ BoxHeader, BoxContent, Tabs: TabsArgs, ...args }) => (
+  <Box {...args}>
+    <Box.Header {...BoxHeader} Tabs={<Tabs {...TabsArgs} />} />
+    <Box.Content {...BoxContent} />
+  </Box>
+)
+export const WithTabs = TemplateWithTabs.bind({})
 WithTabs.args = {
-  BoxHeader: {
-    ...BoxHeaderArgs,
-    tabs: 'small',
-  },
+  Tabs: TabsArgs,
 }

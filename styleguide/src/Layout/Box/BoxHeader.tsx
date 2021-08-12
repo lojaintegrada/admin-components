@@ -1,32 +1,30 @@
 import React, { useContext } from 'react'
 
-import { Tabs, TabsProps } from '../../Components/Tabs'
+import { TabsProps } from '../../Components/Tabs'
 import { SharedContext, defaultPaddingVariants } from './utils'
 
 export const BoxHeader = React.memo(
-  ({ children, title, subtitle, tabs }: BoxHeaderProps) => {
+  ({ children, title, subtitle, Tabs }: BoxHeaderProps) => {
     const sharedProps = useContext(SharedContext)
     const { variant } = sharedProps
 
-    const hasTabs = !!tabs?.items?.length
+    const hasTabs = !!Tabs
 
     return (
       <div
         className={`box-header border-b border-card-stroke ${defaultPaddingVariants[variant]} ${hasTabs ? '!pb-0' : ''}`}
       >
-        <div className={`flex justify-between items-center`}>
+        <div className={`flex justify-between items-center ${
+          !subtitle ? 'py-1' : ''
+        }`}>
           <div className="flex-1 min-w-0 mr-2">
             {title && (
-              <h3
-                className={`tracking-3 text-xl font-semibold break-words ${
-                  subtitle && '-mt-px'
-                }`}
-              >
+              <h3 className={`tracking-3 text-xl font-semibold break-words`}>
                 {title}
               </h3>
             )}
             {subtitle && (
-              <h4 className="tracking-4 text-base text-on-base-2 leading-6 break-words mt-1 lg:mt-2">
+              <h4 className="tracking-4 text-base text-on-base-2 leading-6 break-words mt-1">
                 {subtitle}
               </h4>
             )}
@@ -34,8 +32,8 @@ export const BoxHeader = React.memo(
           {children}
         </div>
         {hasTabs && (
-          <div className={`-mb-px`}>
-            <Tabs {...tabs} />
+          <div className={`mt-3 -mb-px`}>
+            {Tabs}
           </div>
         )}
       </div>
@@ -58,7 +56,7 @@ export interface BoxHeaderProps {
    */
   children?: React.ReactNode | ((props: BoxHeaderProps) => React.ReactNode)
   /**
-   * Subtitle of the Box
+   * Use only <Tabs /> component
    */
-  tabs?: TabsProps
+  Tabs?: React.ReactElement<TabsProps>
 }
