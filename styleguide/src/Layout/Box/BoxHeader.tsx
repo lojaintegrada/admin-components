@@ -12,11 +12,15 @@ export const BoxHeader = React.memo(
 
     return (
       <div
-        className={`box-header border-b border-card-stroke ${defaultPaddingVariants[variant]} ${hasTabs ? '!pb-0' : ''}`}
+        className={`box-header border-b border-card-stroke ${
+          defaultPaddingVariants[variant]
+        } ${hasTabs ? '!pb-0' : ''}`}
       >
-        <div className={`flex justify-between items-center ${
-          !subtitle ? 'py-1' : ''
-        }`}>
+        <div
+          className={`flex justify-between items-center ${
+            !subtitle ? 'py-1' : ''
+          }`}
+        >
           <div className="flex-1 min-w-0 mr-2">
             {title && (
               <h3 className={`tracking-3 text-xl font-semibold break-words`}>
@@ -31,11 +35,7 @@ export const BoxHeader = React.memo(
           </div>
           {children}
         </div>
-        {hasTabs && (
-          <div className={`mt-3 -mb-px`}>
-            {Tabs}
-          </div>
-        )}
+        {hasTabs && <div className={`mt-3 -mb-px`}>{Tabs}</div>}
       </div>
     )
   }

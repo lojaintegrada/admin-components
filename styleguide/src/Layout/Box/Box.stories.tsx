@@ -1,5 +1,6 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
+import { withDesign } from 'storybook-addon-designs'
 
 import { Box, BoxProps } from './Box'
 import { BoxHeaderProps } from './BoxHeader'
@@ -45,8 +46,13 @@ const ActionArgs: StatusProps = {
 export default {
   title: 'Layout/Box',
   component: Box,
+  decorators: [withDesign],
   parameters: {
     layout: 'padded',
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/Z2WDD4SH8zwaJC2K5wbtMO/Sistema-Integrado?node-id=95%3A9525',
+    },
   },
   argTypes: {
     children: {
