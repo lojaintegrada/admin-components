@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 
 import { TabsProps } from '../../../../Components/Tabs'
-import { SharedContext, defaultPaddingVariants } from '../utils'
+import { SharedContext, defaultPaddingVariantsHeader } from '../utils'
 
 export const BoxHeader = React.memo(
   ({ children, title, subtitle, Tabs }: BoxHeaderProps) => {
@@ -14,7 +14,7 @@ export const BoxHeader = React.memo(
     return (
       <div
         className={`box-header border-b border-card-stroke ${
-          defaultPaddingVariants[variant]
+          defaultPaddingVariantsHeader[variant]
         } ${hasTabs ? '!pb-0' : ''} ${!hasTitle ? '!pt-0' : ''}`}
       >
         {hasTitle && (
