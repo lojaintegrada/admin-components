@@ -61,9 +61,6 @@ export default {
   },
   args: {
     BoxContent: BoxContentArgs,
-    showTitle: true,
-    showTabs: true,
-    showActions: true,
   },
 } as Meta
 
@@ -107,6 +104,9 @@ Default.args = {
   BoxHeader: BoxHeaderArgs,
   Action: ActionArgs,
   Tabs: TabsArgs,
+  showTitle: true,
+  showTabs: true,
+  showActions: true,
 }
 
 const TemplateWithAction: Story<BoxFullProps> = ({ BoxHeader, BoxContent, Action: ActionArgs, ...args }) => (
