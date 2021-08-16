@@ -8,7 +8,7 @@ export const BoxHeader = React.memo(
     const sharedProps = useContext(SharedContext)
     const { variant } = sharedProps
 
-    const hasTitle = !!(title || subtitle)
+    const hasTitle = !!(title || subtitle || children)
     const hasTabs = !!Tabs
 
     return (

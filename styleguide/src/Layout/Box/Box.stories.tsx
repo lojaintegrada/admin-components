@@ -61,6 +61,9 @@ export default {
   },
   args: {
     BoxContent: BoxContentArgs,
+    showTitle: true,
+    showTabs: true,
+    showActions: true,
   },
 } as Meta
 
@@ -69,16 +72,35 @@ interface BoxFullProps extends BoxProps {
   BoxContent: BoxContentProps
   Tabs: TabsProps
   Action: StatusProps
+  showTitle: boolean
+  showTabs: boolean
+  showActions: boolean
 }
 
-const Template: Story<BoxFullProps> = ({ BoxHeader, BoxContent, Action: ActionArgs, Tabs: TabsArgs, ...args }) => (
-  <Box {...args}>
-    <Box.Header {...BoxHeader} Tabs={<Tabs {...TabsArgs} />}>
-      <Status {...ActionArgs} />
-    </Box.Header>
-    <Box.Content {...BoxContent} />
-  </Box>
-)
+const Template: Story<BoxFullProps> = ({
+  showTitle,
+  showTabs,
+  showActions,
+  BoxHeader,
+  BoxContent,
+  Action: ActionArgs,
+  Tabs: TabsArgs,
+  ...args
+}) => {
+  const titleProps = showTitle ? BoxHeader : {}
+  return (
+    <Box {...args}>
+      <>
+        {(showTitle || showTabs || showActions) && (
+          <Box.Header {...titleProps} Tabs={showTabs && <Tabs {...TabsArgs} /> || undefined}>
+            {showActions && <Status {...ActionArgs} />}
+          </Box.Header>
+        )}
+        <Box.Content {...BoxContent} />
+      </>
+    </Box>
+  )
+}
 
 export const Default = Template.bind({})
 Default.args = {
