@@ -9,7 +9,7 @@ describe('Status tests', () => {
 
   it('Default', () => {
     mount(<Default />)
-    cy.get('.indicator-status').contains('Aprovado')
+    cy.get('.indicator-status *').last().contains('Aprovado')
     cy.get('.indicator-status .rounded-full')
   })
 
@@ -22,6 +22,11 @@ describe('Status tests', () => {
 
     mount(<Default type="danger" />)
     cy.get('.indicator-status').find('.rounded-full').should('have.class', 'bg-danger')
+  })
+
+  it('Inverted', () => {
+    mount(<Default inverted={true} />)
+    cy.get('.indicator-status *').first().contains('Aprovado')
   })
 
 })

@@ -6,19 +6,39 @@ const statusTypes = {
   danger: 'bg-danger',
 }
 
-const StatusComponent = ({ type = 'success', description }: StatusProps) => {
+const DescriptionComponent = ({
+  description,
+  inverted,
+}: Pick<StatusProps, 'description' | 'inverted'>) =>
+  (description && (
+    <span
+      className={`text-sm whitespace-normal break-words ${
+        inverted ? 'mr-2' : 'ml-2'
+      }`}
+    >
+      {description}
+    </span>
+  )) ||
+  null
+
+const StatusComponent = ({
+  type = 'success',
+  description,
+  inverted = false,
+}: StatusProps) => {
   return (
     <div className="indicator-status inline-block whitespace-nowrap min-w-0">
+      {inverted && (
+        <DescriptionComponent description={description} inverted={inverted} />
+      )}
       <span
         className={`inline-block rounded-full ${statusTypes[type]}`}
         style={{
           padding: '0.313rem', // 5px
         }}
       />
-      {description && (
-        <span className="text-sm ml-2 whitespace-normal break-words">
-          {description}
-        </span>
+      {!inverted && (
+        <DescriptionComponent description={description} inverted={inverted} />
       )}
     </div>
   )
@@ -35,4 +55,8 @@ export interface StatusProps {
    * Status additional text
    * */
   description?: string
+  /** Invert icon and text position
+   * @default false
+   * */
+  inverted?: boolean
 }

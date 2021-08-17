@@ -1,7 +1,9 @@
 import React from 'react'
 
-import { BoxHeader, BoxHeaderProps } from './BoxHeader'
-import { BoxContent, BoxContentProps } from './BoxContent'
+import { BoxHeader, BoxHeaderProps } from './Components/Header/BoxHeader'
+import { BoxContent, BoxContentProps } from './Components/Content/BoxContent'
+import { BoxSeparator } from './Components/Separator/BoxSeparator'
+import { SharedContext, SharedContextProps } from './Components/utils'
 
 export class Box extends React.PureComponent<BoxProps> {
   static Header = (props: BoxHeaderProps) => {
@@ -11,24 +13,27 @@ export class Box extends React.PureComponent<BoxProps> {
     return <BoxContent {...props} />
   }
   static Separator = () => {
-    return (
-      <hr className="border-card-stroke mb-5 lg:mb-7 mt-5 lg:mt-8 -mx-5 lg:-mx-10" />
-    )
+    return <BoxSeparator />
   }
 
   render() {
-    const { children, className = '' } = this.props
+    const { children, className = '', variant = 'default' } = this.props
+    const sharedProps = {
+      variant,
+    }
     return (
-      <div
-        className={`w-full box flex flex-col bg-base-1 border border-card-stroke rounded p-5 lg:p-10 ${className}`}
-      >
-        {children}
-      </div>
+      <SharedContext.Provider value={sharedProps}>
+        <div
+          className={`box w-full flex flex-col bg-base-1 border border-card-stroke rounded ${className}`}
+        >
+          {children}
+        </div>
+      </SharedContext.Provider>
     )
   }
 }
 
-export interface BoxProps {
+export interface BoxProps extends Partial<SharedContextProps> {
   /**
    * Custom class name
    * */

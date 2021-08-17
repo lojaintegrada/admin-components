@@ -145,6 +145,7 @@ export const InputCurrencyComponent = (
     const currentValue = value || defaultValue || 0
     const [, maskedValue] = calculateValues(currentValue)
     setMaskedValue(maskedValue)
+    // eslint-disable-next-line
   }, [currency, value, defaultValue, config])
 
   return (
@@ -174,7 +175,7 @@ export interface InputCurrencyProps
    * */
   max?: number
   /** Custom Intl config
-   * @deprecated
+   * @deprecated Don't use, component already has its default config
    * */
   config?: any
   /** Should auto focus
