@@ -17,6 +17,6 @@ export const defaultPaddingVariantsHeader = {
 }
 
 export const defaultPaddingVariantsContent = {
-  default: `px-6 py-5 lg:px-10 lg:py-8`,
-  small: `px-6 py-5`,
+  default: `p-6 lg:p-10`,
+  small: `p-6`,
 }
