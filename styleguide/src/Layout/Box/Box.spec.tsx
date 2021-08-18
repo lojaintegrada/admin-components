@@ -18,13 +18,13 @@ describe('Box tests', () => {
         cy.get('.box-header .indicator-status').contains('Some status')
         cy.get('.box-header .tabs button').should('have.length', 3)
         cy.get('.box-content').contains('Box Content')
-        cy.get('.box-content').should('have.class', 'lg:px-10')
+        cy.get('.box-content').should('have.class', 'lg:p-10')
       })
   })
 
   it('Small', () => {
     mount(<Default variant="small" />)
-    cy.get('.box .box-content').should('not.have.class', 'lg:px-10')
+    cy.get('.box .box-content').should('not.have.class', 'lg:p-10')
   })
 
   it('WithAction', () => {
