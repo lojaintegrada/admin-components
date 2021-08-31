@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Story, Meta } from '@storybook/react'
-
 import { Modal, ModalProps } from './Modal'
 import { Box } from '../../Layout/Box'
 import { Button } from '../Button'
@@ -76,10 +75,12 @@ WithScroll.args = {
   ),
   footerActions: (
     <div className="flex justify-end">
-      <Button variant="secondary" className="mr-5">Some button</Button>
+      <Button variant="secondary" className="mr-5">
+        Some button
+      </Button>
       <Button>Some button</Button>
     </div>
-  )
+  ),
 }
 
 export const WithFooter = Template.bind({})
@@ -87,8 +88,42 @@ WithFooter.args = {
   headerClose: "Close",
   footerActions: (
     <div className="flex justify-end">
-      <Button variant="secondary" className="mr-5">Some button</Button>
+      <Button variant="secondary" className="mr-5">
+        Some button
+      </Button>
       <Button>Some button</Button>
     </div>
+  ),
+}
+
+const TemplateWithId: Story<ModalProps> = (args) => {
+  const [newCustomArgs, setNewCustomArgs] = useState<ModalProps>()
+
+  useEffect(() => {
+    const customParentSelector = document.getElementById('parentSelector')
+    args.parentSelector = customParentSelector
+
+    setNewCustomArgs(args)
+  }, [])
+
+  return (
+    <div>
+      <div id="parentSelector">Content with parentSelector id</div>
+      {newCustomArgs && <Modal {...newCustomArgs} />}
+    </div>
   )
+}
+
+export const WithCustomParentSelector = TemplateWithId.bind({})
+WithCustomParentSelector.args = {
+  headerClose: 'Close',
+  footerActions: (
+    <div className="flex justify-end">
+      <Button variant="secondary" className="mr-5">
+        Some button
+      </Button>
+      <Button>Some button</Button>
+    </div>
+  ),
+  parentSelector: document.getElementById('parentSelector'),
 }
