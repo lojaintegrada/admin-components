@@ -115,7 +115,7 @@ export interface ModalProps {
    */
   footerActions?: React.ReactNode
   /** The parent element that the modal will be attached to
-   * @default document.body
+   * @default 'document.body'
    */
   parentSelector?: HTMLElement | null
 }
