@@ -85,7 +85,7 @@ WithScroll.args = {
 
 export const WithFooter = Template.bind({})
 WithFooter.args = {
-  headerClose: 'Close',
+  headerClose: "Close",
   footerActions: (
     <div className="flex justify-end">
       <Button variant="secondary" className="mr-5">
