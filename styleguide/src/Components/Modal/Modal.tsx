@@ -17,6 +17,7 @@ const ModalComponent = ({
   headerClose = 'Fechar',
   footerActions,
   onClose,
+  parentSelector,
   children,
 }: ModalProps) => {
   const [modalIsOpen, setModalIsOpen] = useState(false)
@@ -43,6 +44,7 @@ const ModalComponent = ({
       className={`relative max-h-screen p-10 pt-9 rounded-lg shadow-lg flex flex-col w-full bg-base-1 outline-none focus:outline-none border border-card-stroke break-words ${sizeClasses[size]} ${className}`}
       bodyOpenClassName={'ReactModal__Body--open overflow-hidden'}
       testId={'modal-component'}
+      parentSelector={() => (parentSelector ? parentSelector : document.body)}
       contentElement={(props, children) => (
         <div {...props}>
           <div className="ReactModal__header w-full flex justify-between items-start">
@@ -112,4 +114,8 @@ export interface ModalProps {
    * React children
    */
   footerActions?: React.ReactNode
+  /** Function that will be called to get the parent element that the modal will be attached to
+   * @default document.body
+   */
+  parentSelector?: HTMLElement | null
 }
