@@ -122,6 +122,11 @@ export default {
     //   console.log('Selected rows data: ', selectedData)
     // }
   },
+  argTypes: {
+    emptyText: {
+      control: { type: 'text' }
+    }
+  },
   parameters: {
     layout: 'padded',
   }
@@ -134,4 +139,9 @@ export const Default = Template.bind({})
 export const Loading = Template.bind({})
 Loading.args = {
   isLoading: true,
+}
+
+export const Empty = Template.bind({})
+Empty.args = {
+  rows: undefined,
 }
