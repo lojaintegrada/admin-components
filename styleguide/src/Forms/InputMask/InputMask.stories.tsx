@@ -43,3 +43,11 @@ DateWithEndAdornment.args = {
   defaultValue: '10/11/1990',
   endAdornment: <Icon icon="clock" />,
 }
+
+export const DateWithEndAdornmentError = Template.bind({})
+DateWithEndAdornmentError.args = {
+  formatValue: 'date',
+  defaultValue: '10/11/1990',
+  endAdornment: <Icon icon="clock" />,
+  hasError: true,
+}
