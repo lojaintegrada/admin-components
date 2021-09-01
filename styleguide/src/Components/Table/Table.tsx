@@ -19,6 +19,7 @@ interface TdWrapperProps {
   props?: { [key: string]: unknown }
 }
 
+const TdClasses = `p-0 break-words border-t border-card-stroke first:rounded-bl last:rounded-br`
 const TdWrapperClasses = `block p-4 no-underline`
 const TdWrapper = ({ Wrapper, props = {}, children }: TdWrapperProps) =>
   Wrapper ? (
@@ -38,6 +39,7 @@ const TableComponent = ({
   // placeholderLength,
   // placeholderSize,
   isLoading = false,
+  emptyText = 'Nenhum registro encontrado',
 }: TableProps) => {
   const rowsPropsMemoized = React.useMemo(() => rowsProps, [rowsProps])
 
@@ -66,9 +68,6 @@ const TableComponent = ({
     rows,
     prepareRow,
   } = useTable({ columns, data: rowsPropsMemoized })
-
-  // console.log('AAAAA', rows)
-  // console.log('BBBBB', columnsProps)
 
   return (
     <div className="max-w-full overflow-x-auto">
@@ -109,9 +108,19 @@ const TableComponent = ({
         <tbody {...getTableBodyProps()} className="text-sm text-on-base">
           {isLoading ? (
             <tr>
-              <td>
+              <td colSpan={columns.length || 1} className={`${TdClasses}`}>
                 <TdWrapper>
                   <LoadingPlaceholder />
+                </TdWrapper>
+              </td>
+            </tr>
+          ) : !rows || !rows.length ? (
+            <tr>
+              <td colSpan={columns.length || 1} className={`${TdClasses}`}>
+                <TdWrapper>
+                  <div className="text-center py-16 text-xl font-semibold text-on-base-2">
+                    {emptyText}
+                  </div>
                 </TdWrapper>
               </td>
             </tr>
@@ -129,7 +138,7 @@ const TableComponent = ({
                       <td
                         key={key}
                         {...restCellProps}
-                        className={`p-0 break-words border-t border-card-stroke first:rounded-bl last:rounded-br ${textAligns[textAlign]}`}
+                        className={`${TdClasses} ${textAligns[textAlign]}`}
                       >
                         {cell.render('Cell', {
                           cellWrapperProps: cell.row.original.cellWrapperProps,
@@ -194,6 +203,10 @@ export interface TableProps {
    * @default false
    */
   isLoading?: boolean
+  /** Content to show when table is empty
+   * @default 'Nenhum registro encontrado'
+   */
+  emptyText?: string | React.ReactNode
 
   // #TODO:
   /** Mapped rows data returned on select change. */
