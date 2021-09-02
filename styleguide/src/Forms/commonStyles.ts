@@ -10,7 +10,7 @@ export const errorBorderClasses = 'border-danger focus:border-danger'
 export const defaultBorderClasses = 'border-card-stroke'
 
 export const focusClass = 'focus:border-inverted-1'
-  
+
 export const inputClasses = `appearance-none shadow-none outline-none bg-base-1 border px-4 rounded text-on-base text-sm tracking-4 min-w-0 w-full transition-border duration-75 ${focusClass} ${inputPlaceholderClasses}`
 
 export const inputContainerClasses = `flex w-full focus-within:border-inverted-1 bg-base-1 border rounded text-on-base text-sm tracking-4 min-w-0 w-full transition-border duration-75 ${inputPlaceholderClasses}`
