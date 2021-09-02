@@ -99,7 +99,7 @@ const InputComponent = (
           {...props}
         />
         {endAdornment && (
-          <div className={endAdornmentClass}>{endAdornment}</div>
+          <span className={endAdornmentClass}>{endAdornment}</span>
         )}
       </div>
 

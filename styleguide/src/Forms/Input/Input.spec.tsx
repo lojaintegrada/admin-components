@@ -1,12 +1,17 @@
-import * as React from "react"
-import { composeStories } from "@storybook/testing-react"
-import { mount } from "@cypress/react"
-import * as stories from "./Input.stories"
+import * as React from 'react'
+import { composeStories } from '@storybook/testing-react'
+import { mount } from '@cypress/react'
+import * as stories from './Input.stories'
 
-const { Default, Error } = composeStories(stories)
+const {
+  Default,
+  Error,
+  StartAdornment,
+  IconStartAdornment,
+  WithBothAdornment,
+} = composeStories(stories)
 
 describe('Input tests', () => {
-
   it('Default', () => {
     mount(<Default />)
     const val = 'Preencher campo'
@@ -39,4 +44,14 @@ describe('Input tests', () => {
     cy.get('input').should('have.class', 'h-24')
   })
 
+  it('Adornments', () => {
+    mount(<StartAdornment />)
+    cy.get('span').contains('R$')
+
+    mount(<IconStartAdornment />)
+    cy.get('svg').should('have.class', 'icon-cog').parent('span')
+
+    mount(<WithBothAdornment />)
+    cy.get('span').should('have.length', 2)
+  })
 })
