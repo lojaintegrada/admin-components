@@ -28,8 +28,8 @@ const InputComponent = (
     disabled,
     readOnly,
     type = 'text',
-    startAdornment = undefined,
-    endAdornment = undefined,
+    startAdornment,
+    endAdornment,
     ...props
   }: InputProps,
   ref: React.ForwardedRef<HTMLInputElement>
