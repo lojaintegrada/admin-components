@@ -53,3 +53,29 @@ IconEndAdornment.args = {
   endAdornment: <Icon icon="cog" />,
   hasError: true,
 }
+
+export const StartAdornmentDisabled = Template.bind({})
+StartAdornmentDisabled.args = {
+  label: 'Meu Campo',
+  helpText: 'Texto de ajuda para preencher o campo',
+  startAdornment: 'R$',
+  disabled: true,
+  value: '123',
+}
+
+export const StartAdornmentReadOnly = Template.bind({})
+StartAdornmentReadOnly.args = {
+  label: 'Meu Campo',
+  helpText: 'Texto de ajuda para preencher o campo',
+  startAdornment: 'R$',
+  readOnly: true,
+  value: '123',
+}
+
+export const WithBothAdornment = Template.bind({})
+WithBothAdornment.args = {
+  label: 'Meu Campo',
+  helpText: 'Texto de ajuda para preencher o campo',
+  startAdornment: 'R$',
+  endAdornment: <Icon icon="cog" />,
+}

@@ -1,21 +1,17 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import { InputLabel, InputLabelProps } from '../InputLabel'
 import { InputHelpText, InputHelpTextProps } from '../InputHelpText'
 import {
-  inputDisabledClasses,
-  inputReadonlyClasses,
-  inputErrorClasses,
   inputDefaultClasses,
-  inputStartAdornmentClass,
-  inputEndAdornmentClass,
-  inputClasses,
+  inputContainerDisabledClasses,
+  inputContainerReadonlyClasses,
+  errorBorderClasses,
+  defaultBorderClasses,
+  inputContainerClasses,
   variantClasses,
   startAdornmentClasses,
   endAdornmentClasses,
-  adornmentFocusBorderClasses,
-  adornmentErrorBorderClasses,
-  adornmentDefaultBorderClasses,
 } from '../commonStyles'
 
 const InputComponent = (
@@ -34,8 +30,6 @@ const InputComponent = (
     type = 'text',
     startAdornment = undefined,
     endAdornment = undefined,
-    onFocus = undefined,
-    onBlur = undefined,
     ...props
   }: InputProps,
   ref: React.ForwardedRef<HTMLInputElement>
@@ -43,48 +37,30 @@ const InputComponent = (
   const inputId = id || name
   const hasErrorState = hasError || !!errorMessage
 
-  const defaultStartAdornmentClass = `${startAdornmentClasses} ${
+  const startAdornmentClass = `${startAdornmentClasses} ${
     variantClasses[variant]
-  } ${
-    hasErrorState ? adornmentErrorBorderClasses : adornmentDefaultBorderClasses
-  }`
-  const [startAdornmentClass, setStartAdornmentClass] = useState(
-    defaultStartAdornmentClass
-  )
+  } ${hasErrorState ? errorBorderClasses : ''}`
 
-  const defaultEndAdornmentClass = `${endAdornmentClasses} ${
+  const endAdornmentClass = `${endAdornmentClasses} ${
     variantClasses[variant]
-  } ${
-    hasErrorState ? adornmentErrorBorderClasses : adornmentDefaultBorderClasses
-  }`
-  const [endAdornmentClass, setEndAdornmentClass] = useState(
-    defaultEndAdornmentClass
-  )
+  } ${hasErrorState ? errorBorderClasses : ''}`
 
-  let inputClass = `${inputClasses} ${variantClasses[variant]}`
+  let inputContainerClass = `${inputContainerClasses} ${variantClasses[variant]}`
   if (disabled) {
-    inputClass += ` ${inputDefaultClasses} ${inputDisabledClasses}`
+    inputContainerClass += ` ${defaultBorderClasses} ${inputContainerDisabledClasses}`
   } else if (readOnly) {
-    inputClass += ` ${inputDefaultClasses} ${inputReadonlyClasses}`
+    inputContainerClass += ` ${defaultBorderClasses} ${inputContainerReadonlyClasses}`
   } else if (hasErrorState) {
-    inputClass += ` ${inputErrorClasses}`
+    inputContainerClass += ` ${errorBorderClasses}`
   } else {
-    inputClass += ` ${inputDefaultClasses}`
+    inputContainerClass += ` ${defaultBorderClasses}`
   }
 
-  if (startAdornment) {
-    if (hasErrorState) {
-      inputClass += ` ${inputStartAdornmentClass}`
-    } else {
-      inputClass += ` ${inputStartAdornmentClass} ${inputDefaultClasses}`
-    }
-  } else if (endAdornment) {
-    if (hasErrorState) {
-      inputClass += ` ${inputEndAdornmentClass}`
-    } else {
-      inputClass += ` ${inputEndAdornmentClass} ${inputDefaultClasses}`
-    }
-  }
+  const inputClass = `${inputDefaultClasses} ${
+    hasErrorState ? errorBorderClasses : defaultBorderClasses
+  } ${startAdornment ? 'border-l' : ''} ${endAdornment ? 'border-r' : ''} ${
+    variantClasses[variant]
+  }`
 
   const LabelComponent = (
     <InputLabel
@@ -104,34 +80,12 @@ const InputComponent = (
     />
   )
 
-  const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
-    if (startAdornment) {
-      setStartAdornmentClass(
-        `${defaultStartAdornmentClass} ${adornmentFocusBorderClasses}`
-      )
-    } else if (endAdornment) {
-      setEndAdornmentClass(
-        `${defaultEndAdornmentClass} ${adornmentFocusBorderClasses}`
-      )
-    }
-    onFocus && onFocus(e)
-  }
-
-  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    if (startAdornment) {
-      setStartAdornmentClass(`${defaultStartAdornmentClass}`)
-    } else if (endAdornment) {
-      setEndAdornmentClass(`${defaultEndAdornmentClass}`)
-    }
-    onBlur && onBlur(e)
-  }
-
   return (
     <div className={`form-group flex flex-col ${className}`}>
       {LabelComponent}
-      <div className="flex w-full">
+      <div className={inputContainerClass}>
         {startAdornment && (
-          <div className={startAdornmentClass}>{startAdornment}</div>
+          <span className={startAdornmentClass}>{startAdornment}</span>
         )}
         <input
           ref={ref}
@@ -142,14 +96,13 @@ const InputComponent = (
           disabled={disabled}
           readOnly={readOnly}
           className={inputClass}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
           {...props}
         />
         {endAdornment && (
           <div className={endAdornmentClass}>{endAdornment}</div>
         )}
       </div>
+
       {HelpTextComponent}
     </div>
   )
