@@ -18,8 +18,8 @@ const ToggleComponent = (
   }
 
   const toggleContainerDisabledClasses = `${
-    disabled ? ' pointer-events-none opacity-70' : ''
-  } `
+    disabled ? 'pointer-events-none opacity-70' : ''
+  } relative`
 
   const toggleBackgroundClasses = `block border border-card-stroke w-[53px] h-8 rounded-full
   ${disabled ? ' bg-base-3' : ' bg-base-1'} `
@@ -39,7 +39,7 @@ const ToggleComponent = (
   return (
     <div className="flex items-center justify-center w-full mb-12">
       <label htmlFor={inputId} className={`flex items-center cursor-pointer`}>
-        <div className={`relative${toggleContainerDisabledClasses}`}>
+        <div className={`${toggleContainerDisabledClasses}`}>
           <input
             ref={ref}
             type="checkbox"
