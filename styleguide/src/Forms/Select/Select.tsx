@@ -3,9 +3,9 @@ import React from 'react'
 import { InputLabel, InputLabelProps } from '../InputLabel'
 import { InputHelpText, InputHelpTextProps } from '../InputHelpText'
 import {
-  inputDisabledClasses,
-  inputErrorClasses,
-  inputDefaultClasses,
+  inputContainerDisabledClasses,
+  errorBorderClasses,
+  defaultBorderClasses,
   inputClasses,
   variantClasses,
 } from '../commonStyles'
@@ -43,11 +43,11 @@ export const SelectComponent = (
   } else {
     inputClass = `${inputClasses} ${selectClasses} ${variantClasses[variant]}`
     if (disabled) {
-      inputClass += ` ${inputDefaultClasses} ${inputDisabledClasses}`
+      inputClass += ` ${defaultBorderClasses} ${inputContainerDisabledClasses}`
     } else if (hasErrorState) {
-      inputClass += ` ${inputErrorClasses}`
+      inputClass += ` ${errorBorderClasses}`
     } else {
-      inputClass += ` ${inputDefaultClasses}`
+      inputClass += ` ${defaultBorderClasses}`
     }
   }
 

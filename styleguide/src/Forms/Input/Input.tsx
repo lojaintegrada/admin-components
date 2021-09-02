@@ -3,7 +3,6 @@ import React from 'react'
 import { InputLabel, InputLabelProps } from '../InputLabel'
 import { InputHelpText, InputHelpTextProps } from '../InputHelpText'
 import {
-  inputDefaultClasses,
   inputContainerDisabledClasses,
   inputContainerReadonlyClasses,
   errorBorderClasses,
@@ -12,6 +11,7 @@ import {
   variantClasses,
   startAdornmentClasses,
   endAdornmentClasses,
+  focusClass,
 } from '../commonStyles'
 
 const InputComponent = (
@@ -56,7 +56,7 @@ const InputComponent = (
     inputContainerClass += ` ${defaultBorderClasses}`
   }
 
-  const inputClass = `${inputDefaultClasses} ${
+  const inputClass = `w-full px-4 appearance-none shadow-none outline-none  bg-transparent -mt-px box-border ${focusClass} ${
     hasErrorState ? errorBorderClasses : defaultBorderClasses
   } ${startAdornment ? 'border-l' : ''} ${endAdornment ? 'border-r' : ''} ${
     variantClasses[variant]
