@@ -35,7 +35,7 @@ export interface BadgeProps {
   /** Badge color
    * @default neutral
    * */
-  type: keyof typeof badgeTypes
+  type?: keyof typeof badgeTypes
   /**
    * Badge text
    * */
@@ -43,5 +43,5 @@ export interface BadgeProps {
   /** Size of the badge
    * @default default
    * */
-  size?: 'default' | 'small'
+  size?: keyof typeof badgeSizes
 }
