@@ -8,8 +8,8 @@ const ToggleComponent = (
   const [isChecked, setIsChecked] = React.useState(checked || false)
 
   React.useEffect(() => {
-    onChange && checked && setIsChecked(checked)
-  }, [onChange, checked])
+    setIsChecked(!!checked)
+  }, [checked])
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (disabled) return
