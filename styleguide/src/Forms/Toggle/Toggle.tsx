@@ -63,5 +63,5 @@ export const Toggle = React.memo(ToggleWithFowardRef)
 
 export interface ToggleProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
-  label: string
+  label?: string
 }

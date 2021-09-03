@@ -5,7 +5,7 @@ import * as stories from './Toggle.stories'
 
 const { Default, Disabled, DisabledChecked } = composeStories(stories)
 
-describe('Input Mask tests', () => {
+describe('Toggle tests', () => {
   it('Default', () => {
     mount(<Default />)
     cy.get('input').should('not.be.checked')
