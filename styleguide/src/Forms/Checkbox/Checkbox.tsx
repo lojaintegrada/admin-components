@@ -22,12 +22,12 @@ const CheckboxComponent = (
 
   React.useEffect(() => {
     setIsChecked(!!checked)
-    setIsIndeterminate(false)
+    if (checked) setIsIndeterminate(false)
   }, [checked])
 
   React.useEffect(() => {
     setIsIndeterminate(!!indeterminate)
-    setIsChecked(false)
+    if (indeterminate) setIsChecked(false)
     if (inputRef.current) inputRef.current.indeterminate = !!indeterminate
   }, [indeterminate])
 
