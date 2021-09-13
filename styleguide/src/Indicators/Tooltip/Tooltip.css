@@ -87,6 +87,6 @@
 
 .tippy-content {
   position: relative;
-  padding: 8px;
+  padding: 12px 8px;
   z-index: 1
 }
