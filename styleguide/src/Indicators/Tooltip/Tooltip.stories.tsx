@@ -9,21 +9,25 @@ export default {
   title: 'Indicators/Tooltip',
   component: Tooltip,
   args: {
+    appendTo: 'parent',
     content: 'I am a tooltip!',
     hideOnClick: false,
     trigger: 'mouseenter',
     touch: 'hold',
     duration: 150,
     placement: 'top',
+    interactive: false,
   },
 } as Meta
 
 const Template: Story<TooltipProps> = args => (
-  <Tooltip {...args}>
-    <a href="#">
-      <Icon icon="eye" />
-    </a>
-  </Tooltip>
+  <div className="my-10 flex justify-center">
+    <Tooltip {...args}>
+      <a href="#">
+        <Icon icon="eye" />
+      </a>
+    </Tooltip>
+  </div>
 )
 
 export const Default = Template.bind({})
