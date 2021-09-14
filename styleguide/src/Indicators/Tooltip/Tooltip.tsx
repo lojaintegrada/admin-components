@@ -1,7 +1,6 @@
 import React from 'react'
 
 import Tippy, { TippyProps } from '@tippyjs/react'
-// import './Tooltip.css'
 
 import styled from 'styled-components'
 
