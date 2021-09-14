@@ -31,7 +31,7 @@ const TooltipComponent = (props: TooltipProps) => {
       trigger={props?.trigger || 'mouseenter'}
       touch={props?.touch || `hold`}
       duration={props?.duration || 150}
-      placement={window.innerWidth < 1024 ? 'top' : (props?.placement || 'top')}
+      placement={window?.innerWidth < 1024 ? 'top' : props?.placement || 'top'}
     />
   )
 }
