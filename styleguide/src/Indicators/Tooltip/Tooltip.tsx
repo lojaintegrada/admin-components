@@ -41,7 +41,6 @@ const TooltipComponent = (props: TooltipProps) => {
 
 const styledTooltipComponent = styled(TooltipComponent)`
   --bg-color: #20221b;
-  pointer-events: ${(props) => (props.interactive ? 'auto' : 'none')};
   position: relative;
   background-color: var(--bg-color);
   color: #fff;
