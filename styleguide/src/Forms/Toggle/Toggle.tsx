@@ -18,7 +18,7 @@ const ToggleComponent = (
   }
 
   const toggleContainerDisabledClasses = `${
-    disabled ? 'pointer-events-none opacity-70' : ''
+    disabled ? 'pointer-events-none' : ''
   } relative`
 
   const toggleBackgroundClasses = `block border border-card-stroke w-[53px] h-8 rounded-full
@@ -27,14 +27,10 @@ const ToggleComponent = (
   const toggleCircleClasses = `transform  ${
     !isChecked
       ? 'translate-x-0 bg-inverted-2'
-      : disabled
-      ? 'translate-x-full bg-base-1'
-      : 'translate-x-full bg-primary'
-  } absolute left-[7px] top-[6px] w-5 h-5 rounded-full transition`
+      : 'translate-x-full ml-px ' + (disabled ? 'bg-base-1' : 'bg-primary')
+  } absolute left-[6px] top-[6px] w-5 h-5 rounded-full transition`
 
-  const toggleLabelClasses = `${
-    isChecked ? 'font-semibold' : 'font-regular'
-  } ml-2 text-inverted-1 text-f6 label`
+  const toggleLabelClasses = `ml-2 text-inverted-1 text-f6 tracking-4 label`
 
   return (
     <div className="flex items-center justify-center w-full mb-12">
