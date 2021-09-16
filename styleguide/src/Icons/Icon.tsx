@@ -27,6 +27,9 @@ export const Icon: FunctionComponent<IconProps> = React.memo(
     if (icon === 'ban') {
       viewBox = '0 0 16 16'
     }
+    if (icon === 'arrowDropDown') {
+      viewBox = '0 0 11 6'
+    }
 
     return (
       <svg

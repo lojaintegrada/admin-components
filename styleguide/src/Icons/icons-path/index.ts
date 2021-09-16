@@ -2,6 +2,7 @@ import { AngleLeft } from './AngleLeft'
 import { AngleRight } from './AngleRight'
 import { App } from './App'
 import { ArrowLeft } from './ArrowLeft'
+import { ArrowDropDown } from './ArrowDropDown'
 import { ArrowRight } from './ArrowRight'
 import { Ban } from './Ban'
 import { BarcodeRead } from './BarcodeRead'
@@ -32,6 +33,7 @@ export const icons = {
   app: App,
   arrowLeft: ArrowLeft,
   arrowRight: ArrowRight,
+  arrowDropDown: ArrowDropDown,
   ban: Ban,
   barcodeRead: BarcodeRead,
   bullhorn: Bullhorn,

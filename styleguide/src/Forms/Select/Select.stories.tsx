@@ -14,11 +14,13 @@ export default {
   component: Select,
   args: {
     options: selectOptions,
-    onChange: (e: any) => { alert(`Item: ${e.target.value}`) },
-  }
+    onChange: (e: any) => {
+      alert(`Item: ${e.target.value}`)
+    },
+  },
 } as Meta
 
-const Template: Story<SelectProps> = args => <Select {...args} />
+const Template: Story<SelectProps> = (args) => <Select {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
