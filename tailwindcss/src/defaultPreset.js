@@ -5,6 +5,7 @@ module.exports = {
       "current": "currentColor",
       "transparent": "transparent",
       "black-alpha": "rgba(0, 0, 0,.25)",
+      "black": "#000000",
 
       "base-1": "#FFFFFF",
       "base-2": "#F8F8F9",
@@ -69,7 +70,9 @@ module.exports = {
 
       "card-stroke": "#CED4D8",
       "card-stroke-2": "#A3AAB5",
-      "card-shadow": "#E1E4E7"
+      "card-shadow": "#E1E4E7",
+
+      "focus": "#5690F7"
     },
     "extend": {
       "boxShadow": {
