@@ -55,3 +55,9 @@ FixedValue.args = {
   placeholder: 'Selecione um item',
   fixedValue: { label: 'Saiba mais', value: '1' },
 }
+
+export const CustomSize = Template.bind({})
+CustomSize.args = {
+  placeholder: 'Selecione um item',
+  variant: 'large',
+}
