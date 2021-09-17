@@ -39,9 +39,9 @@ const ModalComponent = ({
       onRequestClose={handleRequestCloseFunc}
       closeTimeoutMS={200}
       ariaHideApp={false}
-      overlayClassName={
-        `justify-center items-end sm:items-center flex overflow-hidden w-screen h-screen fixed inset-0 z-50 outline-none bg-black bg-opacity-60 pt-16 sm:p-3 focus:outline-none transition ${modalIsOpen ? 'opacity-100' : 'opacity-0'}`
-      }
+      overlayClassName={`justify-center items-end sm:items-center flex overflow-hidden w-screen h-screen fixed inset-0 z-50 outline-none bg-black bg-opacity-60 pt-16 sm:p-3 focus:outline-none transition ${
+        modalIsOpen ? 'opacity-100' : 'opacity-0'
+      }`}
       className={`relative max-h-full p-8 sm:p-10 rounded-t-xl sm:rounded-xl shadow-lg flex flex-col w-full bg-base-1 outline-none focus:outline-none border border-card-stroke break-words ${sizeClasses[size]} ${className}`}
       bodyOpenClassName={'ReactModal__Body--open overflow-hidden'}
       testId={'modal-component'}
