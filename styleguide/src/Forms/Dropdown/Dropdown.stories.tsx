@@ -61,3 +61,57 @@ CustomSize.args = {
   placeholder: 'Selecione um item',
   variant: 'large',
 }
+
+export const Grouped = Template.bind({})
+Grouped.args = {
+  placeholder: 'Selecione um item',
+  options: [
+    {
+      label: 'Ajuda',
+      options: [
+        { label: 'Visualizar 15', value: '15' },
+        { label: 'Visualizar 50', value: '50', isDisabled: true, icon: 'cog' },
+        { label: 'Visualizar 100', value: '100' },
+      ],
+    },
+  ],
+}
+
+export const GroupedWithLength = Template.bind({})
+GroupedWithLength.args = {
+  placeholder: 'Selecione um item',
+  showGroupLength: true,
+  options: [
+    {
+      label: 'Ajuda',
+      options: [
+        { label: 'Visualizar 15', value: '15' },
+        { label: 'Visualizar 50', value: '50', isDisabled: true, icon: 'cog' },
+        { label: 'Visualizar 100', value: '100' },
+      ],
+    },
+  ],
+}
+
+export const HelpText = Template.bind({})
+HelpText.args = {
+  placeholder: 'Selecione um item',
+  variant: 'large',
+  helpText: 'Texto de ajuda para preencher o campo',
+}
+
+export const Label = Template.bind({})
+Label.args = {
+  placeholder: 'Selecione um item',
+  variant: 'large',
+  label: 'Label',
+}
+
+export const WithError = Template.bind({})
+WithError.args = {
+  placeholder: 'Selecione um item',
+  variant: 'large',
+  helpText: 'Texto de ajuda para preencher o campo',
+  label: 'Label',
+  errorMessage: 'Houve um erro',
+}

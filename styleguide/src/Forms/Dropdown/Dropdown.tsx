@@ -7,6 +7,8 @@ import Select, {
   ControlProps,
 } from 'react-select'
 import { Icon as IconComponent } from '../../Icons'
+import { InputHelpText } from '../InputHelpText'
+import { InputLabel } from '../InputLabel'
 
 export const variantClasses = {
   default: 'h-12',
@@ -22,7 +24,11 @@ export interface CustomOptionProps {
   isDisabled?: boolean | undefined
 }
 
-const { Option, DropdownIndicator, Control } = components
+export interface CustomGroupedOptionsProps {
+  label: string
+  options: CustomOptionProps[]
+}
+const { Option, DropdownIndicator, Control, GroupHeading } = components
 
 const CustomDropdownIndicator = (
   props: React.PropsWithChildren<
@@ -50,9 +56,12 @@ const CustomControl = (
   props: React.PropsWithChildren<
     ControlProps<CustomOptionProps, false, GroupTypeBase<CustomOptionProps>>
   >,
-  variant: keyof typeof variantClasses
+  variant: keyof typeof variantClasses,
+  errorMessage?: string
 ) => {
-  const controlClasses = `flex itens-center border rounded border-card-stroke ${variantClasses[variant]}`
+  const controlClasses = `flex itens-center border rounded ${
+    errorMessage ? 'border-danger' : 'border-card-stroke'
+  } ${variantClasses[variant]}`
   return <Control {...props} className={controlClasses} />
 }
 
@@ -64,11 +73,15 @@ const IconOption = (
   >,
   markSelectedOption?: boolean
 ) => {
-  const { isSelected, data } = optionDefaultProps
+  const { isSelected, isDisabled, data } = optionDefaultProps
 
   const optionClasses = `${
     isSelected && markSelectedOption ? 'text-inverted-1' : 'text-inverted-2 '
-  } hover:bg-transparent hover:text-on-base font-semibold p-2 cursor-pointer text-sm first:pt-0 last:pb-0`
+  } text-sm first:pt-0 last:pb-0 p-2 ${
+    isDisabled
+      ? 'opacity-80 cursor-not-allowed'
+      : 'hover:bg-transparent hover:text-on-base font-semibold cursor-pointer'
+  }`
 
   return (
     <Option {...optionDefaultProps} className={optionClasses}>
@@ -79,6 +92,27 @@ const IconOption = (
     </Option>
   )
 }
+const formatGroupLabel = (
+  data: GroupTypeBase<CustomOptionProps>,
+  showGroupLength?: boolean
+) => (
+  <div className="flex justify-between">
+    <span>{data.label}</span>
+    {showGroupLength && (
+      <span className="bg-base-4 rounded-full w-4 text-center text-black-alpha">
+        {data.options.length}
+      </span>
+    )}
+  </div>
+)
+
+const CustomGroupHeading = (props: any) => (
+  <GroupHeading
+    {...props}
+    className="p-2 pt-0 pb-3 text-card-stroke uppercase font-bold text-xs"
+  />
+)
+
 const DropdownComponent = ({
   options,
   placeholder,
@@ -88,18 +122,35 @@ const DropdownComponent = ({
   markSelectedOption,
   fixedValue,
   disabled,
-  emptyMessage,
+  emptyMessage = 'Vazio',
+  showGroupLength,
+  errorMessage,
+  helpText,
+  label,
+  id,
+  name,
+  required = false,
 }: DropdownProps) => {
+  const inputId = id || name
   return (
-    <>
+    <div>
+      <InputLabel
+        label={label}
+        required={required}
+        hasError={!!errorMessage}
+        htmlFor={inputId}
+        className="mb-1"
+      />
       <Select
-        className="w-full text-inverted-2 cursor-pointer"
+        className={`w-full text-inverted-2  ${
+          disabled ? 'cursor-not-allowed opacity-70' : 'cursor-pointer'
+        }`}
         classNamePrefix="select"
         options={options}
         isSearchable={isSearchable}
         value={fixedValue}
         isDisabled={disabled}
-        noO
+        formatGroupLabel={(data) => formatGroupLabel(data, showGroupLength)}
         styles={{
           option: () => {
             return {}
@@ -116,17 +167,26 @@ const DropdownComponent = ({
           indicatorSeparator: () => {
             return {}
           },
+          groupHeading: () => {
+            return {}
+          },
         }}
         placeholder={placeholder}
-        noOptionsMessage={() => emptyMessage || 'Vazio'}
+        noOptionsMessage={() => emptyMessage}
         onChange={(value) => onChange && value && onChange(value)}
         components={{
           Option: (props) => IconOption(props, markSelectedOption),
           DropdownIndicator: (props) => CustomDropdownIndicator(props),
-          Control: (props) => CustomControl(props, variant),
+          Control: (props) => CustomControl(props, variant, errorMessage),
+          GroupHeading: (props) => CustomGroupHeading(props),
         }}
       />
-    </>
+      <InputHelpText
+        helpText={errorMessage || helpText}
+        hasError={!!errorMessage}
+        className="mt-2"
+      />
+    </div>
   )
 }
 
@@ -137,12 +197,17 @@ export interface DropdownProps {
   /**
    * Options displayed inside dropdown
    * */
-  options: CustomOptionProps[]
+  options: CustomOptionProps[] | CustomGroupedOptionsProps[]
   placeholder?: string
   onChange?: (option: CustomOptionProps) => void
+  /**
+   * Changes the size of dropdown
+   * @default default
+   * */
   variant?: keyof typeof variantClasses
   /**
    * Keep marked the selected option on clicked
+   * @default false
    * */
   markSelectedOption?: boolean
   /**
@@ -151,11 +216,40 @@ export interface DropdownProps {
   fixedValue?: CustomOptionProps
   /**
    * Makes the field writeable and return the matched options
+   * @default false
    * */
   isSearchable?: boolean
+  /**
+   * Disable entire dropdown
+   * @default false
+   * */
   disabled?: boolean
   /**
    * The string showed if the options are empty or search result is empty
+   * @default "Vazio"
    * */
   emptyMessage?: string
+  /**
+   * Must show group length on the group heading
+   * */
+  showGroupLength?: boolean
+  /**
+   * Help text
+   * */
+  label?: string
+  /** Should display the label above the dropdown
+   * @default ''
+   * */
+  helpText?: string
+  /** Should display error state and the message
+   * @default ''
+   * */
+  errorMessage?: string
+  /**
+   * Requires at least one option marked on dropdown
+   * @default false
+   * */
+  required?: boolean
+  id?: string
+  name?: string
 }
