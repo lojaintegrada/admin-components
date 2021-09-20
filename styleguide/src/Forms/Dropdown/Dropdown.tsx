@@ -5,6 +5,8 @@ import Select, {
   GroupTypeBase,
   IndicatorProps,
   ControlProps,
+  PlaceholderProps,
+  SingleValueProps,
 } from 'react-select'
 import { Icon as IconComponent } from '../../Icons'
 import { InputHelpText } from '../InputHelpText'
@@ -28,7 +30,14 @@ export interface CustomGroupedOptionsProps {
   label: string
   options: CustomOptionProps[]
 }
-const { Option, DropdownIndicator, Control, GroupHeading } = components
+const {
+  Option,
+  DropdownIndicator,
+  Control,
+  GroupHeading,
+  Placeholder,
+  SingleValue,
+} = components
 
 const CustomDropdownIndicator = (
   props: React.PropsWithChildren<
@@ -113,6 +122,23 @@ const CustomGroupHeading = (props: any) => (
   />
 )
 
+const CustomPlaceholder = (
+  props: PlaceholderProps<
+    CustomOptionProps,
+    false,
+    GroupTypeBase<CustomOptionProps>
+  >
+) => <Placeholder {...props} className="text-f6 tracking-4" />
+
+const CustomSingleValue = (
+  props: SingleValueProps<CustomOptionProps, GroupTypeBase<CustomOptionProps>>
+) => (
+  <SingleValue
+    {...props}
+    className="text-f6 tracking-4 text-inverted-2 text-sm"
+  />
+)
+
 const DropdownComponent = ({
   options,
   placeholder,
@@ -170,6 +196,9 @@ const DropdownComponent = ({
           groupHeading: () => {
             return {}
           },
+          singleValue: () => {
+            return {}
+          },
         }}
         placeholder={placeholder}
         noOptionsMessage={() => emptyMessage}
@@ -179,6 +208,8 @@ const DropdownComponent = ({
           DropdownIndicator: (props) => CustomDropdownIndicator(props),
           Control: (props) => CustomControl(props, variant, errorMessage),
           GroupHeading: (props) => CustomGroupHeading(props),
+          Placeholder: (props) => CustomPlaceholder(props),
+          SingleValue: (props) => CustomSingleValue(props),
         }}
       />
       <InputHelpText
