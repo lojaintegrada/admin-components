@@ -112,7 +112,7 @@
     "react-dom": ">=17.0.1"
   },
   "dependencies": {
-    "@lojaintegrada/tailwindcss-config": "^1.0.1",
+    "@lojaintegrada/tailwindcss-config": "^1.1.0",
     "@tippyjs/react": "^4.2.5",
     "react-modal": "^3.14.3",
     "react-table": "^7.7.0",
