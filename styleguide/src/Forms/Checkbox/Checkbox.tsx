@@ -52,7 +52,7 @@ const CheckboxComponent = (
   const checkboxLabelClasses = `ml-2 duration-200 transition ease-out input-label`
 
   return (
-    <label htmlFor={inputId} className="flex items-center">
+    <label htmlFor={inputId} className="flex items-center cursor-pointer">
       <span className="border-2 rounded-md border-transparent z-50 flex items-center justify-center focus-within:border-focus">
         <input
           ref={ref || inputRef}
@@ -67,8 +67,8 @@ const CheckboxComponent = (
         <div className={checkboxIconContainerClasses}>
           <svg
             width="12"
-            height="11"
-            viewBox={`0 0 10 ${isChecked ? '10' : '3'}`}
+            height="12"
+            viewBox={`0 0 10 ${isChecked ? '10' : '2'}`}
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className={checkboxIconClasses}
