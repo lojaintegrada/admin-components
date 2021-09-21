@@ -52,11 +52,7 @@ const CustomDropdownIndicator = (
 
   return (
     <DropdownIndicator {...props} className="mr-1">
-      <IconComponent
-        icon="arrowDropDown"
-        size={3}
-        className={indicatorClasses}
-      />
+      <IconComponent icon="sortDown" size={5} className={indicatorClasses} />
     </DropdownIndicator>
   )
 }
