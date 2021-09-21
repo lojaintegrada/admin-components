@@ -56,6 +56,10 @@
     {
       "path": "dist/admin-components.cjs.production.min.js",
       "limit": "10 KB"
+    },
+    {
+      "path": "dist/admin-components.esm.js",
+      "limit": "10 KB"
     }
   ],
   "devDependencies": {
