@@ -34,20 +34,20 @@ export const DateWithStartAdornment = Template.bind({})
 DateWithStartAdornment.args = {
   formatValue: 'date',
   defaultValue: '10/11/1990',
-  startAdornment: <Icon icon="clock" />,
+  prefix: <Icon icon="clock" />,
 }
 
 export const DateWithEndAdornment = Template.bind({})
 DateWithEndAdornment.args = {
   formatValue: 'date',
   defaultValue: '10/11/1990',
-  endAdornment: <Icon icon="clock" />,
+  sufix: <Icon icon="clock" />,
 }
 
 export const DateWithEndAdornmentError = Template.bind({})
 DateWithEndAdornmentError.args = {
   formatValue: 'date',
   defaultValue: '10/11/1990',
-  endAdornment: <Icon icon="clock" />,
+  sufix: <Icon icon="clock" />,
   hasError: true,
 }

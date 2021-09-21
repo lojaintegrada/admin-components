@@ -24,58 +24,58 @@ Error.args = {
   errorMessage: 'Campo obrigatório',
 }
 
-export const StartAdornment = Template.bind({})
-StartAdornment.args = {
+export const Prefix = Template.bind({})
+Prefix.args = {
   label: 'Meu Campo',
   helpText: 'Texto de ajuda para preencher o campo',
-  startAdornment: 'R$',
+  prefix: 'R$',
 }
 
-export const IconStartAdornment = Template.bind({})
-IconStartAdornment.args = {
+export const IconPrefix = Template.bind({})
+IconPrefix.args = {
   label: 'Meu Campo',
   helpText: 'Texto de ajuda para preencher o campo',
-  startAdornment: <Icon icon="cog" />,
+  prefix: <Icon icon="cog" />,
   hasError: true,
 }
 
-export const EndAdornment = Template.bind({})
-EndAdornment.args = {
+export const Sufix = Template.bind({})
+Sufix.args = {
   label: 'Meu Campo',
   helpText: 'Texto de ajuda para preencher o campo',
-  endAdornment: 'R$',
+  sufix: 'R$',
 }
 
-export const IconEndAdornment = Template.bind({})
-IconEndAdornment.args = {
+export const IconSufix = Template.bind({})
+IconSufix.args = {
   label: 'Meu Campo',
   helpText: 'Texto de ajuda para preencher o campo',
-  endAdornment: <Icon icon="cog" />,
+  sufix: <Icon icon="cog" />,
   hasError: true,
 }
 
-export const StartAdornmentDisabled = Template.bind({})
-StartAdornmentDisabled.args = {
+export const PrefixDisabled = Template.bind({})
+PrefixDisabled.args = {
   label: 'Meu Campo',
   helpText: 'Texto de ajuda para preencher o campo',
-  startAdornment: 'R$',
+  prefix: 'R$',
   disabled: true,
   value: '123',
 }
 
-export const StartAdornmentReadOnly = Template.bind({})
-StartAdornmentReadOnly.args = {
+export const PrefixReadOnly = Template.bind({})
+PrefixReadOnly.args = {
   label: 'Meu Campo',
   helpText: 'Texto de ajuda para preencher o campo',
-  startAdornment: 'R$',
+  prefix: 'R$',
   readOnly: true,
   value: '123',
 }
 
-export const WithBothAdornment = Template.bind({})
-WithBothAdornment.args = {
+export const WithBoth = Template.bind({})
+WithBoth.args = {
   label: 'Meu Campo',
   helpText: 'Texto de ajuda para preencher o campo',
-  startAdornment: 'R$',
-  endAdornment: <Icon icon="cog" />,
+  prefix: 'R$',
+  sufix: <Icon icon="cog" />,
 }

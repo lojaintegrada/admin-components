@@ -41,5 +41,5 @@ OnFocusWithStartAdornment.args = {
   onFocus: (_event, value, _maskedValue) => {
     console.log(value)
   },
-  startAdornment: 'R$',
+  prefix: 'R$',
 }

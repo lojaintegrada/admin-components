@@ -9,8 +9,8 @@ import {
   defaultBorderClasses,
   inputContainerClasses,
   variantClasses,
-  startAdornmentClasses,
-  endAdornmentClasses,
+  prefixClasses,
+  sufixClasses,
   focusClass,
 } from '../commonStyles'
 
@@ -28,8 +28,8 @@ const InputComponent = (
     disabled,
     readOnly,
     type = 'text',
-    startAdornment,
-    endAdornment,
+    prefix,
+    sufix,
     ...props
   }: InputProps,
   ref: React.ForwardedRef<HTMLInputElement>
@@ -37,13 +37,13 @@ const InputComponent = (
   const inputId = id || name
   const hasErrorState = hasError || !!errorMessage
 
-  const startAdornmentClass = `${startAdornmentClasses} ${
-    variantClasses[variant]
-  } ${hasErrorState ? errorBorderClasses : ''}`
+  const prefixClass = `${prefixClasses} ${variantClasses[variant]} ${
+    hasErrorState ? errorBorderClasses : ''
+  }`
 
-  const endAdornmentClass = `${endAdornmentClasses} ${
-    variantClasses[variant]
-  } ${hasErrorState ? errorBorderClasses : ''}`
+  const sufixClass = `${sufixClasses} ${variantClasses[variant]} ${
+    hasErrorState ? errorBorderClasses : ''
+  }`
 
   let inputContainerClass = `${inputContainerClasses} ${variantClasses[variant]}`
   if (disabled) {
@@ -58,7 +58,7 @@ const InputComponent = (
 
   const inputClass = `w-full px-4 appearance-none shadow-none outline-none  bg-transparent -mt-px box-border ${focusClass} ${
     hasErrorState ? errorBorderClasses : defaultBorderClasses
-  } ${startAdornment ? 'border-l' : ''} ${endAdornment ? 'border-r' : ''} ${
+  } ${prefix ? 'border-l' : ''} ${sufix ? 'border-r' : ''} ${
     variantClasses[variant]
   }`
 
@@ -84,9 +84,7 @@ const InputComponent = (
     <div className={`form-group flex flex-col ${className}`}>
       {LabelComponent}
       <div className={inputContainerClass}>
-        {startAdornment && (
-          <span className={startAdornmentClass}>{startAdornment}</span>
-        )}
+        {prefix && <span className={prefixClass}>{prefix}</span>}
         <input
           ref={ref}
           type={type}
@@ -98,9 +96,7 @@ const InputComponent = (
           className={inputClass}
           {...props}
         />
-        {endAdornment && (
-          <span className={endAdornmentClass}>{endAdornment}</span>
-        )}
+        {sufix && <span className={sufixClass}>{sufix}</span>}
       </div>
 
       {HelpTextComponent}
@@ -114,7 +110,7 @@ export const Input = React.memo(InputWithFowardRef)
 export interface InputProps
   extends InputLabelProps,
     InputHelpTextProps,
-    React.InputHTMLAttributes<HTMLInputElement> {
+    Omit<React.InputHTMLAttributes<HTMLInputElement>, 'prefix'> {
   /**
    * Custom class name
    * */
@@ -130,9 +126,9 @@ export interface InputProps
   /**
    * Custom element to append at the start of input
    * */
-  startAdornment?: React.ReactNode | string
+  prefix?: React.ReactNode | string | null
   /**
    * Custom element to append at the end of input
    * */
-  endAdornment?: React.ReactNode | string
+  sufix?: React.ReactNode | string | null
 }

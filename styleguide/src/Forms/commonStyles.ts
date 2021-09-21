@@ -17,9 +17,9 @@ export const inputContainerClasses = `flex w-full focus-within:border-inverted-1
 
 const adornmentClasses = `flex justify-center items-center relative w-16 text-f6 text-inverted-2 tracking-4`
 
-export const startAdornmentClasses = `${adornmentClasses} rounded-l left-0`
+export const prefixClasses = `${adornmentClasses} rounded-l left-0`
 
-export const endAdornmentClasses = `${adornmentClasses} rounded-r right-0`
+export const sufixClasses = `${adornmentClasses} rounded-r right-0`
 
 export const variantClasses = {
   default: 'h-12',

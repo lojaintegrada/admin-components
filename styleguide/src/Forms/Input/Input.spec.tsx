@@ -3,13 +3,7 @@ import { composeStories } from '@storybook/testing-react'
 import { mount } from '@cypress/react'
 import * as stories from './Input.stories'
 
-const {
-  Default,
-  Error,
-  StartAdornment,
-  IconStartAdornment,
-  WithBothAdornment,
-} = composeStories(stories)
+const { Default, Error, Prefix, IconPrefix, WithBoth } = composeStories(stories)
 
 describe('Input tests', () => {
   it('Default', () => {
@@ -45,13 +39,13 @@ describe('Input tests', () => {
   })
 
   it('Adornments', () => {
-    mount(<StartAdornment />)
+    mount(<Prefix />)
     cy.get('span').contains('R$')
 
-    mount(<IconStartAdornment />)
+    mount(<IconPrefix />)
     cy.get('svg').should('have.class', 'icon-cog').parent('span')
 
-    mount(<WithBothAdornment />)
+    mount(<WithBoth />)
     cy.get('span').should('have.length', 2)
   })
 })
