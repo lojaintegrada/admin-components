@@ -12,6 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Label PRs
-        uses: adamzolyak/monorepo-pr-labeler-action@patching
+        uses: tinkurlab/monorepo-pr-labeler-action
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

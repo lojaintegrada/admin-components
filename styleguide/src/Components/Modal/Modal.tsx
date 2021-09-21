@@ -39,7 +39,7 @@ const ModalComponent = ({
       onRequestClose={handleRequestCloseFunc}
       closeTimeoutMS={200}
       ariaHideApp={false}
-      overlayClassName={`justify-center items-end sm:items-center flex overflow-hidden w-screen h-screen fixed inset-0 z-50 outline-none bg-black bg-opacity-60 pt-16 sm:p-3 focus:outline-none transition ${
+      overlayClassName={`justify-center items-end sm:items-center flex overflow-hidden w-screen h-full fixed inset-0 z-50 outline-none bg-black bg-opacity-60 pt-16 sm:p-3 focus:outline-none transition ${
         modalIsOpen ? 'opacity-100' : 'opacity-0'
       }`}
       className={`relative max-h-full p-8 sm:p-10 rounded-t-xl sm:rounded-xl shadow-lg flex flex-col w-full bg-base-1 outline-none focus:outline-none border border-card-stroke break-words ${sizeClasses[size]} ${className}`}
@@ -66,7 +66,7 @@ const ModalComponent = ({
               <Icon icon="close" size={4} />
             </button>
           </div>
-          <div className="ReactModal__innerContent flex-auto overflow-x-auto min-w-0 break-words">
+          <div className="ReactModal__innerContent flex-auto overflow-x-auto min-w-0 break-words overscroll-none -mx-8 sm:-mx-10 px-8 sm:px-10">
             {children}
           </div>
           {footerActions && (
