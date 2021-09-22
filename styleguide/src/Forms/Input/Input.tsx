@@ -3,12 +3,15 @@ import React from 'react'
 import { InputLabel, InputLabelProps } from '../InputLabel'
 import { InputHelpText, InputHelpTextProps } from '../InputHelpText'
 import {
-  inputDisabledClasses,
-  inputReadonlyClasses,
-  inputErrorClasses,
-  inputDefaultClasses,
-  inputClasses,
+  inputContainerDisabledClasses,
+  inputContainerReadonlyClasses,
+  errorBorderClasses,
+  defaultBorderClasses,
+  inputContainerClasses,
   variantClasses,
+  prefixClasses,
+  sufixClasses,
+  focusClass,
 } from '../commonStyles'
 
 const InputComponent = (
@@ -25,6 +28,8 @@ const InputComponent = (
     disabled,
     readOnly,
     type = 'text',
+    prefix,
+    sufix,
     ...props
   }: InputProps,
   ref: React.ForwardedRef<HTMLInputElement>
@@ -32,16 +37,30 @@ const InputComponent = (
   const inputId = id || name
   const hasErrorState = hasError || !!errorMessage
 
-  let inputClass = `${inputClasses} ${variantClasses[variant]}`
+  const prefixClass = `${prefixClasses} ${variantClasses[variant]} ${
+    hasErrorState ? errorBorderClasses : ''
+  }`
+
+  const sufixClass = `${sufixClasses} ${variantClasses[variant]} ${
+    hasErrorState ? errorBorderClasses : ''
+  }`
+
+  let inputContainerClass = `${inputContainerClasses} ${variantClasses[variant]}`
   if (disabled) {
-    inputClass += ` ${inputDefaultClasses} ${inputDisabledClasses}`
+    inputContainerClass += ` ${defaultBorderClasses} ${inputContainerDisabledClasses}`
   } else if (readOnly) {
-    inputClass += ` ${inputDefaultClasses} ${inputReadonlyClasses}`
+    inputContainerClass += ` ${defaultBorderClasses} ${inputContainerReadonlyClasses}`
   } else if (hasErrorState) {
-    inputClass += ` ${inputErrorClasses}`
+    inputContainerClass += ` ${errorBorderClasses}`
   } else {
-    inputClass += ` ${inputDefaultClasses}`
+    inputContainerClass += ` ${defaultBorderClasses}`
   }
+
+  const inputClass = `w-full px-4 appearance-none shadow-none outline-none  bg-transparent -mt-px box-border ${focusClass} ${
+    hasErrorState ? errorBorderClasses : defaultBorderClasses
+  } ${prefix ? 'border-l' : ''} ${sufix ? 'border-r' : ''} ${
+    variantClasses[variant]
+  }`
 
   const LabelComponent = (
     <InputLabel
@@ -64,7 +83,8 @@ const InputComponent = (
   return (
     <div className={`form-group flex flex-col ${className}`}>
       {LabelComponent}
-      <div className="flex w-full">
+      <div className={inputContainerClass}>
+        {prefix && <span className={prefixClass}>{prefix}</span>}
         <input
           ref={ref}
           type={type}
@@ -76,7 +96,9 @@ const InputComponent = (
           className={inputClass}
           {...props}
         />
+        {sufix && <span className={sufixClass}>{sufix}</span>}
       </div>
+
       {HelpTextComponent}
     </div>
   )
@@ -88,7 +110,7 @@ export const Input = React.memo(InputWithFowardRef)
 export interface InputProps
   extends InputLabelProps,
     InputHelpTextProps,
-    React.InputHTMLAttributes<HTMLInputElement> {
+    Omit<React.InputHTMLAttributes<HTMLInputElement>, 'prefix'> {
   /**
    * Custom class name
    * */
@@ -101,4 +123,12 @@ export interface InputProps
    * Error message to display
    * */
   errorMessage?: string
+  /**
+   * Custom element to append at the start of input
+   * */
+  prefix?: React.ReactNode | string | null
+  /**
+   * Custom element to append at the end of input
+   * */
+  sufix?: React.ReactNode | string | null
 }

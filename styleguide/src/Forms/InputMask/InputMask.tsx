@@ -8,7 +8,7 @@ import { Input, InputProps } from '../Input'
 import { formatValuePatterns } from './utils'
 
 function InputMaskComponent(
-  { formatValue = 'default', ...props }: InputMaskProps,
+  { formatValue = 'default', prefix, ...props }: InputMaskProps,
   inputRef: React.ForwardedRef<HTMLInputElement>
 ) {
   const renderInput = (ref: (inputElement: HTMLElement) => void, p: any) => {
@@ -24,7 +24,13 @@ function InputMaskComponent(
     mergedProps.mask = false
   }
 
-  return <ReactTextMask render={renderInput} {...mergedProps} />
+  return (
+    <ReactTextMask
+      render={renderInput}
+      {...mergedProps}
+      prefix={prefix as string}
+    />
+  )
 }
 
 export const InputMask = React.forwardRef(InputMaskComponent)
