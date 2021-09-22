@@ -1,9 +1,11 @@
 import React from 'react'
 
 const statusTypes = {
+  default: 'bg-inverted-2',
   success: 'bg-success',
   warning: 'bg-warning',
   danger: 'bg-danger',
+  dangerLight: 'bg-danger-light',
 }
 
 const DescriptionComponent = ({
@@ -22,7 +24,7 @@ const DescriptionComponent = ({
   null
 
 const StatusComponent = ({
-  type = 'success',
+  type = 'default',
   description,
   inverted = false,
 }: StatusProps) => {
@@ -48,7 +50,7 @@ export const Status = React.memo(StatusComponent)
 
 export interface StatusProps {
   /** Status color
-   * @default success
+   * @default default
    * */
   type: keyof typeof statusTypes
   /**
