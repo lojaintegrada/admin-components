@@ -22,11 +22,7 @@ export const Icon: FunctionComponent<IconProps> = React.memo(
     if (className) classes += className
 
     const Path = icons[icon] || icons['minus']
-
-    let viewBox = '0 0 18 18'
-    if (icon === 'ban') {
-      viewBox = '0 0 16 16'
-    }
+    const viewBox = '0 0 18 18'
 
     return (
       <svg
