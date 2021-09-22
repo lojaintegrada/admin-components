@@ -4,7 +4,7 @@ const alertTypes = {
   success: 'bg-success-light border-success',
   warning: 'bg-warning-light border-warning',
   danger: 'bg-danger-light border-danger',
-  info: 'bg-info-light border-info',
+  info: 'bg-base-1 border-inverted-2',
   primary: 'bg-primary-light border-primary',
 }
 

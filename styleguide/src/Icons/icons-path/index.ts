@@ -24,6 +24,7 @@ import { Order } from './Order'
 import { PieChart } from './PieChart'
 import { PlusCircle } from './PlusCircle'
 import { Print } from './Print'
+import { InfoCircle } from './InfoCircle'
 import { Loading } from './Loading'
 import { Pix } from './Pix'
 import { Trash } from './Trash'
@@ -61,6 +62,7 @@ export const icons = {
   pieChart: PieChart,
   plusCircle: PlusCircle,
   print: Print,
+  infoCircle: InfoCircle,
   loading: Loading,
   pix: Pix,
   trash: Trash,
