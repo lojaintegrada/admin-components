@@ -12,6 +12,7 @@ const sizeClasses = {
 const ModalComponent = ({
   className = '',
   isOpen = false,
+  preventClose = false,
   size = 'default',
   headerTitle,
   headerClose = 'Fechar',
@@ -21,9 +22,12 @@ const ModalComponent = ({
   children,
 }: ModalProps) => {
   const [modalIsOpen, setModalIsOpen] = useState(false)
+  const [modalPreventClose, setModalPreventClose] = useState(false)
+
   useEffect(() => {
     setModalIsOpen(isOpen)
-  }, [isOpen])
+    setModalPreventClose(preventClose)
+  }, [isOpen, preventClose])
 
   const handleRequestCloseFunc = () => {
     setModalIsOpen(false)
@@ -39,6 +43,8 @@ const ModalComponent = ({
       onRequestClose={handleRequestCloseFunc}
       closeTimeoutMS={200}
       ariaHideApp={false}
+      shouldCloseOnOverlayClick={!modalPreventClose}
+      shouldCloseOnEsc={!modalPreventClose}
       overlayClassName={`justify-center items-end sm:items-center flex overflow-hidden w-screen h-full fixed inset-0 z-50 outline-none bg-black bg-opacity-60 pt-16 sm:p-3 focus:outline-none transition ${
         modalIsOpen ? 'opacity-100' : 'opacity-0'
       }`}
@@ -57,7 +63,9 @@ const ModalComponent = ({
               {headerTitle}
             </span>
             <button
-              className="flex items-center p-2 pb-1 -mr-2 -mt-3 text-sm font-semibold text-inverted-2 hover:text-inverted-1"
+              className={`${
+                preventClose ? 'hidden' : 'flex'
+              } items-center p-2 pb-1 -mr-2 -mt-3 text-sm font-semibold text-inverted-2 hover:text-inverted-1`}
               onClick={handleRequestCloseFunc}
             >
               {headerClose !== false && (
@@ -91,6 +99,10 @@ export interface ModalProps {
    * @default false
    */
   isOpen?: boolean
+  /** Prevent modal close
+   * @default false
+   */
+  preventClose?: boolean
   /** Modal width
    * @default 'default'
    * */
