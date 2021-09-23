@@ -1,9 +1,9 @@
 export const inputPlaceholderClasses = 'placeholder-on-base-2'
 
 export const inputContainerDisabledClasses =
-  'bg-base-3 pointer-events-none text-on-base-2'
+  '!bg-base-3 !pointer-events-none !text-on-base-2'
 
-export const inputContainerReadonlyClasses = 'bg-base-2'
+export const inputContainerReadonlyClasses = '!bg-base-2'
 
 export const errorBorderClasses = 'border-danger focus:border-danger'
 

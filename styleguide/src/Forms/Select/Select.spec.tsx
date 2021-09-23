@@ -3,7 +3,7 @@ import { composeStories } from "@storybook/testing-react"
 import { mount } from "@cypress/react"
 import * as stories from "./Select.stories"
 
-const { Default, Error, WithoutStyle } = composeStories(stories)
+const { Default, Error, WithoutStyle, Disabled } = composeStories(stories)
 
 describe('Select tests', () => {
 
@@ -30,6 +30,11 @@ describe('Select tests', () => {
   it('WithoutStyle', () => {
     mount(<WithoutStyle />)
     cy.get('select').should('not.have.class', 'bg-base-1 border')
+  })
+
+  it('Disabled', () => {
+    mount(<Disabled />)
+    cy.get('select').should('have.class', '!bg-base-3 !pointer-events-none !text-on-base-2')
   })
 
 })

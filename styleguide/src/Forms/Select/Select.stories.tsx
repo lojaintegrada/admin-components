@@ -42,3 +42,8 @@ export const WithoutStyle = Template.bind({})
 WithoutStyle.args = {
   withoutStyle: true,
 }
+
+export const Disabled = Template.bind({})
+Disabled.args = {
+  disabled: true,
+}
