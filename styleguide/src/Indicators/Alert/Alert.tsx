@@ -67,7 +67,7 @@ const AlertComponent = ({
         <div
           className={`alert-icon hidden sm:block flex-shrink-0 mr-3 ${alertTypes[type].iconClass}`}
         >
-          <Icon icon={alertTypes[type].icon} />
+          <Icon icon={alertTypes[type].icon} size={6} />
         </div>
       )}
       <div className="flex-grow flex flex-col sm:flex-row items-start sm:items-center justify-between min-w-0">
