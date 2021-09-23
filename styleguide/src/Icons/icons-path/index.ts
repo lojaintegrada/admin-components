@@ -16,6 +16,7 @@ import { CheckCircle } from './CheckCircle'
 import { CreditCard } from './CreditCard'
 import { Product } from './Product'
 import { Edit } from './Edit'
+import { Exchange } from './Exchange'
 import { Eye } from './Eye'
 import { ExclamationTriangle } from './ExclamationTriangle'
 import { ExternalLink } from './ExternalLink'
@@ -54,6 +55,7 @@ export const icons = {
   creditcard: CreditCard,
   product: Product,
   edit: Edit,
+  exchange: Exchange,
   eye: Eye,
   exclamationTriangle: ExclamationTriangle,
   externalLink: ExternalLink,
