@@ -52,7 +52,10 @@ const CheckboxComponent = (
   const checkboxLabelClasses = `ml-1 input-label text-f6 tracking-4 leading-6`
 
   return (
-    <label htmlFor={inputId} className="inline-flex items-center cursor-pointer">
+    <label
+      htmlFor={inputId}
+      className="inline-flex items-center cursor-pointer"
+    >
       <span className="rounded z-50 flex items-center justify-center focus-within:ring-2 ring-focus">
         <input
           ref={ref || inputRef}
