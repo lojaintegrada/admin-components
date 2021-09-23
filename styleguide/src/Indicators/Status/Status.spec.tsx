@@ -14,6 +14,9 @@ describe('Status tests', () => {
   })
 
   it('Variants', () => {
+    mount(<Default type="default" />)
+    cy.get('.indicator-status').find('.rounded-full').should('have.class', 'bg-inverted-2')
+
     mount(<Default type="success" />)
     cy.get('.indicator-status').find('.rounded-full').should('have.class', 'bg-success')
 
@@ -22,6 +25,9 @@ describe('Status tests', () => {
 
     mount(<Default type="danger" />)
     cy.get('.indicator-status').find('.rounded-full').should('have.class', 'bg-danger')
+
+    mount(<Default type="dangerLight" />)
+    cy.get('.indicator-status').find('.rounded-full').should('have.class', 'bg-danger-light')
   })
 
   it('Inverted', () => {

@@ -24,6 +24,18 @@ Error.args = {
   errorMessage: 'Campo obrigatório',
 }
 
+export const Disabled = Template.bind({})
+Disabled.args = {
+  defaultValue: 'Can\'t change',
+  disabled: true,
+}
+
+export const Readonly = Template.bind({})
+Readonly.args = {
+  defaultValue: 'Can\'t change',
+  readOnly: true,
+}
+
 export const Prefix = Template.bind({})
 Prefix.args = {
   label: 'Meu Campo',

@@ -16,6 +16,7 @@ import { CheckCircle } from './CheckCircle'
 import { CreditCard } from './CreditCard'
 import { Product } from './Product'
 import { Edit } from './Edit'
+import { Exchange } from './Exchange'
 import { Eye } from './Eye'
 import { ExclamationTriangle } from './ExclamationTriangle'
 import { ExternalLink } from './ExternalLink'
@@ -24,6 +25,7 @@ import { Order } from './Order'
 import { PieChart } from './PieChart'
 import { PlusCircle } from './PlusCircle'
 import { Print } from './Print'
+import { InfoCircle } from './InfoCircle'
 import { Loading } from './Loading'
 import { Pix } from './Pix'
 import { Trash } from './Trash'
@@ -53,6 +55,7 @@ export const icons = {
   creditcard: CreditCard,
   product: Product,
   edit: Edit,
+  exchange: Exchange,
   eye: Eye,
   exclamationTriangle: ExclamationTriangle,
   externalLink: ExternalLink,
@@ -61,6 +64,7 @@ export const icons = {
   pieChart: PieChart,
   plusCircle: PlusCircle,
   print: Print,
+  infoCircle: InfoCircle,
   loading: Loading,
   pix: Pix,
   trash: Trash,

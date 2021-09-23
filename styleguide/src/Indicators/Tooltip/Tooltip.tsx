@@ -31,7 +31,7 @@ const TooltipComponent = (props: TooltipProps) => {
       appendTo={props?.appendTo || 'parent'}
       hideOnClick={props?.hideOnClick || false}
       trigger={props?.trigger || 'mouseenter'}
-      touch={props?.touch || 'hold'}
+      touch={props?.touch || ['hold', 400]}
       duration={props?.duration || 150}
       placement={window?.innerWidth < 1024 ? 'top' : props?.placement || 'top'}
       interactive={props?.interactive || false}
@@ -145,7 +145,7 @@ export interface TooltipProps extends TippyProps {
    * */
   trigger?: TippyProps['trigger']
   /** Tooltip action on touch
-   * @default 'hold'
+   * @default ['hold', 400]
    * */
   touch?: TippyProps['touch']
   /** Tooltip duration

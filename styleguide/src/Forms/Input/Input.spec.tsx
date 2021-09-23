@@ -3,7 +3,7 @@ import { composeStories } from '@storybook/testing-react'
 import { mount } from '@cypress/react'
 import * as stories from './Input.stories'
 
-const { Default, Error, Prefix, IconPrefix, WithBoth } = composeStories(stories)
+const { Default, Error, Prefix, IconPrefix, WithBoth, Disabled, Readonly } = composeStories(stories)
 
 describe('Input tests', () => {
   it('Default', () => {
@@ -22,6 +22,16 @@ describe('Input tests', () => {
   it('Required', () => {
     mount(<Default required />)
     cy.get('input').should('have.attr', 'required')
+  })
+
+  it('Disabled', () => {
+    mount(<Disabled />)
+    cy.get('input').parent().should('have.class', '!bg-base-3 !pointer-events-none !text-on-base-2')
+  })
+
+  it('Readonly', () => {
+    mount(<Readonly />)
+    cy.get('input').parent().should('have.class', '!bg-base-2')
   })
 
   it('Variants', () => {

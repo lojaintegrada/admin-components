@@ -135,24 +135,27 @@ const CustomSingleValue = (
   />
 )
 
-const DropdownComponent = ({
-  options,
-  placeholder,
-  isSearchable = false,
-  onChange,
-  variant = 'default',
-  markSelectedOption,
-  fixedValue,
-  disabled,
-  emptyMessage = 'Vazio',
-  showGroupLength,
-  errorMessage,
-  helpText,
-  label,
-  id,
-  name,
-  required = false,
-}: DropdownProps) => {
+const DropdownComponent = (
+  {
+    options,
+    placeholder,
+    isSearchable = false,
+    onChange,
+    variant = 'default',
+    markSelectedOption,
+    fixedValue,
+    disabled,
+    emptyMessage = 'Vazio',
+    showGroupLength,
+    errorMessage,
+    helpText,
+    label,
+    id,
+    name,
+    required = false,
+  }: DropdownProps,
+  ref: React.ForwardedRef<any>
+) => {
   const inputId = id || name
   return (
     <div>
@@ -164,6 +167,7 @@ const DropdownComponent = ({
         className="mb-1"
       />
       <Select
+        ref={ref}
         className={`w-full text-inverted-2  ${
           disabled ? 'cursor-not-allowed opacity-70' : 'cursor-pointer'
         }`}
