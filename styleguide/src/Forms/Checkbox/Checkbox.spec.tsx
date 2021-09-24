@@ -8,7 +8,7 @@ const { Default, Disabled, DisabledChecked } = composeStories(stories)
 describe('Checkbox tests', () => {
   it('Default', () => {
     mount(<Default />)
-    cy.get('.input-label').contains('Meu checkbox')
+    cy.get('.input-label').contains('Li e aceito os termos de uso.')
     cy.get('input').should('have.attr', 'type', 'checkbox')
   })
 

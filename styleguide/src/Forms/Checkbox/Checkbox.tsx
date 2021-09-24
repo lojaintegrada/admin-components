@@ -49,11 +49,14 @@ const CheckboxComponent = (
       : 'bg-base-1'
   }  rounded w-4 h-4 flex justify-center items-center m-px`
 
-  const checkboxLabelClasses = `ml-2 duration-200 transition ease-out input-label`
+  const checkboxLabelClasses = `ml-1 input-label text-f6 tracking-4 leading-6`
 
   return (
-    <label htmlFor={inputId} className="flex items-center cursor-pointer">
-      <span className="border-2 rounded-md border-transparent z-50 flex items-center justify-center focus-within:border-focus">
+    <label
+      htmlFor={inputId}
+      className="inline-flex items-center cursor-pointer"
+    >
+      <span className="rounded z-50 flex items-center justify-center focus-within:ring-2 ring-focus">
         <input
           ref={ref || inputRef}
           type="checkbox"
@@ -103,6 +106,6 @@ export const Checkbox = React.memo(CheckboxWithFowardRef)
 
 export interface CheckboxProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
-  label?: string
+  label?: string | React.ReactNode
   indeterminate?: boolean
 }
