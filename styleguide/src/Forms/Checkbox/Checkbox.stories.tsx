@@ -8,11 +8,25 @@ export default {
   component: Checkbox,
 } as Meta
 
+const labelCheckbox = (
+  <>
+    <span>Li e aceito os </span>
+    <a href="/terms" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-dark transition-colors font-semibold">
+      termos de uso.
+    </a>
+  </>
+)
+
 const Template: Story<CheckboxProps> = (args) => <Checkbox {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  label: 'Meu checkbox',
+  label: labelCheckbox,
+}
+
+export const Indeterminate = Template.bind({})
+Indeterminate.args = {
+  label: "Meu checkbox",
   indeterminate: true,
 }
 
