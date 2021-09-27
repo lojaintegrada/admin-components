@@ -20,7 +20,7 @@ export const variantClasses = {
 }
 
 export interface CustomOptionProps {
-  value: string
+  value: string | number
   label: string
   icon?: string | undefined
   isDisabled?: boolean | undefined
@@ -141,6 +141,7 @@ const DropdownComponent = (
     placeholder,
     isSearchable = false,
     onChange,
+    onBlur,
     variant = 'default',
     markSelectedOption,
     fixedValue,
@@ -153,6 +154,7 @@ const DropdownComponent = (
     id,
     name,
     required = false,
+    defaultValue,
   }: DropdownProps,
   ref: React.ForwardedRef<any>
 ) => {
@@ -176,6 +178,7 @@ const DropdownComponent = (
         isSearchable={isSearchable}
         value={fixedValue}
         isDisabled={disabled}
+        defaultValue={defaultValue}
         formatGroupLabel={(data) => formatGroupLabel(data, showGroupLength)}
         styles={{
           option: () => {
@@ -203,6 +206,7 @@ const DropdownComponent = (
         placeholder={placeholder}
         noOptionsMessage={() => emptyMessage}
         onChange={(value) => onChange && value && onChange(value)}
+        onBlur={(event) => onBlur && onBlur(event)}
         components={{
           Option: (props) => IconOption(props, markSelectedOption),
           DropdownIndicator: (props) => CustomDropdownIndicator(props),
@@ -231,6 +235,7 @@ export interface DropdownProps {
   options: CustomOptionProps[] | CustomGroupedOptionsProps[]
   placeholder?: string
   onChange?: (option: CustomOptionProps) => void
+  onBlur?: (event: React.FocusEvent<HTMLElement>) => void
   /**
    * Changes the size of dropdown
    * @default default
@@ -281,6 +286,10 @@ export interface DropdownProps {
    * @default false
    * */
   required?: boolean
+  /**
+   * Initial default value for the dropdown
+   * */
+  defaultValue?: CustomOptionProps
   id?: string
   name?: string
 }

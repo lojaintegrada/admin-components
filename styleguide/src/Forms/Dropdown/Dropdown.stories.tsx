@@ -115,3 +115,17 @@ WithError.args = {
   label: 'Label',
   errorMessage: 'Houve um erro',
 }
+
+export const DefaultValue = Template.bind({})
+DefaultValue.args = {
+  placeholder: 'Selecione um item',
+  defaultValue: dropdownOptions[0],
+}
+
+export const OnBlur = Template.bind({})
+OnBlur.args = {
+  placeholder: 'Selecione um item',
+  onBlur: (e) => {
+    console.log(e)
+  },
+}
