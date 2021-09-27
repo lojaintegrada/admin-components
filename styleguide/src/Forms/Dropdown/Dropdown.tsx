@@ -208,7 +208,7 @@ const DropdownComponent = (
         placeholder={placeholder}
         noOptionsMessage={() => emptyMessage}
         onChange={(value) => onChange && value && onChange(value)}
-        onBlur={(event) => onBlur && onBlur(event)}
+        onBlur={(event) => onBlur?.(event)}
         components={{
           Option: (props) => IconOption(props, markSelectedOption),
           DropdownIndicator: (props) => CustomDropdownIndicator(props),
