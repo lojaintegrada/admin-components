@@ -155,6 +155,7 @@ const DropdownComponent = (
     name,
     required = false,
     defaultValue,
+    maxMenuHeight = 300,
   }: DropdownProps,
   ref: React.ForwardedRef<any>
 ) => {
@@ -180,6 +181,7 @@ const DropdownComponent = (
         isDisabled={disabled}
         defaultValue={defaultValue}
         formatGroupLabel={(data) => formatGroupLabel(data, showGroupLength)}
+        maxMenuHeight={maxMenuHeight}
         styles={{
           option: () => {
             return {}
@@ -290,6 +292,10 @@ export interface DropdownProps {
    * Initial default value for the dropdown
    * */
   defaultValue?: CustomOptionProps
+  /**
+   * Max height for the options menu container
+   * */
+  maxMenuHeight?: number
   id?: string
   name?: string
 }

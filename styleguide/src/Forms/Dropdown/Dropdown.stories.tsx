@@ -129,3 +129,9 @@ OnBlur.args = {
     console.log(e)
   },
 }
+
+export const MaxMenuHeight = Template.bind({})
+MaxMenuHeight.args = {
+  placeholder: 'Selecione um item',
+  maxMenuHeight: 80,
+}
