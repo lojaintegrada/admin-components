@@ -33,24 +33,22 @@ const ToggleComponent = (
   const toggleLabelClasses = `ml-2 text-inverted-1 text-f6 tracking-4 label`
 
   return (
-    <div className="flex items-center justify-center w-full mb-12">
-      <label htmlFor={inputId} className={`flex items-center cursor-pointer`}>
-        <div className={`${toggleContainerDisabledClasses}`}>
-          <input
-            ref={ref}
-            type="checkbox"
-            id={inputId}
-            className="sr-only"
-            checked={isChecked}
-            onChange={handleChange}
-            {...props}
-          />
-          <div className={toggleBackgroundClasses}></div>
-          <div className={toggleCircleClasses}></div>
-        </div>
-        <div className={toggleLabelClasses}>{label}</div>
-      </label>
-    </div>
+    <label htmlFor={inputId} className={`flex items-center cursor-pointer`}>
+      <div className={`${toggleContainerDisabledClasses}`}>
+        <input
+          ref={ref}
+          type="checkbox"
+          id={inputId}
+          className="sr-only"
+          checked={isChecked}
+          onChange={handleChange}
+          {...props}
+        />
+        <div className={toggleBackgroundClasses}></div>
+        <div className={toggleCircleClasses}></div>
+      </div>
+      <div className={toggleLabelClasses}>{label}</div>
+    </label>
   )
 }
 
