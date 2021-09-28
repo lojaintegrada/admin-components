@@ -156,6 +156,7 @@ const DropdownComponent = (
     required = false,
     defaultValue,
     maxMenuHeight = 300,
+    menuPosition = 'absolute',
   }: DropdownProps,
   ref: React.ForwardedRef<any>
 ) => {
@@ -182,6 +183,8 @@ const DropdownComponent = (
         defaultValue={defaultValue}
         formatGroupLabel={(data) => formatGroupLabel(data, showGroupLength)}
         maxMenuHeight={maxMenuHeight}
+        menuPortalTarget={document.body}
+        menuPosition={menuPosition}
         styles={{
           option: () => {
             return {}
@@ -192,6 +195,7 @@ const DropdownComponent = (
           menu: (base) => {
             return {
               ...base,
+              zIndex: 999,
               padding: 20,
             }
           },
@@ -296,6 +300,11 @@ export interface DropdownProps {
    * Max height for the options menu container
    * */
   maxMenuHeight?: number
+  /**
+   * The CSS position value of the menu, when "fixed" extra layout management is required
+   * @default 'absolute'
+   * */
+  menuPosition?: 'fixed' | 'absolute'
   id?: string
   name?: string
 }
