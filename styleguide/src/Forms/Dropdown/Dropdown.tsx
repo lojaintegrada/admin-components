@@ -157,6 +157,7 @@ const DropdownComponent = (
     defaultValue,
     maxMenuHeight = 300,
     menuPosition = 'absolute',
+    menuPlacement = 'auto',
   }: DropdownProps,
   ref: React.ForwardedRef<any>
 ) => {
@@ -185,6 +186,7 @@ const DropdownComponent = (
         maxMenuHeight={maxMenuHeight}
         menuPortalTarget={document.body}
         menuPosition={menuPosition}
+        menuPlacement={menuPlacement}
         styles={{
           option: () => {
             return {}
@@ -198,6 +200,9 @@ const DropdownComponent = (
               zIndex: 999,
               padding: 20,
             }
+          },
+          menuPortal: (base) => {
+            return { ...base, zIndex: 9999 }
           },
           indicatorSeparator: () => {
             return {}
@@ -305,6 +310,11 @@ export interface DropdownProps {
    * @default 'absolute'
    * */
   menuPosition?: 'fixed' | 'absolute'
+  /**
+   * Default placement of the menu in relation to the control. 'auto' will flip when there isn't enough space below the control.
+   * @default 'auto'
+   * */
+  menuPlacement?: 'top' | 'bottom' | 'auto'
   id?: string
   name?: string
 }
