@@ -184,7 +184,7 @@ const DropdownComponent = (
         defaultValue={defaultValue}
         formatGroupLabel={(data) => formatGroupLabel(data, showGroupLength)}
         maxMenuHeight={maxMenuHeight}
-        menuPortalTarget={document.body}
+        menuPortalTarget={document?.body}
         menuPosition={menuPosition}
         menuPlacement={menuPlacement}
         styles={{
