@@ -7,6 +7,7 @@ import { ArrowRight } from './ArrowRight'
 import { Ban } from './Ban'
 import { BarcodeRead } from './BarcodeRead'
 import { Bullhorn } from './Bullhorn'
+import { CalendarAlt } from './CalendarAlt'
 import { Cog } from './Cog'
 import { Copy } from './Copy'
 import { Clock } from './Clock'
@@ -22,6 +23,7 @@ import { ExclamationTriangle } from './ExclamationTriangle'
 import { ExternalLink } from './ExternalLink'
 import { Home } from './Home'
 import { Order } from './Order'
+import { Pagali } from './Pagali'
 import { PieChart } from './PieChart'
 import { PlusCircle } from './PlusCircle'
 import { Print } from './Print'
@@ -46,6 +48,7 @@ export const icons = {
   ban: Ban,
   barcodeRead: BarcodeRead,
   bullhorn: Bullhorn,
+  calendarAlt: CalendarAlt,
   check: Check,
   cog: Cog,
   copy: Copy,
@@ -61,6 +64,7 @@ export const icons = {
   externalLink: ExternalLink,
   home: Home,
   order: Order,
+  pagali: Pagali,
   pieChart: PieChart,
   plusCircle: PlusCircle,
   print: Print,
