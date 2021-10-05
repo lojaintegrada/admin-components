@@ -18,6 +18,7 @@ const InputComponent = (
   {
     className = '',
     label,
+    labelComplement,
     helpText,
     hasError = false,
     errorMessage,
@@ -65,6 +66,7 @@ const InputComponent = (
   const LabelComponent = (
     <InputLabel
       label={label}
+      labelComplement={labelComplement}
       required={required}
       hasError={hasErrorState}
       htmlFor={inputId}

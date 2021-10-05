@@ -16,6 +16,7 @@ export const SelectComponent = (
   {
     className = '',
     label,
+    labelComplement,
     helpText,
     hasError = false,
     errorMessage,
@@ -58,6 +59,7 @@ export const SelectComponent = (
       hasError={hasErrorState}
       htmlFor={selectId}
       className="mb-1"
+      labelComplement={labelComplement}
     />
   )
 

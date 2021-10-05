@@ -10,7 +10,7 @@ import Select, {
 } from 'react-select'
 import { Icon as IconComponent } from '../../Icons'
 import { InputHelpText } from '../InputHelpText'
-import { InputLabel } from '../InputLabel'
+import { InputLabel, InputLabelProps } from '../InputLabel'
 
 export const variantClasses = {
   default: 'h-12',
@@ -151,6 +151,7 @@ const DropdownComponent = (
     errorMessage,
     helpText,
     label,
+    labelComplement,
     id,
     name,
     required = false,
@@ -166,6 +167,7 @@ const DropdownComponent = (
     <div>
       <InputLabel
         label={label}
+        labelComplement={labelComplement}
         required={required}
         hasError={!!errorMessage}
         htmlFor={inputId}
@@ -284,6 +286,7 @@ export interface DropdownProps {
    * Help text
    * */
   label?: string
+  labelComplement: InputLabelProps['labelComplement']
   /** Should display the label above the dropdown
    * @default ''
    * */

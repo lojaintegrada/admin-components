@@ -2,6 +2,7 @@ import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
 import { Dropdown, DropdownProps, CustomOptionProps } from './'
+import { Icon } from '../../Icons'
 
 const dropdownOptions = [
   { label: 'Visualizar 15', value: 15 },
@@ -134,4 +135,11 @@ export const MaxMenuHeight = Template.bind({})
 MaxMenuHeight.args = {
   placeholder: 'Selecione um item',
   maxMenuHeight: 80,
+}
+
+export const WithComplement = Template.bind({})
+WithComplement.args = {
+  label: 'Label',
+  labelComplement: <Icon icon="infoCircle" size={4} block />,
+  required: true,
 }
