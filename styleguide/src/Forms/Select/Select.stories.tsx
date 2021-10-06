@@ -2,6 +2,7 @@ import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
 import { Select, SelectProps } from '.'
+import { Icon } from '../../Icons'
 
 const selectOptions = [
   { label: 'Visualizar 15', value: 15 },
@@ -42,6 +43,14 @@ export const WithoutStyle = Template.bind({})
 WithoutStyle.args = {
   withoutStyle: true,
 }
+
+export const WithComplement = Template.bind({})
+WithComplement.args = {
+  label: 'Label',
+  labelComplement: <Icon icon="infoCircle" size={4} block />,
+  required: true,
+}
+
 
 export const Disabled = Template.bind({})
 Disabled.args = {

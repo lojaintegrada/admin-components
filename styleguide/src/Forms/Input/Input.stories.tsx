@@ -91,3 +91,10 @@ WithBoth.args = {
   prefix: 'R$',
   sufix: <Icon icon="cog" />,
 }
+
+export const WithComplement = Template.bind({})
+WithComplement.args = {
+  label: 'Label',
+  labelComplement: <Icon icon="infoCircle" size={4} block />,
+  required: true,
+}
