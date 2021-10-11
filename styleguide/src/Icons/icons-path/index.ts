@@ -24,6 +24,7 @@ import { ExternalLink } from './ExternalLink'
 import { Home } from './Home'
 import { Order } from './Order'
 import { Pagali } from './Pagali'
+import { PaperList } from './PaperList'
 import { PieChart } from './PieChart'
 import { PlusCircle } from './PlusCircle'
 import { Print } from './Print'
@@ -65,6 +66,7 @@ export const icons = {
   home: Home,
   order: Order,
   pagali: Pagali,
+  paperList: PaperList,
   pieChart: PieChart,
   plusCircle: PlusCircle,
   print: Print,
