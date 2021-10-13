@@ -6,6 +6,7 @@ import { SortDown } from './SortDown'
 import { ArrowRight } from './ArrowRight'
 import { Ban } from './Ban'
 import { BarcodeRead } from './BarcodeRead'
+import { Bell } from './Bell'
 import { Bullhorn } from './Bullhorn'
 import { CalendarAlt } from './CalendarAlt'
 import { Cog } from './Cog'
@@ -48,6 +49,7 @@ export const icons = {
   sortDown: SortDown,
   ban: Ban,
   barcodeRead: BarcodeRead,
+  bell: Bell,
   bullhorn: Bullhorn,
   calendarAlt: CalendarAlt,
   check: Check,
