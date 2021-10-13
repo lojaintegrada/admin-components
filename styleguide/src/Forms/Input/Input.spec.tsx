@@ -36,16 +36,16 @@ describe('Input tests', () => {
 
   it('Variants', () => {
     mount(<Default variant="default" />)
-    cy.get('input').should('have.class', 'h-12')
+    cy.get('input').parent().should('have.class', 'h-12')
 
     mount(<Default variant="small" />)
-    cy.get('input').should('have.class', 'h-8')
+    cy.get('input').parent().should('have.class', 'h-8')
 
     mount(<Default variant="large" />)
-    cy.get('input').should('have.class', 'h-14')
+    cy.get('input').parent().should('have.class', 'h-14')
 
     mount(<Default variant="xlarge" />)
-    cy.get('input').should('have.class', 'h-24')
+    cy.get('input').parent().should('have.class', 'h-24')
   })
 
   it('Adornments', () => {
