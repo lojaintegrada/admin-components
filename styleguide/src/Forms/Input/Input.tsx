@@ -57,11 +57,9 @@ const InputComponent = (
     inputContainerClass += ` ${defaultBorderClasses}`
   }
 
-  const inputClass = `w-full px-4 appearance-none shadow-none outline-none  bg-transparent -mt-px box-border ${focusClass} ${
+  const inputClass = `w-full tracking-4 px-4 appearance-none shadow-none outline-none bg-transparent box-border ${focusClass} ${
     hasErrorState ? errorBorderClasses : defaultBorderClasses
-  } ${prefix ? 'border-l' : ''} ${sufix ? 'border-r' : ''} ${
-    variantClasses[variant]
-  }`
+  } ${prefix ? 'border-l' : ''} ${sufix ? 'border-r' : ''}`
 
   const LabelComponent = (
     <InputLabel

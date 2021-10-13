@@ -23,6 +23,8 @@ export const Date = Template.bind({})
 Date.args = {
   formatValue: 'date',
   defaultValue: '10/11/1990',
+  name: 'birthday',
+  placeholder: '00/00/0000'
 }
 
 export const OnlyNumbers = Template.bind({})

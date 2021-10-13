@@ -15,6 +15,8 @@ export const Default = Template.bind({})
 Default.args = {
   label: 'Meu Campo',
   helpText: 'Texto de ajuda para preencher o campo',
+  placeholder: 'Digite aqui',
+  name: 'nome',
 }
 
 export const Error = Template.bind({})
@@ -22,6 +24,7 @@ Error.args = {
   label: 'Meu Campo',
   helpText: 'Texto de ajuda para preencher o campo',
   errorMessage: 'Campo obrigatório',
+  name: 'nome',
 }
 
 export const Disabled = Template.bind({})
@@ -41,6 +44,7 @@ Prefix.args = {
   label: 'Meu Campo',
   helpText: 'Texto de ajuda para preencher o campo',
   prefix: 'R$',
+  name: 'valor',
 }
 
 export const IconPrefix = Template.bind({})
@@ -49,6 +53,7 @@ IconPrefix.args = {
   helpText: 'Texto de ajuda para preencher o campo',
   prefix: <Icon icon="cog" />,
   hasError: true,
+  name: 'nome',
 }
 
 export const Sufix = Template.bind({})
@@ -56,6 +61,7 @@ Sufix.args = {
   label: 'Meu Campo',
   helpText: 'Texto de ajuda para preencher o campo',
   sufix: 'R$',
+  name: 'valor',
 }
 
 export const IconSufix = Template.bind({})
@@ -64,6 +70,7 @@ IconSufix.args = {
   helpText: 'Texto de ajuda para preencher o campo',
   sufix: <Icon icon="cog" />,
   hasError: true,
+  name: 'nome',
 }
 
 export const PrefixDisabled = Template.bind({})
@@ -90,6 +97,7 @@ WithBoth.args = {
   helpText: 'Texto de ajuda para preencher o campo',
   prefix: 'R$',
   sufix: <Icon icon="cog" />,
+  name: 'valor',
 }
 
 export const WithComplement = Template.bind({})
@@ -97,4 +105,5 @@ WithComplement.args = {
   label: 'Label',
   labelComplement: <Icon icon="infoCircle" size={4} block />,
   required: true,
+  name: 'nome',
 }
