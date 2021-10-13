@@ -6,6 +6,7 @@ import { SortDown } from './SortDown'
 import { ArrowRight } from './ArrowRight'
 import { Ban } from './Ban'
 import { BarcodeRead } from './BarcodeRead'
+import { Bell } from './Bell'
 import { Bullhorn } from './Bullhorn'
 import { CalendarAlt } from './CalendarAlt'
 import { Cog } from './Cog'
@@ -24,6 +25,7 @@ import { ExternalLink } from './ExternalLink'
 import { Home } from './Home'
 import { Order } from './Order'
 import { Pagali } from './Pagali'
+import { PaperList } from './PaperList'
 import { PieChart } from './PieChart'
 import { PlusCircle } from './PlusCircle'
 import { Print } from './Print'
@@ -47,6 +49,7 @@ export const icons = {
   sortDown: SortDown,
   ban: Ban,
   barcodeRead: BarcodeRead,
+  bell: Bell,
   bullhorn: Bullhorn,
   calendarAlt: CalendarAlt,
   check: Check,
@@ -65,6 +68,7 @@ export const icons = {
   home: Home,
   order: Order,
   pagali: Pagali,
+  paperList: PaperList,
   pieChart: PieChart,
   plusCircle: PlusCircle,
   print: Print,
