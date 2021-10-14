@@ -13,7 +13,7 @@ export const focusClass = 'focus:border-inverted-1'
 
 export const inputClasses = `appearance-none shadow-none outline-none bg-base-1 border px-4 rounded text-on-base text-sm tracking-4 min-w-0 w-full transition-border duration-75 ${focusClass} ${inputPlaceholderClasses}`
 
-export const inputContainerClasses = `flex w-full focus-within:border-inverted-1 bg-base-1 border rounded text-on-base text-sm tracking-4 min-w-0 w-full transition-border duration-75 ${inputPlaceholderClasses}`
+export const inputContainerClasses = `flex focus-within:border-inverted-1 bg-base-1 border rounded text-on-base text-sm tracking-4 min-w-0 w-full transition-border duration-75 overflow-hidden ${inputPlaceholderClasses}`
 
 const adornmentClasses = `flex justify-center items-center relative w-16 text-f6 text-inverted-2 tracking-4 -mt-px`
 
