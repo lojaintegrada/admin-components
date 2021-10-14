@@ -64,7 +64,7 @@ const CustomControl = (
   variant: keyof typeof variantClasses,
   errorMessage?: string
 ) => {
-  const controlClasses = `flex itens-center border rounded ${
+  const controlClasses = `flex itens-center border rounded pl-2 ${
     errorMessage ? 'border-danger' : 'border-card-stroke'
   } ${variantClasses[variant]}`
   return <Control {...props} className={controlClasses} />
@@ -124,14 +124,16 @@ const CustomPlaceholder = (
     false,
     GroupTypeBase<CustomOptionProps>
   >
-) => <Placeholder {...props} className="text-f6 tracking-4" />
+) => (
+  <Placeholder {...props} className="text-f6 tracking-4 w-full pr-2 truncate" />
+)
 
 const CustomSingleValue = (
   props: SingleValueProps<CustomOptionProps, GroupTypeBase<CustomOptionProps>>
 ) => (
   <SingleValue
     {...props}
-    className="text-f6 tracking-4 text-inverted-2 text-sm"
+    className="text-f6 tracking-4 text-inverted-2 text-sm truncate"
   />
 )
 
@@ -213,7 +215,16 @@ const DropdownComponent = (
             return {}
           },
           singleValue: () => {
-            return {}
+            return {
+              maxWidth: 'calc(100% - 6px)',
+            }
+          },
+          input: (base) => {
+            return {
+              ...base,
+              fontSize: '0.875rem',
+              letterSpacing: '-0.025rem',
+            }
           },
         }}
         placeholder={placeholder}
@@ -286,7 +297,7 @@ export interface DropdownProps {
    * Help text
    * */
   label?: string
-  labelComplement: InputLabelProps['labelComplement']
+  labelComplement?: InputLabelProps['labelComplement']
   /** Should display the label above the dropdown
    * @default ''
    * */
