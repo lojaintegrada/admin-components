@@ -8,6 +8,7 @@ const dropdownOptions = [
   { label: 'Visualizar 15', value: 15 },
   { label: 'Visualizar 50', value: 50, isDisabled: true, icon: 'cog' },
   { label: 'Visualizar 100', value: 100 },
+  { label: 'Visualizar todos os itens', value: 1000 },
 ]
 
 export default {
@@ -29,7 +30,7 @@ const Template: Story<DropdownProps> = (args) => (
 
 export const Default = Template.bind({})
 Default.args = {
-  placeholder: 'Selecione um item',
+  placeholder: 'Selecione um item na lista',
 }
 
 export const Empty = Template.bind({})
