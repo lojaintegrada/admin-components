@@ -286,7 +286,7 @@ export interface DropdownProps {
    * Help text
    * */
   label?: string
-  labelComplement: InputLabelProps['labelComplement']
+  labelComplement?: InputLabelProps['labelComplement']
   /** Should display the label above the dropdown
    * @default ''
    * */
