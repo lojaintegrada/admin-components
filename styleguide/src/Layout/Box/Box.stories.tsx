@@ -12,6 +12,7 @@ import { Tabs, TabsProps } from '../../Components/Tabs'
 const BoxHeaderArgs: BoxHeaderProps = {
   title: 'Box Title',
   subtitle: 'Box SubTitle',
+  showToggle: false,
 }
 
 const BoxContentArgs: BoxContentProps = {
@@ -72,6 +73,7 @@ interface BoxFullProps extends BoxProps {
   showTitle: boolean
   showTabs: boolean
   showActions: boolean
+  showToggle: boolean
 }
 
 const Template: Story<BoxFullProps> = ({
@@ -120,6 +122,27 @@ const TemplateWithAction: Story<BoxFullProps> = ({ BoxHeader, BoxContent, Action
 export const WithAction = TemplateWithAction.bind({})
 WithAction.args = {
   BoxHeader: BoxHeaderArgs,
+  Action: ActionArgs,
+}
+
+const TemplateWithToggle: Story<BoxFullProps> = ({
+  BoxHeader,
+  BoxContent,
+  Action: ActionArgs,
+  showToggle,
+  ...args
+}) => (
+  <Box {...args}>
+    <Box.Header {...BoxHeader} showToggle={showToggle}>
+      <Status {...ActionArgs} />
+    </Box.Header>
+    <Box.Content {...BoxContent} />
+  </Box>
+)
+export const WithToggle = TemplateWithToggle.bind({})
+WithToggle.args = {
+  BoxHeader: BoxHeaderArgs,
+  showToggle: true,
   Action: ActionArgs,
 }
 

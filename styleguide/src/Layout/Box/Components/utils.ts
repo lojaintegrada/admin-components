@@ -4,11 +4,20 @@ export interface SharedContextProps {
   /** Variant type
    * @default 'default'
    * */
-  variant: 'default' | 'small'
+  variant: 'default' | 'small',
+  /** Define is box content has visible
+   * @default true
+   * */
+   contentVisible?: boolean,
+   showContent: boolean,
+   setShowContent: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const SharedContext = React.createContext<SharedContextProps>({
   variant: 'default',
+  contentVisible: true,
+  showContent: true,
+  setShowContent: () => {},
 })
 
 export const defaultPaddingVariantsHeader = {

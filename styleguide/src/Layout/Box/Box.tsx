@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { BoxHeader, BoxHeaderProps } from './Components/Header/BoxHeader'
 import { BoxContent, BoxContentProps } from './Components/Content/BoxContent'
@@ -17,10 +17,14 @@ export class Box extends React.PureComponent<BoxProps> {
   }
 
   render() {
-    const { children, className = '', variant = 'default' } = this.props
+    const { children, className = '', variant = 'default', contentVisible = true} = this.props
+    const [showContent, setShowContent] = useState(contentVisible)
     const sharedProps = {
       variant,
+      showContent,
+      setShowContent,
     }
+
     return (
       <SharedContext.Provider value={sharedProps}>
         <div

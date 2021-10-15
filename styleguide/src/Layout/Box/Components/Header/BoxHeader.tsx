@@ -2,20 +2,25 @@ import React, { useContext } from 'react'
 
 import { TabsProps } from '../../../../Components/Tabs'
 import { SharedContext, defaultPaddingVariantsHeader } from '../utils'
+import { Icon } from '../../../../Icons'
 
 export const BoxHeader = React.memo(
-  ({ children, title, subtitle, Tabs }: BoxHeaderProps) => {
+  ({ children, title, subtitle, showToggle, Tabs }: BoxHeaderProps) => {
     const sharedProps = useContext(SharedContext)
-    const { variant } = sharedProps
+    const { variant, showContent, setShowContent } = sharedProps
 
     const hasTitle = !!(title || subtitle || children)
     const hasTabs = !!Tabs
 
+    function toggleBoxContent() {
+      setShowContent(!showContent)
+    }
+
     return (
       <div
-        className={`box-header border-b border-card-stroke ${
+        className={`box-header ${
           defaultPaddingVariantsHeader[variant]
-        } ${hasTabs ? '!pb-0' : ''} ${!hasTitle ? '!pt-0' : ''}`}
+        } ${hasTabs ? '!pb-0' : ''} ${!hasTitle ? '!pt-0' : ''} ${showContent && 'border-b border-card-stroke'}`}
       >
         {hasTitle && (
           <div
@@ -37,7 +42,14 @@ export const BoxHeader = React.memo(
                 </h4>
               )}
             </div>
-            {children}
+            <div className="flex items-center">
+              {children}
+              {showToggle && (
+                <button className="ml-2" onClick={toggleBoxContent}>
+                  <Icon icon="trash" />
+                </button>
+              )}
+            </div>
           </div>
         )}
         {hasTabs && (
@@ -57,6 +69,10 @@ export interface BoxHeaderProps {
    * Subtitle of the Box
    */
   subtitle?: string | React.ReactNode
+  /** Box toggle
+   * @default false
+   */
+  showToggle?: boolean
   /**
    * React children, use to render actions in Header
    * Also support render prop

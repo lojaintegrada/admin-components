@@ -4,10 +4,10 @@ import { SharedContext, defaultPaddingVariantsContent } from '../utils'
 
 export const BoxContent = React.memo(({ children }: BoxContentProps) => {
   const sharedProps = useContext(SharedContext)
-  const { variant } = sharedProps
+  const { variant, showContent } = sharedProps
 
   return (
-    <div className={`box-content ${defaultPaddingVariantsContent[variant]}`}>
+    <div className={`box-content ${defaultPaddingVariantsContent[variant]} ${!showContent && 'hidden'}`}>
       {children}
     </div>
   )
