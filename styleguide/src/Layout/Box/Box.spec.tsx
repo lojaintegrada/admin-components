@@ -3,7 +3,7 @@ import { composeStories } from "@storybook/testing-react"
 import { mount } from "@cypress/react"
 import * as stories from "./Box.stories"
 
-const { Default, WithAction, WithTabs, OnlyTabs } = composeStories(stories)
+const { Default, WithAction, WithTabs, WithToggle, OnlyTabs } = composeStories(stories)
 
 describe('Box tests', () => {
 
@@ -33,6 +33,17 @@ describe('Box tests', () => {
       .should('have.length', 1)
       .contains('Some status')
       .get('.rounded-full').should('have.class', 'bg-success')
+    cy.get('.box .box-header .tabs').should('not.exist')
+  })
+
+  it('WithToggle', () => {
+    mount(<WithToggle />)
+    cy.get('.box .box-header .box-toggle')
+      .should('have.length', 1)
+      .parents('.box-header').trigger('click')
+      .should('have.attr', 'data-opened', 'false')
+      .trigger('click')
+      .should('have.attr', 'data-opened', 'true')
     cy.get('.box .box-header .tabs').should('not.exist')
   })
 

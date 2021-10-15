@@ -1,11 +1,14 @@
-import React, { useRef } from 'react'
+import React from 'react'
 
 import { BoxHeader, BoxHeaderProps } from './Components/Header/BoxHeader'
 import { BoxContent, BoxContentProps } from './Components/Content/BoxContent'
 import { BoxSeparator } from './Components/Separator/BoxSeparator'
 import { SharedContext, SharedContextProps } from './Components/utils'
 
-export class Box extends React.PureComponent<BoxProps, {showContent: boolean}> {
+export class Box extends React.PureComponent<
+  BoxProps,
+  { showContent: boolean }
+> {
   static Header = (props: BoxHeaderProps) => {
     return <BoxHeader {...props} />
   }
@@ -19,18 +22,19 @@ export class Box extends React.PureComponent<BoxProps, {showContent: boolean}> {
   constructor(props: BoxProps) {
     super(props)
     this.state = {
-      showContent: true,
+      showContent: props.showContent ?? true,
     }
   }
 
   render() {
-    const { children, className = '', variant = 'default'} = this.props
-    const setShowContent = () => this.setState({ showContent: !this.state.showContent })
+    const { children, className = '', variant = 'default' } = this.props
+    const toggleContent = (value?: boolean) =>
+      this.setState({ showContent: value ?? !this.state.showContent })
     const showContent = this.state.showContent
     const sharedProps = {
       variant,
       showContent,
-      setShowContent,
+      toggleContent,
     }
 
     return (
@@ -50,7 +54,6 @@ export interface BoxProps extends Partial<SharedContextProps> {
    * Custom class name
    * */
   className?: string
-  showContent?: boolean
   /**
    * Box Header and Content
    */

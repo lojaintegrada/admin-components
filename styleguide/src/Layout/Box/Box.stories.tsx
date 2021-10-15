@@ -128,20 +128,17 @@ WithAction.args = {
 const TemplateWithToggle: Story<BoxFullProps> = ({
   BoxHeader,
   BoxContent,
-  Action: ActionArgs,
   ...args
 }) => (
   <Box {...args}>
-    <Box.Header {...BoxHeader} showToggle headerAsToggle>
-      <Status {...ActionArgs} />
-    </Box.Header>
+    <Box.Header {...BoxHeader} />
     <Box.Content {...BoxContent} />
   </Box>
 )
 export const WithToggle = TemplateWithToggle.bind({})
 WithToggle.args = {
+  showContent: true,
   BoxHeader: {...BoxHeaderArgs, showToggle: true, headerAsToggle: true},
-  Action: ActionArgs,
 }
 
 const TemplateWithTabs: Story<BoxFullProps> = ({ BoxHeader, BoxContent, Tabs: TabsArgs, ...args }) => (

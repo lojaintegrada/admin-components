@@ -5,23 +5,29 @@ import { SharedContext, defaultPaddingVariantsHeader } from '../utils'
 import { Icon } from '../../../../Icons'
 
 export const BoxHeader = React.memo(
-  ({ children, title, subtitle, showToggle, headerAsToggle, Tabs }: BoxHeaderProps) => {
+  ({
+    children,
+    title,
+    subtitle,
+    showToggle,
+    headerAsToggle,
+    Tabs,
+  }: BoxHeaderProps) => {
     const sharedProps = useContext(SharedContext)
-    const { variant, showContent, setShowContent } = sharedProps
+    const { variant, showContent, toggleContent } = sharedProps
 
     const hasTitle = !!(title || subtitle || children)
     const hasTabs = !!Tabs
 
-    function toggleBoxContent() {
-      setShowContent(!showContent)
-    }
-
     return (
       <div
-        className={`box-header ${headerAsToggle && 'cursor-pointer group'} ${
-          defaultPaddingVariantsHeader[variant]
-        } ${hasTabs ? '!pb-0' : ''} ${!hasTitle ? '!pt-0' : ''} ${showContent && 'border-b border-card-stroke'}`}
-        onClick={headerAsToggle ? toggleBoxContent : undefined}
+        className={`box-header ${
+          headerAsToggle ? 'cursor-pointer group' : ''
+        } ${defaultPaddingVariantsHeader[variant]} ${hasTabs ? '!pb-0' : ''} ${
+          !hasTitle ? '!pt-0' : ''
+        } ${showContent ? 'border-b border-card-stroke' : ''}`}
+        onClick={() => (headerAsToggle ? toggleContent() : undefined)}
+        data-opened={showContent}
       >
         {hasTitle && (
           <div
@@ -46,8 +52,17 @@ export const BoxHeader = React.memo(
             <div className="flex items-center">
               {children}
               {showToggle && (
-                <button type="button" className="ml-2" onClick={toggleBoxContent}>
-                  <Icon icon="angleLeft" className={`text-on-base-2 hover:text-on-base group-hover:text-on-base transition-all origin-center ${showContent ? 'rotate-90' : '-rotate-90'}`} />
+                <button
+                  type="button"
+                  className="box-toggle ml-2"
+                  onClick={() => toggleContent()}
+                >
+                  <Icon
+                    icon="angleLeft"
+                    className={`text-on-base-2 hover:text-on-base group-hover:text-on-base transition-all origin-center ${
+                      showContent ? 'rotate-90' : '-rotate-90'
+                    }`}
+                  />
                 </button>
               )}
             </div>

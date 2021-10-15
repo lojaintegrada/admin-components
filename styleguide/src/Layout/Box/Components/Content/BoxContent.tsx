@@ -7,7 +7,11 @@ export const BoxContent = React.memo(({ children }: BoxContentProps) => {
   const { variant, showContent } = sharedProps
 
   return (
-    <div className={`box-content ${defaultPaddingVariantsContent[variant]} ${!showContent && 'hidden'}`}>
+    <div
+      className={`box-content ${defaultPaddingVariantsContent[variant]} ${
+        !showContent && 'hidden'
+      }`}
+    >
       {children}
     </div>
   )

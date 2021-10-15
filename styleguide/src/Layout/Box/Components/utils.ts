@@ -4,18 +4,21 @@ export interface SharedContextProps {
   /** Variant type
    * @default 'default'
    * */
-  variant: 'default' | 'small',
-  /** Define is box content has visible
+  variant: 'default' | 'small'
+  /** Define is box content has visible by default
    * @default true
    * */
-   showContent: boolean,
-   setShowContent: React.Dispatch<React.SetStateAction<boolean>>
+  showContent: boolean
+  /**
+   * Expand/collapse box content
+   * */
+  toggleContent(value?: boolean): void
 }
 
 export const SharedContext = React.createContext<SharedContextProps>({
   variant: 'default',
   showContent: true,
-  setShowContent: () => {},
+  toggleContent: (value?: boolean) => value,
 })
 
 export const defaultPaddingVariantsHeader = {
