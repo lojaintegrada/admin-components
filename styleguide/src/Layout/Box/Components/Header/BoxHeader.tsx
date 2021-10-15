@@ -5,7 +5,7 @@ import { SharedContext, defaultPaddingVariantsHeader } from '../utils'
 import { Icon } from '../../../../Icons'
 
 export const BoxHeader = React.memo(
-  ({ children, title, subtitle, showToggle, Tabs }: BoxHeaderProps) => {
+  ({ children, title, subtitle, showToggle, headerAsToggle, Tabs }: BoxHeaderProps) => {
     const sharedProps = useContext(SharedContext)
     const { variant, showContent, setShowContent } = sharedProps
 
@@ -18,9 +18,10 @@ export const BoxHeader = React.memo(
 
     return (
       <div
-        className={`box-header ${
+        className={`box-header ${headerAsToggle && 'cursor-pointer group'} ${
           defaultPaddingVariantsHeader[variant]
         } ${hasTabs ? '!pb-0' : ''} ${!hasTitle ? '!pt-0' : ''} ${showContent && 'border-b border-card-stroke'}`}
+        onClick={headerAsToggle ? toggleBoxContent : undefined}
       >
         {hasTitle && (
           <div
@@ -45,8 +46,8 @@ export const BoxHeader = React.memo(
             <div className="flex items-center">
               {children}
               {showToggle && (
-                <button className="ml-2" onClick={toggleBoxContent}>
-                  <Icon icon="trash" />
+                <button type="button" className="ml-2" onClick={toggleBoxContent}>
+                  <Icon icon="angleLeft" className={`text-on-base-2 hover:text-on-base group-hover:text-on-base transition-all origin-center ${showContent ? 'rotate-90' : '-rotate-90'}`} />
                 </button>
               )}
             </div>
@@ -73,6 +74,10 @@ export interface BoxHeaderProps {
    * @default false
    */
   showToggle?: boolean
+  /** Header click expand/collapse content
+   * @default false
+   */
+  headerAsToggle?: boolean
   /**
    * React children, use to render actions in Header
    * Also support render prop

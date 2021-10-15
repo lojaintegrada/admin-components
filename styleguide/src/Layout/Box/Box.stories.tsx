@@ -13,6 +13,7 @@ const BoxHeaderArgs: BoxHeaderProps = {
   title: 'Box Title',
   subtitle: 'Box SubTitle',
   showToggle: false,
+  headerAsToggle: false,
 }
 
 const BoxContentArgs: BoxContentProps = {
@@ -73,7 +74,6 @@ interface BoxFullProps extends BoxProps {
   showTitle: boolean
   showTabs: boolean
   showActions: boolean
-  showToggle: boolean
 }
 
 const Template: Story<BoxFullProps> = ({
@@ -129,11 +129,10 @@ const TemplateWithToggle: Story<BoxFullProps> = ({
   BoxHeader,
   BoxContent,
   Action: ActionArgs,
-  showToggle,
   ...args
 }) => (
   <Box {...args}>
-    <Box.Header {...BoxHeader} showToggle={showToggle}>
+    <Box.Header {...BoxHeader} showToggle headerAsToggle>
       <Status {...ActionArgs} />
     </Box.Header>
     <Box.Content {...BoxContent} />
@@ -141,8 +140,7 @@ const TemplateWithToggle: Story<BoxFullProps> = ({
 )
 export const WithToggle = TemplateWithToggle.bind({})
 WithToggle.args = {
-  BoxHeader: BoxHeaderArgs,
-  showToggle: true,
+  BoxHeader: {...BoxHeaderArgs, showToggle: true, headerAsToggle: true},
   Action: ActionArgs,
 }
 
