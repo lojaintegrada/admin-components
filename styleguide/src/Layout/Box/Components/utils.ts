@@ -30,3 +30,16 @@ export const defaultPaddingVariantsContent = {
   default: `p-6 lg:p-10`,
   small: `p-6`,
 }
+
+export const Observer = ({
+  value,
+  didUpdate,
+}: {
+  value: any
+  didUpdate: Function
+}) => {
+  React.useEffect(() => {
+    didUpdate(value)
+  }, [value])
+  return null
+}

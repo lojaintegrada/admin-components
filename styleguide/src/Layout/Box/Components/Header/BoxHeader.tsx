@@ -10,7 +10,7 @@ export const BoxHeader = React.memo(
     title,
     subtitle,
     showToggle,
-    headerAsToggle,
+    preventHeaderAsToggle,
     Tabs,
   }: BoxHeaderProps) => {
     const sharedProps = useContext(SharedContext)
@@ -18,6 +18,7 @@ export const BoxHeader = React.memo(
 
     const hasTitle = !!(title || subtitle || children)
     const hasTabs = !!Tabs
+    const headerAsToggle = showToggle && !preventHeaderAsToggle
 
     return (
       <div
@@ -55,7 +56,7 @@ export const BoxHeader = React.memo(
                 <button
                   type="button"
                   className="box-toggle ml-2"
-                  onClick={() => toggleContent()}
+                  onClick={() => toggleContent?.()}
                 >
                   <Icon
                     icon="angleLeft"
@@ -89,10 +90,10 @@ export interface BoxHeaderProps {
    * @default false
    */
   showToggle?: boolean
-  /** Header click expand/collapse content
+  /** Prevent header click expand/collapse content
    * @default false
    */
-  headerAsToggle?: boolean
+  preventHeaderAsToggle?: boolean
   /**
    * React children, use to render actions in Header
    * Also support render prop

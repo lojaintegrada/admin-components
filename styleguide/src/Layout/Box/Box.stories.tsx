@@ -12,8 +12,6 @@ import { Tabs, TabsProps } from '../../Components/Tabs'
 const BoxHeaderArgs: BoxHeaderProps = {
   title: 'Box Title',
   subtitle: 'Box SubTitle',
-  showToggle: false,
-  headerAsToggle: false,
 }
 
 const BoxContentArgs: BoxContentProps = {
@@ -138,7 +136,11 @@ const TemplateWithToggle: Story<BoxFullProps> = ({
 export const WithToggle = TemplateWithToggle.bind({})
 WithToggle.args = {
   showContent: true,
-  BoxHeader: {...BoxHeaderArgs, showToggle: true, headerAsToggle: true},
+  BoxHeader: {
+    ...BoxHeaderArgs,
+    showToggle: true,
+    preventHeaderAsToggle: false
+  },
 }
 
 const TemplateWithTabs: Story<BoxFullProps> = ({ BoxHeader, BoxContent, Tabs: TabsArgs, ...args }) => (

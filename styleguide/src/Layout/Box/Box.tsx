@@ -3,12 +3,9 @@ import React from 'react'
 import { BoxHeader, BoxHeaderProps } from './Components/Header/BoxHeader'
 import { BoxContent, BoxContentProps } from './Components/Content/BoxContent'
 import { BoxSeparator } from './Components/Separator/BoxSeparator'
-import { SharedContext, SharedContextProps } from './Components/utils'
+import { SharedContext, SharedContextProps, Observer } from './Components/utils'
 
-export class Box extends React.PureComponent<
-  BoxProps,
-  { showContent: boolean }
-> {
+export class Box extends React.PureComponent<BoxProps, BoxState> {
   static Header = (props: BoxHeaderProps) => {
     return <BoxHeader {...props} />
   }
@@ -19,18 +16,15 @@ export class Box extends React.PureComponent<
     return <BoxSeparator />
   }
 
-  constructor(props: BoxProps) {
-    super(props)
-    this.state = {
-      showContent: props.showContent ?? true,
-    }
+  state: BoxState = {
+    showContent: this.props.showContent ?? true,
   }
 
   render() {
     const { children, className = '', variant = 'default' } = this.props
     const toggleContent = (value?: boolean) =>
       this.setState({ showContent: value ?? !this.state.showContent })
-    const showContent = this.state.showContent
+    const { showContent } = this.state
     const sharedProps = {
       variant,
       showContent,
@@ -39,6 +33,7 @@ export class Box extends React.PureComponent<
 
     return (
       <SharedContext.Provider value={sharedProps}>
+        <Observer value={this.props.showContent} didUpdate={toggleContent} />
         <div
           className={`box w-full flex flex-col bg-base-1 border border-card-stroke rounded ${className}`}
         >
@@ -62,4 +57,7 @@ export interface BoxProps extends Partial<SharedContextProps> {
     | Array<React.ReactElement<BoxContentProps>>
     | React.ReactElement<BoxHeaderProps>
     | Array<React.ReactElement<BoxHeaderProps>>
+}
+interface BoxState {
+  showContent: boolean
 }
