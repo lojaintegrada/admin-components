@@ -47,7 +47,6 @@ export const BoxHeader = React.memo(
                 <button
                   type="button"
                   className="box-toggle ml-2"
-                  onClick={() => toggleContent?.()}
                 >
                   <Icon
                     icon="angleLeft"
