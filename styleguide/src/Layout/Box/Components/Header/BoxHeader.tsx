@@ -44,10 +44,7 @@ export const BoxHeader = React.memo(
             <div className="flex items-center">
               {children}
               {isToggle && (
-                <button
-                  type="button"
-                  className="box-toggle ml-2"
-                >
+                <button type="button" className="box-toggle ml-2">
                   <Icon
                     icon="angleLeft"
                     className={`text-on-base-2 hover:text-on-base group-hover:text-on-base transition-all origin-center ${
