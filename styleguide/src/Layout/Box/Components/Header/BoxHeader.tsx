@@ -5,30 +5,21 @@ import { SharedContext, defaultPaddingVariantsHeader } from '../utils'
 import { Icon } from '../../../../Icons'
 
 export const BoxHeader = React.memo(
-  ({
-    children,
-    title,
-    subtitle,
-    showToggle,
-    preventHeaderAsToggle,
-    Tabs,
-  }: BoxHeaderProps) => {
+  ({ children, title, subtitle, Tabs }: BoxHeaderProps) => {
     const sharedProps = useContext(SharedContext)
-    const { variant, showContent, toggleContent } = sharedProps
+    const { variant, isOpen, toggleContent, isToggle } = sharedProps
 
     const hasTitle = !!(title || subtitle || children)
     const hasTabs = !!Tabs
-    const headerAsToggle = showToggle && !preventHeaderAsToggle
 
     return (
       <div
-        className={`box-header ${
-          headerAsToggle ? 'cursor-pointer group' : ''
-        } ${defaultPaddingVariantsHeader[variant]} ${hasTabs ? '!pb-0' : ''} ${
-          !hasTitle ? '!pt-0' : ''
-        } ${showContent ? 'border-b border-card-stroke' : ''}`}
-        onClick={() => (headerAsToggle ? toggleContent() : undefined)}
-        data-opened={showContent}
+        className={`box-header ${isToggle ? 'cursor-pointer group' : ''} ${
+          defaultPaddingVariantsHeader[variant]
+        } ${hasTabs ? '!pb-0' : ''} ${!hasTitle ? '!pt-0' : ''} ${
+          isOpen ? 'border-b border-card-stroke' : ''
+        }`}
+        onClick={() => (isToggle ? toggleContent() : undefined)}
       >
         {hasTitle && (
           <div
@@ -52,7 +43,7 @@ export const BoxHeader = React.memo(
             </div>
             <div className="flex items-center">
               {children}
-              {showToggle && (
+              {isToggle && (
                 <button
                   type="button"
                   className="box-toggle ml-2"
@@ -61,7 +52,7 @@ export const BoxHeader = React.memo(
                   <Icon
                     icon="angleLeft"
                     className={`text-on-base-2 hover:text-on-base group-hover:text-on-base transition-all origin-center ${
-                      showContent ? 'rotate-90' : '-rotate-90'
+                      isOpen ? 'rotate-90' : '-rotate-90'
                     }`}
                   />
                 </button>
@@ -86,14 +77,6 @@ export interface BoxHeaderProps {
    * Subtitle of the Box
    */
   subtitle?: string | React.ReactNode
-  /** Box toggle
-   * @default false
-   */
-  showToggle?: boolean
-  /** Prevent header click expand/collapse content
-   * @default false
-   */
-  preventHeaderAsToggle?: boolean
   /**
    * React children, use to render actions in Header
    * Also support render prop

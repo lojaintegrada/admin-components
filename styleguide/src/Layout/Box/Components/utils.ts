@@ -8,7 +8,11 @@ export interface SharedContextProps {
   /** Define is box content has visible by default
    * @default true
    * */
-  showContent: boolean
+  isOpen: boolean
+  /** Show toggle icon
+   * @default false
+   * */
+  isToggle: boolean
   /**
    * Expand/collapse box content
    * */
@@ -17,7 +21,8 @@ export interface SharedContextProps {
 
 export const SharedContext = React.createContext<SharedContextProps>({
   variant: 'default',
-  showContent: true,
+  isOpen: true,
+  isToggle: false,
   toggleContent: (value?: boolean) => value,
 })
 

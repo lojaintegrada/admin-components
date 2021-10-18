@@ -135,11 +135,9 @@ const TemplateWithToggle: Story<BoxFullProps> = ({
 )
 export const WithToggle = TemplateWithToggle.bind({})
 WithToggle.args = {
-  showContent: true,
+  isToggle: true,
   BoxHeader: {
     ...BoxHeaderArgs,
-    showToggle: true,
-    preventHeaderAsToggle: false
   },
 }
 
