@@ -3,9 +3,9 @@ import React from 'react'
 import { BoxHeader, BoxHeaderProps } from './Components/Header/BoxHeader'
 import { BoxContent, BoxContentProps } from './Components/Content/BoxContent'
 import { BoxSeparator } from './Components/Separator/BoxSeparator'
-import { SharedContext, SharedContextProps } from './Components/utils'
+import { SharedContext, SharedContextProps, Observer } from './Components/utils'
 
-export class Box extends React.PureComponent<BoxProps> {
+export class Box extends React.PureComponent<BoxProps, BoxState> {
   static Header = (props: BoxHeaderProps) => {
     return <BoxHeader {...props} />
   }
@@ -16,15 +16,33 @@ export class Box extends React.PureComponent<BoxProps> {
     return <BoxSeparator />
   }
 
+  state: BoxState = {
+    isOpen: this.props.isOpen ?? true,
+  }
+
   render() {
-    const { children, className = '', variant = 'default' } = this.props
+    const {
+      children,
+      className = '',
+      variant = 'default',
+      isToggle = false,
+    } = this.props
+    const toggleContent = (value?: boolean) =>
+      this.setState({ isOpen: value ?? !this.state.isOpen })
+    const { isOpen } = this.state
     const sharedProps = {
       variant,
+      isOpen,
+      toggleContent,
+      isToggle,
     }
+
     return (
       <SharedContext.Provider value={sharedProps}>
+        <Observer value={this.props.isOpen ?? true} didUpdate={toggleContent} />
         <div
           className={`box w-full flex flex-col bg-base-1 border border-card-stroke rounded ${className}`}
+          data-opened={isOpen}
         >
           {children}
         </div>
@@ -46,4 +64,11 @@ export interface BoxProps extends Partial<SharedContextProps> {
     | Array<React.ReactElement<BoxContentProps>>
     | React.ReactElement<BoxHeaderProps>
     | Array<React.ReactElement<BoxHeaderProps>>
+  /**
+   * Box show content
+   * */
+  isOpen?: boolean
+}
+interface BoxState {
+  isOpen: boolean
 }
