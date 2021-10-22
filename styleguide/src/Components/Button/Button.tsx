@@ -31,6 +31,16 @@ const listOfStyles = {
   danger: `bg-danger text-base-1 ${listOfStylesHover['danger']} ${listOfStylesActive['danger']} ${listOfStylesFocus['danger']}`,
 }
 
+const defaultDisabledStyle = `bg-base-3 cursor-default text-on-base-2 shadow-none ring-0 border-0 hover:bg-base-3 hover:text-on-base-2 `
+const listOfStylesDisabled = {
+  primary: defaultDisabledStyle,
+  secondary: `bg-base-2 cursor-default text-card-stroke shadow-none ring-0 border-0 `,
+  tertiary: defaultDisabledStyle,
+  info: defaultDisabledStyle,
+  warning: defaultDisabledStyle,
+  danger: defaultDisabledStyle,
+}
+
 const listOfSizes = {
   small: `text-f7 h-8`,
   default: `text-f6 h-12`,
@@ -81,8 +91,7 @@ const ButtonComponent = (
     classes +=
       'bg-base-3 cursor-default text-on-base-2 pointer-events-none shadow-none ring-0 border-0 hover:bg-base-3 hover:text-on-base-2 focus:ring-0 '
   } else if (disabled) {
-    classes +=
-      'bg-base-3 cursor-default text-on-base-2 shadow-none ring-0 border-0 hover:bg-base-3 hover:text-on-base-2 '
+    classes += listOfStylesDisabled[variant]
   } else {
     classes += `${listOfStyles[variant]} `
   }
