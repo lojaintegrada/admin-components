@@ -62,10 +62,10 @@ describe('Input tests', () => {
 
   it('Adornments', () => {
     mount(<Prefix />)
-    cy.get('span').contains('R$')
+    cy.get('.adornment').contains('R$')
 
     mount(<IconPrefix />)
-    cy.get('svg').should('have.class', 'icon-cog').parent('span')
+    cy.get('svg').should('have.class', 'icon-cog').parent('label')
 
     mount(<PrefixWithoutBorder />)
     cy.get('input').should('not.have.class', 'border-l')
@@ -74,6 +74,6 @@ describe('Input tests', () => {
     cy.get('input').should('not.have.class', 'border-r')
 
     mount(<WithBoth />)
-    cy.get('span').should('have.length', 2)
+    cy.get('.adornment').should('have.length', 2)
   })
 })

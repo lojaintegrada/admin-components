@@ -90,7 +90,11 @@ const InputComponent = (
     <div className={`form-group flex flex-col ${className}`}>
       {LabelComponent}
       <div className={inputContainerClass}>
-        {prefix && <span className={prefixClass}>{prefix}</span>}
+        {prefix && (
+          <label htmlFor={inputId} className={prefixClass}>
+            {prefix}
+          </label>
+        )}
         <input
           ref={ref}
           type={type}
@@ -102,7 +106,11 @@ const InputComponent = (
           className={inputClass}
           {...props}
         />
-        {sufix && <span className={sufixClass}>{sufix}</span>}
+        {sufix && (
+          <label htmlFor={inputId} className={sufixClass}>
+            {sufix}
+          </label>
+        )}
       </div>
 
       {HelpTextComponent}
@@ -139,10 +147,12 @@ export interface InputProps
   sufix?: React.ReactNode | string | null
   /**
    * Set visibility of input prefix border
+   * @default 'true'
    * */
   prefixBorder?: boolean
   /**
    * Set visibility of input sufix border
+   * @default 'true'
    * */
   sufixBorder?: boolean
 }
