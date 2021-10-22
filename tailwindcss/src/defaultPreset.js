@@ -53,8 +53,8 @@ module.exports = {
             "warning-bold": "#A37A00",
 
             "secondary-light": "#F4FAFD",
-            secondary: "#B9DEF0",
-            "secondary-dark": "#5BA2C4",
+            secondary: "#F0FAFA",
+            "secondary-dark": "#DBEBEB",
             "secondary-bold": "#5BA2C4",
 
             "orange-promax": "#FF4007",
