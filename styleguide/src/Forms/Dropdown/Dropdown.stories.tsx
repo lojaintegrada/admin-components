@@ -61,7 +61,7 @@ FixedValue.args = {
 export const CustomSize = Template.bind({})
 CustomSize.args = {
   placeholder: 'Selecione um item',
-  variant: 'large',
+  size: 'large',
 }
 
 export const Grouped = Template.bind({})
@@ -98,21 +98,21 @@ GroupedWithLength.args = {
 export const HelpText = Template.bind({})
 HelpText.args = {
   placeholder: 'Selecione um item',
-  variant: 'large',
+  size: 'large',
   helpText: 'Texto de ajuda para preencher o campo',
 }
 
 export const Label = Template.bind({})
 Label.args = {
   placeholder: 'Selecione um item',
-  variant: 'large',
+  size: 'large',
   label: 'Label',
 }
 
 export const WithError = Template.bind({})
 WithError.args = {
   placeholder: 'Selecione um item',
-  variant: 'large',
+  size: 'large',
   helpText: 'Texto de ajuda para preencher o campo',
   label: 'Label',
   errorMessage: 'Houve um erro',
@@ -143,4 +143,10 @@ WithComplement.args = {
   label: 'Label',
   labelComplement: <Icon icon="infoCircle" size={4} block />,
   required: true,
+}
+
+export const WithVariant = Template.bind({})
+WithVariant.args = {
+  label: 'Label',
+  variant: 'secondary',
 }
