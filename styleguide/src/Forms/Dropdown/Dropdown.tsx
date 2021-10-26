@@ -40,6 +40,11 @@ export const variantDisabledClasses = {
   secondary: 'cursor-not-allowed opacity-90 bg-base-4 border-base-4',
 }
 
+export const varianErrorClasses = {
+  default: 'border-danger rounded',
+  secondary: 'border-danger rounded-md',
+}
+
 export interface CustomOptionProps {
   value: string | number
   label: string
@@ -90,7 +95,7 @@ const CustomControl = (
   errorMessage?: string
 ) => {
   const controlClasses = `cursor-pointer transition-all flex itens-center border pl-2 ${
-    errorMessage ? 'border-danger' : variantControlClasses[variant]
+    errorMessage ? varianErrorClasses[variant] : variantControlClasses[variant]
   } ${sizeClasses[size]} ${
     props.menuIsOpen ? variantSelectedClasses[variant] : ''
   } ${props.isDisabled ? variantDisabledClasses[variant] : ''}`
