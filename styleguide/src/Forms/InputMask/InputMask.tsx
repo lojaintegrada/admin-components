@@ -35,21 +35,17 @@ function InputMaskComponent(
 
 export const InputMask = React.forwardRef(InputMaskComponent)
 
-export interface InputMaskProps
-  extends Pick<
-      ReactMaskedInputProps,
-      | 'mask'
-      | 'guide'
-      | 'placeholderChar'
-      | 'keepCharPositions'
-      | 'pipe'
-      | 'showMask'
-    >,
-    InputProps {
+export interface InputMaskProps extends InputProps {
   /**
    * Predefined masks. When used, will replace passed `mask` attr
    * */
   formatValue?: keyof typeof formatValuePatterns
+  mask?: ReactMaskedInputProps['mask']
+  guide?: ReactMaskedInputProps['guide']
+  placeholderChar?: ReactMaskedInputProps['placeholderChar']
+  keepCharPositions?: ReactMaskedInputProps['keepCharPositions']
+  pipe?: ReactMaskedInputProps['pipe']
+  showMask?: ReactMaskedInputProps['showMask']
 }
 
 export type InputMaskType = ReactMaskedInputProps['mask']
