@@ -29,13 +29,13 @@ Error.args = {
 
 export const Disabled = Template.bind({})
 Disabled.args = {
-  defaultValue: 'Can\'t change',
+  defaultValue: "Can't change",
   disabled: true,
 }
 
 export const Readonly = Template.bind({})
 Readonly.args = {
-  defaultValue: 'Can\'t change',
+  defaultValue: "Can't change",
   readOnly: true,
 }
 

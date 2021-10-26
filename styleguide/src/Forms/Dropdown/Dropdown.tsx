@@ -195,6 +195,8 @@ const DropdownComponent = (
     maxMenuHeight = 300,
     menuPosition = 'absolute',
     menuPlacement = 'auto',
+    menuWidth = '100%',
+    menuHorizontalPlacement,
   }: DropdownProps,
   ref: React.ForwardedRef<any>
 ) => {
@@ -233,8 +235,13 @@ const DropdownComponent = (
           menu: (base) => {
             return {
               ...base,
+              width: menuWidth,
               zIndex: 999,
               padding: 20,
+              ...(menuHorizontalPlacement &&
+                menuHorizontalPlacement === 'left' && { left: 0 }),
+              ...(menuHorizontalPlacement &&
+                menuHorizontalPlacement === 'right' && { right: 0 }),
             }
           },
           menuPortal: (base) => {
@@ -366,6 +373,15 @@ export interface DropdownProps {
    * @default 'auto'
    * */
   menuPlacement?: 'top' | 'bottom' | 'auto'
+  /**
+   * Width of menu containing the options
+   * @default '100%'
+   * */
+  menuWidth?: string
+  /**
+   * Can align the menu in different positions if the menuWidth is bigger than the width of select
+   * */
+  menuHorizontalPlacement?: 'left' | 'right'
   id?: string
   name?: string
 }
