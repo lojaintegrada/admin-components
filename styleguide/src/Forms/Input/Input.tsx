@@ -31,6 +31,8 @@ const InputComponent = (
     type = 'text',
     prefix,
     sufix,
+    prefixBorder = true,
+    sufixBorder = true,
     ...props
   }: InputProps,
   ref: React.ForwardedRef<HTMLInputElement>
@@ -59,7 +61,11 @@ const InputComponent = (
 
   const inputClass = `w-full tracking-4 px-4 appearance-none shadow-none outline-none bg-transparent box-border ${focusClass} ${
     hasErrorState ? errorBorderClasses : defaultBorderClasses
-  } ${prefix ? 'border-l' : ''} ${sufix ? 'border-r' : ''}`
+  } ${prefix && prefixBorder ? 'border-l' : ''}  ${
+    sufix && sufixBorder ? 'border-r' : ''
+  } ${prefix && !prefixBorder ? 'pl-0 -ml-2' : ''} ${
+    sufix && !sufixBorder ? 'pr-0 -mr-2' : ''
+  }`
 
   const LabelComponent = (
     <InputLabel
@@ -84,7 +90,11 @@ const InputComponent = (
     <div className={`form-group flex flex-col ${className}`}>
       {LabelComponent}
       <div className={inputContainerClass}>
-        {prefix && <span className={prefixClass}>{prefix}</span>}
+        {prefix && (
+          <label htmlFor={inputId} className={prefixClass}>
+            {prefix}
+          </label>
+        )}
         <input
           ref={ref}
           type={type}
@@ -96,7 +106,11 @@ const InputComponent = (
           className={inputClass}
           {...props}
         />
-        {sufix && <span className={sufixClass}>{sufix}</span>}
+        {sufix && (
+          <label htmlFor={inputId} className={sufixClass}>
+            {sufix}
+          </label>
+        )}
       </div>
 
       {HelpTextComponent}
@@ -131,4 +145,14 @@ export interface InputProps
    * Custom element to append at the end of input
    * */
   sufix?: React.ReactNode | string | null
+  /**
+   * Set visibility of input prefix border
+   * @default 'true'
+   * */
+  prefixBorder?: boolean
+  /**
+   * Set visibility of input sufix border
+   * @default 'true'
+   * */
+  sufixBorder?: boolean
 }
