@@ -49,7 +49,9 @@ const CheckboxComponent = (
       : 'bg-base-1'
   }  rounded w-4 h-4 flex justify-center items-center m-px`
 
-  const checkboxLabelClasses = `ml-1 input-label text-f6 tracking-4 leading-6`
+  const checkboxLabelClasses = `ml-1 input-label text-f6 tracking-4 leading-6 ${
+    disabled ? 'text-inverted-2' : ''
+  }`
 
   return (
     <label
