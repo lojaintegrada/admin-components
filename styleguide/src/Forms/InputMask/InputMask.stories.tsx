@@ -24,12 +24,20 @@ Date.args = {
   formatValue: 'date',
   defaultValue: '10/11/1990',
   name: 'birthday',
-  placeholder: '00/00/0000'
+  placeholder: '00/00/0000',
 }
 
 export const OnlyNumbers = Template.bind({})
 OnlyNumbers.args = {
   formatValue: 'onlyNumber',
+}
+
+export const OnlyText = Template.bind({})
+OnlyText.args = {
+  formatValue: 'onlyText',
+  onChange: (a) => {
+    console.log(a.target.value)
+  },
 }
 
 export const DateWithStartAdornment = Template.bind({})
