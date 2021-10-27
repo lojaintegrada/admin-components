@@ -47,11 +47,30 @@ Prefix.args = {
   name: 'valor',
 }
 
+export const PrefixWithoutBorder = Template.bind({})
+PrefixWithoutBorder.args = {
+  label: 'Meu Campo',
+  helpText: 'Texto de ajuda para preencher o campo',
+  prefix: 'R$',
+  prefixBorder: false,
+  name: 'valor',
+}
+
 export const IconPrefix = Template.bind({})
 IconPrefix.args = {
   label: 'Meu Campo',
   helpText: 'Texto de ajuda para preencher o campo',
   prefix: <Icon icon="cog" />,
+  hasError: true,
+  name: 'nome',
+}
+
+export const IconPrefixWhitoutBorder = Template.bind({})
+IconPrefixWhitoutBorder.args = {
+  label: 'Meu Campo',
+  helpText: 'Texto de ajuda para preencher o campo',
+  prefix: <Icon icon="search" />,
+  prefixBorder: false,
   hasError: true,
   name: 'nome',
 }
@@ -63,12 +82,28 @@ Sufix.args = {
   sufix: 'R$',
   name: 'valor',
 }
-
+export const SufixWithoutBorder = Template.bind({})
+SufixWithoutBorder.args = {
+  label: 'Meu Campo',
+  helpText: 'Texto de ajuda para preencher o campo',
+  sufix: 'R$',
+  sufixBorder: false,
+  name: 'valor',
+}
 export const IconSufix = Template.bind({})
 IconSufix.args = {
   label: 'Meu Campo',
   helpText: 'Texto de ajuda para preencher o campo',
   sufix: <Icon icon="cog" />,
+  hasError: true,
+  name: 'nome',
+}
+export const IconSufixWithoutBorder = Template.bind({})
+IconSufixWithoutBorder.args = {
+  label: 'Meu Campo',
+  helpText: 'Texto de ajuda para preencher o campo',
+  sufix: <Icon icon="cog" />,
+  sufixBorder: false,
   hasError: true,
   name: 'nome',
 }
@@ -97,6 +132,17 @@ WithBoth.args = {
   helpText: 'Texto de ajuda para preencher o campo',
   prefix: 'R$',
   sufix: <Icon icon="cog" />,
+  name: 'valor',
+}
+
+export const WithBothWithoutBorder = Template.bind({})
+WithBothWithoutBorder.args = {
+  label: 'Meu Campo',
+  helpText: 'Texto de ajuda para preencher o campo',
+  prefix: 'R$',
+  sufix: <Icon icon="search" />,
+  prefixBorder: false,
+  sufixBorder: false,
   name: 'valor',
 }
 

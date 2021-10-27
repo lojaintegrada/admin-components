@@ -39,6 +39,7 @@ import { Tv } from './Tv'
 import { Truck } from './Truck'
 import { UsdCircle } from './UsdCircle'
 import { QuestionCircle } from './QuestionCircle'
+import { Search } from './Search'
 
 export const icons = {
   angleLeft: AngleLeft,
@@ -75,6 +76,7 @@ export const icons = {
   infoCircle: InfoCircle,
   loading: Loading,
   pix: Pix,
+  search: Search,
   trash: Trash,
   times: Close,
   timesCircle: TimesCircle,
