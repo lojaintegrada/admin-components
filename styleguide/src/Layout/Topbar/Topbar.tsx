@@ -6,7 +6,7 @@ export const Topbar: React.FC<TopbarProps> = ({
   logoTitle = 'Loja Integrada',
   children,
 }) => (
-  <div className="flex fixed justify-between items-center top-0 pb-2 pt-2-safe lg:pb-4 lg:px-8-safe lg:pt-4-safe w-full z-20 bg-base-1 shadow h-16">
+  <div className="flex fixed justify-between items-center top-0 pb-2 pt-2-safe px-4-safe lg:pb-4 lg:px-8-safe lg:pt-4-safe w-full z-20 bg-base-1 shadow h-16">
     <div className="flex">
       <a className="logo flex items-center text-base-1 text-sm" href={logoHref}>
         <img

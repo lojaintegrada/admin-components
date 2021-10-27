@@ -109,7 +109,7 @@ export interface AlertProps {
   /**
    * Alert main text
    */
-  title: string
+  title: string | React.ReactNode
   /**
    * Alert text below title
    */
