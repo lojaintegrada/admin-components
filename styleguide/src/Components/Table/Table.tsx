@@ -70,16 +70,18 @@ const TableComponent = ({
     prepareRow,
   } = useTable({ columns, data: rowsPropsMemoized })
 
-  const handleSelect = (newSelectedRows: number[]) => {
-    setSelectedRows(newSelectedRows)
-    const mapped = rows.filter((element, index) => {
-      if (newSelectedRows.includes(index)) {
-        return element
-      }
+  const handleSelect = React.useCallback(
+    (newSelectedRows: number[]) => {
+      setSelectedRows(newSelectedRows)
+      const mapped = rows.filter(
+        (element, index) => newSelectedRows.includes(index) && element
+      )
+      onChange?.(mapped)
       return
-    })
-    onChange?.(mapped)
-  }
+    },
+    [rows, onChange]
+  )
+
   const handleSelectRow = React.useCallback(
     (index: number, event: React.ChangeEvent<HTMLInputElement>) => {
       const isChecked = event.target.checked
@@ -92,17 +94,21 @@ const TableComponent = ({
       }
       handleSelect(newSelectedRows)
     },
-    [selectedRows]
+    [selectedRows, handleSelect]
   )
 
-  const handleSelectAllRows = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const isChecked = event.target.checked
-    let newSelectedRows: number[] = []
-    if (isChecked) {
-      newSelectedRows = [...rows.map((_, index) => index)]
-    }
-    handleSelect(newSelectedRows)
-  }
+  const handleSelectAllRows = React.useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const isChecked = event.target.checked
+      let newSelectedRows: number[] = []
+      if (isChecked) {
+        newSelectedRows = [...rows.map((_, index) => index)]
+      }
+      handleSelect(newSelectedRows)
+      return
+    },
+    [rows, handleSelect]
+  )
 
   const isHeaderSelectChecked = React.useMemo(() => {
     return selectedRows.length === rows.length
