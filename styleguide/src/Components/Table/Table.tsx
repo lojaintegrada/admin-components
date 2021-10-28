@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { useTable } from 'react-table'
+import { Row, useTable } from 'react-table'
+import { Checkbox } from '../../Forms'
 import { LoadingPlaceholder } from '../LoadingPlaceholder'
 
 const textAligns = {
@@ -35,13 +36,13 @@ const TdWrapper = ({ Wrapper, props = {}, children }: TdWrapperProps) =>
 const TableComponent = ({
   columns: columnsProps,
   rows: rowsProps = [],
-  // selectable,
-  // placeholderLength,
-  // placeholderSize,
+  selectable = false,
   isLoading = false,
   emptyText = 'Nenhum registro encontrado',
+  onChange,
 }: TableProps) => {
   const rowsPropsMemoized = React.useMemo(() => rowsProps, [rowsProps])
+  const [selectedRows, setSelectedRows] = React.useState<number[]>([])
 
   const columns = React.useMemo(
     () =>
@@ -69,6 +70,54 @@ const TableComponent = ({
     prepareRow,
   } = useTable({ columns, data: rowsPropsMemoized })
 
+  const handleSelect = React.useCallback(
+    (newSelectedRows: number[]) => {
+      setSelectedRows(newSelectedRows)
+      const mapped = rows.filter(
+        (element, index) => newSelectedRows.includes(index) && element
+      )
+      onChange?.(mapped)
+      return
+    },
+    [rows, onChange]
+  )
+
+  const handleSelectRow = React.useCallback(
+    (index: number, event: React.ChangeEvent<HTMLInputElement>) => {
+      const isChecked = event.target.checked
+      const newSelectedRows = [...selectedRows]
+      if (isChecked) {
+        newSelectedRows.push(index)
+      } else {
+        const existentRow = newSelectedRows.indexOf(index)
+        if (existentRow !== -1) newSelectedRows.splice(existentRow, 1)
+      }
+      handleSelect(newSelectedRows)
+    },
+    [selectedRows, handleSelect]
+  )
+
+  const handleSelectAllRows = React.useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const isChecked = event.target.checked
+      let newSelectedRows: number[] = []
+      if (isChecked) {
+        newSelectedRows = [...rows.map((_, index) => index)]
+      }
+      handleSelect(newSelectedRows)
+      return
+    },
+    [rows, handleSelect]
+  )
+
+  const isHeaderSelectChecked = React.useMemo(() => {
+    return selectedRows.length === rows.length
+  }, [selectedRows, rows])
+
+  const isHeaderSelectedIndeterminate = React.useMemo(() => {
+    return selectedRows.length < rows.length && selectedRows.length > 0
+  }, [selectedRows, rows])
+
   return (
     <div className="max-w-full overflow-x-auto">
       <table
@@ -84,6 +133,18 @@ const TableComponent = ({
             } = headerGroup.getHeaderGroupProps()
             return (
               <tr key={key} {...restHeaderGroupProps} className="bg-base-2">
+                {selectable && (
+                  <th
+                    colSpan={1}
+                    className={`py-2 px-4 first:rounded-tl last:rounded-tr`}
+                  >
+                    <Checkbox
+                      onChange={(e) => handleSelectAllRows(e)}
+                      checked={isHeaderSelectChecked}
+                      indeterminate={isHeaderSelectedIndeterminate}
+                    />
+                  </th>
+                )}
                 {headerGroup.headers.map((column) => {
                   const { key, ...restHeaderProps } = column.getHeaderProps()
                   const columnAsAny = column as { [key: string]: any }
@@ -125,11 +186,19 @@ const TableComponent = ({
               </td>
             </tr>
           ) : (
-            rows.map((row) => {
+            rows.map((row, index) => {
               prepareRow(row)
               const { key, ...restRowProps } = row.getRowProps()
               return (
                 <tr key={key} {...restRowProps} className={`hover:bg-base-2`}>
+                  {selectable && (
+                    <td className={`${TdClasses} py-2 px-4`}>
+                      <Checkbox
+                        onChange={(e) => handleSelectRow(index, e)}
+                        checked={selectedRows.includes(index)}
+                      />
+                    </td>
+                  )}
                   {row.cells.map((cell) => {
                     const { key, ...restCellProps } = cell.getCellProps()
                     const column = cell.column as { [key: string]: any }
@@ -160,6 +229,16 @@ export const Table = React.memo(TableComponent)
 
 type CellWrapperProp = React.ComponentClass<any> | React.FunctionComponent<any>
 type TextAlignProp = 'left' | 'right' | 'center'
+type TableRowProp = {
+  /**
+   * Cell content. `Key` must be equal to `columns.id` value
+   */
+  [key: string]: unknown
+  /**
+   * Props to `columns.cellWrapper` component. Usually an `href` or related
+   */
+  cellWrapperProps?: { [key: string]: unknown }
+}
 export interface TableProps {
   /**
    * Columns of the Table
@@ -189,16 +268,7 @@ export interface TableProps {
   /**
    * Rows of the table
    */
-  rows: {
-    /**
-     * Cell content. `Key` must be equal to `columns.id` value
-     */
-    [key: string]: unknown
-    /**
-     * Props to `columns.cellWrapper` component. Usually an `href` or related
-     */
-    cellWrapperProps?: { [key: string]: unknown }
-  }[]
+  rows: TableRowProp[]
   /** Table is loading
    * @default false
    */
@@ -207,17 +277,13 @@ export interface TableProps {
    * @default 'Nenhum registro encontrado'
    */
   emptyText?: string | React.ReactNode
-
-  // #TODO:
-  /** Mapped rows data returned on select change. */
-  // data?: Array<{ [key:string]: unknown }>
-  /** Makes rows selectable. */
-  // selectable?: boolean
-  /** List of elements index to start selected. */
-  // startSelected?: Array<string | number>
-  /** Placeholder options */
-  // placeholderLength?: number
-  // placeholderSize?: 'default' | 'large'
-  // onChange?: Function,
-  // actions?: PropTypes.node
+  /**
+   * Makes rows selectable.
+   * @default false
+   */
+  selectable?: boolean
+  /**
+   * Fired when the row is selectable and the Checkbox of the header/row is clicked
+   */
+  onChange?: (selectedRows: Row<TableRowProp>[]) => void
 }

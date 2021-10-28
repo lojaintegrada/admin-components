@@ -16,38 +16,38 @@ const columns = [
   {
     id: 'Name',
     label: 'Name',
-    cellWrapper: Link
+    cellWrapper: Link,
   },
   {
     id: 'Address',
     label: 'Address',
-    cellWrapper: Link
+    cellWrapper: Link,
   },
   {
     id: 'Price',
     label: <small>KA</small>,
     textAlign: 'center',
     size: 'w-1/6',
-    cellWrapper: Link
+    cellWrapper: Link,
   },
   {
     id: 'Count',
     label: 'Count',
     size: 'w-1/6',
-    cellWrapper: Link
+    cellWrapper: Link,
   },
   {
     id: 'Active',
     label: 'Active',
     size: 'w-1/6',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   {
     id: 'Actions',
     label: 'Actions',
     size: 'w-16',
-    textAlign: 'center'
-  }
+    textAlign: 'center',
+  },
 ]
 
 const rows = [
@@ -65,12 +65,13 @@ const rows = [
     ),
     Active: <Icon icon="trash" />,
     Actions: <div className="blue" />,
-    cellWrapperProps: { page: 'admin/settings/view', params: { file_name: 1 } }
+    cellWrapperProps: { page: 'admin/settings/view', params: { file_name: 1 } },
   },
   {
     id: 2,
     Name: 'Last Test',
-    Address: 'LongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLong Text',
+    Address:
+      'LongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLong Text',
     Price: (
       <span className="yellow">
         24 <div className="ml1 v-top" />
@@ -79,7 +80,7 @@ const rows = [
     Active: <Icon icon="cog" />,
     Actions: <div className="blue" />,
     bgColor: 'danger-light',
-    cellWrapperProps: { page: 'admin/settings/view', params: { file_name: 2 } }
+    cellWrapperProps: { page: 'admin/settings/view', params: { file_name: 2 } },
   },
   {
     id: 3,
@@ -93,7 +94,7 @@ const rows = [
     ),
     Active: <Icon icon="copy" />,
     Actions: <div className="blue" />,
-    cellWrapperProps: { page: 'admin/settings/view', params: { file_name: 3 } }
+    cellWrapperProps: { page: 'admin/settings/view', params: { file_name: 3 } },
   },
   {
     id: 4,
@@ -107,8 +108,8 @@ const rows = [
     Active: <Icon icon="edit" />,
     Actions: <div className="blue" />,
     bgColor: 'success-light',
-    cellWrapperProps: { page: 'admin/settings/view', params: { file_name: 4 } }
-  }
+    cellWrapperProps: { page: 'admin/settings/view', params: { file_name: 4 } },
+  },
 ]
 
 export default {
@@ -117,22 +118,22 @@ export default {
   args: {
     columns: columns,
     rows: rows,
-    // selectable: true,
-    // onChange: (selectedData: any) => {
-    //   console.log('Selected rows data: ', selectedData)
-    // }
+    selectable: true,
+    onChange: (selectedData: number[]) => {
+      console.log('Selected rows data: ', selectedData)
+    },
   },
   argTypes: {
     emptyText: {
-      control: { type: 'text' }
-    }
+      control: { type: 'text' },
+    },
   },
   parameters: {
     layout: 'padded',
-  }
+  },
 } as Meta
 
-const Template: Story<TableProps> = args => <Table {...args} />
+const Template: Story<TableProps> = (args) => <Table {...args} />
 
 export const Default = Template.bind({})
 
@@ -144,4 +145,12 @@ Loading.args = {
 export const Empty = Template.bind({})
 Empty.args = {
   rows: undefined,
+}
+
+export const Selectable = Template.bind({})
+Selectable.args = {
+  selectable: true,
+  onChange: (selectedRows) => {
+    console.log(selectedRows)
+  },
 }
