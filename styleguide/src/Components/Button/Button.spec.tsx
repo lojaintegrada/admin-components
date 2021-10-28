@@ -51,7 +51,7 @@ describe('Button tests', () => {
 
   it('Variants', () => {
     mount(<Default variant="secondary" />)
-    cy.get('button').should('have.class', 'bg-transparent text-primary')
+    cy.get('button').should('have.class', 'bg-secondary')
 
     mount(<Default variant="tertiary" />)
     cy.get('button').should('have.class', 'bg-inverted-2 text-on-primary')

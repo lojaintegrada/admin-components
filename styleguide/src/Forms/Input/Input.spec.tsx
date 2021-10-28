@@ -3,7 +3,17 @@ import { composeStories } from '@storybook/testing-react'
 import { mount } from '@cypress/react'
 import * as stories from './Input.stories'
 
-const { Default, Error, Prefix, IconPrefix, WithBoth, Disabled, Readonly } = composeStories(stories)
+const {
+  Default,
+  Error,
+  Prefix,
+  IconPrefix,
+  WithBoth,
+  Disabled,
+  Readonly,
+  PrefixWithoutBorder,
+  SufixWithoutBorder,
+} = composeStories(stories)
 
 describe('Input tests', () => {
   it('Default', () => {
@@ -26,7 +36,9 @@ describe('Input tests', () => {
 
   it('Disabled', () => {
     mount(<Disabled />)
-    cy.get('input').parent().should('have.class', '!bg-base-3 !pointer-events-none !text-on-base-2')
+    cy.get('input')
+      .parent()
+      .should('have.class', '!bg-base-3 !pointer-events-none !text-on-base-2')
   })
 
   it('Readonly', () => {
@@ -50,12 +62,18 @@ describe('Input tests', () => {
 
   it('Adornments', () => {
     mount(<Prefix />)
-    cy.get('span').contains('R$')
+    cy.get('.adornment').contains('R$')
 
     mount(<IconPrefix />)
-    cy.get('svg').should('have.class', 'icon-cog').parent('span')
+    cy.get('svg').should('have.class', 'icon-cog').parent('label')
+
+    mount(<PrefixWithoutBorder />)
+    cy.get('input').should('not.have.class', 'border-l')
+
+    mount(<SufixWithoutBorder />)
+    cy.get('input').should('not.have.class', 'border-r')
 
     mount(<WithBoth />)
-    cy.get('span').should('have.length', 2)
+    cy.get('.adornment').should('have.length', 2)
   })
 })

@@ -12,11 +12,37 @@ import { Icon as IconComponent } from '../../Icons'
 import { InputHelpText } from '../InputHelpText'
 import { InputLabel, InputLabelProps } from '../InputLabel'
 
-export const variantClasses = {
+export const sizeClasses = {
   default: 'h-12',
   small: 'h-8',
   large: 'h-14',
   xlarge: 'h-24',
+}
+
+export const variantControlClasses = {
+  default: 'border-card-stroke rounded',
+  secondary:
+    'border-inverted-2 hover:bg-base-3 rounded-md focus:ring-2 focus:ring-focus focus:ring-offset-2 focus:bg-base-1',
+}
+
+export const variantValueClasses = {
+  default: 'font-normal',
+  secondary: 'font-semibold',
+}
+
+export const variantSelectedClasses = {
+  default: '',
+  secondary: 'bg-base-1 shadow-inner',
+}
+
+export const variantDisabledClasses = {
+  default: 'cursor-not-allowed opacity-70',
+  secondary: 'cursor-not-allowed opacity-90 bg-base-4 border-base-4',
+}
+
+export const varianErrorClasses = {
+  default: 'border-danger rounded',
+  secondary: 'border-danger rounded-md',
 }
 
 export interface CustomOptionProps {
@@ -30,6 +56,9 @@ export interface CustomGroupedOptionsProps {
   label: string
   options: CustomOptionProps[]
 }
+
+export type DropdownVariant = 'default' | 'secondary'
+
 const {
   Option,
   DropdownIndicator,
@@ -61,12 +90,15 @@ const CustomControl = (
   props: React.PropsWithChildren<
     ControlProps<CustomOptionProps, false, GroupTypeBase<CustomOptionProps>>
   >,
-  variant: keyof typeof variantClasses,
+  size: keyof typeof sizeClasses,
+  variant: DropdownVariant,
   errorMessage?: string
 ) => {
-  const controlClasses = `flex itens-center border rounded pl-2 ${
-    errorMessage ? 'border-danger' : 'border-card-stroke'
-  } ${variantClasses[variant]}`
+  const controlClasses = `cursor-pointer transition-all flex itens-center border pl-2 ${
+    errorMessage ? varianErrorClasses[variant] : variantControlClasses[variant]
+  } ${sizeClasses[size]} ${
+    props.menuIsOpen ? variantSelectedClasses[variant] : ''
+  } ${props.isDisabled ? variantDisabledClasses[variant] : ''}`
   return <Control {...props} className={controlClasses} />
 }
 
@@ -129,11 +161,12 @@ const CustomPlaceholder = (
 )
 
 const CustomSingleValue = (
-  props: SingleValueProps<CustomOptionProps, GroupTypeBase<CustomOptionProps>>
+  props: SingleValueProps<CustomOptionProps, GroupTypeBase<CustomOptionProps>>,
+  variant: DropdownVariant
 ) => (
   <SingleValue
     {...props}
-    className="text-f6 tracking-4 text-inverted-2 text-sm truncate"
+    className={`text-f6 tracking-4 text-inverted-2 text-sm truncate ${variantValueClasses[variant]}`}
   />
 )
 
@@ -144,6 +177,7 @@ const DropdownComponent = (
     isSearchable = false,
     onChange,
     onBlur,
+    size = 'default',
     variant = 'default',
     markSelectedOption,
     fixedValue,
@@ -161,6 +195,8 @@ const DropdownComponent = (
     maxMenuHeight = 300,
     menuPosition = 'absolute',
     menuPlacement = 'auto',
+    menuWidth = '100%',
+    menuHorizontalPlacement,
   }: DropdownProps,
   ref: React.ForwardedRef<any>
 ) => {
@@ -177,9 +213,7 @@ const DropdownComponent = (
       />
       <Select
         ref={ref}
-        className={`w-full text-inverted-2  ${
-          disabled ? 'cursor-not-allowed opacity-70' : 'cursor-pointer'
-        }`}
+        className={`w-full text-inverted-2`}
         classNamePrefix="select"
         options={options}
         isSearchable={isSearchable}
@@ -201,8 +235,13 @@ const DropdownComponent = (
           menu: (base) => {
             return {
               ...base,
+              width: menuWidth,
               zIndex: 999,
               padding: 20,
+              ...(menuHorizontalPlacement &&
+                menuHorizontalPlacement === 'left' && { left: 0 }),
+              ...(menuHorizontalPlacement &&
+                menuHorizontalPlacement === 'right' && { right: 0 }),
             }
           },
           menuPortal: (base) => {
@@ -234,10 +273,10 @@ const DropdownComponent = (
         components={{
           Option: (props) => IconOption(props, markSelectedOption),
           DropdownIndicator: (props) => CustomDropdownIndicator(props),
-          Control: (props) => CustomControl(props, variant, errorMessage),
+          Control: (props) => CustomControl(props, size, variant, errorMessage),
           GroupHeading: (props) => CustomGroupHeading(props),
           Placeholder: (props) => CustomPlaceholder(props),
-          SingleValue: (props) => CustomSingleValue(props),
+          SingleValue: (props) => CustomSingleValue(props, variant),
         }}
       />
       <InputHelpText
@@ -264,7 +303,12 @@ export interface DropdownProps {
    * Changes the size of dropdown
    * @default default
    * */
-  variant?: keyof typeof variantClasses
+  size?: keyof typeof sizeClasses
+  /**
+   * Changes the size of dropdown
+   * @default default
+   * */
+  variant?: DropdownVariant
   /**
    * Keep marked the selected option on clicked
    * @default false
@@ -329,6 +373,15 @@ export interface DropdownProps {
    * @default 'auto'
    * */
   menuPlacement?: 'top' | 'bottom' | 'auto'
+  /**
+   * Width of menu containing the options
+   * @default '100%'
+   * */
+  menuWidth?: string
+  /**
+   * Can align the menu in different positions if the menuWidth is bigger than the width of select
+   * */
+  menuHorizontalPlacement?: 'left' | 'right'
   id?: string
   name?: string
 }
