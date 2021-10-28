@@ -36,9 +36,7 @@ const TdWrapper = ({ Wrapper, props = {}, children }: TdWrapperProps) =>
 const TableComponent = ({
   columns: columnsProps,
   rows: rowsProps = [],
-  selectable,
-  // placeholderLength,
-  // placeholderSize,
+  selectable = false,
   isLoading = false,
   emptyText = 'Nenhum registro encontrado',
   onChange,
@@ -72,6 +70,16 @@ const TableComponent = ({
     prepareRow,
   } = useTable({ columns, data: rowsPropsMemoized })
 
+  const handleSelect = (newSelectedRows: number[]) => {
+    setSelectedRows(newSelectedRows)
+    const mapped = rows.filter((element, index) => {
+      if (newSelectedRows.includes(index)) {
+        return element
+      }
+      return
+    })
+    onChange?.(mapped)
+  }
   const handleSelectRow = React.useCallback(
     (index: number, event: React.ChangeEvent<HTMLInputElement>) => {
       const isChecked = event.target.checked
@@ -79,42 +87,22 @@ const TableComponent = ({
       if (isChecked) {
         newSelectedRows.push(index)
       } else {
-        const el = newSelectedRows.indexOf(index)
-        if (el != -1) newSelectedRows.splice(el, 1)
+        const existentRow = newSelectedRows.indexOf(index)
+        if (existentRow !== -1) newSelectedRows.splice(existentRow, 1)
       }
-      setSelectedRows(newSelectedRows)
-      const mapped = rows.filter((element, index) => {
-        if (newSelectedRows.includes(index)) {
-          return element
-        }
-        return
-      })
-      onChange?.(mapped)
+      handleSelect(newSelectedRows)
     },
     [selectedRows]
   )
 
-  const handleSelectAllRows = React.useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      const isChecked = event.target.checked
-      let newSelectedRows = [...selectedRows]
-      if (!isChecked) {
-        newSelectedRows = []
-      } else {
-        newSelectedRows = [...rows.map((_, index) => index)]
-      }
-
-      setSelectedRows(newSelectedRows)
-      const mapped = rows.filter((element, index) => {
-        if (newSelectedRows.includes(index)) {
-          return element
-        }
-        return
-      })
-      onChange?.(mapped)
-    },
-    [selectedRows]
-  )
+  const handleSelectAllRows = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const isChecked = event.target.checked
+    let newSelectedRows: number[] = []
+    if (isChecked) {
+      newSelectedRows = [...rows.map((_, index) => index)]
+    }
+    handleSelect(newSelectedRows)
+  }
 
   const isHeaderSelectChecked = React.useMemo(() => {
     return selectedRows.length === rows.length
@@ -285,23 +273,11 @@ export interface TableProps {
   emptyText?: string | React.ReactNode
   /**
    * Makes rows selectable.
+   * @default false
    */
   selectable?: boolean
   /**
    * Fired when the row is selectable and the Checkbox of the header/row is clicked
    */
   onChange?: (selectedRows: Row<TableRowProp>[]) => void
-
-  // #TODO:
-  /** Mapped rows data returned on select change. */
-  // data?: Array<{ [key:string]: unknown }>
-  /** Makes rows selectable. */
-  // selectable?: boolean
-  /** List of elements index to start selected. */
-  // startSelected?: Array<string | number>
-  /** Placeholder options */
-  // placeholderLength?: number
-  // placeholderSize?: 'default' | 'large'
-  // onChange?: Function,
-  // actions?: PropTypes.node
 }
