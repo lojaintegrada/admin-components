@@ -16,7 +16,7 @@ const ActionBarComponent = ({ onlyMobile, children }: ActionBarProps) => {
   return (
     <div
       className={
-        'fixed inset-x-0 bottom-0 h-12 lg:h-16 pb-0-safe bg-inverted-1 lg:bg-base-1 z-40' +
+        'fixed inset-x-0 bottom-0 h-12 lg:h-16 pb-0-safe bg-inverted-1 lg:bg-base-1 z-50' +
         (onlyMobile ? ' lg:hidden' : '')
       }
     >
@@ -34,8 +34,18 @@ const ActionBarComponent = ({ onlyMobile, children }: ActionBarProps) => {
         )}
         <div className="lg:hidden">
           {React.Children.map(children, ({ props }) => (
-            <button className="px-4 py-1 text-base-1" onClick={props?.onClick}>
-              {props?.icon && <Icon icon={props?.icon} className="p-px" />}
+            <button
+              className={
+                'px-4 py-1 text-base-1' +
+                (props?.loading ? ' pointer-events-none' : '')
+              }
+              onClick={props?.onClick}
+            >
+              {props?.loading ? (
+                <Icon icon="loading" className="p-px" />
+              ) : (
+                props?.icon && <Icon icon={props?.icon} className="p-px" />
+              )}
               <span className="block text-f8">{props.children}</span>
             </button>
           ))}
