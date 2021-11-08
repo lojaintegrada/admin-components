@@ -76,7 +76,7 @@ const AlertComponent = ({
           {subtitle && <span className="alert-subtitle mt-1">{subtitle}</span>}
         </div>
         {actions && (
-          <div className="alert-actions flex items-center flex-row sm:flex-row-reverse sm:space-x-reverse space-x-3 mt-3 sm:mt-0 sm:ml-5">
+          <div className="alert-actions flex flex-shrink-0 items-center flex-row sm:flex-row-reverse sm:space-x-reverse space-x-3 mt-3 sm:mt-0 sm:ml-5">
             {actions}
           </div>
         )}
@@ -113,7 +113,7 @@ export interface AlertProps {
   /**
    * Alert text below title
    */
-  subtitle?: string
+  subtitle?: string | React.ReactNode
   /**
    * Function to close alert (also activate `showClose`)
    */
