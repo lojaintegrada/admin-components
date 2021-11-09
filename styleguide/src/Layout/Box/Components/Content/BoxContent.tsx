@@ -9,7 +9,7 @@ export const BoxContent = React.memo(({ children }: BoxContentProps) => {
   return (
     <div
       className={`box-content ${defaultPaddingVariantsContent[variant]} ${
-        !isOpen && 'hidden'
+        !isOpen ? 'hidden' : ''
       }`}
     >
       {children}

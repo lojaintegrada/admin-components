@@ -33,7 +33,7 @@ const ToggleComponent = (
   const toggleLabelClasses = `ml-2 text-inverted-1 text-f6 tracking-4 label`
 
   return (
-    <label htmlFor={inputId} className={`flex items-center cursor-pointer`}>
+    <label htmlFor={inputId} className={`inline-flex items-center cursor-pointer`}>
       <div className={`${toggleContainerDisabledClasses}`}>
         <input
           ref={ref}
