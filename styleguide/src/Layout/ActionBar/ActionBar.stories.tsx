@@ -2,7 +2,7 @@ import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
 import { ActionBar, ActionBarProps } from '.'
-import { Button } from '../Button'
+import { Button } from '../../Components/Button'
 
 export default {
   component: ActionBar,

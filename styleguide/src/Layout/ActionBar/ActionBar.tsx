@@ -1,28 +1,45 @@
 import React, { useEffect } from 'react'
-import { Button } from '../Button'
+import { Button } from '../../Components/Button'
 import { Icon } from '../../Icons'
 
-const ActionBarComponent = ({ onlyMobile, children }: ActionBarProps) => {
-  useEffect(() => {
-    const element = window.parent.document.querySelector<HTMLElement>('.botbar')
+import { CONTAINER_MAX_SIZE } from '../constants'
 
-    if (element) element.style.display = 'none'
+const ActionBarComponent = ({ onlyMobile, children }: ActionBarProps) => {
+  const [containerExpanded, setContainerExpanded] = React.useState(true)
+  useEffect(() => {
+    const botbar = window.parent.document.querySelector<HTMLElement>('.botbar')
+    const container = window.document.querySelector<HTMLElement>(
+      '.page-container'
+    )
+
+    if (botbar) botbar.style.display = 'none'
+    if (container) {
+      container.classList.remove('lg:mb-10', 'lg:pb-0')
+      setContainerExpanded(!!container.dataset.expanded)
+    }
 
     return () => {
-      if (element) element.style.display = ''
+      if (botbar) botbar.style.display = ''
+      if (container) container.classList.add('lg:mb-10', 'lg:pb-0')
     }
   }, [])
 
   return (
     <div
       className={
-        'fixed inset-x-0 bottom-0 h-12 lg:h-16 pb-0-safe bg-inverted-1 lg:bg-base-1 z-50' +
+        'action-bar fixed inset-x-0 bottom-0 h-12 lg:h-auto pb-0-safe bg-inverted-1 lg:bg-base-1 z-50 shadow' +
         (onlyMobile ? ' lg:hidden' : '')
       }
     >
-      <div className="flex items-center justify-center lg:justify-end max-w-screen-lg w-full h-full mx-auto px-8 lg:px-0">
+      <div
+        className={`${
+          containerExpanded
+            ? CONTAINER_MAX_SIZE.expanded
+            : CONTAINER_MAX_SIZE.default
+        } flex items-center justify-center lg:justify-end w-full h-full mx-auto px-8 lg:px-0`}
+      >
         {!onlyMobile && (
-          <div className="hidden lg:grid grid-flow-col gap-x-5">
+          <div className="hidden lg:grid grid-flow-col gap-x-5 my-2.5 mr-6">
             {React.Children.map(children, ({ props }) => {
               const { ...childrenProps } = props
 
