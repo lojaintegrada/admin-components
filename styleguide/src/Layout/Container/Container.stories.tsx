@@ -14,7 +14,7 @@ export default {
 } as Meta
 
 const Template: Story<ContainerProps> = (args) => (
-  <div className="bg-base-2 w-screen h-screen p-px">
+  <div className="bg-base-2 w-full min-h-screen p-px">
     <Container {...args}>
       <Container.Header>
         <Breadcrumb

@@ -39,7 +39,7 @@ const ActionBarComponent = ({ onlyMobile, children }: ActionBarProps) => {
         } flex items-center justify-center lg:justify-end w-full h-full mx-auto px-8 lg:px-0`}
       >
         {!onlyMobile && (
-          <div className="hidden lg:grid grid-flow-col gap-x-5 my-2.5 mr-6">
+          <div className="hidden lg:grid grid-flow-col gap-x-5 my-2.5 mr-8">
             {React.Children.map(children, ({ props }) => {
               const { ...childrenProps } = props
 
