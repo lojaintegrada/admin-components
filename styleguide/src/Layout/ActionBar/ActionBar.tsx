@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
-import { Button, Icon } from '../..'
+import { Button } from '../../Components/Button'
+import { Icon } from '../../Icons'
 
 import { CONTAINER_MAX_SIZE } from '../constants'
 
