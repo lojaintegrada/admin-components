@@ -116,7 +116,12 @@ const TableComponent = ({
 
   React.useEffect(() => {
     if (selectedData) {
-      const isDataEqual = selectedRows.every((v, i) => v === selectedData[i])
+      let isDataEqual = true
+      if (selectedRows.length > selectedData.length) {
+        isDataEqual = selectedRows.every((v, i) => v === selectedData[i])
+      } else {
+        isDataEqual = selectedData.every((v, i) => v === selectedRows[i])
+      }
       if (!isDataEqual) setSelectedRows(selectedData)
     }
   }, [selectedData, selectedRows])

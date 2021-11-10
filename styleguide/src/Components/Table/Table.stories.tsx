@@ -157,14 +157,20 @@ Selectable.args = {
 }
 
 const CustomStateTemplate: Story<TableProps> = (args) => {
-  const [selectedData, setSelectedData] = React.useState<number[]>([])
-  args.selectedData = selectedData
+  const [selectedData, setSelectedData] = React.useState<number[]>(
+    args.selectedData || []
+  )
+  React.useEffect(() => {
+    setSelectedData(args.selectedData || [])
+  }, [])
+
   return (
     <div>
       <Button onClick={() => setSelectedData([])}>Reset</Button>
       <div>Selected rows: {JSON.stringify(selectedData)}</div>
       <Table
         {...args}
+        selectedData={selectedData}
         onChange={(selectedRows) => {
           const mapped = selectedRows.map((element) => element.index)
           setSelectedData(mapped)
@@ -177,4 +183,5 @@ export const SelectedData = CustomStateTemplate.bind({})
 SelectedData.args = {
   selectable: true,
   disabledRows: [0],
+  selectedData: [1],
 }
