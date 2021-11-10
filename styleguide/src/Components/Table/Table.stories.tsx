@@ -3,6 +3,7 @@ import { Story, Meta } from '@storybook/react'
 
 import { Table, TableProps } from './Table'
 import { Icon } from '../../Icons'
+import { Button } from '../Button'
 
 const Link = (props: any) => {
   return (
@@ -118,7 +119,7 @@ export default {
   args: {
     columns: columns,
     rows: rows,
-    selectable: true,
+    selectable: false,
     onChange: (selectedData: number[]) => {
       console.log('Selected rows data: ', selectedData)
     },
@@ -153,4 +154,27 @@ Selectable.args = {
   onChange: (selectedRows) => {
     console.log(selectedRows)
   },
+}
+
+const CustomStateTemplate: Story<TableProps> = (args) => {
+  const [selectedData, setSelectedData] = React.useState<number[]>([])
+  args.selectedData = selectedData
+  return (
+    <div>
+      <Button onClick={() => setSelectedData([])}>Reset</Button>
+      <div>Selected rows: {JSON.stringify(selectedData)}</div>
+      <Table
+        {...args}
+        onChange={(selectedRows) => {
+          const mapped = selectedRows.map((element) => element.index)
+          setSelectedData(mapped)
+        }}
+      ></Table>
+    </div>
+  )
+}
+export const SelectedData = CustomStateTemplate.bind({})
+SelectedData.args = {
+  selectable: true,
+  disabledRows: [0],
 }

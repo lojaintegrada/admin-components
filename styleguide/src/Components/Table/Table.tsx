@@ -40,6 +40,8 @@ const TableComponent = ({
   isLoading = false,
   emptyText = 'Nenhum registro encontrado',
   onChange,
+  selectedData,
+  disabledRows = [],
 }: TableProps) => {
   const rowsPropsMemoized = React.useMemo(() => rowsProps, [rowsProps])
   const [selectedRows, setSelectedRows] = React.useState<number[]>([])
@@ -86,7 +88,7 @@ const TableComponent = ({
     (index: number, event: React.ChangeEvent<HTMLInputElement>) => {
       const isChecked = event.target.checked
       const newSelectedRows = [...selectedRows]
-      if (isChecked) {
+      if (isChecked && !disabledRows.includes(index)) {
         newSelectedRows.push(index)
       } else {
         const existentRow = newSelectedRows.indexOf(index)
@@ -94,29 +96,49 @@ const TableComponent = ({
       }
       handleSelect(newSelectedRows)
     },
-    [selectedRows, handleSelect]
+    [selectedRows, disabledRows, handleSelect]
   )
 
   const handleSelectAllRows = React.useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const isChecked = event.target.checked
-      let newSelectedRows: number[] = []
+      const newSelectedRows: number[] = []
       if (isChecked) {
-        newSelectedRows = [...rows.map((_, index) => index)]
+        rows.forEach((_, index) => {
+          if (!disabledRows.includes(index)) newSelectedRows.push(index)
+        })
       }
       handleSelect(newSelectedRows)
       return
     },
-    [rows, handleSelect]
+    [rows, disabledRows, handleSelect]
   )
 
+  React.useEffect(() => {
+    if (selectedData) {
+      const isDataEqual = selectedRows.every((v, i) => v === selectedData[i])
+      if (!isDataEqual) setSelectedRows(selectedData)
+    }
+  }, [selectedData, selectedRows])
+
   const isHeaderSelectChecked = React.useMemo(() => {
-    return selectedRows.length === rows.length
-  }, [selectedRows, rows])
+    return selectedRows.length === rows.length - disabledRows.length
+  }, [selectedRows, disabledRows, rows])
+
+  const isHeaderSelectDisabled = React.useMemo(() => {
+    return disabledRows.length === rows.length
+  }, [disabledRows, rows])
 
   const isHeaderSelectedIndeterminate = React.useMemo(() => {
-    return selectedRows.length < rows.length && selectedRows.length > 0
-  }, [selectedRows, rows])
+    return (
+      selectedRows.length < rows.length - disabledRows.length &&
+      selectedRows.length > 0
+    )
+  }, [selectedRows, disabledRows, rows])
+
+  const columnsLength = React.useMemo(() => {
+    return selectable ? columns.length + 1 : columns.length
+  }, [columns, selectable])
 
   return (
     <div className="max-w-full overflow-x-auto">
@@ -142,6 +164,7 @@ const TableComponent = ({
                       onChange={(e) => handleSelectAllRows(e)}
                       checked={isHeaderSelectChecked}
                       indeterminate={isHeaderSelectedIndeterminate}
+                      disabled={isHeaderSelectDisabled}
                     />
                   </th>
                 )}
@@ -169,7 +192,7 @@ const TableComponent = ({
         <tbody {...getTableBodyProps()} className="text-sm text-on-base">
           {isLoading ? (
             <tr>
-              <td colSpan={columns.length || 1} className={`${TdClasses}`}>
+              <td colSpan={columnsLength || 1} className={`${TdClasses}`}>
                 <TdWrapper>
                   <LoadingPlaceholder />
                 </TdWrapper>
@@ -177,7 +200,7 @@ const TableComponent = ({
             </tr>
           ) : !rows || !rows.length ? (
             <tr>
-              <td colSpan={columns.length || 1} className={`${TdClasses}`}>
+              <td colSpan={columnsLength || 1} className={`${TdClasses}`}>
                 <TdWrapper>
                   <div className="text-center py-16 text-xl font-semibold text-on-base-2">
                     {emptyText}
@@ -189,13 +212,22 @@ const TableComponent = ({
             rows.map((row, index) => {
               prepareRow(row)
               const { key, ...restRowProps } = row.getRowProps()
+              const isRowDisabled = disabledRows.includes(index)
+              const isRowChecked = selectedRows.includes(index)
               return (
-                <tr key={key} {...restRowProps} className={`hover:bg-base-2`}>
+                <tr
+                  key={key}
+                  {...restRowProps}
+                  className={`hover:bg-base-2 ${
+                    isRowChecked ? 'bg-primary-light' : ''
+                  }`}
+                >
                   {selectable && (
                     <td className={`${TdClasses} py-2 px-4`}>
                       <Checkbox
                         onChange={(e) => handleSelectRow(index, e)}
-                        checked={selectedRows.includes(index)}
+                        checked={isRowChecked}
+                        disabled={isRowDisabled}
                       />
                     </td>
                   )}
@@ -286,4 +318,14 @@ export interface TableProps {
    * Fired when the row is selectable and the Checkbox of the header/row is clicked
    */
   onChange?: (selectedRows: Row<TableRowProp>[]) => void
+  /**
+   * Array containing the index of selected rows.
+   * @default undefined
+   */
+  selectedData?: number[]
+  /**
+   * Array containing the index of disabled rows.
+   * @default []
+   */
+  disabledRows?: number[]
 }
