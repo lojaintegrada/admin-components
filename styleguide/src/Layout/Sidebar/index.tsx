@@ -1,3 +1,3 @@
-export * from './Container'
+export * from './Sidebar'
 export * from './Item'
 export * from './ItemSub'
