@@ -2,11 +2,11 @@ import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
 import { ActionBar, ActionBarProps } from '.'
-import { Button } from '../Button'
+import { Button } from '../../Components/Button'
 
 export default {
   component: ActionBar,
-  title: 'Components/ActionBar'
+  title: 'Layout/ActionBar'
 } as Meta
 
 const Template: Story<ActionBarProps> = args => <ActionBar {...args} />
@@ -28,13 +28,13 @@ export const OnlyMobile = Template.bind({})
 OnlyMobile.args = {
   onlyMobile: true,
   children: [
-    <Button variant="tertiary" icon="trash" onClick={() => {}}>
+    <Button icon="trash" onClick={() => {}}>
       Remover
     </Button>,
-    <Button variant="primary" icon="checkCircle" onClick={() => {}}>
+    <Button icon="checkCircle" onClick={() => {}}>
       Ativar
     </Button>,
-    <Button variant="primary" icon="ban" onClick={() => {}}>
+    <Button icon="ban" onClick={() => {}}>
       Inativar
     </Button>
   ]
