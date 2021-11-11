@@ -18,14 +18,14 @@ Deploy to Vercel is automatic
 
 ## Usage
 
-At yout `tailwind.config.js`
+At your `tailwind.config.js`
 
 ```js
 module.exports = {
   presets: [
-    require('@lojaintegrada/tailwindcss-config/src/defaultPreset')
+    require('@loja-integrada/tailwindcss-config/src/defaultPreset')
     // or
-    // require('@lojaintegrada/tailwindcss-config/src/pagaLIPreset')
+    // require('@loja-integrada/tailwindcss-config/src/pagaLIPreset')
   ],
   // mode: 'jit',
   // purge: [],
