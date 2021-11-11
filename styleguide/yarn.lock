@@ -2223,10 +2223,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@lojaintegrada/tailwindcss-config@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@lojaintegrada/tailwindcss-config/-/tailwindcss-config-1.3.0.tgz#c7e044ca2e0ed081ef71a399af79028104e6b7e0"
-  integrity sha512-OMslCrCMoJ0xBlSSUeE1HDOc/SYS5qICc6yM4ToHi8M1xw0/iR9r9KKqa0t+vVUQRjTxTAB6Ejn9J2KsBxjClA==
+"@loja-integrada/tailwindcss-config@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@loja-integrada/tailwindcss-config/-/tailwindcss-config-1.4.1.tgz#b42ff5e7c194cc4aec9b05f316508c90d863cccf"
+  integrity sha512-1GW4yL8eCSxIk7hy/WQGTEqhL3ZyOq0AB7DDHVC0iQkxYbQpZqkpwPirXRR2gH6y0s8cwzSZveB4laa06VqB8g==
   dependencies:
     tailwindcss "^2.2.4"
     tailwindcss-padding-safe "^1.0.5"
