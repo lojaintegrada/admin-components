@@ -48,7 +48,7 @@ Use `.spec.` for Cypress and `.test.` for Jest
 ## Usage
 
 ```js
-import { Button } from '@lojaintegrada/admin-components'
+import { Button } from '@loja-integrada/admin-components'
 
 <Button></Button>
 ```
