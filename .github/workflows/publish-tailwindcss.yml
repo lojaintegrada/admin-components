@@ -33,7 +33,7 @@ jobs:
         working-directory: tailwindcss
 
       - name: Publish to NPM
-        run: npm publish
+        run: yarn publish --access public
         working-directory: tailwindcss
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_STYLEGUIDE }}
