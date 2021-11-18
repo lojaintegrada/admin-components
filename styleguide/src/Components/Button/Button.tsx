@@ -9,6 +9,7 @@ const listOfStylesHover = {
   info: `hover:bg-secondary-bold`,
   warning: `hover:bg-warning-dark`,
   danger: `hover:bg-danger-dark`,
+  outline: `hover:bg-primary-light`,
 }
 const listOfStylesActive = {
   primary: `active:bg-primary-bold`,
@@ -16,11 +17,13 @@ const listOfStylesActive = {
   tertiary: `active:bg-tertiary-bold`,
   warning: `active:bg-warning-bold`,
   danger: `hover:bg-danger-bold`,
+  outline: `active:shadow-inner active:bg-base-1`,
 }
 const listOfStylesFocus = {
   primary: `focus:ring-1 focus:ring-primary-dark focus:ring-opacity-50`,
   secondary: `focus:ring focus:ring-focus`,
   danger: `focus:ring-1 focus:ring-danger-dark`,
+  outline: `focus:ring-2 focus:ring-focus focus:ring-offset-1`,
 }
 const listOfStyles = {
   primary: `bg-primary text-base-1 ${listOfStylesHover['primary']} ${listOfStylesActive['primary']} ${listOfStylesFocus['primary']}`,
@@ -29,6 +32,7 @@ const listOfStyles = {
   info: `bg-secondary-dark text-base-1 ${listOfStylesHover['info']}`,
   warning: `bg-warning text-on-base ${listOfStylesHover['warning']} ${listOfStylesActive['warning']}`,
   danger: `bg-danger text-base-1 ${listOfStylesHover['danger']} ${listOfStylesActive['danger']} ${listOfStylesFocus['danger']}`,
+  outline: `bg-transparent text-inverted-2 border border-inverted-2 ${listOfStylesHover['outline']} ${listOfStylesActive['outline']} ${listOfStylesFocus['outline']}`,
 }
 
 const defaultDisabledStyle = `bg-base-3 cursor-default text-on-base-2 shadow-none ring-0 border-0 hover:bg-base-3 hover:text-on-base-2 `
@@ -39,6 +43,7 @@ const listOfStylesDisabled = {
   info: defaultDisabledStyle,
   warning: defaultDisabledStyle,
   danger: defaultDisabledStyle,
+  outline: defaultDisabledStyle,
 }
 
 const listOfSizes = {
@@ -137,7 +142,14 @@ export interface ButtonProps extends ButtonAnchorProps {
   /** Button variant
    * @default primary
    * */
-  variant?: 'primary' | 'secondary' | 'tertiary' | 'info' | 'warning' | 'danger'
+  variant?:
+    | 'primary'
+    | 'secondary'
+    | 'tertiary'
+    | 'info'
+    | 'warning'
+    | 'danger'
+    | 'outline'
   /**
    * Button is loading
    * */
