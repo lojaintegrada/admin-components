@@ -4,7 +4,7 @@ import ReactModal from 'react-modal'
 import { Icon } from '../../Icons'
 
 const sizeClasses = {
-  small: 'sm:max-w-xl',
+  small: 'sm:max-w-[600px]',
   default: 'sm:max-w-4xl',
   large: 'sm:max-w-6xl',
 }
