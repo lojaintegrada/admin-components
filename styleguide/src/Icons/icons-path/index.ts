@@ -40,6 +40,7 @@ import { Truck } from './Truck'
 import { UsdCircle } from './UsdCircle'
 import { QuestionCircle } from './QuestionCircle'
 import { Search } from './Search'
+import { Sync } from './Sync'
 import { AngleDiagonal } from './AngleDiagonal'
 import { AngleHeight } from './AngleHeight'
 import { AngleWidth } from './AngleWidth'
@@ -91,4 +92,5 @@ export const icons = {
   truck: Truck,
   usdCircle: UsdCircle,
   questionCircle: QuestionCircle,
+  sync: Sync,
 }
