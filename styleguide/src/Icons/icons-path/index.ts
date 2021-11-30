@@ -23,7 +23,7 @@ import { Eye } from './Eye'
 import { ExclamationTriangle } from './ExclamationTriangle'
 import { ExternalLink } from './ExternalLink'
 import { Home } from './Home'
-import { ImagePlaceholder } from './ImagePlaceholder'
+import { Image } from './Image'
 import { Move } from './Move'
 import { Order } from './Order'
 import { Pagali } from './Pagali'
@@ -76,7 +76,7 @@ export const icons = {
   exclamationTriangle: ExclamationTriangle,
   externalLink: ExternalLink,
   home: Home,
-  imagePlaceholder: ImagePlaceholder,
+  image: Image,
   move: Move,
   order: Order,
   pagali: Pagali,
