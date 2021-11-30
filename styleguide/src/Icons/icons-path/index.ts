@@ -23,6 +23,8 @@ import { Eye } from './Eye'
 import { ExclamationTriangle } from './ExclamationTriangle'
 import { ExternalLink } from './ExternalLink'
 import { Home } from './Home'
+import { ImagePlaceholder } from './ImagePlaceholder'
+import { Move } from './Move'
 import { Order } from './Order'
 import { Pagali } from './Pagali'
 import { PaperList } from './PaperList'
@@ -74,6 +76,8 @@ export const icons = {
   exclamationTriangle: ExclamationTriangle,
   externalLink: ExternalLink,
   home: Home,
+  imagePlaceholder: ImagePlaceholder,
+  move: Move,
   order: Order,
   pagali: Pagali,
   paperList: PaperList,
