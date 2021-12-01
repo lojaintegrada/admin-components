@@ -32,6 +32,7 @@ import { PieChart } from './PieChart'
 import { PlusCircle } from './PlusCircle'
 import { Print } from './Print'
 import { InfoCircle } from './InfoCircle'
+import { Link } from './Link'
 import { Loading } from './Loading'
 import { Pix } from './Pix'
 import { Trash } from './Trash'
@@ -46,6 +47,7 @@ import { Sync } from './Sync'
 import { AngleDiagonal } from './AngleDiagonal'
 import { AngleHeight } from './AngleHeight'
 import { AngleWidth } from './AngleWidth'
+
 
 export const icons = {
   angleLeft: AngleLeft,
@@ -85,6 +87,7 @@ export const icons = {
   plusCircle: PlusCircle,
   print: Print,
   infoCircle: InfoCircle,
+  link: Link,
   loading: Loading,
   pix: Pix,
   search: Search,
