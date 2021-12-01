@@ -6,10 +6,10 @@ import { Button } from '../../Components/Button'
 
 export default {
   component: ActionBar,
-  title: 'Layout/ActionBar'
+  title: 'Layout/ActionBar',
 } as Meta
 
-const Template: Story<ActionBarProps> = args => <ActionBar {...args} />
+const Template: Story<ActionBarProps> = (args) => <ActionBar {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
@@ -20,8 +20,8 @@ Default.args = {
     <Button variant="primary" icon="checkCircle" onClick={() => {}}>
       <span className="hidden lg:block">Criar novo registro</span>
       <span className="block lg:hidden">Criar</span>
-    </Button>
-  ]
+    </Button>,
+  ],
 }
 
 export const OnlyMobile = Template.bind({})
@@ -34,8 +34,9 @@ OnlyMobile.args = {
     <Button icon="checkCircle" onClick={() => {}}>
       Ativar
     </Button>,
+    <></>,
     <Button icon="ban" onClick={() => {}}>
       Inativar
-    </Button>
-  ]
+    </Button>,
+  ],
 }
