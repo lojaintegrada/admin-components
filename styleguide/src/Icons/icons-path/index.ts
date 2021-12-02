@@ -48,7 +48,6 @@ import { AngleDiagonal } from './AngleDiagonal'
 import { AngleHeight } from './AngleHeight'
 import { AngleWidth } from './AngleWidth'
 
-
 export const icons = {
   angleLeft: AngleLeft,
   angleRight: AngleRight,
