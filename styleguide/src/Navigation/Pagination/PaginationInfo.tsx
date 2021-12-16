@@ -22,6 +22,7 @@ const PaginationInfoComponent = ({
       <div className="flex items-center mr-5 text-inverted-2 tracking-4 text-f6">
         {itemsLengthOptions ? (
           <Select
+            id="selectItemsPerPage"
             options={itemsLengthOptions}
             withoutStyle
             aria-label="Itens por página"

@@ -26,13 +26,14 @@ export const TabsItem = ({
 }: TabsItemProps) => {
   return (
     <button
+      id={`btnTab${id}`}
       className={`tabs-item ${
         active ? 'tabs-item-active' : ''
       } group min-w-0 flex-shrink-0 overflow-x-hidden px-2 last:-mr-2 first:-ml-2`}
       onClick={() => onChange(id)}
     >
       <span
-        className={`block text-f6 text-sm py-4 border-b-4 break-words group-hover:font-semibold ${activeStyles(
+        className={`block text-f6 tracking-4 text-sm py-4 border-b-4 break-words group-hover:font-semibold ${activeStyles(
           active
         )} ${boldFixStyle}`}
         data-title={title}
