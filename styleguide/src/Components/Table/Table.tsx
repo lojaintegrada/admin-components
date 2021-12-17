@@ -197,11 +197,15 @@ const TableComponent = ({
         <tbody {...getTableBodyProps()} className="text-sm text-on-base">
           {isLoading ? (
             <tr>
-              <td colSpan={columnsLength || 1} className={`${TdClasses}`}>
-                <TdWrapper>
-                  <LoadingPlaceholder />
-                </TdWrapper>
-              </td>
+              {Array(columnsLength)
+                .fill(0)
+                .map((key) => (
+                  <td key={key} className={`${TdClasses}`}>
+                    <TdWrapper>
+                      <LoadingPlaceholder />
+                    </TdWrapper>
+                  </td>
+                ))}
             </tr>
           ) : !rows || !rows.length ? (
             <tr>

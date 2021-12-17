@@ -5,7 +5,7 @@ const LoadingPlaceholderComponent = ({
 }: LoadingPlaceholderProps) => {
   return (
     <div className={`animate-pulse flex ${className}`}>
-      <div className="h-4 bg-inverted-2 bg-opacity-20 rounded w-80 max-w-full"></div>
+      <div className="h-4 bg-inverted-2 bg-opacity-20 rounded w-full max-w-full"></div>
     </div>
   )
 }
