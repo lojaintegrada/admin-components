@@ -33,11 +33,11 @@ export default {
       {
         id: 'relatorios',
         title: 'Todos os relatorio da loja',
+        disabled: true,
       },
       {
         id: 'vendas',
         title: 'Vendas',
-        disabled: true,
       },
     ],
   },
