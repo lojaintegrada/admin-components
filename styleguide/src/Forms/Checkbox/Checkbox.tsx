@@ -9,6 +9,7 @@ const CheckboxComponent = (
     checked,
     disabled,
     indeterminate,
+    boxAlign = 'center',
     ...props
   }: CheckboxProps,
   ref: React.ForwardedRef<HTMLInputElement>
@@ -19,6 +20,7 @@ const CheckboxComponent = (
   const [isIndeterminate, setIsIndeterminate] = React.useState(
     !!indeterminate || false
   )
+  const isCenterBoxAlign = boxAlign === 'center'
 
   React.useEffect(() => {
     setIsChecked(!!checked)
@@ -41,13 +43,17 @@ const CheckboxComponent = (
     isChecked || isIndeterminate ? 'scale-100' : 'scale-0'
   }`
 
-  const checkboxIconContainerClasses = `border border-card-stroke transition duration-200 ease-in-out ${
-    disabled
-      ? 'bg-base-4'
-      : isChecked || isIndeterminate
-      ? 'bg-primary border-primary'
-      : 'bg-base-1'
-  }  rounded w-4 h-4 flex justify-center items-center m-px`
+  const checkboxIconContainerClasses = `border border-card-stroke transition duration-200 ease-in-out
+    ${
+      disabled
+        ? 'bg-base-4'
+        : isChecked || isIndeterminate
+        ? 'bg-primary border-primary'
+        : 'bg-base-1'
+    }
+    ${isCenterBoxAlign ? 'items-center' : ''}
+    rounded w-4 h-4 flex justify-center m-px
+  `
 
   const checkboxLabelClasses = `ml-1 input-label text-f6 tracking-4 leading-6 ${
     disabled ? 'text-inverted-2' : ''
@@ -56,7 +62,7 @@ const CheckboxComponent = (
   return (
     <label
       htmlFor={inputId}
-      className="inline-flex items-center cursor-pointer"
+      className={`inline-flex items-${boxAlign} cursor-pointer`}
     >
       <span className="rounded z-50 flex items-center justify-center focus-within:ring-2 ring-focus">
         <input
@@ -110,4 +116,5 @@ export interface CheckboxProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string | React.ReactNode
   indeterminate?: boolean
+  boxAlign?: 'center' | 'baseline'
 }
