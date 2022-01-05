@@ -10,6 +10,7 @@ const listOfStylesHover = {
   warning: `hover:bg-warning-dark`,
   danger: `hover:bg-danger-dark`,
   outline: `hover:bg-primary-light`,
+  onlyText: `hover:bg-base-2`,
 }
 const listOfStylesActive = {
   primary: `active:bg-primary-bold`,
@@ -35,7 +36,7 @@ const listOfStyles = {
   warning: `bg-warning text-on-base ${listOfStylesHover['warning']} ${listOfStylesActive['warning']}`,
   danger: `bg-danger text-base-1 ${listOfStylesHover['danger']} ${listOfStylesActive['danger']} ${listOfStylesFocus['danger']}`,
   outline: `bg-transparent text-inverted-2 border border-inverted-2 ${listOfStylesHover['outline']} ${listOfStylesActive['outline']} ${listOfStylesFocus['outline']}`,
-  onlyText: `bg-transparent border-transparent text-inverted-2 px-0 ${listOfStylesActive['onlyText']} ${listOfStylesFocus['onlyText']}`,
+  onlyText: `bg-transparent border-transparent text-inverted-2 px-0 ${listOfStylesHover['onlyText']} ${listOfStylesActive['onlyText']} ${listOfStylesFocus['onlyText']}`,
 }
 
 const defaultDisabledStyle = `bg-base-3 cursor-default text-on-base-2 shadow-none ring-0 border-0 hover:bg-base-3 hover:text-on-base-2 `
