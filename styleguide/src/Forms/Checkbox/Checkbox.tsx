@@ -59,10 +59,18 @@ const CheckboxComponent = (
     disabled ? 'text-inverted-2' : ''
   }`
 
+  const alignOptions = {
+    start: 'items-start',
+    end: 'items-end',
+    center: 'items-center',
+    baseline: 'items-baseline',
+    stretch: 'items-stretch',
+  }
+
   return (
     <label
       htmlFor={inputId}
-      className={`inline-flex items-${boxAlign} cursor-pointer`}
+      className={`inline-flex ${alignOptions[boxAlign]} cursor-pointer`}
     >
       <span className="rounded z-50 flex items-center justify-center focus-within:ring-2 ring-focus">
         <input
@@ -116,5 +124,5 @@ export interface CheckboxProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string | React.ReactNode
   indeterminate?: boolean
-  boxAlign?: 'center' | 'baseline'
+  boxAlign?: 'start' | 'end' | 'center' | 'baseline' | 'stretch'
 }
