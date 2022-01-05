@@ -47,7 +47,7 @@ const listOfStylesDisabled = {
   warning: defaultDisabledStyle,
   danger: defaultDisabledStyle,
   outline: defaultDisabledStyle,
-  onlyText: defaultDisabledStyle,
+  onlyText: `bg-transparent text-on-base-3 shadow-none ring-0 border-0`,
 }
 
 const listOfSizes = {
