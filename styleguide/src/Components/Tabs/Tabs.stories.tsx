@@ -33,7 +33,6 @@ export default {
       {
         id: 'relatorios',
         title: 'Todos os relatorio da loja',
-        disabled: true,
       },
       {
         id: 'vendas',
@@ -46,3 +45,18 @@ export default {
 const Template: Story<TabsProps> = (args) => <Tabs {...args} />
 
 export const Default = Template.bind({})
+
+export const WithTabDisabled = Template.bind({})
+WithTabDisabled.args = {
+  items: [
+    {
+      id: 'pedidos',
+      title: 'Pedidos',
+    },
+    {
+      id: 'cupons',
+      title: 'Cupons de desconto',
+      disabled: true,
+    },
+  ],
+}
