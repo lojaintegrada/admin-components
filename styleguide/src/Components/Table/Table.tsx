@@ -170,6 +170,7 @@ const TableComponent = ({
                       checked={isHeaderSelectChecked}
                       indeterminate={isHeaderSelectedIndeterminate}
                       disabled={isHeaderSelectDisabled}
+                      id="checkboxSelectAllRows"
                     />
                   </th>
                 )}
@@ -237,6 +238,7 @@ const TableComponent = ({
                         onChange={(e) => handleSelectRow(index, e)}
                         checked={isRowChecked}
                         disabled={isRowDisabled}
+                        id={`checkboxRow${index}`}
                       />
                     </td>
                   )}

@@ -63,6 +63,8 @@ const ModalComponent = ({
               {headerTitle}
             </span>
             <button
+              type="button"
+              id="btnCloseModal"
               className={`${
                 preventClose ? 'hidden' : 'flex'
               } items-center p-2 pb-1 -mr-2 -mt-3 text-sm font-semibold text-inverted-2 hover:text-inverted-1`}
