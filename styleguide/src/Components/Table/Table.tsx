@@ -206,7 +206,7 @@ const TableComponent = ({
             <tr>
               {Array(columnsLength)
                 .fill(0)
-                .map((key) => (
+                .map((_, key) => (
                   <td key={key} className={`${TdClasses}`}>
                     <TdWrapper>
                       <LoadingPlaceholder />
