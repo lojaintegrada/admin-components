@@ -42,6 +42,7 @@ const TableComponent = ({
   onChange,
   selectedData,
   disabledRows = [],
+  id,
 }: TableProps) => {
   const rowsPropsMemoized = React.useMemo(() => rowsProps, [rowsProps])
   const [selectedRows, setSelectedRows] = React.useState<number[]>([])
@@ -145,10 +146,15 @@ const TableComponent = ({
     return selectable ? columns.length + 1 : columns.length
   }, [columns, selectable])
 
+  const tableId = React.useMemo(() => {
+    return id ? `${id.charAt(0).toUpperCase()}${id.slice(1)}` : undefined
+  }, [id])
+
   return (
     <div className="max-w-full overflow-x-auto">
       <table
         {...getTableProps()}
+        id={id}
         className={`w-full bg-base-1 rounded border-separate border border-card-stroke`}
         cellSpacing="0"
       >
@@ -170,7 +176,7 @@ const TableComponent = ({
                       checked={isHeaderSelectChecked}
                       indeterminate={isHeaderSelectedIndeterminate}
                       disabled={isHeaderSelectDisabled}
-                      id="checkboxSelectAllRows"
+                      id={`checkboxSelectAllRows${tableId}`}
                     />
                   </th>
                 )}
@@ -238,7 +244,7 @@ const TableComponent = ({
                         onChange={(e) => handleSelectRow(index, e)}
                         checked={isRowChecked}
                         disabled={isRowDisabled}
-                        id={`checkboxRow${index}`}
+                        id={`checkboxRow${index}${tableId}`}
                       />
                     </td>
                   )}
@@ -339,4 +345,9 @@ export interface TableProps {
    * @default []
    */
   disabledRows?: number[]
+  /**
+   * Id of the table.
+   * @default undefined
+   */
+  id?: string
 }

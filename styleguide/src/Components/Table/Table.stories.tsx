@@ -117,6 +117,7 @@ export default {
   title: 'Components/Table',
   component: Table,
   args: {
+    id: 'tableTest',
     columns: columns,
     rows: rows,
     selectable: false,
