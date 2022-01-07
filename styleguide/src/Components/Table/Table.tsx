@@ -147,7 +147,7 @@ const TableComponent = ({
   }, [columns, selectable])
 
   const tableId = React.useMemo(() => {
-    return id ? `${id.charAt(0).toUpperCase()}${id.slice(1)}` : undefined
+    return id ? `${id.charAt(0).toUpperCase()}${id.slice(1)}` : ''
   }, [id])
 
   return (
