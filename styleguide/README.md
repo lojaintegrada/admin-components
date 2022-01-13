@@ -3,6 +3,18 @@
 Components for Loja Integrada admin.
 [https://lojaintegrada.github.io/admin-components/](https://lojaintegrada.github.io/admin-components/)
 
+## Usage
+
+```bash
+yarn add @loja-integrada/admin-components
+```
+
+```js
+import { Button } from '@loja-integrada/admin-components'
+
+<Button></Button>
+```
+
 ## Comamnds
 
 ### Storybook
@@ -44,14 +56,6 @@ Deploy to GitHub Pages is automatic after deploy to NPM
 
 This project works with both Jest or Cypress Components.
 Use `.spec.` for Cypress and `.test.` for Jest
-
-## Usage
-
-```js
-import { Button } from '@loja-integrada/admin-components'
-
-<Button></Button>
-```
 
 ### Bundle analysis
 

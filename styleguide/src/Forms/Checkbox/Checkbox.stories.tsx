@@ -36,6 +36,12 @@ Disabled.args = {
   disabled: true,
 }
 
+export const Error = Template.bind({})
+Error.args = {
+  label: 'Meu checkbox',
+  errorMessage: 'Este campo é obrigatório',
+}
+
 export const DisabledChecked = Template.bind({})
 DisabledChecked.args = {
   label: 'Meu checkbox',
