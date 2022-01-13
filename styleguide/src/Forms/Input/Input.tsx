@@ -147,12 +147,12 @@ export interface InputProps
   sufix?: React.ReactNode | string | null
   /**
    * Set visibility of input prefix border
-   * @default 'true'
+   * @default true
    * */
   prefixBorder?: boolean
   /**
    * Set visibility of input sufix border
-   * @default 'true'
+   * @default true
    * */
   sufixBorder?: boolean
 }
