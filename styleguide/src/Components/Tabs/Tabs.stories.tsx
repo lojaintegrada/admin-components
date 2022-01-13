@@ -12,7 +12,8 @@ export default {
     layout: 'padded',
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/Z2WDD4SH8zwaJC2K5wbtMO/Sistema-Integrado?node-id=95%3A7532',
+      url:
+        'https://www.figma.com/file/Z2WDD4SH8zwaJC2K5wbtMO/Sistema-Integrado?node-id=95%3A7532',
     },
   },
   args: {
@@ -37,10 +38,25 @@ export default {
         id: 'vendas',
         title: 'Vendas',
       },
-    ]
+    ],
   },
 } as Meta
 
-const Template: Story<TabsProps> = args => <Tabs {...args} />
+const Template: Story<TabsProps> = (args) => <Tabs {...args} />
 
 export const Default = Template.bind({})
+
+export const WithTabDisabled = Template.bind({})
+WithTabDisabled.args = {
+  items: [
+    {
+      id: 'pedidos',
+      title: 'Pedidos',
+    },
+    {
+      id: 'cupons',
+      title: 'Cupons de desconto',
+      disabled: true,
+    },
+  ],
+}

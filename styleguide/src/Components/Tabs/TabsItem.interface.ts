@@ -8,6 +8,10 @@ export interface TabsItemInterface {
    */
   title: string
   /**
+   * Disabled a specific tab
+   */
+  disabled?: boolean
+  /**
    * Item content
    * @deprecated Not implemented
    */
