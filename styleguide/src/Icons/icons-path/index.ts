@@ -16,6 +16,7 @@ import { Close } from './Close'
 import { Check } from './Check'
 import { CheckCircle } from './CheckCircle'
 import { CreditCard } from './CreditCard'
+import { Download } from './Download'
 import { Product } from './Product'
 import { Edit } from './Edit'
 import { Exchange } from './Exchange'
@@ -70,6 +71,7 @@ export const icons = {
   close: Close,
   checkCircle: CheckCircle,
   creditcard: CreditCard,
+  download: Download,
   product: Product,
   edit: Edit,
   exchange: Exchange,
