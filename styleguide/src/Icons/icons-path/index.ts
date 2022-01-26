@@ -21,6 +21,7 @@ import { Product } from './Product'
 import { Edit } from './Edit'
 import { Exchange } from './Exchange'
 import { Eye } from './Eye'
+import { ExclamationCircle } from './ExclamationCircle'
 import { ExclamationTriangle } from './ExclamationTriangle'
 import { ExternalLink } from './ExternalLink'
 import { Home } from './Home'
@@ -76,6 +77,7 @@ export const icons = {
   edit: Edit,
   exchange: Exchange,
   eye: Eye,
+  exclamationCircle: ExclamationCircle,
   exclamationTriangle: ExclamationTriangle,
   externalLink: ExternalLink,
   home: Home,
