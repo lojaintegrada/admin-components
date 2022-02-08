@@ -166,7 +166,7 @@ const CustomSingleValue = (
 ) => (
   <SingleValue
     {...props}
-    className={`text-f6 tracking-4 text-inverted-2 text-sm truncate ${variantValueClasses[variant]}`}
+    className={`text-f6 tracking-4 text-on-base text-sm truncate ${variantValueClasses[variant]}`}
   />
 )
 

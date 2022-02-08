@@ -21,7 +21,7 @@ export default {
 } as Meta
 
 const Template: Story<TooltipProps> = args => (
-  <div className="my-10 flex justify-center">
+  <div className="absolute bg-base-2 inset-0 flex items-center justify-center">
     <Tooltip {...args}>
       <a href="#">
         <Icon icon="eye" />
