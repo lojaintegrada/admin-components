@@ -5,6 +5,7 @@ import { Icon, IconProps } from '../../Icons/Icon'
 const listOfStylesHover = {
   primary: `hover:bg-primary-dark`,
   secondary: `hover:bg-secondary-dark`,
+  outlineSecondary: `hover:bg-primary-light`,
   tertiary: `hover:bg-tertiary-dark`,
   info: `hover:bg-secondary-bold`,
   warning: `hover:bg-warning-dark`,
@@ -15,6 +16,7 @@ const listOfStylesHover = {
 const listOfStylesActive = {
   primary: `active:bg-primary-bold`,
   secondary: `active:shadow-inner`,
+  outlineSecondary: `active:shadow-inner active:bg-base-1`,
   tertiary: `active:bg-tertiary-bold`,
   warning: `active:bg-warning-bold`,
   danger: `hover:bg-danger-bold`,
@@ -24,6 +26,7 @@ const listOfStylesActive = {
 const listOfStylesFocus = {
   primary: `focus:ring-1 focus:ring-primary-dark focus:ring-opacity-50`,
   secondary: `focus:ring focus:ring-focus`,
+  outlineSecondary: `focus:ring-2 focus:ring-focus focus:ring-offset-1`,
   danger: `focus:ring-1 focus:ring-danger-dark`,
   outline: `focus:ring-2 focus:ring-focus focus:ring-offset-1`,
   onlyText: `focus:bg-base-1`,
@@ -31,6 +34,7 @@ const listOfStylesFocus = {
 const listOfStyles = {
   primary: `bg-primary text-base-1 ${listOfStylesHover['primary']} ${listOfStylesActive['primary']} ${listOfStylesFocus['primary']}`,
   secondary: `bg-secondary text-primary  ${listOfStylesHover['secondary']} ${listOfStylesActive['secondary']}`,
+  outlineSecondary: `bg-transparent text-primary border border-primary ${listOfStylesHover['outlineSecondary']} ${listOfStylesActive['outlineSecondary']} ${listOfStylesFocus['outlineSecondary']}`,
   tertiary: `bg-inverted-2 text-on-primary ${listOfStylesHover['tertiary']} ${listOfStylesActive['tertiary']}`,
   info: `bg-secondary-dark text-base-1 ${listOfStylesHover['info']}`,
   warning: `bg-warning text-on-base ${listOfStylesHover['warning']} ${listOfStylesActive['warning']}`,
@@ -43,6 +47,7 @@ const defaultDisabledStyle = `bg-base-3 cursor-default text-on-base-2 shadow-non
 const listOfStylesDisabled = {
   primary: defaultDisabledStyle,
   secondary: `bg-base-2 cursor-default text-card-stroke shadow-none ring-0 border-0 `,
+  outlineSecondary: `bg-base-2 cursor-default text-card-stroke shadow-none ring-0 border-0 `,
   tertiary: defaultDisabledStyle,
   info: defaultDisabledStyle,
   warning: defaultDisabledStyle,
@@ -150,6 +155,7 @@ export interface ButtonProps extends ButtonAnchorProps {
   variant?:
     | 'primary'
     | 'secondary'
+    | 'outlineSecondary'
     | 'tertiary'
     | 'info'
     | 'warning'
