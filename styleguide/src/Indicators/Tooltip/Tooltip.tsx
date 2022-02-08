@@ -26,7 +26,7 @@ const TooltipComponent = (props: TooltipProps) => {
   }
 
   return (
-    <Tippy
+    <StyledTooltipComponent
       {...computedProps}
       appendTo={props?.appendTo || 'parent'}
       hideOnClick={props?.hideOnClick || false}
@@ -35,15 +35,29 @@ const TooltipComponent = (props: TooltipProps) => {
       duration={props?.duration || 150}
       placement={window?.innerWidth < 1024 ? 'top' : props?.placement || 'top'}
       interactive={props?.interactive || false}
+      theme={props?.theme || 'dark'}
     />
   )
 }
 
-const styledTooltipComponent = styled(TooltipComponent)`
-  --bg-color: #20221b;
+const theme: Record<string, Record<string, string>> = {
+  light: {
+    background: '#fff',
+    color: '#371E56',
+  },
+  dark: {
+    background: '#371E56',
+    color: '#fff',
+  },
+}
+
+const StyledTooltipComponent = styled(Tippy)<{
+  theme: string
+}>`
+  --bg-color: ${(props) => theme[props.theme].background};
   position: relative;
   background-color: var(--bg-color);
-  color: #fff;
+  color: ${(props) => theme[props.theme].color};
   border-radius: 3px;
   font-size: 12px;
   letter-spacing: -0.4px;
@@ -129,7 +143,7 @@ const styledTooltipComponent = styled(TooltipComponent)`
   }
 `
 
-export const Tooltip = React.memo(styledTooltipComponent)
+export const Tooltip = React.memo(TooltipComponent)
 
 export interface TooltipProps extends TippyProps {
   /** Tooltip append
@@ -160,4 +174,8 @@ export interface TooltipProps extends TippyProps {
    * @default false
    * */
   interactive?: TippyProps['interactive']
+  /** Tooltip theme
+   * @default dark
+   * */
+  theme?: 'light' | 'dark'
 }
