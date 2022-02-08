@@ -23,8 +23,8 @@ export const formatValuePatterns = {
   },
   onlyText: {
     mask: (rawValue: any) => {
-      const onlyText = rawValue.replace(/[^a-zA-ZÀ-ú'~0-9\s]/g, '').split('')
-      return onlyText.map(() => /[a-zA-ZÀ-ú'~´`^0-9\s]/g)
+      const onlyText = rawValue.replace(/[^a-zA-ZÀ-ú'˜0-9\sü]/g, '').split('')
+      return onlyText.map(() => /[a-zA-ZÀ-ú'˜`´^0-9\sü]/g)
     },
   },
   date: {
