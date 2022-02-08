@@ -64,6 +64,9 @@ describe('Button tests', () => {
 
     mount(<Default variant="danger" />)
     cy.get('button').should('have.class', 'bg-danger text-base-1')
+
+    mount(<Default variant="outlineSecondary" />)
+    cy.get('button').should('have.class', 'bg-transparent text-primary border border-primary')
   })
 
 })
