@@ -59,6 +59,7 @@ const ActionBarComponent = ({ onlyMobile, children }: ActionBarProps) => {
                   (props?.loading ? ' pointer-events-none' : '')
                 }
                 onClick={props?.onClick}
+                type={props?.type || 'button'}
               >
                 {props?.loading ? (
                   <Icon icon="loading" className="p-px" />
