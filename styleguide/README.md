@@ -1,6 +1,6 @@
 # Admin Components / Styleguide
 
-Components for Loja Integrada admin.
+Components for Loja Integrada admin. 
 [https://lojaintegrada.github.io/admin-components/](https://lojaintegrada.github.io/admin-components/)
 
 ## Usage
