@@ -73,6 +73,10 @@ const ButtonType = React.forwardRef(
           {children}
         </a>
       )
+    if (!props.type) {
+      // Default to button when missing type
+      props.type = 'button'
+    }
     return (
       <button {...props} ref={ref}>
         {children}
