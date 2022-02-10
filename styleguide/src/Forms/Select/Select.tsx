@@ -44,7 +44,7 @@ export const SelectComponent = (
   } else {
     inputClass = `${inputClasses} ${selectClasses} ${variantClasses[variant]}`
     if (disabled) {
-      inputClass += ` ${defaultBorderClasses} ${inputContainerDisabledClasses}`
+      inputClass += ` ${defaultBorderClasses} ${inputContainerDisabledClasses} opacity-100`
     } else if (hasErrorState) {
       inputClass += ` ${errorBorderClasses}`
     } else {
