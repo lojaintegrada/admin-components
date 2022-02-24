@@ -65,13 +65,8 @@ const TableComponent = ({
     [columnsProps]
   )
 
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-  } = useTable({ columns, data: rowsPropsMemoized })
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    useTable({ columns, data: rowsPropsMemoized })
 
   const handleSelect = React.useCallback(
     (newSelectedRows: number[]) => {
@@ -160,10 +155,8 @@ const TableComponent = ({
       >
         <thead className={`text-left`}>
           {headerGroups.map((headerGroup) => {
-            const {
-              key,
-              ...restHeaderGroupProps
-            } = headerGroup.getHeaderGroupProps()
+            const { key, ...restHeaderGroupProps } =
+              headerGroup.getHeaderGroupProps()
             return (
               <tr key={key} {...restHeaderGroupProps} className="bg-base-2">
                 {selectable && (

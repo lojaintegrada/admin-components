@@ -100,9 +100,8 @@ export const InputCurrencyComponent = (
       setMaskedValue(calculatedMaskedValue)
       return [calculatedValue, calculatedMaskedValue]
     } else {
-      const [maxCalculatedValue, maxCalculatedMaskedValue] = calculateValues(
-        max
-      )
+      const [maxCalculatedValue, maxCalculatedMaskedValue] =
+        calculateValues(max)
       setMaskedValue(maxCalculatedMaskedValue)
       return [maxCalculatedValue, maxCalculatedMaskedValue]
     }
