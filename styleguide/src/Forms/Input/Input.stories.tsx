@@ -146,10 +146,25 @@ WithBothWithoutBorder.args = {
   name: 'valor',
 }
 
-export const WithComplement = Template.bind({})
-WithComplement.args = {
+export const WithLabelComplement = Template.bind({})
+WithLabelComplement.args = {
   label: 'Label',
   labelComplement: <Icon icon="infoCircle" size={4} block />,
   required: true,
   name: 'nome',
+}
+
+export const Search = Template.bind({})
+Search.args = {
+  type: "search",
+  sufix: (
+    <button
+      type="submit"
+      className="w-full h-full flex items-center justify-center text-tertiary hover:text-primary"
+    >
+      <Icon icon="search" block />
+    </button>
+  ),
+  sufixBorder: false,
+  name: 'search',
 }

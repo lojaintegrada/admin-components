@@ -8,9 +8,8 @@ const ActionBarComponent = ({ onlyMobile, children }: ActionBarProps) => {
   const [containerExpanded, setContainerExpanded] = React.useState(true)
   useEffect(() => {
     const botbar = window.parent.document.querySelector<HTMLElement>('.botbar')
-    const container = window.document.querySelector<HTMLElement>(
-      '.page-container'
-    )
+    const container =
+      window.document.querySelector<HTMLElement>('.page-container')
 
     if (botbar) botbar.style.display = 'none'
     if (container) {
