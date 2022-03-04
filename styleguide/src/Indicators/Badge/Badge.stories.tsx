@@ -21,9 +21,18 @@ export default {
   },
 } as Meta
 
-const Template: Story<BadgeProps> = args => <Badge {...args} />
+const Template: Story<BadgeProps> = args => (
+  <div className="w-48 flex justify-center items-center">
+    <Badge {...args} />
+  </div>
+)
 
 export const Default = Template.bind({})
+
+export const Expanded = Template.bind({})
+Expanded.args = {
+  expanded: true,
+}
 
 export const Small = Template.bind({})
 Small.args = {

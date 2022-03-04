@@ -17,10 +17,13 @@ const BadgeComponent = ({
   type = 'neutral',
   text,
   size = 'default',
+  expanded = false,
 }: BadgeProps) => {
   return (
     <div
-      className={`badge inline-flex items-center justify-center rounded-full ${badgeTypes[type]} ${badgeSizes[size]}`}
+      className={`badge items-center justify-center rounded-full ${
+        badgeTypes[type]
+      } ${badgeSizes[size]} ${expanded ? 'flex w-full' : 'inline-flex'}`}
     >
       <span className={`text-xs tracking-4 font-semibold text-base-1`}>
         {text}
@@ -44,4 +47,8 @@ export interface BadgeProps {
    * @default default
    * */
   size?: keyof typeof badgeSizes
+  /**
+   * Enlarge width of the badge
+   * */
+  expanded?: boolean
 }
