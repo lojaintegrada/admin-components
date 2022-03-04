@@ -3,7 +3,7 @@ import { composeStories } from "@storybook/testing-react"
 import { mount } from "@cypress/react"
 import * as stories from "./Badge.stories"
 
-const { Default, Small } = composeStories(stories)
+const { Default, Small, Expanded } = composeStories(stories)
 const badgeClass = '.badge'
 
 describe('Badge tests', () => {
@@ -17,6 +17,11 @@ describe('Badge tests', () => {
   it('Small', () => {
     mount(<Small />)
     cy.get(badgeClass).should('have.class', 'px-1')
+  })
+
+  it('Expanded', () => {
+    mount(<Expanded />)
+    cy.get(badgeClass).should('have.class', 'w-full')
   })
 
   it('Variants', () => {
