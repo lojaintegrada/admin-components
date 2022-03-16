@@ -8,6 +8,7 @@ const TimelineComponent = ({
   className = '',
   items,
   isLoading = false,
+  toggleItems = true,
   emptyTitle = 'Nenhum registro encontrado',
 }: TimelineProps) => {
   if (!isLoading && (!items || !Array.isArray(items))) return null
@@ -37,7 +38,10 @@ const TimelineComponent = ({
           />
         ) : (
           items?.map((item, index) => (
-            <TimelineItem key={`timeline-item-${index}`} item={item} />
+            <TimelineItem
+              key={`timeline-item-${index}`}
+              item={{ ...item, toggle: item.toggle ?? toggleItems }}
+            />
           ))
         )}
       </ul>
@@ -64,4 +68,8 @@ export interface TimelineProps {
    * @default 'Nenhum registro encontrado'
    */
   emptyTitle?: string
+  /** Timeline item show toggle
+   * @default true
+   */
+  toggleItems?: boolean
 }

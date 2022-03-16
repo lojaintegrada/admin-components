@@ -3,7 +3,7 @@ import { composeStories } from "@storybook/testing-react"
 import { mount } from "@cypress/react"
 import * as stories from "./Timeline.stories"
 
-const { Default, Loading, Empty } = composeStories(stories)
+const { Default, WithoutToggle, Loading, Empty } = composeStories(stories)
 
 describe('Timeline tests', () => {
 
@@ -17,6 +17,18 @@ describe('Timeline tests', () => {
         cy.get('.timeline-description').should('not.be.visible')
         cy.get('.timeline-title button').click()
         cy.get('.timeline-description').should('be.visible')
+      })
+  })
+
+  it('Without Toggle', () => {
+    mount(<WithoutToggle />)
+    cy.get('.timeline .timeline-item')
+      .should('have.length', 4)
+      .first().within(() => {
+        cy.get('.timeline-title').contains('Venda criada')
+        cy.get('.timeline-timestamp').contains('11/11/2011')
+        cy.get('.timeline-description').should('be.visible')
+        cy.get('.timeline-title button').should('not.exist')
       })
   })
 

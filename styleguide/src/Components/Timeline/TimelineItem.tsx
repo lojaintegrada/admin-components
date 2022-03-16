@@ -4,9 +4,10 @@ import { Icon } from '../../Icons/Icon'
 import { TimelineItemInterface } from './TimelineItem.interface'
 
 export const TimelineItem = ({ item }: TimelineItemProps) => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(!item.toggle)
   const iconBackgroundColor = item.iconBackgroundColor || `bg-inverted-2`
   const icon = item.icon || 'minus'
+  const showToggle = item.toggle && item.description
 
   return (
     <li className={`timeline-item relative mb-10 last:mb-0`}>
@@ -17,12 +18,12 @@ export const TimelineItem = ({ item }: TimelineItemProps) => {
       </div>
       <div className="ml-7 pt-px">
         <div
-          className={`timeline-title group mb-1 py-1 text-sm text-inverted-1 font-semibold break-words ${
-            item.description ? 'cursor-pointer' : ''
+          className={`timeline-title group py-1 text-f6 leading-6 tracking-4 text-inverted-1 font-semibold break-words ${
+            showToggle ? 'cursor-pointer' : ''
           }`}
-          onClick={() => item.description && setIsOpen((isOpen) => !isOpen)}
+          onClick={() => showToggle && setIsOpen((isOpen) => !isOpen)}
         >
-          {item.description && (
+          {showToggle && (
             <button
               className={`float-right p-1 -mt-px text-inverted-2 group-hover:text-inverted-1 focus:outline-none`}
             >
@@ -39,13 +40,14 @@ export const TimelineItem = ({ item }: TimelineItemProps) => {
           <span className="inline break-words">{item.title}</span>
         </div>
         {item.timestamp && (
-          <div className="timeline-timestamp mb-1 text-xs text-inverted-2 break-words">
+          <div className="timeline-timestamp mb-1 inline-flex items-center text-xs tracking-4 text-inverted-2 break-words">
+            <Icon icon="clock" size={3} className="mr-1" />
             {item.timestamp}
           </div>
         )}
         {item.description && (
           <div
-            className={`timeline-description overflow-hidden text-sm text-inverted-1 break-words transition-max-height ${
+            className={`timeline-description overflow-hidden text-sm tracking-4 text-inverted-1 break-words transition-max-height ${
               isOpen ? 'max-h-96' : 'max-h-0'
             }`}
           >

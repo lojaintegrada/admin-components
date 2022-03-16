@@ -22,9 +22,10 @@ export default {
         title: 'Venda criada',
       },
       {
-        title: 'Vendacriadadacriadadacriadadacriadadacriadadacriadadacriadadacriadadacriadadacriadadacriadadacriada',
+        title: 'Venda criada sem toggle',
         iconBackgroundColor: 'bg-danger',
         description: 'Status change: from Cancelling to Cancelled',
+        toggle: false,
       },
       {
         title: 'Venda criada',
@@ -38,6 +39,11 @@ export default {
 const Template: Story<TimelineProps> = args => <Timeline {...args} />
 
 export const Default = Template.bind({})
+
+export const WithoutToggle = Template.bind({})
+WithoutToggle.args = {
+  toggleItems: false,
+}
 
 export const Loading = Template.bind({})
 Loading.args = {
