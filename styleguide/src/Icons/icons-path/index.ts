@@ -26,6 +26,7 @@ import { ExclamationTriangle } from './ExclamationTriangle'
 import { ExternalLink } from './ExternalLink'
 import { Home } from './Home'
 import { Image } from './Image'
+import { MoneyBill } from './MoneyBill'
 import { Move } from './Move'
 import { Order } from './Order'
 import { Pagali } from './Pagali'
@@ -82,6 +83,7 @@ export const icons = {
   externalLink: ExternalLink,
   home: Home,
   image: Image,
+  moneyBill: MoneyBill,
   move: Move,
   order: Order,
   pagali: Pagali,
