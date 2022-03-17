@@ -26,6 +26,7 @@ export class Box extends React.PureComponent<BoxProps, BoxState> {
       className = '',
       variant = 'default',
       isToggle = false,
+      id,
     } = this.props
     const toggleContent = (value?: boolean) =>
       this.setState({ isOpen: value ?? !this.state.isOpen })
@@ -43,6 +44,7 @@ export class Box extends React.PureComponent<BoxProps, BoxState> {
         <div
           className={`box w-full flex flex-col bg-base-1 border border-card-stroke rounded ${className}`}
           data-opened={isOpen}
+          id={id}
         >
           {children}
         </div>
@@ -57,6 +59,10 @@ export interface BoxProps extends Partial<SharedContextProps> {
    * */
   className?: string
   /**
+   * Box ID
+   * */
+  id?: string
+  /**
    * Box Header and Content
    */
   children?:
@@ -69,6 +75,7 @@ export interface BoxProps extends Partial<SharedContextProps> {
    * */
   isOpen?: boolean
 }
+
 interface BoxState {
   isOpen: boolean
 }
