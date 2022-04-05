@@ -3,7 +3,7 @@ import { composeStories } from "@storybook/testing-react"
 import { mount } from "@cypress/react"
 import * as stories from "./Breadcrumb.stories"
 
-const { Default, NoPrevious, WithPrevious, WithPreviousCustom } = composeStories(stories)
+const { Default, NoPrevious, WithPrevious, WithPreviousCustom, WithMobileCenter, WithHelp, WithActions } = composeStories(stories)
 
 describe('Breadcrumb tests', () => {
 
@@ -34,6 +34,28 @@ describe('Breadcrumb tests', () => {
     mount(<WithPreviousCustom />)
     cy.get('.header-navigation .header-navigation-breadcrumb').within(() => {
       cy.get('.header-navigation-previous a').should('have.class', 'underline')
+    })
+  })
+
+  it('WithMobileCenter', () => {
+    mount(<WithMobileCenter />)
+    cy.get('.header-navigation .header-navigation-breadcrumb').within(() => {
+      cy.get('.header-navigation-current').should('have.class', 'w-full text-center lg:text-left')
+    })
+  })
+
+  it('WithHelp', () => {
+    mount(<WithHelp />)
+    cy.get('.header-navigation .header-navigation-content').within(() => {
+      cy.get('.header-navigation-help a').contains('Saiba mais')
+      cy.get('.header-navigation-help a svg').should('have.class', 'icon-questionCircle')
+    })
+  })
+
+  it('WithActions', () => {
+    mount(<WithActions />)
+    cy.get('.header-navigation .header-navigation-content').within(() => {
+      cy.get('.header-navigation-actions button').should('exist')
     })
   })
 

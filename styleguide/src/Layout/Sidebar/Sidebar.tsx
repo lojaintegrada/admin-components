@@ -16,13 +16,13 @@ export const Sidebar = React.memo(
         className="sidebar-mode-toggle hidden lg:flex items-center justify-center h-6 w-6 bg-base-3 absolute top-3 -right-3 z-10 border-4 border-base-2 rounded-md transition-all hover:bg-base-4"
         href=""
       >
-        <Icon icon="angleLeft" className="w-3 h-3 transform transition-all" />
+        <Icon icon="angleLeft" size={3} className="transform transition-all" />
       </a>
       <a
         className="sidebar-mobile-close hidden items-center justify-center h-6 w-6 bg-base-3 absolute top-3 -right-3 z-10 border-4 border-base-2 rounded-md transition-all hover:bg-base-4"
         href=""
       >
-        <Icon icon="angleLeft" className="w-3 h-3 transform transition-all" />
+        <Icon icon="angleLeft" size={3} className="transform transition-all" />
       </a> */}
         <nav className={`sidebar-content ${sidebarContentClasses}`}>
           {children}

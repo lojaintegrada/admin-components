@@ -96,6 +96,7 @@ const ButtonComponent = (
     className,
     onClick,
     size = 'default',
+    iconPosition = 'right',
     ...props
   }: ButtonProps,
   ref: React.ForwardedRef<HTMLButtonAnchorElement>
@@ -129,8 +130,11 @@ const ButtonComponent = (
       onClick={handleClick}
       {...props}
     >
+      {currentIcon && iconPosition === 'left' && (
+        <Icon icon={currentIcon} size={4} className="mr-2 inline-block" />
+      )}
       {children}
-      {currentIcon && (
+      {currentIcon && iconPosition === 'right' && (
         <Icon icon={currentIcon} size={4} className="ml-3 inline-block" />
       )}
     </ButtonType>
@@ -178,6 +182,11 @@ export interface ButtonProps extends ButtonAnchorProps {
    * Icon of the button
    */
   icon?: IconProps['icon']
+  /**
+   * Icon of the button
+   * @default 'right'
+   */
+  iconPosition?: 'left' | 'right'
   /**
    * React children
    * Also support render prop

@@ -55,3 +55,9 @@ WithLink.args = {
   href: "https://google.com",
   target: "_blank"
 }
+
+export const WithIcon = Template.bind({})
+WithIcon.args = {
+  icon: 'app',
+  children: 'With Icon',
+}

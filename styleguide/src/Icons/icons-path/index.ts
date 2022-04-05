@@ -4,6 +4,7 @@ import { App } from './App'
 import { ArrowLeft } from './ArrowLeft'
 import { SortDown } from './SortDown'
 import { ArrowRight } from './ArrowRight'
+import { Back } from './Back'
 import { Ban } from './Ban'
 import { BarcodeRead } from './BarcodeRead'
 import { Bell } from './Bell'
@@ -24,6 +25,7 @@ import { Eye } from './Eye'
 import { ExclamationCircle } from './ExclamationCircle'
 import { ExclamationTriangle } from './ExclamationTriangle'
 import { ExternalLink } from './ExternalLink'
+import { HalfBack } from './HalfBack'
 import { Home } from './Home'
 import { Image } from './Image'
 import { MoneyBill } from './MoneyBill'
@@ -61,6 +63,7 @@ export const icons = {
   arrowLeft: ArrowLeft,
   arrowRight: ArrowRight,
   sortDown: SortDown,
+  back: Back,
   ban: Ban,
   barcodeRead: BarcodeRead,
   bell: Bell,
@@ -81,6 +84,7 @@ export const icons = {
   exclamationCircle: ExclamationCircle,
   exclamationTriangle: ExclamationTriangle,
   externalLink: ExternalLink,
+  halfBack: HalfBack,
   home: Home,
   image: Image,
   moneyBill: MoneyBill,
