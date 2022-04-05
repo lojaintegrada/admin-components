@@ -16,7 +16,12 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = React.memo(
       <span className="hidden lg:inline truncate">{previousTitle}</span>
     )
     const renderPrevIcon = (
-      <Icon icon="arrowLeft" size={4} className="inline-flex mr-3 -mt-1" block />
+      <Icon
+        icon="arrowLeft"
+        size={4}
+        className="inline-flex mr-3 -mt-1"
+        block
+      />
     )
     const renderPrevLink = () => {
       if (!previousHref && !Link) {
