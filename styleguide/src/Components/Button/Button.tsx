@@ -131,11 +131,11 @@ const ButtonComponent = (
       {...props}
     >
       {currentIcon && iconPosition === 'left' && (
-        <Icon icon={currentIcon} size={4} className="mr-2 inline-block" />
+        <Icon icon={currentIcon} size={size === 'small' ? 3 : 4} className="mr-2 inline-block" />
       )}
       {children}
       {currentIcon && iconPosition === 'right' && (
-        <Icon icon={currentIcon} size={4} className="ml-3 inline-block" />
+        <Icon icon={currentIcon} size={size === 'small' ? 3 : 4} className="ml-3 inline-block" />
       )}
     </ButtonType>
   )
