@@ -40,7 +40,7 @@ describe('Breadcrumb tests', () => {
   it('WithMobileCenter', () => {
     mount(<WithMobileCenter />)
     cy.get('.header-navigation .header-navigation-breadcrumb').within(() => {
-      cy.get('.header-navigation-current').should('have.class', 'w-full text-center lg:text-left')
+      cy.get('.header-navigation-current').should('have.class', 'w-full lg:w-auto text-center lg:text-left')
     })
   })
 
