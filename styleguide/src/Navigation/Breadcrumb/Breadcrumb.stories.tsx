@@ -49,6 +49,7 @@ WithoutPreviousTitle.args = {
 export const WithMobileCenter = Template.bind({})
 WithMobileCenter.args = {
   currentTitle: 'Página atual',
+  previousTitle: 'Página anterior',
   previousHref: 'https://www.google.com',
   mobileAlign: 'center'
 }

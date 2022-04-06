@@ -66,7 +66,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = React.memo(
             <span
               className={`header-navigation-current text-on-base truncate ${
                 mobileAlign === 'center'
-                  ? 'w-full text-center lg:text-left'
+                  ? 'w-full lg:w-auto text-center lg:text-left'
                   : ''
               }`}
             >
