@@ -47,6 +47,10 @@ describe('Button tests', () => {
   it('WithIcon', () => {
     mount(<Default icon="edit" />)
     cy.get('button svg').should('have.class', 'icon-edit')
+    cy.get('button svg').should('have.class', 'ml-3')
+
+    mount(<Default icon="edit" iconPosition="left" />)
+    cy.get('button svg').should('have.class', 'mr-2')
   })
 
   it('Variants', () => {

@@ -17,11 +17,13 @@ export const IconsList = () => {
       <div className="text-center">
         There are {Object.keys(icons).length} icons
       </div>
-      <ul className="grid grid-cols-7 gap-4 list-none">
+      <ul className="grid grid-cols-6 gap-4 list-none">
         {(Object.keys(icons) as Array<keyof typeof icons>).map(key => (
-          <li key={key} className="flex items-center py-4">
-            <IconComponent icon={key} />
-            <div className="pl-2">{key}</div>
+          <li key={key} className="flex items-center py-4 min-w-0">
+            <div className="shrink-0">
+              <IconComponent icon={key} />
+            </div>
+            <div className="pl-2 overflow-hidden text-ellipsis min-w-0">{key}</div>
           </li>
         ))}
       </ul>
