@@ -52,7 +52,7 @@ import { Sync } from './Sync'
 import { AngleDiagonal } from './AngleDiagonal'
 import { AngleHeight } from './AngleHeight'
 import { AngleWidth } from './AngleWidth'
-import { Users } from './Users'
+import { User } from './User'
 
 export const icons = {
   angleLeft: AngleLeft,
@@ -110,5 +110,5 @@ export const icons = {
   usdCircle: UsdCircle,
   questionCircle: QuestionCircle,
   sync: Sync,
-  users: Users,
+  user: User,
 }
