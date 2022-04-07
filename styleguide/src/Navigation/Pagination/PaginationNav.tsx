@@ -62,6 +62,7 @@ const PaginationNavComponent = ({
         </span>{' '}
         /{' '}
         <button
+          type="button"
           id="btnPaginationLastPage"
           className="pagination-nav-total focus:outline-none"
           onClick={() => {
@@ -73,6 +74,7 @@ const PaginationNavComponent = ({
       </div>
       <div className="text-inverted-2 ml-5 flex items-center">
         <button
+          type="button"
           id="btnPaginationPrev"
           className={`pagination-nav-previous mr-3 duration-200 outline-none ${
             hasPrev ? 'hover:text-inverted-1' : ''
@@ -85,6 +87,7 @@ const PaginationNavComponent = ({
           <Icon icon="arrowLeft" block size={4} />
         </button>
         <button
+          type="button"
           id="btnPaginationNext"
           className={`pagination-nav-next duration-200 outline-none ${
             hasNext ? 'hover:text-inverted-1' : ''
