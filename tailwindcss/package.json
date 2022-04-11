@@ -10,10 +10,15 @@
     "tailwind-config-viewer": "tailwind-config-viewer -o"
   },
   "devDependencies": {
-    "tailwind-config-viewer": "^1.6.2"
+    "autoprefixer": "^10.4.4",
+    "postcss": "^8.4.12",
+    "tailwind-config-viewer": "^1.6.3"
+  },
+  "peerDependency": {
+    "tailwindcss": ">=3.0.0"
   },
   "dependencies": {
-    "tailwindcss": "^2.2.4",
+    "tailwindcss": "^3.0.23",
     "tailwindcss-padding-safe": "^1.0.5"
   }
 }
