@@ -55,7 +55,19 @@ describe('Breadcrumb tests', () => {
   it('WithActions', () => {
     mount(<WithActions />)
     cy.get('.header-navigation .header-navigation-content').within(() => {
+      cy.get('.header-navigation-actions').should('have.class', 'flex')
       cy.get('.header-navigation-actions button').should('exist')
+    })
+  })
+
+  it('WithActionsDisplay', () => {
+    mount(<WithActions actionsDisplay="desktop" />)
+    cy.get('.header-navigation .header-navigation-content').within(() => {
+      cy.get('.header-navigation-actions button').should('have.class', 'hidden lg:flex')
+    })
+    mount(<WithActions actionsDisplay="mobile" />)
+    cy.get('.header-navigation .header-navigation-content').within(() => {
+      cy.get('.header-navigation-actions button').should('have.class', 'flex lg:hidden')
     })
   })
 

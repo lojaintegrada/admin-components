@@ -1,6 +1,7 @@
 export * from './Button'
 export * from './LoadingPlaceholder'
 export * from './Table'
+export * from './TableList'
 export * from './Tabs'
 export * from './Timeline'
 export * from './Modal'
