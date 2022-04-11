@@ -1,5 +1,4 @@
 module.exports = {
-  "darkMode": false,
   "theme": {
     "colors": {
       "current": "currentColor",
@@ -143,14 +142,6 @@ module.exports = {
       "bold": 700,
       "extrabold": false,
       "black": false
-    }
-  },
-  "variants": {
-    "extend": {
-      "ringWidth": ["hover"],
-      "backgroundColor": ["active"],
-      "overflow": ["hover", "group-hover"],
-      "borderRadius": ["first", "last"]
     }
   },
   plugins: [
