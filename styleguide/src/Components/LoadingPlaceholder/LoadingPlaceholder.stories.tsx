@@ -9,6 +9,6 @@ export default {
   args: {},
 } as Meta
 
-const Template: Story<LoadingPlaceholderProps> = args => <LoadingPlaceholder {...args} />
+const Template: Story<LoadingPlaceholderProps> = args => <div className="w-40"><LoadingPlaceholder {...args} /></div>
 
 export const Default = Template.bind({})
