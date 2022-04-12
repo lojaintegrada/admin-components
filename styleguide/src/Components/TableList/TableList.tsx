@@ -45,7 +45,7 @@ const TableListComponent = ({
   }, [items])
 
   return (
-    <div className={`table-list ${className}`}>
+    <div className={`table-list tracking-tight ${className}`}>
       {isLoading ? (
         <div className="table-list-loading">
           <TableListItemLoading />
@@ -60,11 +60,11 @@ const TableListComponent = ({
               {empty.illustration}
             </div>
           )}
-          <div className="table-list-empty-title text-center text-f4 font-semibold text-primary-bold tracking-tight leading-7">
+          <div className="table-list-empty-title text-center text-f4 font-semibold text-primary-bold leading-7">
             {empty.title}
           </div>
           {empty.subTitle && (
-            <div className="table-list-empty-subtitle text-center text-f6 text-on-base-2 tracking-tight leading-6 -mt-1">
+            <div className="table-list-empty-subtitle text-center text-f6 text-on-base-2 leading-6 -mt-1">
               {empty.subTitle}
             </div>
           )}
