@@ -31,7 +31,9 @@ export const TableListItem: React.FunctionComponent<TableListItemProps> = ({
         {withIcon && (
           <div className="table-item-icon flex items-center justify-center flex-none mr-4">
             <div
-              className={`table-item-icon-background h-8 w-8 flex items-center justify-center rounded ${withIcon.class || ''}`}
+              className={`table-item-icon-background h-8 w-8 flex items-center justify-center rounded ${
+                withIcon.class || ''
+              }`}
             >
               <Icon icon={withIcon.icon || 'minus'} block size={5} />
             </div>

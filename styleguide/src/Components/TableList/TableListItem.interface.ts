@@ -1,6 +1,8 @@
 import { IconProps } from '../../Icons'
 
-export type TableListItemWrapperProp = React.ComponentClass<any> | React.FunctionComponent<any>
+export type TableListItemWrapperProp =
+  | React.ComponentClass<any>
+  | React.FunctionComponent<any>
 
 export interface TableListItemProps {
   /**

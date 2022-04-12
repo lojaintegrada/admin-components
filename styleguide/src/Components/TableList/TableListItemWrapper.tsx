@@ -7,9 +7,7 @@ const ItemWrapperClassesContainerHover = `before:hover:block before:hover:absolu
 
 const DefaultWrapper = (props: any) => {
   const { children, ...restProps } = props
-  return (
-    <div {...restProps}>{children}</div>
-  )
+  return <div {...restProps}>{children}</div>
 }
 
 export const TableListItemWrapper = ({
@@ -18,19 +16,20 @@ export const TableListItemWrapper = ({
   children,
   withHover = false,
   isInsideContainer = false,
-}: TableListItemWrapperProps) =>
-  (
-    <Wrapper
-      className={`table-item-wrapper ${ItemWrapperClasses} ${
-        withHover ? `hover:bg-base-2 ${
-          isInsideContainer ? ItemWrapperClassesContainerHover : ''
-        }` : ''
-      }`}
-      {...props}
-    >
-      {children}
-    </Wrapper>
-  )
+}: TableListItemWrapperProps) => (
+  <Wrapper
+    className={`table-item-wrapper ${ItemWrapperClasses} ${
+      withHover
+        ? `hover:bg-base-2 ${
+            isInsideContainer ? ItemWrapperClassesContainerHover : ''
+          }`
+        : ''
+    }`}
+    {...props}
+  >
+    {children}
+  </Wrapper>
+)
 
 export interface TableListItemWrapperProps {
   Wrapper?: TableListItemWrapperProp

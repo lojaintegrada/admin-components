@@ -4,9 +4,9 @@ import { LoadingPlaceholder } from '../LoadingPlaceholder'
 import { TableListItemProps } from './TableListItem.interface'
 import { TableListItemWrapper } from './TableListItemWrapper'
 
-export const TableListItemLoading: React.FunctionComponent<Pick<TableListItemProps, 'forceBorderDesktop'>> = ({
-  forceBorderDesktop = false,
-}) => {
+export const TableListItemLoading: React.FunctionComponent<
+  Pick<TableListItemProps, 'forceBorderDesktop'>
+> = ({ forceBorderDesktop = false }) => {
   return (
     <div
       className={`table-item table-item-loading border-primary-bold border-opacity-10 border-t first:border-t-0 ${

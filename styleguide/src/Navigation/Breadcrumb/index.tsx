@@ -2,9 +2,9 @@ import React from 'react'
 import { Icon } from '../../Icons/Icon'
 
 const actionsDisplayClass = {
-  'both': 'flex',
-  'desktop': 'hidden lg:flex',
-  'mobile': 'flex lg:hidden',
+  both: 'flex',
+  desktop: 'hidden lg:flex',
+  mobile: 'flex lg:hidden',
 }
 
 export const Breadcrumb: React.FC<BreadcrumbProps> = React.memo(
@@ -109,7 +109,11 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = React.memo(
             )}
           </div>
           {actions && (
-            <div className={`header-navigation-actions items-center gap-5 ${actionsDisplayClass[actionsDisplay] || ''}`}>
+            <div
+              className={`header-navigation-actions items-center gap-5 ${
+                actionsDisplayClass[actionsDisplay] || ''
+              }`}
+            >
               {actions}
             </div>
           )}

@@ -12,7 +12,7 @@ const TableListComponent = ({
   items = [],
   isLoading = false,
   empty = {
-    title: 'Nenhum registro encontrado'
+    title: 'Nenhum registro encontrado',
   },
   withHover = false,
   isInsideContainer = false,
@@ -25,7 +25,8 @@ const TableListComponent = ({
         },
         item
       ) => {
-        const groupTitle = item.timestampDate || item.timestampTime || 'no_title'
+        const groupTitle =
+          item.timestampDate || item.timestampTime || 'no_title'
         if (!groups[groupTitle]) {
           groups[groupTitle] = []
         }
@@ -46,36 +47,45 @@ const TableListComponent = ({
   return (
     <div className={`table-list ${className}`}>
       {isLoading ? (
-        <div>
+        <div className="table-list-loading">
           <TableListItemLoading />
           <TableListItemLoading />
           <TableListItemLoading />
           <TableListItemLoading />
         </div>
       ) : !itemsMemoized || !itemsMemoized.length ? (
-        <div className="table-list-empty flex flex-col items-center justify-center min-h-[80vh] lg:min-h-[60vh] max-w-sm mx-auto px-4">
+        <div className="table-list-empty flex flex-col items-center justify-center gap-5 min-h-[80vh] lg:min-h-[60vh] max-w-sm mx-auto px-4">
           {empty.illustration && (
-            <div className="text-center">
+            <div className="table-list-empty-illustration text-center">
               {empty.illustration}
             </div>
           )}
-          <div className="text-center text-f4 font-semibold text-primary-bold tracking-tight leading-7 mt-5 mb-4">
+          <div className="table-list-empty-title text-center text-f4 font-semibold text-primary-bold tracking-tight leading-7">
             {empty.title}
           </div>
           {empty.subTitle && (
-            <div className="text-center text-f6 text-on-base-2 tracking-tight leading-6">
+            <div className="table-list-empty-subtitle text-center text-f6 text-on-base-2 tracking-tight leading-6 -mt-1">
               {empty.subTitle}
+            </div>
+          )}
+          {empty.action && (
+            <div className="table-list-empty-action text-center">
+              {empty.action}
             </div>
           )}
         </div>
       ) : (
         itemsMemoized.map((group, indexGroup) => {
           return (
-            <div key={`group-items-${indexGroup}`}>
+            <div key={`group-items-${indexGroup}`} className="table-list-group">
               {group.title && group.title !== 'no_title' && (
                 <div
-                  className={`relative lg:hidden border-primary-bold border-opacity-10 ${
-                    indexGroup !== 0 ? `border-t ${isInsideContainer ? groupTitleMobileClass : ''}` : ''
+                  className={`table-list-title relative lg:hidden border-primary-bold border-opacity-10 ${
+                    indexGroup !== 0
+                      ? `border-t ${
+                          isInsideContainer ? groupTitleMobileClass : ''
+                        }`
+                      : ''
                   }`}
                 >
                   <span
@@ -114,7 +124,11 @@ const TableListComponent = ({
 
 export const TableList = React.memo(TableListComponent)
 
-export interface TableListProps extends Pick<TableListItemProps, 'withHover' | 'isInsideContainer' | 'itemWrapper'> {
+export interface TableListProps
+  extends Pick<
+    TableListItemProps,
+    'withHover' | 'isInsideContainer' | 'itemWrapper'
+  > {
   /**
    * Custom class name
    * */
@@ -122,7 +136,10 @@ export interface TableListProps extends Pick<TableListItemProps, 'withHover' | '
   /**
    * Items of the TableList
    */
-  items?: Omit<TableListItemProps, 'forceBorderDesktop' | 'itemWrapper' | 'withHover'>[]
+  items?: Omit<
+    TableListItemProps,
+    'forceBorderDesktop' | 'itemWrapper' | 'withHover'
+  >[]
   /** TableList is loading
    * @default false
    */
@@ -140,8 +157,12 @@ export interface TableListProps extends Pick<TableListItemProps, 'withHover' | '
      */
     subTitle?: string | React.ReactNode
     /**
-     * Illustration or icon to when is empty
+     * Illustration or icon for when is empty
      */
     illustration?: React.ReactNode
+    /**
+     * Action (button) for when is empty
+     */
+    action?: React.ReactNode
   }
 }
