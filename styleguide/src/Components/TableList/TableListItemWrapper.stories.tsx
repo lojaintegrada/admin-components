@@ -29,9 +29,10 @@ export default {
       href: '#a'
     },
     withHover: true,
+    isInsideContainer: true
   },
 } as Meta
 
 const Template: Story<TableListItemWrapperProps> = (args) => <TableListItemWrapper {...args} />
 
-export const Default = Template.bind({})
+export const ItemWrapper = Template.bind({})

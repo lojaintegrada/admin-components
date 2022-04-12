@@ -15,6 +15,7 @@ const TableListComponent = ({
     title: 'Nenhum registro encontrado'
   },
   withHover = false,
+  isInsideContainer = false,
 }: TableListProps) => {
   const itemsMemoized = React.useMemo(() => {
     const groups = items.reduce(
@@ -74,7 +75,7 @@ const TableListComponent = ({
               {group.title && group.title !== 'no_title' && (
                 <div
                   className={`relative lg:hidden border-primary-bold border-opacity-10 ${
-                    indexGroup !== 0 ? `border-t ${groupTitleMobileClass}` : ''
+                    indexGroup !== 0 ? `border-t ${isInsideContainer ? groupTitleMobileClass : ''}` : ''
                   }`}
                 >
                   <span
@@ -89,7 +90,7 @@ const TableListComponent = ({
                   return (
                     <TableListItem
                       key={`group-item-${indexItem}`}
-                      isFirstItem={indexItem === 0 && indexGroup !== 0}
+                      forceBorderDesktop={indexItem === 0 && indexGroup !== 0}
                       title={item.title}
                       description={item.description}
                       timestampTime={item.timestampTime}
@@ -98,6 +99,7 @@ const TableListComponent = ({
                       itemWrapperProps={item.itemWrapperProps}
                       withIcon={item.withIcon}
                       withHover={withHover}
+                      isInsideContainer={isInsideContainer}
                     />
                   )
                 })}
@@ -112,7 +114,7 @@ const TableListComponent = ({
 
 export const TableList = React.memo(TableListComponent)
 
-export interface TableListProps extends Pick<TableListItemProps, 'withHover' | 'itemWrapper'> {
+export interface TableListProps extends Pick<TableListItemProps, 'withHover' | 'isInsideContainer' | 'itemWrapper'> {
   /**
    * Custom class name
    * */
@@ -120,7 +122,7 @@ export interface TableListProps extends Pick<TableListItemProps, 'withHover' | '
   /**
    * Items of the TableList
    */
-  items?: Omit<TableListItemProps, 'isFirstItem' | 'itemWrapper' | 'withHover'>[]
+  items?: Omit<TableListItemProps, 'forceBorderDesktop' | 'itemWrapper' | 'withHover'>[]
   /** TableList is loading
    * @default false
    */

@@ -5,7 +5,7 @@ import { TableListItemProps } from './TableListItem.interface'
 import { TableListItemWrapper } from './TableListItemWrapper'
 
 export const TableListItem: React.FunctionComponent<TableListItemProps> = ({
-  isFirstItem = false,
+  forceBorderDesktop = false,
   title,
   description,
   timestampTime,
@@ -13,18 +13,20 @@ export const TableListItem: React.FunctionComponent<TableListItemProps> = ({
   itemWrapper,
   itemWrapperProps,
   withHover = false,
+  isInsideContainer = false,
   withIcon,
 }) => {
   return (
     <div
       className={`table-item border-primary-bold border-opacity-10 border-t first:border-t-0 ${
-        isFirstItem ? 'lg:first:border-t' : ''
+        forceBorderDesktop ? 'lg:first:border-t' : ''
       }`}
     >
       <TableListItemWrapper
         Wrapper={itemWrapper}
         props={itemWrapperProps}
         withHover={withHover}
+        isInsideContainer={isInsideContainer}
       >
         {withIcon && (
           <div className="table-item-icon flex items-center justify-center flex-none mr-4">

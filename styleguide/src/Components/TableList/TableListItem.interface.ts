@@ -32,14 +32,18 @@ export interface TableListItemProps {
      */
     icon?: IconProps['icon']
   }
-  /** Force first item (remove border top)
+  /** Force border top at desktop even if is first item
    * @default false
    */
-  isFirstItem?: boolean
-  /** Show full hover effect (adds hover with negative margin to leave container padding)
+  forceBorderDesktop?: boolean
+  /** Show hover effect
    * @default false
    */
   withHover?: boolean
+  /** Adds hover effect and mobile border with negative margin to fulfill container padding
+   * @default false
+   */
+  isInsideContainer?: boolean
   /**
    * Props of the `item.itemWrapper`
    */
