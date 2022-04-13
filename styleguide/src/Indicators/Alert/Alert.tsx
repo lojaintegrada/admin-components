@@ -68,7 +68,10 @@ const AlertComponent = ({
         <div
           className={`alert-icon hidden sm:block flex-shrink-0 mr-3 ${alertTypes[type].iconClass}`}
         >
-          <Icon icon={customIcon ? customIcon : alertTypes[type].icon} size={6} />
+          <Icon
+            icon={customIcon ? customIcon : alertTypes[type].icon}
+            size={6}
+          />
         </div>
       )}
       <div className="flex-grow flex flex-col sm:flex-row items-start sm:items-center justify-between min-w-0">
@@ -130,7 +133,7 @@ export interface AlertProps {
   /**
    * Custom icon
    */
-   customIcon?: IconProps['icon']
+  customIcon?: IconProps['icon']
   /**
    * Action for the alert, like button and hiperlinks
    * */
