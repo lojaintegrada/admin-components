@@ -1,6 +1,12 @@
 import React from 'react'
 import { Icon } from '../../Icons/Icon'
 
+const actionsDisplayClass = {
+  both: 'flex',
+  desktop: 'hidden lg:flex',
+  mobile: 'flex lg:hidden',
+}
+
 export const Breadcrumb: React.FC<BreadcrumbProps> = React.memo(
   ({
     Link,
@@ -10,6 +16,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = React.memo(
     mobileAlign = 'left',
     help,
     actions,
+    actionsDisplay = 'both',
     className = '',
   }) => {
     const renderPrevTitle = (
@@ -102,7 +109,11 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = React.memo(
             )}
           </div>
           {actions && (
-            <div className="header-navigation-actions flex items-center gap-5">
+            <div
+              className={`header-navigation-actions items-center gap-5 ${
+                actionsDisplayClass[actionsDisplay] || ''
+              }`}
+            >
               {actions}
             </div>
           )}
@@ -134,8 +145,7 @@ export interface BreadcrumbProps {
    * Example: `const Link = (props: any) => { return  <a href="https://www.google.com" target="_blank" className={`underline ` + props.className}>{props.children}</a> }`
    * */
   Link?: React.ElementType
-  /**
-   * Aligment of `currentTitle` at mobile
+  /** Aligment of `currentTitle` at mobile
    * @default 'left'
    * */
   mobileAlign?: 'left' | 'center'
@@ -151,4 +161,8 @@ export interface BreadcrumbProps {
    * Custom actions and buttons
    * */
   actions?: React.ReactNode
+  /** Should show actions only at one resolution or always
+   * @default 'both'
+   * */
+  actionsDisplay?: 'desktop' | 'mobile' | 'both'
 }
