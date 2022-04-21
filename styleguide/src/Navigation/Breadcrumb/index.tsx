@@ -131,11 +131,11 @@ export interface BreadcrumbProps {
   /**
    * Current page title
    * */
-  currentTitle: string
+  currentTitle: string | React.ReactNode
   /**
    * Previous page title
    * */
-  previousTitle?: string
+  previousTitle?: string | React.ReactNode
   /**
    * Previous page href
    * */
