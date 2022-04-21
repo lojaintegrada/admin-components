@@ -47,7 +47,7 @@ export const TimelineItem = ({ item }: TimelineItemProps) => {
         )}
         {item.description && (
           <div
-            className={`timeline-description overflow-hidden text-sm tracking-4 text-inverted-1 break-words transition-max-height ${
+            className={`timeline-description mt-1 overflow-hidden text-sm tracking-4 text-inverted-1 break-words transition-max-height ${
               isOpen ? 'max-h-96' : 'max-h-0'
             }`}
           >
