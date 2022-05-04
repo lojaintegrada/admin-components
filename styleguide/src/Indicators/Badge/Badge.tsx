@@ -25,9 +25,7 @@ const BadgeComponent = ({
         badgeTypes[type]
       } ${badgeSizes[size]} ${expanded ? 'flex w-full' : 'inline-flex'}`}
     >
-      <span className={`tracking-4 font-semibold text-base-1`}>
-        {text}
-      </span>
+      <span className={`tracking-4 font-semibold text-base-1`}>{text}</span>
     </div>
   )
 }
