@@ -9,8 +9,8 @@ const badgeTypes = {
 }
 
 const badgeSizes = {
-  default: 'px-2 py-0.5',
-  small: 'px-1',
+  default: 'px-2 py-0.5 text-xs',
+  small: 'px-1.5 text-[0.70rem]',
 }
 
 const BadgeComponent = ({
@@ -25,9 +25,7 @@ const BadgeComponent = ({
         badgeTypes[type]
       } ${badgeSizes[size]} ${expanded ? 'flex w-full' : 'inline-flex'}`}
     >
-      <span className={`text-xs tracking-4 font-semibold text-base-1`}>
-        {text}
-      </span>
+      <span className={`tracking-4 font-semibold text-base-1`}>{text}</span>
     </div>
   )
 }

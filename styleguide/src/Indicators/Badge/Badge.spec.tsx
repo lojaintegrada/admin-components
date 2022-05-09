@@ -16,7 +16,7 @@ describe('Badge tests', () => {
 
   it('Small', () => {
     mount(<Small />)
-    cy.get(badgeClass).should('have.class', 'px-1')
+    cy.get(badgeClass).should('have.class', 'px-1.5')
   })
 
   it('Expanded', () => {
