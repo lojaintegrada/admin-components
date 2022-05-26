@@ -24,6 +24,7 @@ export default {
     description: '#29102 - Daniela Cabral via Cartão de crédito',
     timestampTime: '19:45',
     timestampDate: '10 de dezembro',
+    append: <span className="cursor hover:underline text-primary font-semibold">Ver mais</span>,
     itemWrapperProps: {
       href: '#a'
     },
