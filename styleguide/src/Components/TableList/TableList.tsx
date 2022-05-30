@@ -108,6 +108,7 @@ const TableListComponent = ({
                       itemWrapper={itemWrapper}
                       itemWrapperProps={item.itemWrapperProps}
                       withIcon={item.withIcon}
+                      append={item.append}
                       withHover={withHover}
                       isInsideContainer={isInsideContainer}
                     />

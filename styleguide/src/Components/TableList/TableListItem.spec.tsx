@@ -29,10 +29,10 @@ describe('TableListItem tests', () => {
       .find('.table-item-description')
         .should('exist')
         .contains('Cartão')
-    cy.get('.table-item .table-item-timestamp .table-item-timestamp-time')
+    cy.get('.table-item .table-item-timestamp-time')
       .should('exist')
       .contains('19:45')
-    cy.get('.table-item .table-item-timestamp .table-item-timestamp-date')
+    cy.get('.table-item .table-item-timestamp-date')
       .should('exist')
       .contains('dezembro')
   })
@@ -41,6 +41,13 @@ describe('TableListItem tests', () => {
     mount(<Item forceBorderDesktop={true} />)
     cy.get('.table-item')
       .should('have.class', 'lg:first:border-t')
+  })
+
+  it('Append', () => {
+    mount(<Item append={'External'} />)
+    cy.get('.table-item .table-item-append')
+      .should('exist')
+      .contains('External')
   })
 
   it('Without', () => {
@@ -58,6 +65,10 @@ describe('TableListItem tests', () => {
 
     mount(<Item timestampTime={undefined} />)
     cy.get('.table-item .table-item-timestamp-time')
+      .should('not.exist')
+
+    mount(<Item append={undefined} />)
+    cy.get('.table-item .table-item-append')
       .should('not.exist')
   })
 

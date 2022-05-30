@@ -22,6 +22,10 @@ export interface TableListItemProps {
    */
   timestampDate?: string
   /**
+   * Addittional content at item
+   */
+  append?: string | React.ReactNode
+  /**
    * Icon to show at item
    */
   withIcon?: {

@@ -8,6 +8,7 @@ import { Back } from './Back'
 import { Ban } from './Ban'
 import { BarcodeRead } from './BarcodeRead'
 import { Bell } from './Bell'
+import { Blog } from './Blog'
 import { Bullhorn } from './Bullhorn'
 import { CalendarAlt } from './CalendarAlt'
 import { Cog } from './Cog'
@@ -68,6 +69,7 @@ export const icons = {
   ban: Ban,
   barcodeRead: BarcodeRead,
   bell: Bell,
+  blog: Blog,
   bullhorn: Bullhorn,
   calendarAlt: CalendarAlt,
   check: Check,

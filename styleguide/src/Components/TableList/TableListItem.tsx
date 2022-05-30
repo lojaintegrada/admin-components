@@ -15,6 +15,7 @@ export const TableListItem: React.FunctionComponent<TableListItemProps> = ({
   withHover = false,
   isInsideContainer = false,
   withIcon,
+  append,
 }) => {
   return (
     <div
@@ -45,16 +46,19 @@ export const TableListItem: React.FunctionComponent<TableListItemProps> = ({
             <div className="table-item-description">{description}</div>
           )}
         </div>
-        {timestampTime && (
-          <div className="table-item-timestamp flex flex-col justify-center items-end shrink-0 gap-1.5 ml-4 min-w-0 max-w-[50%] text-right">
-            <div className="table-item-timestamp-time w-full">
-              {timestampTime}
-            </div>
+        {(timestampTime || timestampDate || append) && (
+          <div className="table-item-timestamp-append flex flex-col justify-center items-end shrink-0 gap-1.5 ml-4 min-w-0 max-w-[50%] text-right">
+            {timestampTime && (
+              <div className="table-item-timestamp-time w-full">
+                {timestampTime}
+              </div>
+            )}
             {timestampDate && (
               <div className="table-item-timestamp-date w-full hidden lg:block">
                 {timestampDate}
               </div>
             )}
+            {append && <div className="table-item-append w-full">{append}</div>}
           </div>
         )}
       </TableListItemWrapper>
