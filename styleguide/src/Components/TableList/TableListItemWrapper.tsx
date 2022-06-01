@@ -3,7 +3,7 @@ import React from 'react'
 import { TableListItemWrapperProp } from './TableListItem.interface'
 
 const ItemWrapperClasses = `flex relative py-6 text-f7 leading-4 break-words no-underline`
-const ItemWrapperClassesContainerHover = `before:hover:block before:hover:absolute before:hover:h-full before:hover:w-8 before:hover:top-0 before:hover:-left-8 before:hover:bg-base-2 after:hover:block after:hover:absolute after:hover:h-full after:hover:w-8 after:hover:top-0 after:hover:-right-8 after:hover:bg-base-2`
+const ItemWrapperClassesContainerHover = `before:hover:block before:hover:absolute before:hover:h-full before:hover:w-5 lg:before:hover:w-8 before:hover:top-0 before:hover:-left-5 lg:before:hover:-left-8 before:hover:bg-base-2 after:hover:block after:hover:absolute after:hover:h-full after:hover:w-5 lg:after:hover:w-8 after:hover:top-0 after:hover:-right-5 lg:after:hover:-right-8 after:hover:bg-base-2`
 
 const DefaultWrapper = (props: any) => {
   const { children, ...restProps } = props

@@ -54,7 +54,7 @@ const TableListComponent = ({
           <TableListItemLoading />
         </div>
       ) : !itemsMemoized || !itemsMemoized.length ? (
-        <div className="table-list-empty flex flex-col items-center justify-center gap-5 min-h-[80vh] lg:min-h-[60vh] max-w-sm mx-auto px-4">
+        <div className="table-list-empty flex flex-col items-center justify-center gap-5 min-h-[40vh] lg:min-h-[60vh] max-w-sm mx-auto px-4">
           {empty.illustration && (
             <div className="table-list-empty-illustration text-center">
               {empty.illustration}
