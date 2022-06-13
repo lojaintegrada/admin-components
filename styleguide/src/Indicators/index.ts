@@ -1,5 +1,6 @@
 export * from './Alert'
 export * from './Status'
+export * from './Tag'
 export * from './Toast'
 export * from './Badge'
 export * from './Tooltip'
