@@ -1,31 +1,21 @@
-const path = require('path')
+const path = require('path');
 
 module.exports = {
-  stories: [
-    '../stories/*.stories.mdx',
-    '../stories/**/*.stories.@(ts|tsx|js|jsx)',
-    '../src/**/*.stories.@(js|jsx|ts|tsx)'
-  ],
-  addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-a11y',
-    'storybook-addon-designs',
-    // '@storybook/addon-postcss',
-    {
-      name: '@storybook/addon-postcss',
-      options: {
-        postcssLoaderOptions: {
-          implementation: require('postcss'),
-        },
-      },
-    },
-  ],
+  stories: ['../stories/*.stories.mdx', '../stories/**/*.stories.@(ts|tsx|js|jsx)', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-a11y', 'storybook-addon-designs', // '@storybook/addon-postcss',
+  {
+    name: '@storybook/addon-postcss',
+    options: {
+      postcssLoaderOptions: {
+        implementation: require('postcss')
+      }
+    }
+  }],
   // https://storybook.js.org/docs/react/configure/typescript#mainjs-configuration
   typescript: {
-    check: true, // type-check stories during Storybook build
-  },
-  // webpackFinal: async (config) => {
+    check: true // type-check stories during Storybook build
+
+  } // webpackFinal: async (config) => {
   //   config.module.rules.push({
   //     test: /\,css&/,
   //     use: [
@@ -44,4 +34,8 @@ module.exports = {
   //   })
   //   return config
   // },
+  ,
+  core: {
+    builder: 'webpack5'
+  }
 };
