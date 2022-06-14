@@ -29,20 +29,45 @@ export const SidebarFixedComponent: React.FC<SidebarFixedProps> = ({
   }
 
   return (
-    <div className={`sidebar-fixed fixed z-40 lg:z-20 right-0 bottom-0 w-full h-full transition-all overflow-x-hidden ${sidebarIsOpen ? 'pointer-events-auto opacity-100' : 'opacity-0 pointer-events-none'}`}>
-      <div className="sidebar-fixed-backdrop fixed inset-0 h-full w-full bg-black-alpha -z-1" onClick={handleRequestCloseFunc} />
-      <div className={`sidebar-fixed-inner mt-10 sm:mt-0 top-0 bottom-0 right-0 absolute flex flex-col justify-between bg-base-1 transform transition-transform shadow h-auto w-full max-w-[410px] ml-16 rounded-t-lg sm:rounded-none ${sidebarIsOpen ? 'translate-x-0' : 'translate-x-10'}`}>
+    <div
+      className={`sidebar-fixed fixed z-40 lg:z-20 right-0 bottom-0 w-full h-full transition-all overflow-x-hidden ${
+        sidebarIsOpen
+          ? 'pointer-events-auto opacity-100'
+          : 'opacity-0 pointer-events-none'
+      }`}
+    >
+      <div
+        className="sidebar-fixed-backdrop fixed inset-0 h-full w-full bg-black-alpha -z-1"
+        onClick={handleRequestCloseFunc}
+      />
+      <div
+        className={`sidebar-fixed-inner mt-10 sm:mt-0 top-0 bottom-0 right-0 absolute flex flex-col justify-between bg-base-1 transform transition-transform shadow h-auto w-full max-w-[410px] ml-16 rounded-t-lg sm:rounded-none ${
+          sidebarIsOpen ? 'translate-x-0' : 'translate-x-10'
+        }`}
+      >
         <div className="sidebar-fixed-header flex justify-between items-center p-3 sm:px-5 text-inverted-2">
-          <button className="sidebar-fixed-close p-2 hover:text-primary" onClick={handleRequestCloseFunc}>
+          <button
+            className="sidebar-fixed-close p-2 hover:text-primary"
+            onClick={handleRequestCloseFunc}
+          >
             <Icon icon="close" block size={4} />
           </button>
           {helpLink && (
-            <a className="sidebar-fixed-help p-2 hover:text-primary" href={helpLink} target="_blank" rel="noreferrer">
+            <a
+              className="sidebar-fixed-help p-2 hover:text-primary"
+              href={helpLink}
+              target="_blank"
+              rel="noreferrer"
+            >
               <Icon icon="questionCircle" block size={4} />
             </a>
           )}
         </div>
-        <div className={`sidebar-fixed-content flex-1 flex-grow w-full overflow-auto overscroll-none px-5 lg:px-7 break-words ${backgroundShaddowEffect.join(' ')}`}>
+        <div
+          className={`sidebar-fixed-content flex-1 flex-grow w-full overflow-auto overscroll-none px-5 lg:px-7 break-words ${backgroundShaddowEffect.join(
+            ' '
+          )}`}
+        >
           {children}
         </div>
         {footerActions && (
