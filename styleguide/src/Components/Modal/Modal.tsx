@@ -18,6 +18,7 @@ const ModalComponent = ({
   headerClose = 'Fechar',
   footerActions,
   onClose,
+  closeTimeout = 200,
   parentSelector,
   children,
 }: ModalProps) => {
@@ -41,7 +42,7 @@ const ModalComponent = ({
       isOpen={modalIsOpen}
       onAfterClose={handleAfterCloseFunc}
       onRequestClose={handleRequestCloseFunc}
-      closeTimeoutMS={200}
+      closeTimeoutMS={closeTimeout}
       ariaHideApp={false}
       shouldCloseOnOverlayClick={!modalPreventClose}
       shouldCloseOnEsc={!modalPreventClose}
@@ -121,6 +122,10 @@ export interface ModalProps {
    * Call when modal is closed
    * */
   onClose?: Function
+  /**
+   * Number indicating the milliseconds to wait before closing the modal
+   * */
+  closeTimeout?: number
   /**
    * React children
    */
