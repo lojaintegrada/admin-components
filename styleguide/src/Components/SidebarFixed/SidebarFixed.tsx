@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Icon } from '../../Icons'
 
-const backgroundShaddowEffect = [
+const backgroundShadowEffect = [
   '[background:linear-gradient(#FFFFFF_33%,rgba(255,255,255,0)),linear-gradient(rgba(255,255,255,0),#FFFFFF_66%)_0_100%,radial-gradient(farthest-side_at_50%_0,rgba(156,156,156,0.5),rgba(0,0,0,0)),radial-gradient(farthest-side_at_50%_100%,_rgba(156,156,156,0.5),rgba(0,0,0,0))_0_100%]',
   '[background-size:100%_15px,100%_15px,100%_5px,100%_5px]',
   '[background-attachment:local,local,scroll,scroll]',
@@ -64,7 +64,7 @@ export const SidebarFixedComponent: React.FC<SidebarFixedProps> = ({
           )}
         </div>
         <div
-          className={`sidebar-fixed-content flex-1 flex-grow w-full overflow-auto overscroll-none px-5 lg:px-7 break-words ${backgroundShaddowEffect.join(
+          className={`sidebar-fixed-content flex-1 flex-grow w-full overflow-auto overscroll-none px-5 lg:px-7 break-words ${backgroundShadowEffect.join(
             ' '
           )}`}
         >
