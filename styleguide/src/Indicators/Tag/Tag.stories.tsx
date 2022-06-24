@@ -9,6 +9,12 @@ export default {
   title: 'Indicators/Tag',
   component: Tag,
   decorators: [withDesign],
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/Z2WDD4SH8zwaJC2K5wbtMO/Sistema-Integrado?node-id=1496%3A13727',
+    },
+  },
   args: {
     content: 'De 10/02/2022 a 22/02/2022',
     type: 'primary',

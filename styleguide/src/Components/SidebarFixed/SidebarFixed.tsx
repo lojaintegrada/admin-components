@@ -41,20 +41,20 @@ export const SidebarFixedComponent: React.FC<SidebarFixedProps> = ({
         onClick={handleRequestCloseFunc}
       />
       <div
-        className={`sidebar-fixed-inner mt-10 sm:mt-0 top-0 bottom-0 right-0 absolute flex flex-col justify-between bg-base-1 transform transition-transform shadow h-auto w-full max-w-[410px] ml-16 rounded-t-lg sm:rounded-none ${
+        className={`sidebar-fixed-inner mt-10 sm:mt-0 top-0 bottom-0 right-0 absolute flex flex-col justify-between bg-base-1 transform transition-transform shadow h-auto w-full sm:max-w-[410px] sm:ml-16 rounded-t-lg sm:rounded-none ${
           sidebarIsOpen ? 'translate-x-0' : 'translate-x-10'
         }`}
       >
-        <div className="sidebar-fixed-header flex justify-between items-center p-3 sm:px-5 text-inverted-2">
+        <div className="sidebar-fixed-header flex justify-between items-center p-3 lg:px-5 text-inverted-2">
           <button
-            className="sidebar-fixed-close p-2 hover:text-primary"
+            className="sidebar-fixed-close p-2 hover:text-primary transition-colors"
             onClick={handleRequestCloseFunc}
           >
             <Icon icon="close" block size={4} />
           </button>
           {helpLink && (
             <a
-              className="sidebar-fixed-help p-2 hover:text-primary"
+              className="sidebar-fixed-help p-2 hover:text-primary transition-colors"
               href={helpLink}
               target="_blank"
               rel="noreferrer"
