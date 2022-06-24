@@ -44,7 +44,7 @@ export interface TagProps {
    * Enlarge width of the Tag
    * */
   fullWidth?: boolean
-  /** Tag color
+  /** Adittional classes for Tag
    * @default ''
    * */
   className?: string
