@@ -1,3 +1,4 @@
+import { Adjust } from './Adjust'
 import { AngleLeft } from './AngleLeft'
 import { AngleRight } from './AngleRight'
 import { App } from './App'
@@ -56,6 +57,7 @@ import { AngleWidth } from './AngleWidth'
 import { User } from './User'
 
 export const icons = {
+  adjust: Adjust,
   angleLeft: AngleLeft,
   angleRight: AngleRight,
   angleDiagonal: AngleDiagonal,
