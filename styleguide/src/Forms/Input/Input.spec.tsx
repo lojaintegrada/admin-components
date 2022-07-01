@@ -51,7 +51,7 @@ describe('Input tests', () => {
     cy.get('input').parent().should('have.class', 'h-12')
 
     mount(<Default variant="small" />)
-    cy.get('input').parent().should('have.class', 'h-8')
+    cy.get('input').parent().should('have.class', 'h-10')
 
     mount(<Default variant="large" />)
     cy.get('input').parent().should('have.class', 'h-14')
