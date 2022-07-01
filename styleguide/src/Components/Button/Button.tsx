@@ -57,7 +57,7 @@ const listOfStylesDisabled = {
 }
 
 const listOfSizes = {
-  small: `text-f7 h-8`,
+  small: `text-f6 h-10`,
   default: `text-f6 h-12`,
   large: `text-f5 h-14`,
 }

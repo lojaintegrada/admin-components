@@ -19,7 +19,7 @@ describe('Button tests', () => {
 
   it('Small', () => {
     mount(<Small />)
-    cy.get('button').should('have.class', 'h-8')
+    cy.get('button').should('have.class', 'h-10')
   })
 
   it('Action', () => {
