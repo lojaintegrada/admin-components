@@ -23,7 +23,7 @@ export const sufixClasses = `${adornmentClasses} rounded-r right-0`
 
 export const variantClasses = {
   default: 'h-12',
-  small: 'h-8',
+  small: 'h-10',
   large: 'h-14',
   xlarge: 'h-24',
 }
