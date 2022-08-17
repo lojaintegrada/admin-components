@@ -1,4 +1,5 @@
 import maskDate from './maskDate'
+/* docs: https://github.com/text-mask/text-mask/blob/master/componentDocumentation.md */
 
 export const formatValuePatterns = {
   default: {},
@@ -32,5 +33,26 @@ export const formatValuePatterns = {
     pipe: maskDate('dd/mm/yyyy'),
     keepCharPositions: true,
     inputMode: 'numeric',
+    placeholder: '__/__/____',
+  },
+  zipCode: {
+    mask: [/\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/],
+    keepCharPositions: true,
+    inputMode: 'numeric',
+    placeholder: '_____-___',
+  },
+  nfe: {
+    mask: () => {
+      const maxLength = 44
+      const mask = []
+      for (let i = 1; i <= maxLength; i++) {
+        mask.push(/\d/)
+        if (i % 4 === 0 && i !== maxLength) mask.push(' ')
+      }
+      return mask
+    },
+    keepCharPositions: true,
+    inputMode: 'numeric',
+    placeholder: '____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____',
   },
 }

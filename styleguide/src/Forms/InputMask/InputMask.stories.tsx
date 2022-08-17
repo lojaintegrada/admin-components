@@ -40,6 +40,24 @@ OnlyText.args = {
   },
 }
 
+export const ZipCode = Template.bind({})
+ZipCode.args = {
+  formatValue: 'zipCode',
+  defaultValue: '21310310',
+  onChange: (a) => {
+    console.log(a.target.value)
+  },
+}
+
+export const Nfe = Template.bind({})
+Nfe.args = {
+  formatValue: 'nfe',
+  defaultValue: '32191105570714000825550010059146621133082968',
+  onChange: (a) => {
+    console.log(a.target.value)
+  },
+}
+
 export const DateWithStartAdornment = Template.bind({})
 DateWithStartAdornment.args = {
   formatValue: 'date',

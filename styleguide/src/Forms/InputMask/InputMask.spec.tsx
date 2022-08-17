@@ -3,7 +3,7 @@ import { composeStories } from "@storybook/testing-react"
 import { mount } from "@cypress/react"
 import * as stories from "./InputMask.stories"
 
-const { Default, Date, OnlyNumbers } = composeStories(stories)
+const { Default, Date, OnlyNumbers, ZipCode, Nfe } = composeStories(stories)
 
 describe('Input Mask tests', () => {
 
@@ -25,6 +25,20 @@ describe('Input Mask tests', () => {
     mount(<OnlyNumbers />)
     const val = '123abc123ab/gttr[]55'
     const valMasked = '12312355'
+    cy.get('input').type(val).should('have.value', valMasked)
+  })
+
+  it('ZipCode', () => {
+    mount(<ZipCode />)
+    const val = '21310310'
+    const valMasked = '21310-310'
+    cy.get('input').type(val).should('have.value', valMasked)
+  })
+
+  it('Nfe', () => {
+    mount(<Nfe />)
+    const val = '32191105570714000825550010059146621133082968'
+    const valMasked = '3219 1105 5707 1400 0825 5500 1005 9146 6211 3308 2968'
     cy.get('input').type(val).should('have.value', valMasked)
   })
 
