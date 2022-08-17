@@ -30,6 +30,8 @@ const FloatingLabelInputCurrencyComponent = (
 ) => {
   config = config[currency]
 
+  max = Number(max)
+
   const inputRef = useCallback(
     (node) => {
       const isActive = node === document.activeElement
@@ -190,7 +192,7 @@ export interface FloatingLabelInputCurrencyProps
   /** Max value allowed
    * @default 1000000000000000
    * */
-  max?: number
+  max?: number | string
   /** Custom Intl config
    * @deprecated Don't use, component already has its default config
    * */
