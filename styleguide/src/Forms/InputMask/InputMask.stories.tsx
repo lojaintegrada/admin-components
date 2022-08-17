@@ -58,6 +58,33 @@ Nfe.args = {
   },
 }
 
+export const Phone = Template.bind({})
+Phone.args = {
+  formatValue: 'phone',
+  defaultValue: '2139774179',
+  onChange: (a) => {
+    console.log(a.target.value)
+  },
+}
+
+export const Cellphone = Template.bind({})
+Cellphone.args = {
+  formatValue: 'cellphone',
+  defaultValue: '21970100616',
+  onChange: (a) => {
+    console.log(a.target.value)
+  },
+}
+
+export const PhoneOrCellphone = Template.bind({})
+PhoneOrCellphone.args = {
+  formatValue: 'phoneOrCellphone',
+  defaultValue: '21970100616',
+  onChange: (a) => {
+    console.log(a.target.value)
+  },
+}
+
 export const DateWithStartAdornment = Template.bind({})
 DateWithStartAdornment.args = {
   formatValue: 'date',

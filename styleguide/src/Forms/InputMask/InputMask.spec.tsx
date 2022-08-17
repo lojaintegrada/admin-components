@@ -1,12 +1,20 @@
-import * as React from "react"
-import { composeStories } from "@storybook/testing-react"
-import { mount } from "@cypress/react"
-import * as stories from "./InputMask.stories"
+import * as React from 'react'
+import { composeStories } from '@storybook/testing-react'
+import { mount } from '@cypress/react'
+import * as stories from './InputMask.stories'
 
-const { Default, Date, OnlyNumbers, ZipCode, Nfe } = composeStories(stories)
+const {
+  Default,
+  Date,
+  OnlyNumbers,
+  ZipCode,
+  Nfe,
+  Phone,
+  Cellphone,
+  PhoneOrCellphone,
+} = composeStories(stories)
 
 describe('Input Mask tests', () => {
-
   it('Default', () => {
     mount(<Default />)
     const val = '12345678'
@@ -42,4 +50,24 @@ describe('Input Mask tests', () => {
     cy.get('input').type(val).should('have.value', valMasked)
   })
 
+  it('Phone', () => {
+    mount(<Phone />)
+    const val = '2139774179'
+    const valMasked = '(21) 3977-4179'
+    cy.get('input').type(val).should('have.value', valMasked)
+  })
+
+  it('Cellphone', () => {
+    mount(<Cellphone />)
+    const val = '21970100616'
+    const valMasked = '(21) 97010-0616'
+    cy.get('input').type(val).should('have.value', valMasked)
+  })
+
+  it('PhoneOrCellphone', () => {
+    mount(<PhoneOrCellphone />)
+    const val = '21970100616'
+    const valMasked = '(21) 97010-0616'
+    cy.get('input').type(val).should('have.value', valMasked)
+  })
 })

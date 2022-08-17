@@ -55,4 +55,54 @@ export const formatValuePatterns = {
     inputMode: 'decimal',
     placeholder: '____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____',
   },
+  phone: {
+    mask: [
+      '(',
+      /\d/,
+      /\d/,
+      ')',
+      ' ',
+      /\d/,
+      /\d/,
+      /\d/,
+      /\d/,
+      '-',
+      /\d/,
+      /\d/,
+      /\d/,
+      /\d/,
+    ],
+    inputMode: 'decimal',
+    placeholder: '(__) ____-____',
+  },
+  cellphone: {
+    mask: [
+      '(',
+      /\d/,
+      /\d/,
+      ')',
+      ' ',
+      /\d/,
+      /\d/,
+      /\d/,
+      /\d/,
+      /\d/,
+      '-',
+      /\d/,
+      /\d/,
+      /\d/,
+      /\d/,
+    ],
+    inputMode: 'decimal',
+    placeholder: '(__) _____-____',
+  },
+  phoneOrCellphone: {
+    mask: (rawValue: any) => {
+      const cleanedText = rawValue.replace(/[^\d]/g, '')
+      if (cleanedText.length === 11) return formatValuePatterns.cellphone.mask
+      else return formatValuePatterns.phone.mask
+    },
+    inputMode: 'decimal',
+    placeholder: '(__) _____-____',
+  },
 }
