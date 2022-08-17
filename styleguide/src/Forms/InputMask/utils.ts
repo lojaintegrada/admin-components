@@ -32,13 +32,13 @@ export const formatValuePatterns = {
     mask: [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/],
     pipe: maskDate('dd/mm/yyyy'),
     keepCharPositions: true,
-    inputMode: 'numeric',
+    inputMode: 'decimal',
     placeholder: '__/__/____',
   },
   zipCode: {
     mask: [/\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/],
     keepCharPositions: true,
-    inputMode: 'numeric',
+    inputMode: 'decimal',
     placeholder: '_____-___',
   },
   nfe: {
@@ -52,7 +52,7 @@ export const formatValuePatterns = {
       return mask
     },
     keepCharPositions: true,
-    inputMode: 'numeric',
+    inputMode: 'decimal',
     placeholder: '____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____',
   },
 }
