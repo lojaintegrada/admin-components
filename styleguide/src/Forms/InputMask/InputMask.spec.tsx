@@ -64,10 +64,17 @@ describe('Input Mask tests', () => {
     cy.get('input').type(val).should('have.value', valMasked)
   })
 
-  it('PhoneOrCellphone', () => {
+  it('PhoneOrCellphone - Phone', () => {
     mount(<PhoneOrCellphone />)
-    const val = '21970100616'
-    const valMasked = '(21) 97010-0616'
-    cy.get('input').type(val).should('have.value', valMasked)
+    const val = '2139774179'
+    const valMasked = '(21) 3977-4179'
+    cy.get('input').clear().type(val).should('have.value', valMasked)
+  })
+
+  it('PhoneOrCellphone - Cellphone', () => {
+    mount(<PhoneOrCellphone />)
+    const val = '21901234567'
+    const valMasked = '(21) 90123-4567'
+    cy.get('input').clear().type(val).should('have.value', valMasked)
   })
 })

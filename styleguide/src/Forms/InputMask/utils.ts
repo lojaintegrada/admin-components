@@ -99,7 +99,7 @@ export const formatValuePatterns = {
   phoneOrCellphone: {
     mask: (rawValue: any) => {
       const cleanedText = rawValue.replace(/[^\d]/g, '')
-      if (cleanedText.length === 11) return formatValuePatterns.cellphone.mask
+      if (cleanedText.length > 10) return formatValuePatterns.cellphone.mask
       else return formatValuePatterns.phone.mask
     },
     inputMode: 'decimal',
