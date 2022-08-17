@@ -17,8 +17,8 @@ function InputMaskComponent(
   const formatValueProps = formatValuePatterns[formatValue] || {}
 
   const mergedProps = {
-    ...props,
     ...formatValueProps,
+    ...props,
   }
   if (!mergedProps.mask) {
     mergedProps.mask = false
