@@ -85,6 +85,24 @@ PhoneOrCellphone.args = {
   },
 }
 
+export const CPF = Template.bind({})
+CPF.args = {
+  formatValue: 'cpf',
+  defaultValue: '52517738033',
+  onChange: (a) => {
+    console.log(a.target.value)
+  },
+}
+
+export const CNPJ = Template.bind({})
+CNPJ.args = {
+  formatValue: 'cnpj',
+  defaultValue: '03167626000185',
+  onChange: (a) => {
+    console.log(a.target.value)
+  },
+}
+
 export const DateWithStartAdornment = Template.bind({})
 DateWithStartAdornment.args = {
   formatValue: 'date',

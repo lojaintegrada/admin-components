@@ -12,6 +12,8 @@ const {
   Phone,
   Cellphone,
   PhoneOrCellphone,
+  CPF,
+  CNPJ,
 } = composeStories(stories)
 
 describe('Input Mask tests', () => {
@@ -75,6 +77,20 @@ describe('Input Mask tests', () => {
     mount(<PhoneOrCellphone />)
     const val = '21901234567'
     const valMasked = '(21) 90123-4567'
+    cy.get('input').clear().type(val).should('have.value', valMasked)
+  })
+
+  it('CPF', () => {
+    mount(<CPF />)
+    const val = '99648135037'
+    const valMasked = '996.481.350-37'
+    cy.get('input').clear().type(val).should('have.value', valMasked)
+  })
+
+  it('CNPJ', () => {
+    mount(<CNPJ />)
+    const val = '86806289000156'
+    const valMasked = '86.806.289/0001-56'
     cy.get('input').clear().type(val).should('have.value', valMasked)
   })
 })
