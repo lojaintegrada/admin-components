@@ -55,6 +55,8 @@ import { AngleDiagonal } from './AngleDiagonal'
 import { AngleHeight } from './AngleHeight'
 import { AngleWidth } from './AngleWidth'
 import { User } from './User'
+import { Nav } from './Nav'
+import { ShoppingCart } from './ShoppingCart'
 
 export const icons = {
   adjust: Adjust,
@@ -94,12 +96,14 @@ export const icons = {
   image: Image,
   moneyBill: MoneyBill,
   move: Move,
+  nav: Nav,
   order: Order,
   pagali: Pagali,
   paperList: PaperList,
   pieChart: PieChart,
   plusCircle: PlusCircle,
   print: Print,
+  shoppingCart: ShoppingCart,
   infoCircle: InfoCircle,
   link: Link,
   loading: Loading,
