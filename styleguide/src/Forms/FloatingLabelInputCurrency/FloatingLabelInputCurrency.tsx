@@ -5,7 +5,7 @@ import { defaultIntlConfig, defaultMaxValue, formatCurrency } from '../InputCurr
 
 const FloatingLabelInputCurrencyComponent = (
   {
-    value = 0,
+    value,
     defaultValue,
     config = defaultIntlConfig,
     currency = 'BRL',
@@ -166,9 +166,11 @@ const FloatingLabelInputCurrencyComponent = (
       onFocus={handleFocus}
       {...props}
       ref={composeRefs(inputRef, ref)}
-      value={maskedValue}
+      value={value ? maskedValue : undefined}
       inputMode="decimal"
       label={label}
+      showLabel={showLabel}
+      prefix={prefix}
     />
   )
 }
