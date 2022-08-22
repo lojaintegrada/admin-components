@@ -1,7 +1,11 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { composeRefs } from '../../utils'
 import { FloatingLabelInput } from '../FloatingLabelInput/FloatingLabelInput'
-import { defaultIntlConfig, defaultMaxValue, formatCurrency } from '../InputCurrency/utils'
+import {
+  defaultIntlConfig,
+  defaultMaxValue,
+  formatCurrency,
+} from '../InputCurrency/utils'
 
 const FloatingLabelInputCurrencyComponent = (
   {
@@ -154,9 +158,9 @@ const FloatingLabelInputCurrencyComponent = (
     setMaskedValue(maskedValue)
     // eslint-disable-next-line
   }, [currency, value, defaultValue, config])
-  
+
   return (
-    <FloatingLabelInput 
+    <FloatingLabelInput
       type={type}
       id={id}
       placeholder={placeholder}
@@ -171,6 +175,7 @@ const FloatingLabelInputCurrencyComponent = (
       label={label}
       showLabel={showLabel}
       prefix={prefix}
+      sufix={sufix}
     />
   )
 }
@@ -244,4 +249,3 @@ export interface FloatingLabelInputCurrencyProps
     arg2: string | number
   ) => void
 }
-
