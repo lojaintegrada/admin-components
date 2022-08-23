@@ -8,11 +8,13 @@ const FloatingLabelInputComponent = (
     type = 'text',
     placeholder = ' ',
     label,
-    showLabel = true,
+    showLabel = false,
+    className='',
     ...props
   }: FloatingLabelInputProps,
   ref: React.ForwardedRef<HTMLInputElement>
 ) => {
+
   const peerFocusLabelClasses = `peer-focus:text-f7 peer-focus:-translate-y-4 ${
     prefix ? 'peer-focus:pl-0' : ''
   } `
@@ -21,9 +23,9 @@ const FloatingLabelInputComponent = (
   } peer-placeholder-shown:translate-y-0 peer-placeholder-shown:text-f4 `
   const labelClassName = `cursor-text absolute text-f7 text-inverted-2 duration-300 transform -translate-y-4 top-5 z-10 origin-[0] ${peerFocusLabelClasses} ${peerPlaceholderShowLabelClasses}`
 
-  const inputClassName = `block text-f4 pb-2.5 ${prefix ? 'pl-10' : ''} ${
-    sufix ? 'pr-10' : ''
-  } pt-5 w-full border-none appearance-none peer focus:outline-none`
+  const inputClassName = `block text-f4 ${prefix ? 'pl-7' : ''} ${
+    sufix ? 'pr-6' : ''
+  } w-full border-none appearance-none peer focus:outline-none bg-transparent pb-2.5 pt-5 ${className ? className : ''}`
 
   return (
     <div className="relative">
@@ -72,4 +74,6 @@ export interface FloatingLabelInputProps
   sufix?: React.ReactNode
   label?: string
   showLabel?: boolean
+  className?: string
+  textArea?: false
 }
