@@ -85,7 +85,6 @@ const {
   GroupHeading,
   Placeholder,
   SingleValue,
-  ValueContainer,
 } = components
 
 const CustomDropdownIndicator = (
@@ -308,7 +307,6 @@ const DropdownComponent = (
           Placeholder: (props) => CustomPlaceholder(props, valueFontSize),
           SingleValue: (props) =>
             CustomSingleValue(props, variant, valueFontSize),
-          ValueContainer: (props) => <ValueContainer {...props} />,
         }}
       />
       <InputHelpText
