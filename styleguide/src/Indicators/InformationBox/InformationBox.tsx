@@ -78,7 +78,7 @@ export interface InformationBoxProps {
   /**
    * @default true
    */
-  title: string | React.ReactNode
+  title?: string | React.ReactNode
   /**
    * InformationBox text below title
    */
