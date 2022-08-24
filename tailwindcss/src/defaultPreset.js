@@ -145,6 +145,6 @@ module.exports = {
     }
   },
   plugins: [
-    require("tailwindcss-padding-safe")()
+    require("tailwindcss-padding-safe")
   ]
 }
