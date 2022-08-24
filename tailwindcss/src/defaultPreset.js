@@ -145,6 +145,8 @@ module.exports = {
     }
   },
   plugins: [
-    require("tailwindcss-padding-safe")
+    // Usage: Same as core padding, but with `-safe`, like `px-[value]-safe`.
+    // Why: https://webkit.org/blog/7929/designing-websites-for-iphone-x/
+    require('../plugins/paddingSafe.js')
   ]
 }
