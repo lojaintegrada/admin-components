@@ -10,7 +10,6 @@ describe('Input tests', () => {
     mount(<Default />)
     const val = 'Preencher campo'
     cy.get('input').type(val).should('have.value', val)
-    cy.get('label.input-label').contains('Meu Campo')
   })
 
   it('Sufix and Prefix', () => {

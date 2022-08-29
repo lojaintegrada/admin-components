@@ -161,6 +161,7 @@ const FloatingLabelInputCurrencyComponent = (
 
   return (
     <FloatingLabelInput
+      {...props}
       type={type}
       id={id}
       placeholder={placeholder}
@@ -168,9 +169,8 @@ const FloatingLabelInputCurrencyComponent = (
       onChange={handleChange}
       onKeyUp={handleKeyUp}
       onFocus={handleFocus}
-      {...props}
       ref={composeRefs(inputRef, ref)}
-      value={value ? maskedValue : undefined}
+      value={maskedValue}
       inputMode="decimal"
       label={label}
       showLabel={showLabel}

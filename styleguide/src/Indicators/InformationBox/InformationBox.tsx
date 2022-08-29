@@ -1,7 +1,7 @@
 import React from 'react'
 import { Icon, IconProps } from '../../Icons'
 
-type InformationBoxTypesOptions = 'tips' | 'warning' | 'danger'
+type InformationBoxTypesOptions = 'tip' | 'warning' | 'danger'
 
 const InformationBoxTypes: Record<
   InformationBoxTypesOptions,
@@ -12,7 +12,7 @@ const InformationBoxTypes: Record<
     iconClass: string
   }
 > = {
-  tips: {
+  tip: {
     title: 'Dica!',
     class: 'bg-success-light border-success',
     icon: 'lightbulb',
@@ -33,7 +33,7 @@ const InformationBoxTypes: Record<
 }
 
 const InformationBoxComponent = ({
-  type = 'tips',
+  type = 'tip',
   subtitle,
 }: InformationBoxProps) => {
   return (
@@ -45,12 +45,12 @@ const InformationBoxComponent = ({
       >
         <Icon
           icon={InformationBoxTypes[type].icon}
-          className={`${InformationBoxTypes[type].iconClass}`}
+          className={`InformationBox-icon ${InformationBoxTypes[type].iconClass}`}
           size={4}
         />
       </div>
 
-      <div className="flex-grow flex flex-col sm:flex-row items-start items-center justify-between min-w-0">
+      <div className="flex-grow flex flex-col sm:flex-row items-start justify-between min-w-0">
         <div className="flex flex-col justify-center min-w-0 break-words tracking-4 leading-7 text-on-base">
           <span
             className={`InformationBox-title text-f5 font-bold ${InformationBoxTypes[type].iconClass}`}
