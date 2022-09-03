@@ -12,7 +12,7 @@ module.exports = {
       "base-4": "#DCDDE1",
 
       "inverted-1": "#371E56",
-      "inverted-2": "#607081",
+      "inverted-2": "#525B65",
       "inverted-3": "#E8E9EB",
       "inverted-4": "#F8F8F9",
 
@@ -23,7 +23,7 @@ module.exports = {
 
       "on-inverted": "#FFFFFF",
       "on-base": "#463758",
-      "on-base-2": "#607081",
+      "on-base-2": "#525B65",
       "on-base-3": "#A0A8B6",
 
       "primary-light": "#E4F3F3",
@@ -31,8 +31,8 @@ module.exports = {
       "primary-dark": "#0C9898",
       "primary-bold": "#004852",
 
-      "tertiary-light": "#607081",
-      "tertiary": "#607081",
+      "tertiary-light": "#525B65",
+      "tertiary": "#525B65",
       "tertiary-dark": "#636970",
       "tertiary-bold": "#474B50",
 
