@@ -19,32 +19,49 @@ export const sizeClasses = {
   xlarge: 'h-24',
 }
 
+export const valueFontSizesClasses = {
+  default: 'text-f6',
+  small: 'text-f7',
+  large: 'text-f5',
+  xlarge: 'text-f4',
+}
+
 export const variantControlClasses = {
-  default: 'border-card-stroke rounded',
+  default: 'border-card-stroke rounded pl-2',
   secondary:
-    'border-inverted-2 hover:bg-base-3 rounded-md focus:ring-2 focus:ring-focus focus:ring-offset-2 focus:bg-base-1',
+    'border-inverted-2 hover:bg-base-3 rounded-md focus:ring-2 focus:ring-focus focus:ring-offset-2 focus:bg-base-1 pl-2',
+  simple: 'border-none',
 }
 
 export const variantValueClasses = {
-  default: 'font-normal',
-  secondary: 'font-semibold',
+  default: 'font-normal text-on-base',
+  secondary: 'font-semibold text-on-base',
+  simple: 'font-normal text-on-base',
 }
 
 export const variantSelectedClasses = {
   default: '',
   secondary: 'bg-base-1 shadow-inner',
+  simple: 'bg-transparent',
 }
 
 export const variantDisabledClasses = {
   default: 'cursor-not-allowed opacity-70',
   secondary: 'cursor-not-allowed opacity-90 bg-base-4 border-base-4',
+  simple: 'cursor-not-allowed opacity-70',
 }
 
 export const varianErrorClasses = {
   default: 'border-danger rounded',
   secondary: 'border-danger rounded-md',
+  simple: '',
 }
 
+export const valueContainerStyles = {
+  default: { paddingLeft: 8 },
+  secondary: { paddingLeft: 8 },
+  simple: { paddingLeft: 0 },
+}
 export interface CustomOptionProps {
   value: string | number
   label: string
@@ -57,7 +74,9 @@ export interface CustomGroupedOptionsProps {
   options: CustomOptionProps[]
 }
 
-export type DropdownVariant = 'default' | 'secondary'
+export type DropdownVariant = 'default' | 'secondary' | 'simple'
+export type DropdownSizes = keyof typeof sizeClasses
+export type DropdownValueFontSizes = keyof typeof valueFontSizesClasses
 
 const {
   Option,
@@ -90,11 +109,11 @@ const CustomControl = (
   props: React.PropsWithChildren<
     ControlProps<CustomOptionProps, false, GroupTypeBase<CustomOptionProps>>
   >,
-  size: keyof typeof sizeClasses,
+  size: DropdownSizes,
   variant: DropdownVariant,
   errorMessage?: string
 ) => {
-  const controlClasses = `cursor-pointer transition-all flex itens-center border pl-2 ${
+  const controlClasses = `cursor-pointer transition-all flex itens-center border  ${
     errorMessage ? varianErrorClasses[variant] : variantControlClasses[variant]
   } ${sizeClasses[size]} ${
     props.menuIsOpen ? variantSelectedClasses[variant] : ''
@@ -155,18 +174,23 @@ const CustomPlaceholder = (
     CustomOptionProps,
     false,
     GroupTypeBase<CustomOptionProps>
-  >
+  >,
+  fontSize: DropdownValueFontSizes
 ) => (
-  <Placeholder {...props} className="text-f6 tracking-4 w-full pr-2 truncate" />
+  <Placeholder
+    {...props}
+    className={`tracking-4 w-full pr-2 truncate ${valueFontSizesClasses[fontSize]}`}
+  />
 )
 
 const CustomSingleValue = (
   props: SingleValueProps<CustomOptionProps, GroupTypeBase<CustomOptionProps>>,
-  variant: DropdownVariant
+  variant: DropdownVariant,
+  fontSize: DropdownValueFontSizes
 ) => (
   <SingleValue
     {...props}
-    className={`text-f6 tracking-4 text-on-base text-sm truncate ${variantValueClasses[variant]}`}
+    className={`tracking-4 truncate ${variantValueClasses[variant]} ${valueFontSizesClasses[fontSize]}`}
   />
 )
 
@@ -197,6 +221,7 @@ const DropdownComponent = (
     menuPlacement = 'auto',
     menuWidth = '100%',
     menuHorizontalPlacement,
+    valueFontSize = 'default',
   }: DropdownProps,
   ref: React.ForwardedRef<any>
 ) => {
@@ -212,6 +237,7 @@ const DropdownComponent = (
         className="mb-1"
       />
       <Select
+        id={inputId}
         ref={ref}
         className={`w-full text-inverted-2`}
         classNamePrefix="select"
@@ -258,6 +284,9 @@ const DropdownComponent = (
               maxWidth: 'calc(100% - 6px)',
             }
           },
+          valueContainer: (base) => {
+            return { ...base, ...valueContainerStyles[variant] }
+          },
           input: (base) => {
             return {
               ...base,
@@ -275,8 +304,9 @@ const DropdownComponent = (
           DropdownIndicator: (props) => CustomDropdownIndicator(props),
           Control: (props) => CustomControl(props, size, variant, errorMessage),
           GroupHeading: (props) => CustomGroupHeading(props),
-          Placeholder: (props) => CustomPlaceholder(props),
-          SingleValue: (props) => CustomSingleValue(props, variant),
+          Placeholder: (props) => CustomPlaceholder(props, valueFontSize),
+          SingleValue: (props) =>
+            CustomSingleValue(props, variant, valueFontSize),
         }}
       />
       <InputHelpText
@@ -303,9 +333,14 @@ export interface DropdownProps {
    * Changes the size of dropdown
    * @default default
    * */
-  size?: keyof typeof sizeClasses
+  size?: DropdownSizes
   /**
-   * Changes the size of dropdown
+   * Changes the size of selected value
+   * @default default
+   * */
+  valueFontSize?: DropdownValueFontSizes
+  /**
+   * Changes the variant of dropdown
    * @default default
    * */
   variant?: DropdownVariant

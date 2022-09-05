@@ -55,6 +55,10 @@ import { AngleDiagonal } from './AngleDiagonal'
 import { AngleHeight } from './AngleHeight'
 import { AngleWidth } from './AngleWidth'
 import { User } from './User'
+import { Lightbulb } from './Lightbulb'
+import { Camera } from './Camera'
+import { Nav } from './Nav'
+import { ShoppingCart } from './ShoppingCart'
 
 export const icons = {
   adjust: Adjust,
@@ -74,6 +78,7 @@ export const icons = {
   blog: Blog,
   bullhorn: Bullhorn,
   calendarAlt: CalendarAlt,
+  camera: Camera,
   check: Check,
   cog: Cog,
   copy: Copy,
@@ -92,14 +97,17 @@ export const icons = {
   halfBack: HalfBack,
   home: Home,
   image: Image,
+  lightbulb: Lightbulb,
   moneyBill: MoneyBill,
   move: Move,
+  nav: Nav,
   order: Order,
   pagali: Pagali,
   paperList: PaperList,
   pieChart: PieChart,
   plusCircle: PlusCircle,
   print: Print,
+  shoppingCart: ShoppingCart,
   infoCircle: InfoCircle,
   link: Link,
   loading: Loading,
