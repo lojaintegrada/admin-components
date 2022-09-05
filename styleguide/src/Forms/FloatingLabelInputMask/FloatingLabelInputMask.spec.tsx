@@ -1,0 +1,65 @@
+import * as React from 'react'
+import { composeStories } from '@storybook/testing-react'
+import { mount } from '@cypress/react'
+import * as stories from './FloatingLabelInputMask.stories'
+
+const { ZipCode, Nfe, Phone, Cellphone, PhoneOrCellphone, CPF, CNPJ } =
+  composeStories(stories)
+
+describe('FloatingLabelInputMask tests', () => {
+  it('ZipCode', () => {
+    mount(<ZipCode />)
+    const val = '21310310'
+    const valMasked = '21310-310'
+    cy.get('input').type(val).should('have.value', valMasked)
+  })
+
+  it('Nfe', () => {
+    mount(<Nfe />)
+    const val = '32191105570714000825550010059146621133082968'
+    const valMasked = '3219 1105 5707 1400 0825 5500 1005 9146 6211 3308 2968'
+    cy.get('input').type(val).should('have.value', valMasked)
+  })
+
+  it('Phone', () => {
+    mount(<Phone />)
+    const val = '2139774179'
+    const valMasked = '(21) 3977-4179'
+    cy.get('input').type(val).should('have.value', valMasked)
+  })
+
+  it('Cellphone', () => {
+    mount(<Cellphone />)
+    const val = '21970100616'
+    const valMasked = '(21) 97010-0616'
+    cy.get('input').type(val).should('have.value', valMasked)
+  })
+
+  it('PhoneOrCellphone - Phone', () => {
+    mount(<PhoneOrCellphone />)
+    const val = '2139774179'
+    const valMasked = '(21) 3977-4179'
+    cy.get('input').clear().type(val).should('have.value', valMasked)
+  })
+
+  it('PhoneOrCellphone - Cellphone', () => {
+    mount(<PhoneOrCellphone />)
+    const val = '21901234567'
+    const valMasked = '(21) 90123-4567'
+    cy.get('input').clear().type(val).should('have.value', valMasked)
+  })
+
+  it('CPF', () => {
+    mount(<CPF />)
+    const val = '99648135037'
+    const valMasked = '996.481.350-37'
+    cy.get('input').clear().type(val).should('have.value', valMasked)
+  })
+
+  it('CNPJ', () => {
+    mount(<CNPJ />)
+    const val = '86806289000156'
+    const valMasked = '86.806.289/0001-56'
+    cy.get('input').clear().type(val).should('have.value', valMasked)
+  })
+})
