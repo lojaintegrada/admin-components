@@ -10,7 +10,7 @@ export default {
     layout: 'padded',
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/Z2WDD4SH8zwaJC2K5wbtMO/Sistema-Integrado?node-id=95%3A6366',
+      url: 'https://www.figma.com/file/Z2WDD4SH8zwaJC2K5wbtMO/Sistema-Integrado?node-id=2406%3A20851',
     },
   },
   args: {
