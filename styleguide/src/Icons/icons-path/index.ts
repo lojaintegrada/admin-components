@@ -1,6 +1,7 @@
 import { Adjust } from './Adjust'
 import { AngleLeft } from './AngleLeft'
 import { AngleRight } from './AngleRight'
+import { AngleDown } from './AngleDown'
 import { App } from './App'
 import { ArrowLeft } from './ArrowLeft'
 import { SortDown } from './SortDown'
@@ -36,6 +37,7 @@ import { Order } from './Order'
 import { Pagali } from './Pagali'
 import { PaperList } from './PaperList'
 import { PieChart } from './PieChart'
+import { Plus } from './Plus'
 import { PlusCircle } from './PlusCircle'
 import { Print } from './Print'
 import { InfoCircle } from './InfoCircle'
@@ -46,6 +48,8 @@ import { Trash } from './Trash'
 import { TimesCircle } from './TimesCircle'
 import { Minus } from './Minus'
 import { Tv } from './Tv'
+import { Desktop } from './Desktop'
+import { Mobile } from './Mobile'
 import { Truck } from './Truck'
 import { UsdCircle } from './UsdCircle'
 import { QuestionCircle } from './QuestionCircle'
@@ -64,6 +68,7 @@ export const icons = {
   adjust: Adjust,
   angleLeft: AngleLeft,
   angleRight: AngleRight,
+  angleDown: AngleDown,
   angleDiagonal: AngleDiagonal,
   angleHeight: AngleHeight,
   angleWidth: AngleWidth,
@@ -105,6 +110,7 @@ export const icons = {
   pagali: Pagali,
   paperList: PaperList,
   pieChart: PieChart,
+  plus: Plus,
   plusCircle: PlusCircle,
   print: Print,
   shoppingCart: ShoppingCart,
@@ -118,6 +124,8 @@ export const icons = {
   timesCircle: TimesCircle,
   minus: Minus,
   tv: Tv,
+  desktop: Desktop,
+  mobile: Mobile,
   truck: Truck,
   usdCircle: UsdCircle,
   questionCircle: QuestionCircle,
