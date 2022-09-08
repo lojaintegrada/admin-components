@@ -5,7 +5,7 @@ const ToggleButtonComponent = (
     children,
     disabled,
     onChange,
-    defaultCheckedIndex = '0',
+    defaultCheckedIndex = 0,
     ...props
   }: ToggleButtonProps,
   ref: React.ForwardedRef<HTMLInputElement>
@@ -16,10 +16,10 @@ const ToggleButtonComponent = (
     ? `pointer-events-none bg-base-3 border-card-stroke text-on-base-2`
     : `peer-checked:bg-primary peer-checked:border-primary peer-checked:text-base-1 text-primary`
 
-  const isChecked = (value: string): boolean => checked === value
+  const isChecked = (value: number): boolean => checked === value
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setChecked(e.currentTarget.value)
+    setChecked(parseInt(e.currentTarget.value))
     onChange && onChange(e)
   }
 
@@ -44,7 +44,7 @@ const ToggleButtonComponent = (
             className="peer absolute top-0 bottom-0 left-0 right-0 cursor-pointer opacity-0 z-20"
             type="radio"
             value={index}
-            checked={isChecked(`${index}`)}
+            checked={isChecked(index)}
             onChange={handleChange}
             {...props}
           />
@@ -74,9 +74,6 @@ export const ToggleButton = React.memo(ToggleButtonWithForwardRef)
 
 export interface ToggleButtonProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
-  children:
-    | React.ReactNode[]
-    | ((props: ToggleButtonProps) => React.ReactNode)[],
-
-  defaultCheckedIndex: string
+  children: React.ReactNode[]
+  defaultCheckedIndex: number
 }
