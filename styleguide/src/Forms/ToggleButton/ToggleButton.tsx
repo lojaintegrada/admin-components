@@ -1,13 +1,19 @@
 import React from 'react'
 
 const ToggleButtonComponent = (
-  { children, disabled, onChange, ...props }: ToggleButtonProps,
+  {
+    children,
+    disabled,
+    onChange,
+    defaultCheckedIndex = 'toggle-btn-0',
+    ...props
+  }: ToggleButtonProps,
   ref: React.ForwardedRef<HTMLInputElement>
 ) => {
-  const [checked, setChecked] = React.useState('toggle-btn-0')
+  const [checked, setChecked] = React.useState(defaultCheckedIndex)
 
   const toggleClasses = disabled
-    ? `pointer-events-none bg-base-3 border-card-stroke text-on-base-2 font-semibold`
+    ? `pointer-events-none bg-base-3 border-card-stroke text-on-base-2`
     : `peer-checked:bg-primary peer-checked:border-primary peer-checked:text-base-1 text-primary`
 
   const isChecked = (value: string): boolean => checked === value
@@ -43,8 +49,7 @@ const ToggleButtonComponent = (
             {...props}
           />
           <div
-            className={`checkmark ${toggleClasses} text-f6 font-bold inline-flex justify-center items-center ${borderRadius} py-4 px-6 border-y border-l h-12`}
-            key={`toggle-btn-[${index}]`}
+            className={`checkmark ${toggleClasses} inline-flex justify-center items-center ${borderRadius} py-4 px-6 border-y border-l h-12`}
           >
             {item}
           </div>
@@ -55,7 +60,7 @@ const ToggleButtonComponent = (
 
   return (
     <div
-      className={`inline-flex justify-center items-center h-12 ${toggleClasses}} rounded`}
+      className={`inline-flex justify-center items-center h-12 ${toggleClasses}} rounded text-f6 tracking-4 font-semibold`}
     >
       <ul className="list-none inline-flex justify-center items-center h-12">
         {toggleItems}
@@ -72,4 +77,6 @@ export interface ToggleButtonProps
   children:
     | React.ReactNode[]
     | ((props: ToggleButtonProps) => React.ReactNode)[]
+
+  defaultCheckedIndex: string
 }
