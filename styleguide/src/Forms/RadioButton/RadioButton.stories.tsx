@@ -10,37 +10,31 @@ export default {
 
 const Template: Story<RadioButtonProps> = (args) => <RadioButton {...args} />
 
+const TemplateGrouped: Story<RadioButtonProps> = (args) => {
+  return (
+    <> 
+    <RadioButton {...args} id='1' name='form' defaultChecked/>
+    <RadioButton {...args} id='2' name='form'/>
+    <RadioButton {...args} id='3' name='form'/>
+  </>
+  )
+}
+ 
 export const Default = Template.bind({})
 Default.args = {
-  disabled: false,
   label: 'label',
   name: '',
 }
-export const Focus = Template.bind({})
-Focus.args = {
-  disabled: false,
+
+export const Grouped= TemplateGrouped.bind({})
+Grouped.args = {
   label: 'label',
-  name: '',
-  focus: true,
-  onFocus: (event) => {
-      console.log(event)
-  }
 }
-export const FocusChecked = Template.bind({})
-FocusChecked.args = {
-  disabled: false,
-  label: 'label',
-  name: '',
-  focus: true,
-  checked: true,
-  onFocus: (event) => {
-    console.log(event)
-  }
-}
+
 export const Disabled = Template.bind({})
 Disabled.args = {
   disabled: true,
   label: 'label',
   name: '',
-  checked: true,
+  defaultChecked: true,
 }

@@ -3,7 +3,7 @@ import { composeStories } from '@storybook/testing-react'
 import { mount } from '@cypress/react'
 import * as stories from './RadioButton.stories'
 
-const { Default, Focus, FocusChecked, Disabled } = composeStories(stories)
+const { Default, Grouped, Disabled } = composeStories(stories)
 
 describe('Toggle tests', () => {
   it('Default', () => {
@@ -12,18 +12,10 @@ describe('Toggle tests', () => {
     cy.get('.radioLabel').contains('label')
   })
 
-  it('Focus', () => {
-    mount(<Focus />)
-    cy.get('input').should('not.be.checked')
+  it('Grouped', () => {
+    mount(<Grouped />)
+    cy.get('input[type=radio]:checked').should('have.length', 1)
     cy.get('.radioLabel').contains('label')
-    cy.get('label').should('have.class', 'border-focus')
-  })
-
-  it('FocusChecked', () => {
-    mount(<FocusChecked />)
-    cy.get('input[type=radio]').should('be.checked')
-    cy.get('.radioLabel').contains('label')
-    cy.get('label').should('have.class', 'border-focus')
   })
 
   it('Disabled', () => {
