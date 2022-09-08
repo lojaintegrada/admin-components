@@ -12,6 +12,7 @@ import { BarcodeRead } from './BarcodeRead'
 import { Bell } from './Bell'
 import { Blog } from './Blog'
 import { Bullhorn } from './Bullhorn'
+import { Calculator } from './Calculator'
 import { CalendarAlt } from './CalendarAlt'
 import { Cog } from './Cog'
 import { Copy } from './Copy'
@@ -82,6 +83,7 @@ export const icons = {
   bell: Bell,
   blog: Blog,
   bullhorn: Bullhorn,
+  calculator: Calculator,
   calendarAlt: CalendarAlt,
   camera: Camera,
   check: Check,
