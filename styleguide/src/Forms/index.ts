@@ -1,5 +1,6 @@
 export * from './Input'
 export * from './InputMask'
+export * from './RadioButton'
 export * from './InputCurrency'
 export * from './InputLabel'
 export * from './InputHelpText'
