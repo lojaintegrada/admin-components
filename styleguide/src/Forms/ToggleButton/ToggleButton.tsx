@@ -3,7 +3,7 @@ import React from 'react'
 const ToggleButtonComponent = (
   {
     value,
-    className,
+    className = '',
     id,
     children,
     disabled,
