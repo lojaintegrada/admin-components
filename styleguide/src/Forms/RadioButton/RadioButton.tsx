@@ -5,6 +5,7 @@ const RadioButtonComponent = (
     label,
     id,
     name,
+    value,
     className = '',
     onChange,
     disabled = false,
@@ -34,6 +35,7 @@ const RadioButtonComponent = (
           className={`absolute peer opacity-0 ${toggleClasses}`}
           type="radio"
           name={name}
+          value={value}
           id={inputId}
           onChange={handleChange}
           {...props}
@@ -67,6 +69,10 @@ export interface RadioButtonProps
    * Custom name
    * */
   name?: string
+  /**
+   * Custom value
+   * */
+  value?: string | number
   /**
    * Text label of the radio button
    * */

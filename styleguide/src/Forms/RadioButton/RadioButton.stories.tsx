@@ -13,9 +13,9 @@ const Template: Story<RadioButtonProps> = (args) => <RadioButton {...args} />
 const TemplateGrouped: Story<RadioButtonProps> = (args) => {
   return (
     <> 
-    <RadioButton {...args} id='1' name='form' defaultChecked/>
-    <RadioButton {...args} id='2' name='form'/>
-    <RadioButton {...args} id='3' name='form'/>
+    <RadioButton {...args} id='1' value={1} name='form' defaultChecked/>
+    <RadioButton {...args} id='2' value={2} name='form'/>
+    <RadioButton {...args} id='3' value={3} name='form'/>
   </>
   )
 }
