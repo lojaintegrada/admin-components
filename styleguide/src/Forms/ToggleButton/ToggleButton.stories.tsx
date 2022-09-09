@@ -46,6 +46,6 @@ WithOnChange.args = {
     <Icon icon='mobile' key={2}/>,
   ],
   onChange: (e) => {
-    console.log(e.target.value)
+    console.log(e.target.name)
   },
 }
