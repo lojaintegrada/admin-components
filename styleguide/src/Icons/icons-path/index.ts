@@ -3,6 +3,7 @@ import { AngleLeft } from './AngleLeft'
 import { AngleRight } from './AngleRight'
 import { AngleDown } from './AngleDown'
 import { App } from './App'
+import { Arrow } from './Arrow'
 import { ArrowLeft } from './ArrowLeft'
 import { SortDown } from './SortDown'
 import { ArrowRight } from './ArrowRight'
@@ -74,6 +75,7 @@ export const icons = {
   angleHeight: AngleHeight,
   angleWidth: AngleWidth,
   app: App,
+  arrow: Arrow,
   arrowLeft: ArrowLeft,
   arrowRight: ArrowRight,
   sortDown: SortDown,
