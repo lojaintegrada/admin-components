@@ -16,7 +16,7 @@ export default {
         timestamp: '11/11/2011 às 10:10:10',
         icon: 'eye',
         iconBackgroundColor: 'bg-primary',
-        description: 'Status change: from Cancelling to CancelledStatus change: from Cancelling to CancelledStatus change: from Cancelling to Cancelled',
+        description: 'Status change: from Cancelling to CancelledStatus change: from Cancelling to CancelledStatus change: from Cancelling to Cancelled',        
       },
       {
         title: 'Venda criada',
@@ -31,6 +31,8 @@ export default {
         title: 'Venda criada',
         timestamp: '11/11/2011 às 10:10:10',
         icon: 'cog',
+        iconColor: 'text-danger',
+        iconBackgroundColor: 'bg-danger-light',
       },
     ]
   },

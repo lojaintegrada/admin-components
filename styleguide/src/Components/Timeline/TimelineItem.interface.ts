@@ -22,6 +22,10 @@ export interface TimelineItemInterface {
    */
   iconBackgroundColor?: string
   /**
+   * Color of the current icon (className)
+   */
+  iconColor?: string
+  /**
    * Toggle item description
    */
   toggle?: boolean

@@ -6,15 +6,16 @@ import { TimelineItemInterface } from './TimelineItem.interface'
 export const TimelineItem = ({ item }: TimelineItemProps) => {
   const [isOpen, setIsOpen] = useState(!item.toggle)
   const iconBackgroundColor = item.iconBackgroundColor || `bg-inverted-2`
+  const iconColor = item.iconColor || `text-base-1`
   const icon = item.icon || 'minus'
   const showToggle = item.toggle && item.description
 
   return (
     <li className={`timeline-item relative mb-10 last:mb-0`}>
       <div
-        className={`timeline-badge absolute top-0 left-0 flex items-center justify-center text-base-1 w-8 h-8 -ml-3 rounded-full ${iconBackgroundColor}`}
+        className={`timeline-badge absolute top-0 left-0 flex items-center justify-center w-8 h-8 -ml-3 rounded-full ${iconBackgroundColor}`}
       >
-        <Icon icon={icon} size={4} />
+        <Icon icon={icon} size={4} className={iconColor} />
       </div>
       <div className="ml-7 pt-px">
         <div
