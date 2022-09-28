@@ -71,5 +71,4 @@ describe('TableListItem tests', () => {
     cy.get('.table-item .table-item-append')
       .should('not.exist')
   })
-
 })

@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { Icon } from '../../Icons'
+import { Tooltip } from '../../Indicators'
 import { TableListItemProps } from './TableListItem.interface'
 import { TableListItemWrapper } from './TableListItemWrapper'
 
@@ -36,7 +37,18 @@ export const TableListItem: React.FunctionComponent<TableListItemProps> = ({
                 withIcon.class || ''
               }`}
             >
-              <Icon icon={withIcon.icon || 'minus'} block size={5} />
+              {withIcon.tooltip ? (
+                <Tooltip
+                  content={withIcon.tooltip.message}
+                  placement={withIcon.tooltip.placement}
+                >
+                  <span>
+                    <Icon icon={withIcon.icon || 'minus'} block size={5} />
+                  </span>
+                </Tooltip>
+              ) : (
+                <Icon icon={withIcon.icon || 'minus'} block size={5} />
+              )}
             </div>
           </div>
         )}

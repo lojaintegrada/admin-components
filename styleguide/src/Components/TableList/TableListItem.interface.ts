@@ -1,3 +1,4 @@
+import { TippyProps } from '@tippyjs/react'
 import { IconProps } from '../../Icons'
 
 export type TableListItemWrapperProp =
@@ -37,6 +38,13 @@ export interface TableListItemProps {
      * Icon to use
      */
     icon?: IconProps['icon']
+    /**
+     * Tooltip to use
+     */
+    tooltip?: {
+      message: string
+      placement?: TippyProps['placement']
+    }
   }
   /** Force border top at desktop even if is first item
    * @default false
