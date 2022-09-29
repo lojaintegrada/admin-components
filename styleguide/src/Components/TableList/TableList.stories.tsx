@@ -13,7 +13,7 @@ const exampleItems = [
     timestampTime: '11:18',
     timestampDate: '11 de abril',
     itemWrapperProps: { href: '#link' },
-    withIcon: { class: 'bg-danger-light text-danger-dark', icon: 'close' }
+    withIcon: { class: 'bg-danger-light text-danger-dark', icon: 'close', tooltip: {placement: 'right', message: 'I am a tooltip!'} }
   },
   {
     title: 'R$ 3.599,99 cancelada',

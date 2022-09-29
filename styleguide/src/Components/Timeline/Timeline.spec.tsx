@@ -48,4 +48,18 @@ describe('Timeline tests', () => {
     cy.get('.timeline .timeline-item .timeline-badge svg').should('have.class', 'icon-ban')
   })
 
+  it('With colors properties on icons', () => {
+    mount(<Default/>)
+    cy.get('.timeline .timeline-item')
+      .should('have.length', 4)
+    cy.get('.timeline .timeline-item')
+      .last()
+      .find('.timeline-badge')
+      .should('have.class', 'bg-danger-light')
+    cy.get('.timeline .timeline-item')
+      .last()
+      .find('.timeline-badge svg')
+      .should('have.class', 'text-danger')
+  })
+
 })
