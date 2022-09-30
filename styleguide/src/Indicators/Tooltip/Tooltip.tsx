@@ -25,6 +25,10 @@ const TooltipComponent = (props: TooltipProps) => {
     computedProps.content = mounted ? props.content : ''
   }
 
+  if (typeof window === 'undefined') {
+    return <>{props.children}</>
+  }
+
   return (
     <StyledTooltipComponent
       {...computedProps}
