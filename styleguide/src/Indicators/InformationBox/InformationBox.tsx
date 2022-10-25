@@ -1,7 +1,7 @@
 import React from 'react'
 import { Icon, IconProps } from '../../Icons'
 
-type InformationBoxTypesOptions = 'tip' | 'warning' | 'danger'
+type InformationBoxTypesOptions = 'tip' | 'warning' | 'danger' | 'info'
 
 const InformationBoxTypes: Record<
   InformationBoxTypesOptions,
@@ -29,6 +29,12 @@ const InformationBoxTypes: Record<
     class: 'bg-danger-light border-danger',
     icon: 'ban',
     iconClass: 'text-danger',
+  },
+  info: {
+    title: 'Informação!',
+    class: 'bg-focus-light border-focus-dark',
+    icon: 'infoCircle',
+    iconClass: 'text-focus-dark',
   },
 }
 

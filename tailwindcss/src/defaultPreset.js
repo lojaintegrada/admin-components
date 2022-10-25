@@ -71,7 +71,9 @@ module.exports = {
       "card-stroke-2": "#A3AAB5",
       "card-shadow": "#E1E4E7",
 
-      "focus": "#5690F7"
+      "focus": "#5690F7",
+      "focus-light": "#F3F8FF",
+      "focus-dark": "#2596be"
     },
     "extend": {
       "boxShadow": {
