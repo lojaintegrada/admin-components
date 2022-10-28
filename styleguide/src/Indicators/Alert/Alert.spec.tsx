@@ -5,7 +5,8 @@ import * as stories from "./Alert.stories"
 
 const { Default, WithActions } = composeStories(stories)
 
-describe('Alert tests', () => {
+const specTitle = require('cypress-sonarqube-reporter/specTitle');
+describe(specTitle('Alert tests'), () => {
 
   it('Default', () => {
     mount(<Default isOpen={false} />)

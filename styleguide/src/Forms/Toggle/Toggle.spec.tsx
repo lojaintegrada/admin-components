@@ -5,7 +5,8 @@ import * as stories from './Toggle.stories'
 
 const { Default, Disabled, DisabledChecked } = composeStories(stories)
 
-describe('Toggle tests', () => {
+const specTitle = require('cypress-sonarqube-reporter/specTitle');
+describe(specTitle('Toggle tests'), () => {
   it('Default', () => {
     mount(<Default />)
     cy.get('input').should('not.be.checked')

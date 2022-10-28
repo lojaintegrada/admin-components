@@ -15,7 +15,8 @@ const {
   SufixWithoutBorder,
 } = composeStories(stories)
 
-describe('Input tests', () => {
+const specTitle = require('cypress-sonarqube-reporter/specTitle');
+describe(specTitle('Input tests'), () => {
   it('Default', () => {
     mount(<Default />)
     const val = 'Preencher campo'

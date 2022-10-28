@@ -5,7 +5,8 @@ import * as stories from "./BoxSeparator.stories"
 
 const { Separator } = composeStories(stories)
 
-describe('BoxSeparator tests', () => {
+const specTitle = require('cypress-sonarqube-reporter/specTitle');
+describe(specTitle('BoxSeparator tests'), () => {
 
   it('Default', () => {
     mount(<Separator />)

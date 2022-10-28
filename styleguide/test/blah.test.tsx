@@ -2,7 +2,8 @@
 // import * as ReactDOM from 'react-dom'
 // import { Default as Thing } from '../src/Components/Button/Button.stories'
 
-describe('Thing', () => {
+const specTitle = require('cypress-sonarqube-reporter/specTitle');
+describe(specTitle('Thing'), () => {
   it('renders without crashing', () => {
     // const div = document.createElement('div')
     // ReactDOM.render(<Thing />, div)

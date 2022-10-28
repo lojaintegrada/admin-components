@@ -2,10 +2,11 @@ import * as React from "react"
 import { composeStories } from "@storybook/testing-react"
 import { mount } from "@cypress/react"
 import * as stories from "./Box.stories"
+const specTitle = require('cypress-sonarqube-reporter/specTitle');
 
 const { Default, WithAction, WithTabs, WithToggle, OnlyTabs } = composeStories(stories)
 
-describe('Box tests', () => {
+describe(specTitle('Box tests'), () => {
 
   it('Default', () => {
     mount(<Default />)

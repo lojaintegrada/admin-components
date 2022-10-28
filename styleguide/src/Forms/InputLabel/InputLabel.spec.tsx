@@ -5,7 +5,8 @@ import * as stories from "./InputLabel.stories"
 
 const { Default, WithComplement } = composeStories(stories)
 
-describe('InputLabel tests', () => {
+const specTitle = require('cypress-sonarqube-reporter/specTitle');
+describe(specTitle('InputLabel tests'), () => {
 
   it('Default', () => {
     mount(<Default />)

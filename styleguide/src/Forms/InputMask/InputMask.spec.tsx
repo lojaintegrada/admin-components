@@ -16,7 +16,8 @@ const {
   CNPJ,
 } = composeStories(stories)
 
-describe('Input Mask tests', () => {
+const specTitle = require('cypress-sonarqube-reporter/specTitle');
+describe(specTitle('Input Mask tests'), () => {
   it('Default', () => {
     mount(<Default />)
     const val = '12345678'

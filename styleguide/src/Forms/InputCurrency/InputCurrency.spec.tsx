@@ -5,7 +5,8 @@ import * as stories from "./InputCurrency.stories"
 
 const { Default, MaxValue, CurrencyUSD } = composeStories(stories)
 
-describe('Input Currency tests', () => {
+const specTitle = require('cypress-sonarqube-reporter/specTitle');
+describe(specTitle('Input Currency tests'), () => {
 
   it('Default', () => {
     mount(<Default />)

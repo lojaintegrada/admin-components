@@ -5,7 +5,8 @@ import * as stories from "./Toast.stories"
 
 const { Default } = composeStories(stories)
 
-describe('Toast tests', () => {
+const specTitle = require('cypress-sonarqube-reporter/specTitle');
+describe(specTitle('Toast tests'), () => {
 
   it('Default', () => {
     mount(<Default />)

@@ -2,10 +2,11 @@ import * as React from 'react'
 import { composeStories } from '@storybook/testing-react'
 import { mount } from '@cypress/react'
 import * as stories from './Dropdown.stories'
+const specTitle = require('cypress-sonarqube-reporter/specTitle');
 
 const { Default, Empty, Disabled, Searchable } = composeStories(stories)
 
-describe('Dropdown tests', () => {
+describe(specTitle('Dropdown tests'), () => {
   it('Default', () => {
     mount(<Default />)
     const val = 'Selecione um item'

@@ -5,7 +5,8 @@ import * as stories from "./Status.stories"
 
 const { Default } = composeStories(stories)
 
-describe('Status tests', () => {
+const specTitle = require('cypress-sonarqube-reporter/specTitle');
+describe(specTitle('Status tests'), () => {
 
   it('Default', () => {
     mount(<Default />)

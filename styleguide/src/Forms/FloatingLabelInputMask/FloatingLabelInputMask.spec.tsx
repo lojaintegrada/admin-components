@@ -2,11 +2,12 @@ import * as React from 'react'
 import { composeStories } from '@storybook/testing-react'
 import { mount } from '@cypress/react'
 import * as stories from './FloatingLabelInputMask.stories'
+const specTitle = require('cypress-sonarqube-reporter/specTitle');
 
 const { ZipCode, Nfe, Phone, Cellphone, PhoneOrCellphone, CPF, CNPJ } =
   composeStories(stories)
 
-describe('FloatingLabelInputMask tests', () => {
+describe(specTitle('FloatingLabelInputMask tests'), () => {
   it('ZipCode', () => {
     mount(<ZipCode />)
     const val = '21310310'

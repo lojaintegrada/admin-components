@@ -1,11 +1,13 @@
 import * as React from "react"
 import { composeStories } from "@storybook/testing-react"
 import { mount } from "@cypress/react"
+const specTitle = require('cypress-sonarqube-reporter/specTitle');
+
 import * as stories from "./Button.stories"
 
 const { Default, Large, Small, Action, Disabled, Loading, WithLink } = composeStories(stories)
 
-describe('Button tests', () => {
+describe(specTitle('Button tests'), () => {
 
   it('Default', () => {
     mount(<Default />)

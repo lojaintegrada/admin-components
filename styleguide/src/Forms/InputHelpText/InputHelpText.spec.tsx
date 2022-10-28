@@ -5,7 +5,8 @@ import * as stories from "./InputHelpText.stories"
 
 const { Default } = composeStories(stories)
 
-describe('InputHelpText tests', () => {
+const specTitle = require('cypress-sonarqube-reporter/specTitle');
+describe(specTitle('InputHelpText tests'), () => {
 
   it('Default', () => {
     mount(<Default />)

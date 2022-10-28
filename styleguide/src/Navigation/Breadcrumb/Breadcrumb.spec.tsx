@@ -5,7 +5,8 @@ import * as stories from "./Breadcrumb.stories"
 
 const { Default, NoPrevious, WithPrevious, WithPreviousCustom, WithMobileCenter, WithHelp, WithActions } = composeStories(stories)
 
-describe('Breadcrumb tests', () => {
+const specTitle = require('cypress-sonarqube-reporter/specTitle');
+describe(specTitle('Breadcrumb tests'), () => {
 
   it('Default', () => {
     mount(<Default />)

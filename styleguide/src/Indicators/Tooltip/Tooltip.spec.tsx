@@ -5,7 +5,8 @@ import * as stories from "./Tooltip.stories"
 
 const { Default } = composeStories(stories)
 
-describe('Tooltip tests', () => {
+const specTitle = require('cypress-sonarqube-reporter/specTitle');
+describe(specTitle('Tooltip tests'), () => {
 
   it('Default', () => {
     mount(<Default />)

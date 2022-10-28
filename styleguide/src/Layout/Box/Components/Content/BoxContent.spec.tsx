@@ -5,7 +5,8 @@ import * as stories from "./BoxContent.stories"
 
 const { Content } = composeStories(stories)
 
-describe('BoxContent tests', () => {
+const specTitle = require('cypress-sonarqube-reporter/specTitle');
+describe(specTitle('BoxContent tests'), () => {
 
   it('Default', () => {
     mount(<Content />)

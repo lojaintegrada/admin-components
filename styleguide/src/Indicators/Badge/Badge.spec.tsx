@@ -6,7 +6,8 @@ import * as stories from "./Badge.stories"
 const { Default, Small, Expanded } = composeStories(stories)
 const badgeClass = '.badge'
 
-describe('Badge tests', () => {
+const specTitle = require('cypress-sonarqube-reporter/specTitle');
+describe(specTitle('Badge tests'), () => {
 
   it('Default', () => {
     const text = 'Example text'

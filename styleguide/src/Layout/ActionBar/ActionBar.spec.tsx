@@ -5,7 +5,8 @@ import * as stories from './ActionBar.stories'
 
 const { Default, OnlyMobile } = composeStories(stories)
 
-describe('ActionBar tests', () => {
+const specTitle = require('cypress-sonarqube-reporter/specTitle');
+describe(specTitle('ActionBar tests'), () => {
   it('Default', () => {
     mount(<Default />)
     cy.get('.fixed').should('not.have.class', 'lg:hidden')
