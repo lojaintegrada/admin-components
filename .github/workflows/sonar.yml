@@ -1,0 +1,32 @@
+name: sonarcloud poc
+
+on:
+  push:
+    branches: [main]
+
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.11
+
+      - name: Install yarn
+        uses: mskelton/setup-yarn@v1
+
+      - name: Install dependencies
+        run: yarn add dotenv
+
+      - name: Run unit tests
+        run: yarn test:sonar

@@ -110,3 +110,9 @@ storybook-static
 # Cypress
 **/cypress/videos
 **/cypress/screenshots
+
+# sonar
+**/reports
+**/test-report.xml
+**/.scannerwork
+**/coverage
