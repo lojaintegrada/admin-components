@@ -8,6 +8,10 @@ on:
     branches: [main]
     types: [opened, synchronize, reopened]
 
+defaults:
+  run:
+    working-directory: styleguide
+      
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -27,6 +31,8 @@ jobs:
 
       - name: Install dependencies
         run: yarn add dotenv
+        working-directory: styleguide
 
       - name: Run unit tests
         run: yarn test:sonar
+        working-directory: styleguide
