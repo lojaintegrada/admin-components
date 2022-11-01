@@ -35,7 +35,7 @@ else{
 sonarqubeScanner(
   {
     serverUrl: 'https://sonarcloud.io',
-    token: 'd30d3c427d2ea2dcedae2aa19afcafe3e689cd12',
+    token: process.env.SONAR_TOKEN,
     options: options,
   },
   // eslint-disable-next-line @typescript-eslint/no-empty-function
