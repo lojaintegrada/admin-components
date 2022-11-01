@@ -24,5 +24,9 @@ describe(specTitle('InformationBox tests'), () => {
     mount(<Default type="danger" />)
     cy.get('.InformationBox-icon').should('have.class', 'icon-ban')
     cy.get('.InformationBox').should('have.class', 'bg-danger-light')
+    
+    mount(<Default type="info" />)
+    cy.get('.InformationBox-icon').should('have.class', 'icon-infoCircle')
+    cy.get('.InformationBox').should('have.class', 'bg-focus-light')
   })
 })

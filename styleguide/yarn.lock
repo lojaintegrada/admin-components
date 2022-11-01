@@ -2076,13 +2076,12 @@
   resolved "https://registry.yarnpkg.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.3.tgz#0300943770e04231041a51bd39f0439b5c7ab4f0"
   integrity sha512-nkalE/f1RvRGChwBnEIoBfSEYOXnCRdleKuv6+lePbMDrMZXeDQnqak5XDOeBgrPPyPfAdcCu/B5z+v3VhplGg==
 
-"@loja-integrada/tailwindcss-config@^1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@loja-integrada/tailwindcss-config/-/tailwindcss-config-1.5.0.tgz#5dcf4c6bead60b8a542ac081a383d494748d3319"
-  integrity sha512-QQw3j8WpSH/P6czHWJZB1n1UbCa0WRbwiWNeq8L074ZID3uthxolTcgDqTnIJ1Y8psmeJTHt88r5Wb54caZhsg==
+"@loja-integrada/tailwindcss-config@^1.6.3":
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/@loja-integrada/tailwindcss-config/-/tailwindcss-config-1.6.3.tgz#3fc06dfc14e57dbf9423c9bdcd688a4a9927f10a"
+  integrity sha512-dXJtf+zi8uHTnCMyHdC7BDsZPtEbfUM66TGoTrl36tsriY3/GYehyHjpvYH01b94dLWX2bZ7E20KZWW5C87mwQ==
   dependencies:
     tailwindcss "^3.0.23"
-    tailwindcss-padding-safe "^1.0.5"
 
 "@mdx-js/mdx@^1.6.22":
   version "1.6.22"
@@ -15391,11 +15390,6 @@ table@^5.2.3:
     lodash "^4.17.14"
     slice-ansi "^2.1.0"
     string-width "^3.0.0"
-
-tailwindcss-padding-safe@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.npmjs.org/tailwindcss-padding-safe/-/tailwindcss-padding-safe-1.0.5.tgz"
-  integrity sha512-ofAhVZ0Et3r3mygLBxaJjpjnmdg4gviovh9nX79+hPZ23evQeSa7BEVRFRmC3w7pE7fgofgm8EjH/LP0xaIJRw==
 
 tailwindcss@^3.0.23:
   version "3.0.23"

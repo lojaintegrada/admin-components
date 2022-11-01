@@ -1,6 +1,6 @@
 {
   "name": "@loja-integrada/admin-components",
-  "version": "0.18.4",
+  "version": "0.18.6",
   "author": "Loja Integrada Front-End Team",
   "license": "MIT",
   "main": "dist/index.js",
@@ -125,7 +125,7 @@
     "tailwindcss": ">=3.1.0"
   },
   "dependencies": {
-    "@loja-integrada/tailwindcss-config": "^1.5.0",
+    "@loja-integrada/tailwindcss-config": "^1.6.3",
     "@tippyjs/react": "^4.2.5",
     "@types/react-select": "^4.0.17",
     "babel-jest": "^29.2.2",
