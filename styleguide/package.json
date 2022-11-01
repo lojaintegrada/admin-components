@@ -128,6 +128,7 @@
     "@loja-integrada/tailwindcss-config": "^1.5.0",
     "@tippyjs/react": "^4.2.5",
     "@types/react-select": "^4.0.17",
+    "babel-jest": "^29.2.2",
     "child-process": "^1.0.2",
     "dotenv": "^16.0.3",
     "react": "^17.0.2",
