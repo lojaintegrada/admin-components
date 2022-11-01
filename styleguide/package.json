@@ -17,6 +17,7 @@
     "build": "TAILWIND_MODE=build NODE_ENV=production tsdx build",
     "build:complete": "node scripts/extract-selectors.js",
     "test": "yarn test:jest && yarn test:cypress:ci",
+    "test:sonar": "yarn test:cypress:ci && node sonar-config.js",
     "test:jest": "tsdx test --passWithNoTests",
     "test:cypress": "cypress open-ct",
     "test:cypress:ci": "cypress run-ct",
@@ -63,8 +64,10 @@
     }
   ],
   "devDependencies": {
-    "@babel/core": "^7.13.10",
+    "@babel/core": "^7.19.6",
+    "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.13.0",
+    "@cypress/code-coverage": "^3.10.0",
     "@cypress/react": "^5.12.4",
     "@cypress/webpack-dev-server": "^1.8.4",
     "@fullhuman/postcss-purgecss": "^4.0.3",
@@ -91,9 +94,12 @@
     "@types/styled-components": "^5.1.14",
     "autoprefixer": "^10.4.4",
     "babel-loader": "^8.2.2",
+    "babel-plugin-istanbul": "^6.1.1",
     "babel-plugin-module-name-mapper": "^1.2.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "chromatic": "^6.5.4",
     "cypress": "^9.6.0",
+    "cypress-sonarqube-reporter": "^1.11.0",
     "eslint-plugin-prettier": "^3.4.0",
     "html-webpack-plugin": "^5.5.0",
     "husky": "^5.1.3",
@@ -122,6 +128,9 @@
     "@loja-integrada/tailwindcss-config": "^1.6.3",
     "@tippyjs/react": "^4.2.5",
     "@types/react-select": "^4.0.17",
+    "babel-jest": "^29.2.2",
+    "child-process": "^1.0.2",
+    "dotenv": "^16.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-modal": "^3.14.3",
@@ -129,6 +138,7 @@
     "react-table": "^7.7.0",
     "react-text-mask": "^5.4.3",
     "react-toastify": "^7.0.4",
+    "sonarqube-scanner": "^2.8.2",
     "styled-components": "^5.3.1"
   }
 }

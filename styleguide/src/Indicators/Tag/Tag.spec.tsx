@@ -6,7 +6,8 @@ import * as stories from "./Tag.stories"
 const { Default, WithAction } = composeStories(stories)
 const tagClass = '.tag'
 
-describe('Tag tests', () => {
+const specTitle = require('cypress-sonarqube-reporter/specTitle');
+describe(specTitle('Tag tests'), () => {
 
   it('Default', () => {
     const text = 'Example text'

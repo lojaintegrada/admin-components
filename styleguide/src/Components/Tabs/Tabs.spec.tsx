@@ -5,7 +5,8 @@ import * as stories from "./Tabs.stories"
 
 const { Default } = composeStories(stories)
 
-describe('Tabs tests', () => {
+const specTitle = require('cypress-sonarqube-reporter/specTitle');
+describe(specTitle('Tabs tests'), () => {
 
   it('Default', () => {
     mount(<Default />)

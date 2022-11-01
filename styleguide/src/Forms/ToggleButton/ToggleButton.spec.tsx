@@ -5,7 +5,8 @@ import * as stories from './ToggleButton.stories'
 
 const { WithIcon, WithText, Disabled} = composeStories(stories)
 
-describe('Toggle Button tests', () => {
+const specTitle = require('cypress-sonarqube-reporter/specTitle');
+describe(specTitle('Toggle Button tests'), () => {
   it('With Icon', () => {
     mount(<WithIcon />)
     cy.get('input[type=radio]:checked').should('have.length', 1)

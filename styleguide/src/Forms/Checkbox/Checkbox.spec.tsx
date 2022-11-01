@@ -5,7 +5,8 @@ import * as stories from './Checkbox.stories'
 
 const { Default, Disabled, DisabledChecked } = composeStories(stories)
 
-describe('Checkbox tests', () => {
+const specTitle = require('cypress-sonarqube-reporter/specTitle');
+describe(specTitle('Checkbox tests'), () => {
   it('Default', () => {
     mount(<Default />)
     cy.get('.input-label').contains('Li e aceito os termos de uso.')

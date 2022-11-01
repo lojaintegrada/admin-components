@@ -2,10 +2,11 @@ import * as React from "react"
 import { composeStories } from "@storybook/testing-react"
 import { mount } from "@cypress/react"
 import * as stories from "./TableListItemWrapper.stories"
+const specTitle = require('cypress-sonarqube-reporter/specTitle');
 
 const { ItemWrapper } = composeStories(stories)
 
-describe('TableListItemWrapper tests', () => {
+describe(specTitle('TableListItemWrapper tests'), () => {
 
   it('Default', () => {
     mount(<ItemWrapper withHover={false} isInsideContainer={false} />)

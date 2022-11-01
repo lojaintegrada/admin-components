@@ -30,6 +30,8 @@ const tailwindLoader = {
  * @type {Cypress.PluginConfig}
  */
 module.exports = (on, config) => {
+  require('@cypress/code-coverage/task')(on, config)
+  
   if (config.testingType === 'component') {
     require('@cypress/react/plugins/babel')(on, config, {
       setWebpackConfig: (webpackConfig) => {
@@ -48,6 +50,12 @@ module.exports = (on, config) => {
       }
     })
   }
+
+  on('after:run', (results) => {
+    return require('cypress-sonarqube-reporter/mergeReports')(results, {
+      mergeFileName: "sonar.xml"
+    })
+  });
 
   return config
 }

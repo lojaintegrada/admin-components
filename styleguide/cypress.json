@@ -4,5 +4,11 @@
     "testFiles": "**/*spec.{js,jsx,ts,tsx}",
     "screenshotOnRunFailure": false,
     "video": false
+  },
+  "reporter": "cypress-sonarqube-reporter",
+  "reporterOptions": {
+    "overwrite": true,
+    "preserveSpecsDir": false,
+    "outputDir": "coverage/xml-reports/"
   }
 }

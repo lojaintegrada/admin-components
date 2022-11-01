@@ -7,7 +7,8 @@ import { CONTAINER_MAX_SIZE } from '../constants'
 
 const { Default, Expanded } = composeStories(stories)
 
-describe('Container tests', () => {
+const specTitle = require('cypress-sonarqube-reporter/specTitle');
+describe(specTitle('Container tests'), () => {
   it('Default', () => {
     mount(<Default />)
     cy.get('.page-container').should('have.class', CONTAINER_MAX_SIZE.default)

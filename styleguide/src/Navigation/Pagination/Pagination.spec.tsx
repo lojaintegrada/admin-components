@@ -5,7 +5,8 @@ import * as stories from "./Pagination.stories"
 
 const { Default, WithoutItems, WithLengthOptions } = composeStories(stories)
 
-describe('Pagination tests', () => {
+const specTitle = require('cypress-sonarqube-reporter/specTitle');
+describe(specTitle('Pagination tests'), () => {
 
   it('Default', () => {
     mount(<Default />)

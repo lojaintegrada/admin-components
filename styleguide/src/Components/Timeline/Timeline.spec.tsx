@@ -2,10 +2,11 @@ import * as React from "react"
 import { composeStories } from "@storybook/testing-react"
 import { mount } from "@cypress/react"
 import * as stories from "./Timeline.stories"
+const specTitle = require('cypress-sonarqube-reporter/specTitle');
 
 const { Default, WithoutToggle, Loading, Empty } = composeStories(stories)
 
-describe('Timeline tests', () => {
+describe(specTitle('Timeline tests'), () => {
 
   it('Default', () => {
     mount(<Default />)

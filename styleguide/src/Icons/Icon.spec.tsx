@@ -5,7 +5,8 @@ import * as stories from "./Icon.stories"
 
 const { Example } = composeStories(stories)
 
-describe('Icon tests', () => {
+const specTitle = require('cypress-sonarqube-reporter/specTitle');
+describe(specTitle('Icon tests'), () => {
 
   it('Default', () => {
     mount(<Example icon="edit" />)

@@ -5,7 +5,8 @@ import * as stories from './FloatingLabelInput.stories'
 
 const { Default, Prefix, IconPrefix, WithBoth } = composeStories(stories)
 
-describe('Input tests', () => {
+const specTitle = require('cypress-sonarqube-reporter/specTitle');
+describe(specTitle('Input tests'), () => {
   it('Default', () => {
     mount(<Default />)
     const val = 'Preencher campo'
