@@ -34,5 +34,7 @@ jobs:
         working-directory: styleguide
 
       - name: Run unit tests
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: yarn test:sonar
         working-directory: styleguide
