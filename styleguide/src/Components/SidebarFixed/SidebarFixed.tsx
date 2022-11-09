@@ -48,7 +48,7 @@ export const SidebarFixedComponent: React.FC<SidebarFixedProps> = ({
       >
         <div className="sidebar-fixed-header flex justify-between items-center p-3 lg:px-5 text-inverted-2">
           {title && (
-            <div className="sidebar-fixed-title px-2 py-5 text-f4 font-semibold text-inverted-1">
+            <div className="sidebar-fixed-title px-2 py-2 sm:py-5 text-f5 sm:text-f4 font-semibold text-inverted-1">
               {title}
             </div>
           )}
