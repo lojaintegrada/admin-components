@@ -15,6 +15,7 @@ export const SidebarFixedComponent: React.FC<SidebarFixedProps> = ({
   footerActions,
   isOpen = false,
   onClose,
+  title,
   helpLink,
 }) => {
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false)
@@ -46,22 +47,29 @@ export const SidebarFixedComponent: React.FC<SidebarFixedProps> = ({
         }`}
       >
         <div className="sidebar-fixed-header flex justify-between items-center p-3 lg:px-5 text-inverted-2">
-          <button
-            className="sidebar-fixed-close p-2 hover:text-primary transition-colors"
-            onClick={handleRequestCloseFunc}
-          >
-            <Icon icon="close" block size={4} />
-          </button>
-          {helpLink && (
-            <a
-              className="sidebar-fixed-help p-2 hover:text-primary transition-colors"
-              href={helpLink}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Icon icon="questionCircle" block size={4} />
-            </a>
+          {title && (
+            <div className="px-2 py-5 text-f4 font-semibold text-inverted-1">
+              {title}
+            </div>
           )}
+          <div className={`flex justify-between${title ? '' : ' flex-1'}`}>
+            <button
+              className="sidebar-fixed-close p-2 hover:text-primary transition-colors"
+              onClick={handleRequestCloseFunc}
+            >
+              <Icon icon="close" block size={4} />
+            </button>
+            {helpLink && (
+              <a
+                className="sidebar-fixed-help p-2 hover:text-primary transition-colors"
+                href={helpLink}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Icon icon="questionCircle" block size={4} />
+              </a>
+            )}
+          </div>
         </div>
         <div
           className={`sidebar-fixed-content flex-1 flex-grow w-full overflow-auto overscroll-none px-5 lg:px-7 break-words ${backgroundShadowEffect.join(
@@ -100,6 +108,10 @@ export interface SidebarFixedProps {
    * Call when sidebar is closed
    * */
   onClose?: Function
+  /**
+   * Title displayed in header
+   */
+  title?: string
   /**
    * Help external link
    */
