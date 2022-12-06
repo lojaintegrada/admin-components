@@ -54,7 +54,9 @@ const FloatingLabelInputComponent = (
         {...props}
       />
       {errorMessage && (
-        <span className="text-danger text-f6 mt-2 absolute">{errorMessage}</span>
+        <span className="text-danger text-f6 mt-2 absolute">
+          {errorMessage}
+        </span>
       )}
       {showLabel && (
         <label htmlFor={id} className={labelClassName}>
