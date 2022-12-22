@@ -28,6 +28,7 @@ Error.args = {
   label: 'Meu Campo',
   name: 'nome',
   id: 'campo',
+  errorMessage: 'Houve um erro.'
 }
 
 export const Prefix = Template.bind({})

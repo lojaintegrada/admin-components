@@ -30,7 +30,7 @@ export const variantControlClasses = {
   default: 'border-card-stroke rounded pl-2',
   secondary:
     'border-inverted-2 hover:bg-base-3 rounded-md focus:ring-2 focus:ring-focus focus:ring-offset-2 focus:bg-base-1 pl-2',
-  simple: 'border-none',
+  simple: 'border-0 border-b border-on-base-3',
 }
 
 export const variantValueClasses = {
@@ -62,6 +62,12 @@ export const valueContainerStyles = {
   secondary: { paddingLeft: 8 },
   simple: { paddingLeft: 0 },
 }
+
+export const indicatorContainerClasses = {
+  default: 'mr-2',
+  secondary: 'mr-2',
+  simple: '-mr-2',
+}
 export interface CustomOptionProps {
   value: string | number
   label: string
@@ -90,7 +96,8 @@ const {
 const CustomDropdownIndicator = (
   props: React.PropsWithChildren<
     IndicatorProps<CustomOptionProps, false, GroupTypeBase<CustomOptionProps>>
-  >
+  >,
+  variant: DropdownVariant
 ) => {
   const { selectProps } = props
 
@@ -99,7 +106,10 @@ const CustomDropdownIndicator = (
   } text-inverted-2`
 
   return (
-    <DropdownIndicator {...props} className="mr-1">
+    <DropdownIndicator
+      {...props}
+      className={indicatorContainerClasses[variant]}
+    >
       <IconComponent icon="sortDown" size={5} className={indicatorClasses} />
     </DropdownIndicator>
   )
@@ -301,7 +311,7 @@ const DropdownComponent = (
         onBlur={(event) => onBlur?.(event)}
         components={{
           Option: (props) => IconOption(props, markSelectedOption),
-          DropdownIndicator: (props) => CustomDropdownIndicator(props),
+          DropdownIndicator: (props) => CustomDropdownIndicator(props, variant),
           Control: (props) => CustomControl(props, size, variant, errorMessage),
           GroupHeading: (props) => CustomGroupHeading(props),
           Placeholder: (props) => CustomPlaceholder(props, valueFontSize),
