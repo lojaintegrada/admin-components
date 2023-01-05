@@ -38,3 +38,31 @@ module.exports = {
   // ...
 }
 ```
+
+### Dark mode
+
+For dark mode, you need to use the `variablePreset` and import `_variables.scss` in your scss.
+
+Example:
+
+**tailwind.config.js**
+```js
+module.exports = {
+  presets: [
+    require('@loja-integrada/tailwindcss-config/src/variablePreset')
+  ],
+  content: [
+    './src/**/*.{js,ts,jsx,tsx}',
+    './node_modules/@loja-integrada/admin-components/dist/*.js',
+  ],
+}
+```
+
+**global.scss**
+```scss
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import '@loja-integrada/tailwindcss-config/src/_variables.scss';
+```
