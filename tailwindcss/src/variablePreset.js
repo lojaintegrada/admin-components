@@ -15,7 +15,7 @@ defaultPreset.theme.colors = {
   'inverted-3': 'rgb(var(--color-inverted-3) / <alpha-value>)',
   'inverted-4': 'rgb(var(--color-inverted-4) / <alpha-value>)',
   'on-primary': 'rgb(var(--color-on-primary) / <alpha-value>)',
-  'on-sucess': 'rgb(var(--color-on-sucess) / <alpha-value>)',
+  'on-success': 'rgb(var(--color-on-success) / <alpha-value>)',
   'on-danger': 'rgb(var(--color-on-danger) / <alpha-value>)',
   'on-warning': 'rgb(var(--color-on-warning) / <alpha-value>)',
   'on-inverted': 'rgb(var(--color-on-inverted) / <alpha-value>)',

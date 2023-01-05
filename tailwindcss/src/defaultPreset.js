@@ -17,7 +17,7 @@ module.exports = {
       "inverted-4": "#F8F8F9",
 
       "on-primary": "#FFFFFF",
-      "on-sucess": "#FFFFFF",
+      "on-success": "#FFFFFF",
       "on-danger": "#FFFFFF",
       "on-warning": "#FFFFFF",
 
