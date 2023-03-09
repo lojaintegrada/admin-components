@@ -14,7 +14,7 @@ export default {
     },
   },
   args: {
-    title: 'Dica!',
+    title: '',
     subtitle: 'Como criar um cadastro de produto incrível? No mundo virtual, o consumidor não pode pegar, sentir ou experimentar o produto. Por isso, a imagem que você utiliza faz toda a diferença na hora da venda.',
   },
 } as Meta
