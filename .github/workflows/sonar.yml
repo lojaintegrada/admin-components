@@ -1,0 +1,41 @@
+# Esta travando, alguém precisa ver isso `https://github.com/lojaintegrada/admin-components/actions/runs/4344116976/jobs/7587013846`
+name: sonarcloud poc
+
+# on:
+#   push:
+#     branches: [main]
+#
+#   pull_request:
+#     branches: [main]
+#     types: [opened, synchronize, reopened]
+#
+# defaults:
+#   run:
+#     working-directory: styleguide
+#
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#
+#     steps:
+#       - uses: actions/checkout@v2
+#         with:
+#           fetch-depth: 0
+#
+#       - name: Set up JDK 11
+#         uses: actions/setup-java@v1
+#         with:
+#           java-version: 1.11
+#
+#       - name: Install yarn
+#         uses: mskelton/setup-yarn@v1
+#
+#       - name: Install dependencies
+#         run: yarn add dotenv
+#         working-directory: styleguide
+#
+#       - name: Run unit tests
+#         env:
+#           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#         run: yarn test:sonar
+#         working-directory: styleguide
