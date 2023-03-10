@@ -1,3 +1,4 @@
+# Esta travando, alguém precisa ver isso `https://github.com/lojaintegrada/admin-components/actions/runs/4344116976/jobs/7587013846`
 name: sonarcloud poc
 
 on:
@@ -11,7 +12,7 @@ on:
 defaults:
   run:
     working-directory: styleguide
-      
+
 jobs:
   build:
     runs-on: ubuntu-latest

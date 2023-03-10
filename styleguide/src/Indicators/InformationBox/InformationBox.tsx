@@ -41,6 +41,7 @@ const InformationBoxTypes: Record<
 const InformationBoxComponent = ({
   type = 'tip',
   subtitle,
+  title,
 }: InformationBoxProps) => {
   return (
     <div
@@ -61,7 +62,7 @@ const InformationBoxComponent = ({
           <span
             className={`InformationBox-title text-f5 font-bold ${InformationBoxTypes[type].iconClass}`}
           >
-            {InformationBoxTypes[type].title}
+            {title || InformationBoxTypes[type].title}
           </span>
           {subtitle && (
             <span className="InformationBox-subtitle text-f6 font-regular mt-1">
@@ -81,8 +82,8 @@ export interface InformationBoxProps {
    * @default info
    * */
   type?: keyof typeof InformationBoxTypes
-  /**
-   * @default true
+  /** Title default is related with `type`
+   * @default ''
    */
   title?: string | React.ReactNode
   /**
