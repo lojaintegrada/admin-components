@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import '../../tailwindcss/src/variables';
+
+body {
+  @apply antialiased;
+}

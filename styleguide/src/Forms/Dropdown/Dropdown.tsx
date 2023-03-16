@@ -123,7 +123,7 @@ const CustomControl = (
   variant: DropdownVariant,
   errorMessage?: string
 ) => {
-  const controlClasses = `cursor-pointer transition-all flex itens-center border  ${
+  const controlClasses = `cursor-pointer transition-all flex itens-center border bg-base-1  ${
     errorMessage ? varianErrorClasses[variant] : variantControlClasses[variant]
   } ${sizeClasses[size]} ${
     props.menuIsOpen ? variantSelectedClasses[variant] : ''
@@ -142,11 +142,11 @@ const IconOption = (
   const { isSelected, isDisabled, data } = optionDefaultProps
 
   const optionClasses = `${
-    isSelected && markSelectedOption ? 'text-inverted-1' : 'text-inverted-2 '
-  } text-sm first:pt-0 last:pb-0 p-2 ${
+    isSelected && markSelectedOption ? 'text-inverted-1' : 'text-inverted-2'
+  } text-sm first:mt-2 last:mb-2 py-2 px-5 font-semibold transition-colors ${
     isDisabled
-      ? 'opacity-80 cursor-not-allowed'
-      : 'hover:bg-transparent hover:text-on-base font-semibold cursor-pointer'
+      ? 'opacity-50 cursor-not-allowed'
+      : 'hover:text-on-base hover:bg-inverted-2/5 cursor-pointer'
   }`
 
   return (
@@ -175,7 +175,7 @@ const formatGroupLabel = (
 const CustomGroupHeading = (props: any) => (
   <GroupHeading
     {...props}
-    className="p-2 pt-0 pb-3 text-card-stroke uppercase font-bold text-xs"
+    className="p-2 pt-0 pb-3 text-inverted-1 uppercase font-bold text-xs"
   />
 )
 
@@ -272,8 +272,8 @@ const DropdownComponent = (
             return {
               ...base,
               width: menuWidth,
+              backgroundColor: 'rgb(var(--color-base-1) / 100)',
               zIndex: 999,
-              padding: 20,
               ...(menuHorizontalPlacement &&
                 menuHorizontalPlacement === 'left' && { left: 0 }),
               ...(menuHorizontalPlacement &&
@@ -302,6 +302,7 @@ const DropdownComponent = (
               ...base,
               fontSize: '0.875rem',
               letterSpacing: '-0.025rem',
+              color: 'rgb(var(--color-on-base) / 100)',
             }
           },
         }}

@@ -91,13 +91,13 @@
     "@types/react-modal": "^3.12.1",
     "@types/react-table": "^7.7.1",
     "@types/react-text-mask": "^5.4.8",
-    "@types/styled-components": "^5.1.14",
     "autoprefixer": "^10.4.4",
     "babel-loader": "^8.2.2",
     "babel-plugin-istanbul": "^6.1.1",
     "babel-plugin-module-name-mapper": "^1.2.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "chromatic": "^6.5.4",
+    "css-loader": "5.2.6",
     "cypress": "^9.6.0",
     "cypress-sonarqube-reporter": "^1.11.0",
     "eslint-plugin-prettier": "^3.4.0",
@@ -109,8 +109,12 @@
     "prettier": "^2.6.2",
     "react-is": "^18.1.0",
     "rollup-plugin-postcss": "^4.0.2",
+    "sass": "^1.59.3",
+    "sass-loader": "10.1.1",
     "size-limit": "^7.0.8",
     "storybook-addon-designs": "^6.3.1",
+    "storybook-dark-mode": "^2.1.1",
+    "style-loader": "2.0.0",
     "tailwindcss": "^3.1.2",
     "tsdx": "^0.14.1",
     "tslib": "^2.4.0",
@@ -125,7 +129,7 @@
     "tailwindcss": ">=3.1.0"
   },
   "dependencies": {
-    "@loja-integrada/tailwindcss-config": "^1.6.3",
+    "@loja-integrada/tailwindcss-config": "^1.7.0",
     "@tippyjs/react": "^4.2.5",
     "@types/react-select": "^4.0.17",
     "babel-jest": "^29.2.2",
@@ -138,7 +142,6 @@
     "react-table": "^7.7.0",
     "react-text-mask": "^5.4.3",
     "react-toastify": "^7.0.4",
-    "sonarqube-scanner": "^2.8.2",
-    "styled-components": "^5.3.1"
+    "sonarqube-scanner": "^2.8.2"
   }
 }
