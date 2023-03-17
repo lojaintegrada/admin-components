@@ -8,12 +8,11 @@ module.exports = {
         config: {
           path: './postcss.config.js',
         },
-        extensions: ['.css'],
+        extensions: ['.scss', '.css'],
         minimize: true,
-        // inject: {
-        //   insertAt: 'top',
-        // },
-        extract: options.env === 'production' ? path.resolve('dist/tailwind.css') : true,
+        inject: {
+          insertAt: 'top',
+        },
       })
     );
     return config;

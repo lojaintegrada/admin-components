@@ -1,64 +1,53 @@
 .tippy-box {
-  --bg-color: theme('colors.inverted-1' / 100);
-  position: relative;
-  background-color: var(--bg-color);
-  color: theme('colors.base-1' / 100);
-  border-radius: 3px;
-  font-size: 12px;
-  letter-spacing: -0.4px;
-  line-height: 1.4;
-  outline: 0;
-  transition-property: transform, visibility, opacity;
+  @apply relative bg-inverted-1 text-base-1 rounded text-f7 tracking-4 leading-4 outline-0 transition-all;
 
   &[data-animation='fade'][data-state='hidden'] {
-    opacity: 0;
+    @apply opacity-0;
   }
 
   [data-tippy-root] {
     max-width: calc(100vw - 10px);
   }
 
-  &[data-placement^='top'] > .tippy-arrow {
-    bottom: 0;
+  &[data-placement^='top']>.tippy-arrow {
+    @apply bottom-0;
   }
 
-  &[data-placement^='top'] > .tippy-arrow:before {
-    bottom: -7px;
-    left: 0;
+  &[data-placement^='top']>.tippy-arrow:before {
+    @apply -bottom-2 left-0;
     border-width: 8px 8px 0;
     border-top-color: initial;
     transform-origin: center top;
   }
 
-  &[data-placement^='bottom'] > .tippy-arrow {
-    top: 0;
+  &[data-placement^='bottom']>.tippy-arrow {
+    @apply top-0;
   }
 
-  &[data-placement^='bottom'] > .tippy-arrow:before {
-    top: -7px;
-    left: 0;
+  &[data-placement^='bottom']>.tippy-arrow:before {
+    @apply -top-2 left-0;
     border-width: 0 8px 8px;
     border-bottom-color: initial;
     transform-origin: center bottom;
   }
 
-  &[data-placement^='left'] > .tippy-arrow {
-    right: 0;
+  &[data-placement^='left']>.tippy-arrow {
+    @apply right-0;
   }
 
-  &[data-placement^='left'] > .tippy-arrow:before {
+  &[data-placement^='left']>.tippy-arrow:before {
+    @apply -right-2;
     border-width: 8px 0 8px 8px;
     border-left-color: initial;
-    right: -7px;
     transform-origin: center left;
   }
 
-  &[data-placement^='right'] > .tippy-arrow {
-    left: 0;
+  &[data-placement^='right']>.tippy-arrow {
+    @apply left-0;
   }
 
-  &[data-placement^='right'] > .tippy-arrow:before {
-    left: -7px;
+  &[data-placement^='right']>.tippy-arrow:before {
+    @apply -left-2;
     border-width: 8px 8px 8px 0;
     border-right-color: initial;
     transform-origin: center right;
@@ -68,22 +57,16 @@
     transition-timing-function: cubic-bezier(0.54, 1.5, 0.38, 1.11);
   }
 
-.tippy-arrow {
-  width: 15px;
-  height: 15px;
-  color: var(--bg-color);
-}
+  .tippy-arrow {
+    @apply text-inverted-1 w-4 h-4 text-inverted-1;
+  }
 
-.tippy-arrow:before {
-  content: '';
-  position: absolute;
-  border-color: transparent;
-  border-style: solid;
-}
+  .tippy-arrow:before {
+    @apply absolute border-transparent border-solid;
+    content: '';
+  }
 
-.tippy-content {
-  position: relative;
-  padding: 12px 8px;
-  z-index: 1;
-}
+  .tippy-content {
+    @apply relative py-3 px-2 z-1;
+  }
 }
