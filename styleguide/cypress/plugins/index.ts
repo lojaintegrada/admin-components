@@ -22,7 +22,7 @@ const babelLoaderConfig = {
 }
 
 const tailwindLoader = {
-  test: /\.css$/i,
+  test: /\.(s)?css$/i,
   use: ['style-loader', 'css-loader', 'postcss-loader'],
 }
 
@@ -31,7 +31,7 @@ const tailwindLoader = {
  */
 module.exports = (on, config) => {
   require('@cypress/code-coverage/task')(on, config)
-  
+
   if (config.testingType === 'component') {
     require('@cypress/react/plugins/babel')(on, config, {
       setWebpackConfig: (webpackConfig) => {

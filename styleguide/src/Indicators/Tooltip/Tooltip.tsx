@@ -1,8 +1,6 @@
 import React from 'react'
-
 import Tippy, { TippyProps } from '@tippyjs/react'
-
-import styled from 'styled-components'
+import './style.scss'
 
 const TooltipComponent = (props: TooltipProps) => {
   const [mounted, setMounted] = React.useState(false)
@@ -30,7 +28,7 @@ const TooltipComponent = (props: TooltipProps) => {
   }
 
   return (
-    <StyledTooltipComponent
+    <Tippy
       {...computedProps}
       appendTo={props?.appendTo || 'parent'}
       hideOnClick={props?.hideOnClick || false}
@@ -39,113 +37,9 @@ const TooltipComponent = (props: TooltipProps) => {
       duration={props?.duration || 150}
       placement={window?.innerWidth < 1024 ? 'top' : props?.placement || 'top'}
       interactive={props?.interactive || false}
-      theme={props?.theme || 'dark'}
     />
   )
 }
-
-const theme: Record<string, Record<string, string>> = {
-  light: {
-    background: '#fff',
-    color: '#371E56',
-  },
-  dark: {
-    background: '#371E56',
-    color: '#fff',
-  },
-}
-
-const StyledTooltipComponent = styled(Tippy)<{
-  theme: string
-}>`
-  --bg-color: ${(props) => theme[props.theme].background};
-  position: relative;
-  background-color: var(--bg-color);
-  color: ${(props) => theme[props.theme].color};
-  border-radius: 3px;
-  font-size: 12px;
-  letter-spacing: -0.4px;
-  line-height: 1.4;
-  outline: 0;
-  transition-property: transform, visibility, opacity;
-
-  &[data-animation='fade'][data-state='hidden'] {
-    opacity: 0;
-  }
-
-  [data-tippy-root] {
-    max-width: calc(100vw - 10px);
-  }
-
-  &[data-placement^='top'] > .tippy-arrow {
-    bottom: 0;
-  }
-
-  &[data-placement^='top'] > .tippy-arrow:before {
-    bottom: -7px;
-    left: 0;
-    border-width: 8px 8px 0;
-    border-top-color: initial;
-    transform-origin: center top;
-  }
-
-  &[data-placement^='bottom'] > .tippy-arrow {
-    top: 0;
-  }
-
-  &[data-placement^='bottom'] > .tippy-arrow:before {
-    top: -7px;
-    left: 0;
-    border-width: 0 8px 8px;
-    border-bottom-color: initial;
-    transform-origin: center bottom;
-  }
-
-  &[data-placement^='left'] > .tippy-arrow {
-    right: 0;
-  }
-
-  &[data-placement^='left'] > .tippy-arrow:before {
-    border-width: 8px 0 8px 8px;
-    border-left-color: initial;
-    right: -7px;
-    transform-origin: center left;
-  }
-
-  &[data-placement^='right'] > .tippy-arrow {
-    left: 0;
-  }
-
-  &[data-placement^='right'] > .tippy-arrow:before {
-    left: -7px;
-    border-width: 8px 8px 8px 0;
-    border-right-color: initial;
-    transform-origin: center right;
-  }
-
-  &[data-inertia][data-state='visible'] {
-    transition-timing-function: cubic-bezier(0.54, 1.5, 0.38, 1.11);
-  }
-
-  .tippy-arrow {
-    width: 15px;
-    height: 15px;
-    color: var(--bg-color);
-  }
-
-  .tippy-arrow:before {
-    content: '';
-    position: absolute;
-    border-color: transparent;
-    border-style: solid;
-  }
-
-  .tippy-content {
-    position: relative;
-    padding: 12px 8px;
-    z-index: 1;
-  }
-`
 
 export const Tooltip = React.memo(TooltipComponent)
 
@@ -179,6 +73,7 @@ export interface TooltipProps extends TippyProps {
    * */
   interactive?: TippyProps['interactive']
   /** Tooltip theme
+   * @deprecated Not implemented
    * @default dark
    * */
   theme?: 'light' | 'dark'
