@@ -1,11 +1,16 @@
-import '../src/tailwind.css'
+import '../src/tailwind.scss'
 
-// https://storybook.js.org/docs/react/writing-stories/parameters#global-parameters
 export const parameters = {
   // https://storybook.js.org/docs/react/essentials/actions#automatically-matching-args
-  // actions: { argTypesRegex: '^on.*' },
+  actions: { argTypesRegex: '^on[A-Z].*' },
   controls: { expanded: true },
   layout: 'centered',
+  darkMode: {
+    current: 'light',
+    darkClass: 'dark',
+    classTarget: 'html',
+    stylePreview: true,
+  },
   options: {
     storySort: {
       method: '',

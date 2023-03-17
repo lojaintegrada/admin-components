@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { Icon } from '../../Icons'
 
 const backgroundShadowEffect = [
-  '[background:linear-gradient(#FFFFFF_33%,rgba(255,255,255,0)),linear-gradient(rgba(255,255,255,0),#FFFFFF_66%)_0_100%,radial-gradient(farthest-side_at_50%_0,rgba(156,156,156,0.5),rgba(0,0,0,0)),radial-gradient(farthest-side_at_50%_100%,_rgba(156,156,156,0.5),rgba(0,0,0,0))_0_100%]',
+  '[background:linear-gradient(theme(colors.base-1/100)_33%,rgba(255,255,255,0)),linear-gradient(rgba(255,255,255,0),theme(colors.base-1/100)_66%)_0_100%,radial-gradient(farthest-side_at_50%_0,rgba(156,156,156,0.5),rgba(0,0,0,0)),radial-gradient(farthest-side_at_50%_100%,_rgba(156,156,156,0.5),rgba(0,0,0,0))_0_100%]',
   '[background-size:100%_15px,100%_15px,100%_5px,100%_5px]',
   '[background-attachment:local,local,scroll,scroll]',
   '[background-repeat:no-repeat]',
-  '[background-color:#FFFFFF]',
+  '[background-color:theme(colors.base-1/100]',
   '[&_.form-group_.bg-base-1]:bg-transparent',
 ]
 
