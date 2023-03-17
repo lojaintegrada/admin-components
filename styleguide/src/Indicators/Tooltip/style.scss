@@ -9,44 +9,44 @@
     max-width: calc(100vw - 10px);
   }
 
-  &[data-placement^='top'] > .tippy-arrow {
+  &[data-placement^='top']>.tippy-arrow {
     @apply bottom-0;
   }
 
-  &[data-placement^='top'] > .tippy-arrow:before {
+  &[data-placement^='top']>.tippy-arrow:before {
     @apply -bottom-2 left-0;
     border-width: 8px 8px 0;
     border-top-color: initial;
     transform-origin: center top;
   }
 
-  &[data-placement^='bottom'] > .tippy-arrow {
+  &[data-placement^='bottom']>.tippy-arrow {
     @apply top-0;
   }
 
-  &[data-placement^='bottom'] > .tippy-arrow:before {
+  &[data-placement^='bottom']>.tippy-arrow:before {
     @apply -top-2 left-0;
     border-width: 0 8px 8px;
     border-bottom-color: initial;
     transform-origin: center bottom;
   }
 
-  &[data-placement^='left'] > .tippy-arrow {
+  &[data-placement^='left']>.tippy-arrow {
     @apply right-0;
   }
 
-  &[data-placement^='left'] > .tippy-arrow:before {
+  &[data-placement^='left']>.tippy-arrow:before {
     @apply -right-2;
     border-width: 8px 0 8px 8px;
     border-left-color: initial;
     transform-origin: center left;
   }
 
-  &[data-placement^='right'] > .tippy-arrow {
+  &[data-placement^='right']>.tippy-arrow {
     @apply left-0;
   }
 
-  &[data-placement^='right'] > .tippy-arrow:before {
+  &[data-placement^='right']>.tippy-arrow:before {
     @apply -left-2;
     border-width: 8px 8px 8px 0;
     border-right-color: initial;
@@ -57,16 +57,16 @@
     transition-timing-function: cubic-bezier(0.54, 1.5, 0.38, 1.11);
   }
 
-.tippy-arrow {
-  @apply text-inverted-1 w-4 h-4 text-inverted-1;
-}
+  .tippy-arrow {
+    @apply text-inverted-1 w-4 h-4 text-inverted-1;
+  }
 
-.tippy-arrow:before {
-  @apply absolute border-transparent border-solid;
-  content: '';
-}
+  .tippy-arrow:before {
+    @apply absolute border-transparent border-solid;
+    content: '';
+  }
 
-.tippy-content {
-  @apply relative py-3 px-2 z-1;
-}
+  .tippy-content {
+    @apply relative py-3 px-2 z-1;
+  }
 }
