@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import '../../tailwindcss/src/variables';
+@import '@loja-integrada/tailwindcss-config/src/_variables.scss';
 
 body {
   @apply antialiased;

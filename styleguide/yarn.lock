@@ -1553,6 +1553,11 @@
   resolved "https://registry.yarnpkg.com/@colors/colors/-/colors-1.5.0.tgz#bb504579c1cae923e6576a4f5da43d25f97bdbd9"
   integrity sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==
 
+"@csstools/selector-specificity@^2.0.0":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@csstools/selector-specificity/-/selector-specificity-2.1.1.tgz#c9c61d9fe5ca5ac664e1153bb0aa0eba1c6d6308"
+  integrity sha512-jwx+WCqszn53YHOfvFMJJRd/B2GqkCBt+1MJSG6o5/s8+ytHMvDZXsJgUEWLk12UnLd7HYKac4BYU5i/Ron1Cw==
+
 "@cypress/code-coverage@^3.10.0":
   version "3.10.0"
   resolved "https://registry.yarnpkg.com/@cypress/code-coverage/-/code-coverage-3.10.0.tgz#2132dbb7ae068cab91790926d50a9bf85140cab4"
@@ -12899,6 +12904,14 @@ postcss-nested@5.0.6:
   integrity sha512-rKqm2Fk0KbA8Vt3AdGN0FB9OBOMDVajMG6ZCf/GoHgdxUJ4sBFp0A/uMIRm+MJUdo33YXEtjqIz8u7DAp8B7DA==
   dependencies:
     postcss-selector-parser "^6.0.6"
+
+postcss-nesting@^11.2.1:
+  version "11.2.1"
+  resolved "https://registry.yarnpkg.com/postcss-nesting/-/postcss-nesting-11.2.1.tgz#260806f20971c82700d327468b49d1c1b44f1790"
+  integrity sha512-E6Jq74Jo/PbRAtZioON54NPhUNJYxVWhwxbweYl1vAoBYuGlDIts5yhtKiZFLvkvwT73e/9nFrW3oMqAtgG+GQ==
+  dependencies:
+    "@csstools/selector-specificity" "^2.0.0"
+    postcss-selector-parser "^6.0.10"
 
 postcss-normalize-charset@^5.1.0:
   version "5.1.0"
