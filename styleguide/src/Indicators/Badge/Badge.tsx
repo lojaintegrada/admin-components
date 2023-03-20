@@ -7,6 +7,7 @@ const badgeTypes = {
   danger: 'bg-danger-dark',
   success: 'bg-success-dark',
   warning: 'bg-warning-dark',
+  focus: 'bg-focus',
 }
 
 const badgeSizes = {
