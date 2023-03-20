@@ -2,10 +2,12 @@ import React from 'react'
 
 const badgeTypes = {
   neutral: 'bg-inverted-2',
+  neutralLight: 'bg-inverted-3',
   primary: 'bg-primary-dark',
   danger: 'bg-danger-dark',
   success: 'bg-success-dark',
   warning: 'bg-warning-dark',
+  focus: 'bg-focus',
 }
 
 const badgeSizes = {
@@ -25,7 +27,13 @@ const BadgeComponent = ({
         badgeTypes[type]
       } ${badgeSizes[size]} ${expanded ? 'flex w-full' : 'inline-flex'}`}
     >
-      <span className={`tracking-4 font-semibold text-base-1`}>{text}</span>
+      <span
+        className={`badgeText tracking-4 font-semibold ${
+          type === 'neutralLight' ? 'text-tertiary' : 'text-base-1'
+        }`}
+      >
+        {text}
+      </span>
     </div>
   )
 }

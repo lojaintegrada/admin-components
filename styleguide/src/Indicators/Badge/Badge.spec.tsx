@@ -5,6 +5,7 @@ import * as stories from "./Badge.stories"
 
 const { Default, Small, Expanded } = composeStories(stories)
 const badgeClass = '.badge'
+const badgeTextClass = '.badgeText'
 
 const specTitle = require('cypress-sonarqube-reporter/specTitle');
 describe(specTitle('Badge tests'), () => {
@@ -29,6 +30,10 @@ describe(specTitle('Badge tests'), () => {
     mount(<Default type="neutral" />)
     cy.get(badgeClass).should('have.class', 'bg-inverted-2')
 
+    mount(<Default type="neutralLight" />)
+    cy.get(badgeClass).should('have.class', 'bg-inverted-3')
+    cy.get(badgeTextClass).should('have.class', 'text-tertiary')
+
     mount(<Default type="primary" />)
     cy.get(badgeClass).should('have.class', 'bg-primary-dark')
 
@@ -40,5 +45,8 @@ describe(specTitle('Badge tests'), () => {
 
     mount(<Default type="danger" />)
     cy.get(badgeClass).should('have.class', 'bg-danger-dark')
+
+    mount(<Default type="focus" />)
+    cy.get(badgeClass).should('have.class', 'bg-focus')
   })
 })
