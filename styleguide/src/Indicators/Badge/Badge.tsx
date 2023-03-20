@@ -29,7 +29,7 @@ const BadgeComponent = ({
     >
       <span
         className={`badgeText tracking-4 font-semibold ${
-          type == 'neutralLight' ? 'text-tertiary' : 'text-base-1'
+          type === 'neutralLight' ? 'text-tertiary' : 'text-base-1'
         }`}
       >
         {text}
