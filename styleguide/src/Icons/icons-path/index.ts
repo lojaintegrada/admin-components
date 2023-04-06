@@ -65,6 +65,7 @@ import { Lightbulb } from './Lightbulb'
 import { Camera } from './Camera'
 import { Nav } from './Nav'
 import { ShoppingCart } from './ShoppingCart'
+import { WhatsApp } from './WhatsApp'
 
 export const icons = {
   adjust: Adjust,
@@ -135,4 +136,5 @@ export const icons = {
   questionCircle: QuestionCircle,
   sync: Sync,
   user: User,
+  whatsapp: WhatsApp,
 }
