@@ -30,6 +30,7 @@ import { Eye } from './Eye'
 import { ExclamationCircle } from './ExclamationCircle'
 import { ExclamationTriangle } from './ExclamationTriangle'
 import { ExternalLink } from './ExternalLink'
+import { Filter } from './Filter'
 import { HalfBack } from './HalfBack'
 import { Home } from './Home'
 import { Image } from './Image'
@@ -104,6 +105,7 @@ export const icons = {
   exclamationCircle: ExclamationCircle,
   exclamationTriangle: ExclamationTriangle,
   externalLink: ExternalLink,
+  filter: Filter,
   halfBack: HalfBack,
   home: Home,
   image: Image,
