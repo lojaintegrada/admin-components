@@ -3,6 +3,10 @@
   "version": "0.18.13",
   "author": "Loja Integrada Front-End Team",
   "license": "MIT",
+  "repository": {
+    "url": "lojaintegrada/admin-components",
+    "directory": "styleguide"
+  },
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [

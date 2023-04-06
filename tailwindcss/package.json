@@ -4,6 +4,10 @@
   "description": "TailwindCSS config for Loja Integrada admin",
   "author": "Loja Integrada Front-End Team",
   "license": "MIT",
+  "repository": {
+    "url": "lojaintegrada/admin-components",
+    "directory": "tailwindcss"
+  },
   "main": "src/defaultPreset.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
