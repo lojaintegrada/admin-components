@@ -30,6 +30,7 @@ import { Eye } from './Eye'
 import { ExclamationCircle } from './ExclamationCircle'
 import { ExclamationTriangle } from './ExclamationTriangle'
 import { ExternalLink } from './ExternalLink'
+import { Filter } from './Filter'
 import { HalfBack } from './HalfBack'
 import { Home } from './Home'
 import { Image } from './Image'
@@ -65,6 +66,7 @@ import { Lightbulb } from './Lightbulb'
 import { Camera } from './Camera'
 import { Nav } from './Nav'
 import { ShoppingCart } from './ShoppingCart'
+import { WhatsApp } from './WhatsApp'
 
 export const icons = {
   adjust: Adjust,
@@ -103,6 +105,7 @@ export const icons = {
   exclamationCircle: ExclamationCircle,
   exclamationTriangle: ExclamationTriangle,
   externalLink: ExternalLink,
+  filter: Filter,
   halfBack: HalfBack,
   home: Home,
   image: Image,
@@ -135,4 +138,5 @@ export const icons = {
   questionCircle: QuestionCircle,
   sync: Sync,
   user: User,
+  whatsapp: WhatsApp,
 }
