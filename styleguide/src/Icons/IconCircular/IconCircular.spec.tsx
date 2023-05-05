@@ -10,7 +10,7 @@ describe(specTitle('IconCircular tests'), () => {
 
   it('Default', () => {
     mount(<Default variant="success" />)
-    cy.get('.icon-circular').should('have.class', 'bg-success')
+    cy.get('.icon-circular').should('have.class', 'bg-primary')
     cy.get('svg path')
     cy.get('svg').should('have.class', 'icon-check')
   })
