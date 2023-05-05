@@ -6,7 +6,7 @@ const backgroundShadowEffect = [
   '[background-size:100%_15px,100%_15px,100%_5px,100%_5px]',
   '[background-attachment:local,local,scroll,scroll]',
   '[background-repeat:no-repeat]',
-  '[background-color:theme(colors.base-1/100]',
+  '[background-color:theme(colors.base-1/100)]',
   '[&_.form-group_.bg-base-1]:bg-transparent',
 ]
 

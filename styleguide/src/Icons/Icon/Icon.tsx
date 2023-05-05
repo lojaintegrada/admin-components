@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { icons } from './icons-path'
+import { icons } from '../icons-path'
 
 const iconSizes = {
   1: 'h-1 w-1',
@@ -22,7 +22,7 @@ export const Icon: FunctionComponent<IconProps> = React.memo(
     if (className) classes += className
 
     const Path = icons[icon] || icons['minus']
-    const viewBox = '0 0 18 18'
+    const viewBox = icon === 'exclamation' ? '0 0 6 30' : '0 0 18 18'
 
     return (
       <svg

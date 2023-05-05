@@ -1,20 +1,11 @@
 import React from 'react'
-import { Meta } from '@storybook/react'
 import { Icon as IconComponent } from './Icon'
 import { icons } from './icons-path'
 
-export default {
-  title: 'Icons',
-  component: IconComponent,
-} as Meta
-
-export const Example = (args: any) => <IconComponent {...args} />
-Example.args = { icon: 'cog' }
-
-export const IconsList = () => {
+const IconsList = () => {
   return (
     <>
-      <div className="text-center mb-6">
+      <div className="text-f6 mb-10">
         There are {Object.keys(icons).length} icons
       </div>
       <ul className="grid grid-cols-6 gap-4 list-none">
@@ -30,3 +21,5 @@ export const IconsList = () => {
     </>
   )
 }
+
+export default IconsList
