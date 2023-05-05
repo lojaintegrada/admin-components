@@ -18,6 +18,7 @@ describe(specTitle('IconCircular tests'), () => {
   it('CustomIconAndBackground', () => {
     mount(<Default icon="camera" bgClass="bg-[#d380ec]" />)
     cy.get('.icon-circular').should('have.class', 'bg-[#d380ec]')
+    cy.get('svg path')
     cy.get('svg').should('have.class', 'icon-camera')
   })
 })
