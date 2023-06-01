@@ -11,7 +11,7 @@ export default {
 const Template: Story<ToggleButtonProps> = (args) => <ToggleButton {...args} />
 
 export const WithIcon = Template.bind({})
-WithIcon.args = {  
+WithIcon.args = {
   disabled: false,
   children: [
     <Icon icon='desktop' key={1} />,
@@ -20,9 +20,9 @@ WithIcon.args = {
 }
 
 export const WithText = Template.bind({})
-WithText.args = {  
+WithText.args = {
   disabled: false,
-  children: [ 
+  children: [
     <span key={1}>With Text</span>,
     <span key={2}>With Text</span>,
     <span key={3}>With Text</span>,
@@ -30,9 +30,9 @@ WithText.args = {
 }
 
 export const Disabled = Template.bind({})
-Disabled.args = {  
+Disabled.args = {
   disabled: true,
-  children: [ 
+  children: [
     <span key={1}>Disabled</span>,
     <span key={2}>Disabled</span>,
   ]
