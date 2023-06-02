@@ -68,6 +68,8 @@ import { Camera } from './Camera'
 import { Nav } from './Nav'
 import { ShoppingCart } from './ShoppingCart'
 import { WhatsApp } from './WhatsApp'
+import { IconSolidLI } from './IconSolidLI'
+import { ThinAngleRight } from './ThinAngleRight'
 
 export const icons = {
   adjust: Adjust,
@@ -141,4 +143,6 @@ export const icons = {
   sync: Sync,
   user: User,
   whatsapp: WhatsApp,
+  iconSolidLI: IconSolidLI,
+  thinAngleRight: ThinAngleRight,
 }
