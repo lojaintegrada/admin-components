@@ -28,7 +28,7 @@ const ListActionButton = ({
 
 }
 
-const ListActionsComponent = ({ onlyMobile, actions, isVisible = true }: ListActionsProps) => {
+const ListActionsComponent = ({ actions, isVisible = true }: ListActionsProps) => {
   useEffect(() => {
     const botbar = window.parent.document.querySelector<HTMLElement>('.botbar')
     if (botbar) botbar.style.display = 'none'
@@ -41,49 +41,18 @@ const ListActionsComponent = ({ onlyMobile, actions, isVisible = true }: ListAct
   return (
     <div
       className={
-        `list-actions w-full z-50 fixed right-0 bottom-0 flex justify-center items-center gap-x-8 shadow bg-inverted-1 lg:bg-base-2 transition-all px-4 py-2 ${isVisible ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none translate-y-2'} ${onlyMobile ? ' lg:hidden' : ''}`
+        `list-actions w-full z-50 fixed right-0 bottom-0 flex justify-center items-center gap-x-8 shadow bg-inverted-1 lg:bg-base-2 transition-all px-4 py-2 ${isVisible ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none translate-y-2'}`
       }
     >
       {actions.map((columns) => (
         Object.values(columns).map((buttons: ListActionButtonProps[]) => (
-          buttons.map((button) => (
-            <ListActionButton key={button.icon} {...button} />
-          ))
+          <div className="relative flex after:absolute after:-right-4 after:w-px after:h-full after:bg-base-4 last:after:hidden">
+            {buttons.map((button) => (
+              <ListActionButton key={button.icon} {...button} />
+            ))}
+          </div>
         ))
       ))}
-      {/* {!onlyMobile && (
-        <div className="hidden lg:grid grid-flow-col gap-x-5 my-2.5 mr-8">
-          {React.Children.map(children, ({ props }) => {
-            const { ...childrenProps } = props
-
-            delete childrenProps?.icon
-
-            return <Button {...childrenProps} />
-          })}
-        </div>
-      )} */}
-      {/* <div className="lg:hidden">
-        {React.Children.map(children, ({ props }) => {
-          if (!props.children) return
-          return (
-            <button
-              className={
-                'px-4 py-1 text-base-1' +
-                (props?.loading ? ' pointer-events-none' : '')
-              }
-              onClick={props?.onClick}
-              type={props?.type || 'button'}
-            >
-              {props?.loading ? (
-                <Icon icon="loading" className="p-px" />
-              ) : (
-                props?.icon && <Icon icon={props?.icon} className="p-px" />
-              )}
-              <span className="block text-f8">{props.children}</span>
-            </button>
-          )
-        })}
-      </div> */}
     </div>
   )
 }
@@ -95,10 +64,6 @@ export interface IActionsButtons {
 }
 
 export interface ListActionsProps {
-  /** Show component only on Mobile
-   * @default false
-   */
-  onlyMobile?: boolean
   /**
    * Actions of list
    */

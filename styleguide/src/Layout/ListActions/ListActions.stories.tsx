@@ -2,7 +2,6 @@ import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
 import { ListActions, ListActionsProps } from '.'
-import { Button } from '../../Components/Button'
 
 export default {
   component: ListActions,
@@ -40,20 +39,3 @@ Default.args = {
     },
   ],
 }
-
-// export const OnlyMobile = Template.bind({})
-// OnlyMobile.args = {
-//   onlyMobile: true,
-//   children: [
-//     <Button icon="trash" onClick={() => {}}>
-//       Remover
-//     </Button>,
-//     <Button icon="checkCircle" onClick={() => {}}>
-//       Ativar
-//     </Button>,
-//     <></>,
-//     <Button icon="ban" onClick={() => {}}>
-//       Inativar
-//     </Button>,
-//   ],
-// }
