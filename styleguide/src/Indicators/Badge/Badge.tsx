@@ -10,9 +10,22 @@ const badgeTypes = {
   focus: 'bg-focus',
 }
 
+const badgeRounded = {
+  full: 'rounded-full',
+  small: 'rounded',
+  none: 'rounded-none',
+}
+
 const badgeSizes = {
-  default: 'px-2 py-0.5 text-xs',
-  small: 'px-1.5 text-[0.70rem]',
+  default: 'text-xs',
+  small: 'text-[0.70rem]',
+  xsmall: 'text-f8',
+}
+
+const badgeClasses = {
+  default: 'px-2 py-0.5',
+  small: 'px-1.5',
+  xsmall: 'px-0.5 py-px',
 }
 
 const BadgeComponent = ({
@@ -20,12 +33,15 @@ const BadgeComponent = ({
   text,
   size = 'default',
   expanded = false,
+  rounded = 'full',
 }: BadgeProps) => {
   return (
     <div
-      className={`badge items-center justify-center rounded-full ${
-        badgeTypes[type]
-      } ${badgeSizes[size]} ${expanded ? 'flex w-full' : 'inline-flex'}`}
+      className={`badge items-center justify-center ${badgeRounded[rounded]} ${
+        badgeClasses[size]
+      } ${badgeTypes[type]} ${badgeSizes[size]} ${
+        expanded ? 'flex w-full' : 'inline-flex'
+      }`}
     >
       <span
         className={`badgeText tracking-4 font-semibold ${
@@ -57,4 +73,8 @@ export interface BadgeProps {
    * Enlarge width of the badge
    * */
   expanded?: boolean
+  /**
+   * Style of rounded corners
+   * */
+  rounded?: keyof typeof badgeRounded
 }

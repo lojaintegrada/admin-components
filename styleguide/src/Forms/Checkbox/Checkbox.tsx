@@ -87,13 +87,13 @@ const CheckboxComponent = (
         htmlFor={inputId}
         className={`inline-flex ${alignOptions[boxAlign]} cursor-pointer`}
       >
-        <span className="relative rounded z-50 flex items-center justify-center focus-within:ring-2 ring-focus">
+        <span className="relative rounded z-10 flex items-center justify-center focus-within:ring-2 ring-focus">
           <input
             ref={ref || inputRef}
             type="checkbox"
             id={inputId}
             name={name}
-            className="opacity-0 absolute h-4 w-4 z-50 cursor-pointer"
+            className="opacity-0 absolute h-4 w-4 z-10 cursor-pointer"
             checked={isChecked}
             onChange={handleChange}
             disabled={!!disabled}
