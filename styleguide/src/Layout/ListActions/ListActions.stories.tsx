@@ -16,14 +16,26 @@ Default.args = {
     {
       buttons: [
         {
+          className: 'adjust-selected',
+          icon: 'cog',
+          text: 'Configurações',
+          tagType: 'sign',
+        },
+      ],
+    },
+    {
+      buttons: [
+        {
           className: 'enable-selected',
           icon: 'checkCircle',
           text: 'Ativar selecionados',
+          tagType: 'new',
         },
         {
           className: 'disable-selected',
           icon: 'ban',
           text: 'Inativar selecionados',
+          tagText: 'LEROLERO',
         },
       ],
     },
