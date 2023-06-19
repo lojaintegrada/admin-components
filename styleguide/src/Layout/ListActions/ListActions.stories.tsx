@@ -63,7 +63,7 @@ Default.args = {
               Remover <span className="hidden lg:inline">selecionados</span>
             </>
           ),
-          onClick: () => alert('Remover!'),
+          onClick: () => alert('Remove'),
         },
       ],
     },
