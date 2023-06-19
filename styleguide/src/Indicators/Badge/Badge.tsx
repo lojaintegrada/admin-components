@@ -19,13 +19,13 @@ const badgeRounded = {
 const badgeSizes = {
   default: 'text-xs',
   small: 'text-[0.70rem]',
-  xsmall: 'text-f8'
+  xsmall: 'text-f8',
 }
 
 const badgeClasses = {
   default: 'px-2 py-0.5',
   small: 'px-1.5',
-  xsmall: 'px-0.5 py-px'
+  xsmall: 'px-0.5 py-px',
 }
 
 const BadgeComponent = ({
@@ -37,9 +37,11 @@ const BadgeComponent = ({
 }: BadgeProps) => {
   return (
     <div
-      className={`badge items-center justify-center ${badgeRounded[rounded]} ${badgeClasses[size]} ${
-        badgeTypes[type]
-      } ${badgeSizes[size]} ${expanded ? 'flex w-full' : 'inline-flex'}`}
+      className={`badge items-center justify-center ${badgeRounded[rounded]} ${
+        badgeClasses[size]
+      } ${badgeTypes[type]} ${badgeSizes[size]} ${
+        expanded ? 'flex w-full' : 'inline-flex'
+      }`}
     >
       <span
         className={`badgeText tracking-4 font-semibold ${
