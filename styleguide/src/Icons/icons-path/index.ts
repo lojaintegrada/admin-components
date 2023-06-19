@@ -71,6 +71,7 @@ import { WhatsApp } from './WhatsApp'
 import { IconSolidLI } from './IconSolidLI'
 import { ThinAngleRight } from './ThinAngleRight'
 import { EyeSlash } from './EyeSlash'
+import { Rocket } from './Rocket'
 
 export const icons = {
   adjust: Adjust,
@@ -147,4 +148,5 @@ export const icons = {
   iconSolidLI: IconSolidLI,
   thinAngleRight: ThinAngleRight,
   eyeSlash: EyeSlash,
+  rocket: Rocket,
 }
