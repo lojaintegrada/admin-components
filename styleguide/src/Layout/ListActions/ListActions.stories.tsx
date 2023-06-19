@@ -16,7 +16,7 @@ Default.args = {
     {
       buttons: [
         {
-          className: 'edit-selected',
+          className: 'edit-selected hidden lg:flex',
           icon: 'blog',
           text: (
             <>
@@ -33,12 +33,20 @@ Default.args = {
         {
           className: 'enable-selected',
           icon: 'checkCircle',
-          text: 'Ativar selecionados',
+          text: (
+            <>
+              Ativar <span className="hidden lg:inline">selecionados</span>
+            </>
+          ),
         },
         {
           className: 'disable-selected',
           icon: 'ban',
-          text: 'Inativar selecionados',
+          text: (
+            <>
+              Inativar <span className="hidden lg:inline">selecionados</span>
+            </>
+          ),
           tagType: 'new',
           id: 'disable-selected',
         },
@@ -50,7 +58,11 @@ Default.args = {
           className: 'remove-selected',
           variant: 'danger',
           icon: 'trash',
-          text: 'Remover selecionados',
+          text: (
+            <>
+              Remover <span className="hidden lg:inline">selecionados</span>
+            </>
+          ),
           onClick: () => alert('Remover!'),
         },
       ],

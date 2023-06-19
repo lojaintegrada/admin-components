@@ -8,16 +8,21 @@ export interface TagProps {
 }
 
 const Tag = ({ type, text }: TagProps) => {
+  const commonClasses = 'hidden lg:block absolute'
   if (type === 'sign') {
     return (
-      <span className="-mb-1 -mr-3 absolute bottom-0 right-0 text-primary-dark">
+      <span
+        className={`-mb-1 -mr-3 bottom-0 right-0 text-primary-dark ${commonClasses}`}
+      >
         <Icon icon="rocket" size={3} />
       </span>
     )
   }
 
   return (
-    <span className="absolute top-4 px-0.5 py-px rounded-sm text-f8 font-semibold leading-3 text-base-1">
+    <span
+      className={`top-4 px-0.5 py-px rounded-sm text-f8 font-semibold leading-3 text-base-1 ${commonClasses}`}
+    >
       <Badge
         size="xsmall"
         type="primary"
@@ -40,12 +45,12 @@ const ListActionButton = ({
 }: ListActionButtonProps) => {
   const variantClasses = {
     default: '',
-    danger: 'text-danger-dark',
+    danger: 'lg:text-danger-dark',
   }
 
   return (
     <button
-      className={`list-actions__button rounded relative flex items-center justify-center flex-col gap-y-2 p-2 border border-transparent text-inverted-2 transition-colors duration-200 hover:bg-base-3 hover:border-card-stroke ${
+      className={`list-actions__button rounded relative flex items-center justify-center flex-col gap-y-px lg:gap-y-2 px-3 lg:p-2 lg:border border-transparent text-base-1 lg:text-inverted-2 transition-colors duration-200 lg:hover:bg-base-3 lg:hover:border-card-stroke ${
         variant ? variantClasses[variant] : ''
       } ${className ? className : ''}`}
       {...props}
@@ -54,7 +59,7 @@ const ListActionButton = ({
         <Icon icon={icon} size={5} className="p-px" />
         {tagType || tagText ? <Tag type={tagType} text={tagText} /> : null}
       </span>
-      <p className="w-24 text-f7 font-semibold tracking-4 text-center select-none leading-tight">
+      <p className="lg:w-24 text-f8 lg:text-f7 font-semibold tracking-4 text-center select-none leading-tight">
         {text}
       </p>
     </button>
@@ -76,7 +81,7 @@ const ListActionsComponent = ({
 
   return (
     <div
-      className={`list-actions w-full z-50 fixed right-0 bottom-0 flex justify-center items-center gap-x-8 shadow bg-inverted-1 lg:bg-base-2 transition-all px-4 py-2 ${
+      className={`list-actions w-full z-50 h-12 lg:h-auto pb-0-safe fixed right-0 bottom-0 flex justify-center items-center lg:gap-x-8 shadow bg-inverted-1 lg:bg-base-2 transition-all px-4 lg:py-2 ${
         isVisible
           ? 'opacity-100 pointer-events-auto translate-y-0'
           : 'opacity-0 pointer-events-none translate-y-2'
@@ -87,7 +92,7 @@ const ListActionsComponent = ({
           (buttons: ListActionButtonProps[], index) => (
             <div
               key={index}
-              className="relative flex after:absolute after:-right-4 after:w-px after:h-full after:bg-base-4 last:after:hidden"
+              className="relative flex lg:after:absolute after:-right-4 after:w-px after:h-full after:bg-base-4 last:after:hidden"
             >
               {buttons.map((button) => (
                 <ListActionButton key={button.icon} {...button} />
