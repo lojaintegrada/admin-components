@@ -2,12 +2,12 @@ import React, { ButtonHTMLAttributes, useEffect } from 'react'
 import { Icon, IconProps } from '../../Icons'
 import { Badge } from '../../Indicators'
 
-export interface TagProps {
+export interface ListActionsTagProps {
   type: ListActionButtonProps['tagType']
   text?: string
 }
 
-const Tag = ({ type, text }: TagProps) => {
+const Tag = ({ type, text }: ListActionsTagProps) => {
   const commonClasses = 'hidden lg:block absolute'
   if (type === 'sign') {
     return (
@@ -108,7 +108,7 @@ const ListActionsComponent = ({
 
 export const ListActions = React.memo(ListActionsComponent)
 
-export interface ActionsButtons {
+export interface ListActionsButtons {
   buttons: ListActionButtonProps[]
 }
 
@@ -116,7 +116,7 @@ export interface ListActionsProps {
   /**
    * Actions of list
    */
-  actions: ActionsButtons[]
+  actions: ListActionsButtons[]
   /**
    * Visibility of component
    */
