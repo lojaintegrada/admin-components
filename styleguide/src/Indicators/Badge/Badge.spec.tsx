@@ -2,6 +2,7 @@ import * as React from "react"
 import { composeStories } from "@storybook/testing-react"
 import { mount } from "@cypress/react"
 import * as stories from "./Badge.stories"
+import { Badge } from "./Badge"
 
 const { Default, Small, Expanded } = composeStories(stories)
 const badgeClass = '.badge'
@@ -19,6 +20,26 @@ describe(specTitle('Badge tests'), () => {
   it('Small', () => {
     mount(<Small />)
     cy.get(badgeClass).should('have.class', 'px-1.5')
+  })
+
+  it('Size XSmall', () => {
+    mount(<Badge size="xsmall" text="Example text" />)
+    cy.get(badgeClass).should('have.class', 'text-f8')
+  })
+
+  it('Rounded Small', () => {
+    mount(<Badge rounded="small" text="Example text" />)
+    cy.get(badgeClass).should('have.class', 'rounded')
+  })
+
+  it('Rounded None', () => {
+    mount(<Badge rounded="none" text="Example text" />)
+    cy.get(badgeClass).should('have.class', 'rounded-none')
+  })
+
+  it('Rounded Full', () => {
+    mount(<Badge rounded="full" text="Example text" />)
+    cy.get(badgeClass).should('have.class', 'rounded-full')
   })
 
   it('Expanded', () => {
