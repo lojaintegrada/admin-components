@@ -21,7 +21,7 @@ const Tag = ({ type, text }: TagProps) => {
 
   return (
     <span
-      className={`top-4 px-0.5 py-px rounded-sm text-f8 font-semibold leading-3 text-base-1 ${commonClasses}`}
+      className={`top-3 left-3 px-0.5 py-px rounded-sm text-f8 font-semibold leading-3 text-base-1 ${commonClasses}`}
     >
       <Badge
         size="xsmall"
@@ -52,7 +52,7 @@ const ListActionButton = ({
     <button
       {...props}
       type={type}
-      className={`list-actions__button rounded relative flex items-center justify-center flex-col gap-y-px lg:gap-y-2 px-3 lg:p-2 lg:border border-transparent text-base-1 lg:text-inverted-2 transition-colors duration-200 lg:hover:bg-base-3 lg:hover:border-card-stroke ${
+      className={`list-actions__button rounded relative flex items-center justify-center flex-col gap-y-px lg:gap-y-1 px-3 lg:p-2 lg:border border-transparent text-base-1 lg:text-inverted-2 transition-colors duration-200 lg:hover:bg-base-3 lg:hover:border-card-stroke ${
         variant ? variantClasses[variant] : ''
       } ${className ? className : ''}`}
     >
