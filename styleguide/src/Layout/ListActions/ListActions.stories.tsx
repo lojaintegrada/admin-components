@@ -16,9 +16,14 @@ Default.args = {
     {
       buttons: [
         {
-          className: 'adjust-selected',
-          icon: 'cog',
-          text: 'Configurações',
+          className: 'edit-selected',
+          icon: 'blog',
+          text: (
+            <>
+              Editar em <br />
+              massa
+            </>
+          ),
           tagType: 'sign',
         },
       ],
@@ -29,13 +34,13 @@ Default.args = {
           className: 'enable-selected',
           icon: 'checkCircle',
           text: 'Ativar selecionados',
-          tagType: 'new',
         },
         {
           className: 'disable-selected',
           icon: 'ban',
           text: 'Inativar selecionados',
-          tagText: 'LEROLERO',
+          tagType: 'new',
+          id: 'disable-selected',
         },
       ],
     },
@@ -43,9 +48,10 @@ Default.args = {
       buttons: [
         {
           className: 'remove-selected',
-          type: 'danger',
+          variant: 'danger',
           icon: 'trash',
           text: 'Remover selecionados',
+          onClick: () => alert('Remover!'),
         },
       ],
     },

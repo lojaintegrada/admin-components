@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { ButtonHTMLAttributes, useEffect } from 'react'
 import { Icon, IconProps } from '../../Icons'
 import { Badge } from '../../Indicators'
 
@@ -34,18 +34,21 @@ const ListActionButton = ({
   tagText,
   icon,
   text,
-  type,
+  variant = 'default',
+  type = 'button',
+  ...props
 }: ListActionButtonProps) => {
-  const typeClasses = {
+  const variantClasses = {
+    default: '',
     danger: 'text-danger-dark',
   }
 
   return (
     <button
-      type="button"
       className={`list-actions__button rounded relative flex items-center justify-center flex-col gap-y-2 p-2 border border-transparent text-inverted-2 transition-colors duration-200 hover:bg-base-3 hover:border-card-stroke ${
-        type ? typeClasses[type] : ''
+        variant ? variantClasses[variant] : ''
       } ${className ? className : ''}`}
+      {...props}
     >
       <span className="relative">
         <Icon icon={icon} size={5} className="p-px" />
@@ -114,11 +117,8 @@ export interface ListActionsProps {
   isVisible?: boolean
 }
 
-export interface ListActionButtonProps {
-  /**
-   * Custom class name
-   */
-  className?: string
+export interface ListActionButtonProps
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * Button tag
    */
@@ -135,5 +135,8 @@ export interface ListActionButtonProps {
    * Button text
    */
   text: string | React.ReactNode
-  type?: 'danger'
+  /**
+   * Button type
+   */
+  variant?: 'default' | 'danger'
 }
