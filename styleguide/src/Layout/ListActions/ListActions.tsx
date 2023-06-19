@@ -72,7 +72,7 @@ const ListActionsComponent = ({
   isVisible = true,
 }: ListActionsProps) => {
   useEffect(() => {
-    const botbar = window.parent.document.querySelector<HTMLElement>('.botbar')
+    const botbar = window?.parent?.document?.querySelector<HTMLElement>('.botbar')
     if (botbar) botbar.style.display = 'none'
 
     return () => {
