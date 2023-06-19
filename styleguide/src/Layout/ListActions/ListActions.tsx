@@ -44,7 +44,7 @@ const ListActionButton = ({
   ...props
 }: ListActionButtonProps) => {
   const variantClasses = {
-    default: '',
+    default: 'lg:text-inverted-2',
     danger: 'lg:text-danger-dark',
   }
 
@@ -52,7 +52,7 @@ const ListActionButton = ({
     <button
       {...props}
       type={type}
-      className={`list-actions__button rounded relative flex items-center justify-center flex-col gap-y-px lg:gap-y-1 px-3 lg:p-2 lg:border border-transparent text-base-1 lg:text-inverted-2 transition-colors duration-200 lg:hover:bg-base-3 lg:hover:border-card-stroke ${
+      className={`list-actions__button rounded relative flex items-center justify-center flex-col gap-y-px lg:gap-y-1 px-3 lg:p-2 lg:border border-transparent text-base-1 transition-colors duration-200 lg:hover:bg-base-3 lg:hover:border-card-stroke ${
         variant ? variantClasses[variant] : ''
       } ${className ? className : ''}`}
     >
