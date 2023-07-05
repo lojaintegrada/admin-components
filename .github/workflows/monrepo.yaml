@@ -9,7 +9,7 @@ on:
 jobs:
   labelPR:
     name: Label PR With Repo(s)
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Label PRs
         uses: TinkurLab/monorepo-pr-labeler-action@3.1.0
