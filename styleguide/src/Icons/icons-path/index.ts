@@ -72,6 +72,7 @@ import { IconSolidLI } from './IconSolidLI'
 import { ThinAngleRight } from './ThinAngleRight'
 import { EyeSlash } from './EyeSlash'
 import { Rocket } from './Rocket'
+import { Upload } from './Upload'
 
 export const icons = {
   adjust: Adjust,
@@ -149,4 +150,5 @@ export const icons = {
   thinAngleRight: ThinAngleRight,
   eyeSlash: EyeSlash,
   rocket: Rocket,
+  upload: Upload,
 }
