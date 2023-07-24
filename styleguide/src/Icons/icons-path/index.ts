@@ -1,11 +1,13 @@
 import { Adjust } from './Adjust'
+import { AngleDiagonal } from './AngleDiagonal'
+import { AngleDown } from './AngleDown'
+import { AngleHeight } from './AngleHeight'
 import { AngleLeft } from './AngleLeft'
 import { AngleRight } from './AngleRight'
-import { AngleDown } from './AngleDown'
+import { AngleWidth } from './AngleWidth'
 import { App } from './App'
 import { Arrow } from './Arrow'
 import { ArrowLeft } from './ArrowLeft'
-import { SortDown } from './SortDown'
 import { ArrowRight } from './ArrowRight'
 import { Back } from './Back'
 import { Ban } from './Ban'
@@ -15,78 +17,78 @@ import { Blog } from './Blog'
 import { Bullhorn } from './Bullhorn'
 import { Calculator } from './Calculator'
 import { CalendarAlt } from './CalendarAlt'
-import { Cog } from './Cog'
-import { Copy } from './Copy'
-import { Clock } from './Clock'
-import { Close } from './Close'
+import { Camera } from './Camera'
 import { Check } from './Check'
 import { CheckCircle } from './CheckCircle'
+import { Clock } from './Clock'
+import { Close } from './Close'
+import { Cog } from './Cog'
+import { Copy } from './Copy'
 import { CreditCard } from './CreditCard'
+import { Discount } from './Discount'
+import { Desktop } from './Desktop'
 import { Download } from './Download'
-import { Product } from './Product'
 import { Edit } from './Edit'
 import { Exchange } from './Exchange'
-import { Eye } from './Eye'
 import { Exclamation } from './Exclamation'
 import { ExclamationCircle } from './ExclamationCircle'
 import { ExclamationTriangle } from './ExclamationTriangle'
 import { ExternalLink } from './ExternalLink'
+import { Eye } from './Eye'
+import { EyeSlash } from './EyeSlash'
 import { Filter } from './Filter'
 import { HalfBack } from './HalfBack'
 import { Home } from './Home'
+import { IconSolidEnviali } from './IconSolidEnviali'
+import { IconSolidLI } from './IconSolidLI'
 import { Image } from './Image'
+import { InfoCircle } from './InfoCircle'
+import { Lightbulb } from './Lightbulb'
+import { Link } from './Link'
+import { Loading } from './Loading'
+import { Minus } from './Minus'
+import { Mobile } from './Mobile'
 import { MoneyBill } from './MoneyBill'
 import { Move } from './Move'
+import { Nav } from './Nav'
 import { Order } from './Order'
 import { Pagali } from './Pagali'
 import { PaperList } from './PaperList'
 import { PieChart } from './PieChart'
+import { Pix } from './Pix'
 import { Plus } from './Plus'
 import { PlusCircle } from './PlusCircle'
 import { Print } from './Print'
-import { InfoCircle } from './InfoCircle'
-import { Link } from './Link'
-import { Loading } from './Loading'
-import { Pix } from './Pix'
-import { Trash } from './Trash'
-import { TimesCircle } from './TimesCircle'
-import { Minus } from './Minus'
-import { Tv } from './Tv'
-import { Desktop } from './Desktop'
-import { Mobile } from './Mobile'
-import { Truck } from './Truck'
-import { UsdCircle } from './UsdCircle'
+import { Product } from './Product'
 import { QuestionCircle } from './QuestionCircle'
-import { Search } from './Search'
-import { Sync } from './Sync'
-import { AngleDiagonal } from './AngleDiagonal'
-import { AngleHeight } from './AngleHeight'
-import { AngleWidth } from './AngleWidth'
-import { User } from './User'
-import { Lightbulb } from './Lightbulb'
-import { Camera } from './Camera'
-import { Nav } from './Nav'
-import { ShoppingCart } from './ShoppingCart'
-import { WhatsApp } from './WhatsApp'
-import { IconSolidLI } from './IconSolidLI'
-import { ThinAngleRight } from './ThinAngleRight'
-import { EyeSlash } from './EyeSlash'
+import { Reload } from './Reload'
 import { Rocket } from './Rocket'
+import { Search } from './Search'
+import { ShoppingCart } from './ShoppingCart'
+import { SortDown } from './SortDown'
+import { Sync } from './Sync'
+import { ThinAngleRight } from './ThinAngleRight'
+import { TimesCircle } from './TimesCircle'
+import { Trash } from './Trash'
+import { Truck } from './Truck'
+import { Tv } from './Tv'
 import { Upload } from './Upload'
+import { UsdCircle } from './UsdCircle'
+import { User } from './User'
+import { WhatsApp } from './WhatsApp'
 
 export const icons = {
   adjust: Adjust,
+  angleDiagonal: AngleDiagonal,
+  angleDown: AngleDown,
+  angleHeight: AngleHeight,
   angleLeft: AngleLeft,
   angleRight: AngleRight,
-  angleDown: AngleDown,
-  angleDiagonal: AngleDiagonal,
-  angleHeight: AngleHeight,
   angleWidth: AngleWidth,
   app: App,
   arrow: Arrow,
   arrowLeft: ArrowLeft,
   arrowRight: ArrowRight,
-  sortDown: SortDown,
   back: Back,
   ban: Ban,
   barcodeRead: BarcodeRead,
@@ -97,26 +99,35 @@ export const icons = {
   calendarAlt: CalendarAlt,
   camera: Camera,
   check: Check,
-  cog: Cog,
-  copy: Copy,
+  checkCircle: CheckCircle,
   clock: Clock,
   close: Close,
-  checkCircle: CheckCircle,
+  cog: Cog,
+  copy: Copy,
   creditcard: CreditCard,
+  discount: Discount,
+  desktop: Desktop,
   download: Download,
-  product: Product,
   edit: Edit,
   exchange: Exchange,
-  eye: Eye,
   exclamation: Exclamation,
   exclamationCircle: ExclamationCircle,
   exclamationTriangle: ExclamationTriangle,
   externalLink: ExternalLink,
+  eye: Eye,
+  eyeSlash: EyeSlash,
   filter: Filter,
   halfBack: HalfBack,
   home: Home,
+  iconSolidEnviali: IconSolidEnviali,
+  iconSolidLI: IconSolidLI,
   image: Image,
+  infoCircle: InfoCircle,
   lightbulb: Lightbulb,
+  link: Link,
+  loading: Loading,
+  minus: Minus,
+  mobile: Mobile,
   moneyBill: MoneyBill,
   move: Move,
   nav: Nav,
@@ -124,31 +135,26 @@ export const icons = {
   pagali: Pagali,
   paperList: PaperList,
   pieChart: PieChart,
+  pix: Pix,
   plus: Plus,
   plusCircle: PlusCircle,
   print: Print,
-  shoppingCart: ShoppingCart,
-  infoCircle: InfoCircle,
-  link: Link,
-  loading: Loading,
-  pix: Pix,
+  product: Product,
+  questionCircle: QuestionCircle,
+  reload: Reload,
+  rocket: Rocket,
   search: Search,
-  trash: Trash,
+  shoppingCart: ShoppingCart,
+  sortDown: SortDown,
+  sync: Sync,
+  thinAngleRight: ThinAngleRight,
   times: Close,
   timesCircle: TimesCircle,
-  minus: Minus,
-  tv: Tv,
-  desktop: Desktop,
-  mobile: Mobile,
+  trash: Trash,
   truck: Truck,
+  tv: Tv,
+  upload: Upload,
   usdCircle: UsdCircle,
-  questionCircle: QuestionCircle,
-  sync: Sync,
   user: User,
   whatsapp: WhatsApp,
-  iconSolidLI: IconSolidLI,
-  thinAngleRight: ThinAngleRight,
-  eyeSlash: EyeSlash,
-  rocket: Rocket,
-  upload: Upload,
 }
