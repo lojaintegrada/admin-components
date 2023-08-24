@@ -76,6 +76,15 @@ import { Upload } from './Upload'
 import { UsdCircle } from './UsdCircle'
 import { User } from './User'
 import { WhatsApp } from './WhatsApp'
+import { Clockwise } from './Clockwise'
+import { DefaultCursor } from './DefaultCursor'
+import { Envelope } from './Envelope'
+import { ExchangeY } from './ExchangeY'
+import { Hashtag } from './Hashtag'
+import { IdentificationBadge } from './IdentificationBadge'
+import { ListItems } from './ListItems'
+import { Store } from './Store'
+import { Trophy } from './Trophy'
 
 export const icons = {
   adjust: Adjust,
@@ -157,4 +166,13 @@ export const icons = {
   usdCircle: UsdCircle,
   user: User,
   whatsapp: WhatsApp,
+  clockwise: Clockwise,
+  defaultCursor: DefaultCursor,
+  envelope: Envelope,
+  exchangeY: ExchangeY,
+  hashtag: Hashtag,
+  identificationBadge: IdentificationBadge,
+  listItems: ListItems,
+  store: Store,
+  trophy: Trophy,
 }
