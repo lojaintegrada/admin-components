@@ -88,6 +88,7 @@ import { Trophy } from './Trophy'
 import { DashedCircle } from './DashedCircle'
 import { MinusCircle } from './MinusCircle'
 import { MinusCircleSolid } from './MinusCircleSolid'
+import { DotsThree } from './DotsThree'
 
 export const icons = {
   adjust: Adjust,
@@ -181,4 +182,5 @@ export const icons = {
   dashedCircle: DashedCircle,
   minusCircle: MinusCircle,
   minusCircleSolid: MinusCircleSolid,
+  dotsThree: DotsThree,
 }
