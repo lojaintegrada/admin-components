@@ -49,7 +49,7 @@ const PaginationNavComponent = ({
       <div className="text-inverted-2 text-f6 tracking-4">
         <span
           id="btnPaginationActualPage"
-          className="pagination-nav-current text-primary font-semibold"
+          className="pagination-nav-current inline-block w-9 bg-base-1 border border-card-stroke/50 rounded font-semibold leading-8 text-center text-primary"
           ref={inputEl}
           contentEditable={true}
           suppressContentEditableWarning={true}
