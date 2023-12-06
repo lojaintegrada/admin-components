@@ -2103,10 +2103,10 @@
   resolved "https://registry.yarnpkg.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.3.tgz#0300943770e04231041a51bd39f0439b5c7ab4f0"
   integrity sha512-nkalE/f1RvRGChwBnEIoBfSEYOXnCRdleKuv6+lePbMDrMZXeDQnqak5XDOeBgrPPyPfAdcCu/B5z+v3VhplGg==
 
-"@loja-integrada/tailwindcss-config@^1.7.1":
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/@loja-integrada/tailwindcss-config/-/tailwindcss-config-1.7.1.tgz#e8be65faf622450aa5d28bbfa180895d30c80ed1"
-  integrity sha512-VRgCITgm0AFA/mTCZjgDGhD0YReXqrydCVGwx1dsXWu1pCbj2N4GHAZcebI4Wap1PNlLW8dDBxdFjMfLLZ+zMQ==
+"@loja-integrada/tailwindcss-config@^1.7.3":
+  version "1.7.3"
+  resolved "https://registry.yarnpkg.com/@loja-integrada/tailwindcss-config/-/tailwindcss-config-1.7.3.tgz#af7ad600bcf30dd72f75196d81e54f3f802741dc"
+  integrity sha512-NuHFxioAV4MnmT2yasnJ1/DPE2sZRoudehVfh6VrqG46v0CbOfReGly5RHJ8GCu39yQ0eIuNGvgZOWv0WlMPtQ==
   dependencies:
     tailwindcss "^3.0.23"
 
