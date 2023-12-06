@@ -7,14 +7,13 @@ const listOfStylesHover = {
   secondary: `hover:bg-secondary-dark`,
   outlineSecondary: `hover:bg-primary-light`,
   tertiary: `hover:bg-tertiary-dark`,
-  info: `hover:bg-secondary-bold`,
   warning: `hover:bg-warning-dark`,
   danger: `hover:bg-danger-dark`,
   outline: `hover:bg-primary-light`,
   onlyText: `hover:bg-base-2`,
 }
 const listOfStylesActive = {
-  primary: `active:bg-primary-bold`,
+  primary: `active:bg-primary-dark`,
   secondary: `active:shadow-inner`,
   outlineSecondary: `active:shadow-inner active:bg-base-1`,
   tertiary: `active:bg-tertiary-bold`,
@@ -23,24 +22,17 @@ const listOfStylesActive = {
   outline: `active:shadow-inner active:bg-base-1`,
   onlyText: `active:bg-base-1`,
 }
-const listOfStylesFocus = {
-  primary: `focus:ring-1 focus:ring-primary-dark focus:ring-opacity-50`,
-  secondary: `focus:ring focus:ring-focus`,
-  outlineSecondary: `focus:ring-2 focus:ring-focus focus:ring-offset-1`,
-  danger: `focus:ring-1 focus:ring-danger-dark`,
-  outline: `focus:ring-2 focus:ring-focus focus:ring-offset-1`,
-  onlyText: `focus:bg-base-1`,
-}
+const commonFocus = 'focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-1'
+
 const listOfStyles = {
-  primary: `bg-primary text-base-1 ${listOfStylesHover['primary']} ${listOfStylesActive['primary']} ${listOfStylesFocus['primary']}`,
-  secondary: `bg-secondary text-primary  ${listOfStylesHover['secondary']} ${listOfStylesActive['secondary']}`,
-  outlineSecondary: `bg-transparent text-primary border border-primary ${listOfStylesHover['outlineSecondary']} ${listOfStylesActive['outlineSecondary']} ${listOfStylesFocus['outlineSecondary']}`,
-  tertiary: `bg-inverted-2 text-on-primary ${listOfStylesHover['tertiary']} ${listOfStylesActive['tertiary']}`,
-  info: `bg-secondary-dark text-base-1 ${listOfStylesHover['info']}`,
-  warning: `bg-warning text-on-base ${listOfStylesHover['warning']} ${listOfStylesActive['warning']}`,
-  danger: `bg-danger text-base-1 ${listOfStylesHover['danger']} ${listOfStylesActive['danger']} ${listOfStylesFocus['danger']}`,
-  outline: `bg-transparent text-inverted-2 border border-inverted-2 ${listOfStylesHover['outline']} ${listOfStylesActive['outline']} ${listOfStylesFocus['outline']}`,
-  onlyText: `bg-transparent border-transparent text-inverted-2 px-0 ${listOfStylesHover['onlyText']} ${listOfStylesActive['onlyText']} ${listOfStylesFocus['onlyText']}`,
+  primary: `bg-primary text-base-1 ${listOfStylesHover['primary']} ${listOfStylesActive['primary']} ${commonFocus}`,
+  secondary: `bg-primary-light text-primary-bold  ${listOfStylesHover['secondary']} ${listOfStylesActive['secondary']} ${commonFocus}`,
+  outlineSecondary: `bg-transparent text-primary border border-primary ${listOfStylesHover['outlineSecondary']} ${listOfStylesActive['outlineSecondary']} ${commonFocus}`,
+  tertiary: `bg-inverted-2 text-on-primary ${listOfStylesHover['tertiary']} ${listOfStylesActive['tertiary']} ${commonFocus}`,
+  warning: `bg-warning text-on-base ${listOfStylesHover['warning']} ${listOfStylesActive['warning']} ${commonFocus}`,
+  danger: `bg-danger text-base-1 ${listOfStylesHover['danger']} ${listOfStylesActive['danger']} ${commonFocus}`,
+  outline: `bg-transparent text-inverted-2 border border-inverted-2 ${listOfStylesHover['outline']} ${listOfStylesActive['outline']} ${commonFocus}`,
+  onlyText: `bg-transparent border-transparent text-inverted-2 px-0 ${listOfStylesHover['onlyText']} ${listOfStylesActive['onlyText']} ${commonFocus}`,
 }
 
 const defaultDisabledStyle = `bg-base-3 cursor-default text-on-base-2 shadow-none ring-0 border-0 hover:bg-base-3 hover:text-on-base-2 `
@@ -49,7 +41,6 @@ const listOfStylesDisabled = {
   secondary: `bg-base-2 cursor-default text-card-stroke shadow-none ring-0 border-0 `,
   outlineSecondary: `bg-base-2 cursor-default text-card-stroke shadow-none ring-0 border-0 `,
   tertiary: defaultDisabledStyle,
-  info: defaultDisabledStyle,
   warning: defaultDisabledStyle,
   danger: defaultDisabledStyle,
   outline: defaultDisabledStyle,
@@ -105,7 +96,7 @@ const ButtonComponent = (
     ;(!disabled || !loading) && onClick && onClick(event)
   }
 
-  let classes = `inline-flex leading-none font-semibold tracking-tight items-center justify-center px-5 text-center no-underline cursor-pointer transition rounded after:align-middle focus:outline-none `
+  let classes = `inline-flex leading-none font-semibold tracking-tight items-center justify-center px-5 text-center no-underline cursor-pointer transition rounded-md after:align-middle focus:outline-none `
 
   if (loading) {
     classes +=
@@ -173,7 +164,6 @@ export interface ButtonProps extends ButtonAnchorProps {
     | 'secondary'
     | 'outlineSecondary'
     | 'tertiary'
-    | 'info'
     | 'warning'
     | 'danger'
     | 'outline'
