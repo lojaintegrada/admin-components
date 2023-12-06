@@ -22,7 +22,8 @@ const listOfStylesActive = {
   outline: `active:shadow-inner active:bg-base-1`,
   onlyText: `active:bg-base-1`,
 }
-const commonFocus = 'focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-1'
+const commonFocus =
+  'focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-1'
 
 const listOfStyles = {
   primary: `bg-primary text-base-1 ${listOfStylesHover['primary']} ${listOfStylesActive['primary']} ${commonFocus}`,
