@@ -27,6 +27,7 @@ export const TabsItem = ({
 }: TabsItemProps) => {
   return (
     <button
+      type="button"
       id={`btnTab${id}`}
       className={`tabs-item ${
         active ? 'tabs-item-active' : ''
