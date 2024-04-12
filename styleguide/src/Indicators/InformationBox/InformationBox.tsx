@@ -1,7 +1,7 @@
 import React from 'react'
 import { Icon, IconProps } from '../../Icons'
 
-type InformationBoxTypesOptions = 'tip' | 'warning' | 'danger' | 'info'
+type InformationBoxTypesOptions = 'success' | 'warning' | 'danger' | 'info'
 
 const InformationBoxTypes: Record<
   InformationBoxTypesOptions,
@@ -12,34 +12,34 @@ const InformationBoxTypes: Record<
     iconClass: string
   }
 > = {
-  tip: {
-    title: 'Dica!',
-    class: 'bg-success-light border-success',
-    icon: 'lightbulb',
-    iconClass: 'text-success',
+  success: {
+    title: 'Sucesso!',
+    class: 'bg-success-light dark:bg-success border-success',
+    icon: 'check',
+    iconClass: 'text-success-dark',
   },
   warning: {
     title: 'Atenção!',
     class: 'bg-warning-light border-warning',
-    icon: 'exclamationTriangle',
-    iconClass: 'text-warning',
+    icon: 'infoCircle',
+    iconClass: 'text-warning-dark',
   },
   danger: {
     title: 'Cuidado!',
     class: 'bg-danger-light border-danger',
-    icon: 'ban',
-    iconClass: 'text-danger',
+    icon: 'exclamationTriangle',
+    iconClass: 'text-danger-dark',
   },
   info: {
-    title: 'Informação!',
+    title: 'Informação',
     class: 'bg-focus-light border-focus-dark',
-    icon: 'infoCircle',
+    icon: 'lightbulb',
     iconClass: 'text-focus-dark',
   },
 }
 
 const InformationBoxComponent = ({
-  type = 'tip',
+  type = 'info',
   subtitle,
   title,
 }: InformationBoxProps) => {

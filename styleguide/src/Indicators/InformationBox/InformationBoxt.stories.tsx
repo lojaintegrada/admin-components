@@ -15,10 +15,15 @@ export default {
   },
   args: {
     title: '',
-    subtitle: 'Como criar um cadastro de produto incrível? No mundo virtual, o consumidor não pode pegar, sentir ou experimentar o produto. Por isso, a imagem que você utiliza faz toda a diferença na hora da venda.',
+    subtitle:
+      'Como criar um cadastro de produto incrível? No mundo virtual, o consumidor não pode pegar, sentir ou experimentar o produto. Por isso, a imagem que você utiliza faz toda a diferença na hora da venda.',
   },
 } as Meta
 
-const Template: Story<InformationBoxProps> = args => <div className="max-w-4xl mx-auto"><InformationBox {...args} /></div>
+const Template: Story<InformationBoxProps> = (args) => (
+  <div className="max-w-4xl mx-auto">
+    <InformationBox {...args} />
+  </div>
+)
 
 export const Default = Template.bind({})
