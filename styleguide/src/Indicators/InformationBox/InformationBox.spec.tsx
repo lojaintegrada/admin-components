@@ -9,7 +9,7 @@ const specTitle = require('cypress-sonarqube-reporter/specTitle')
 describe(specTitle('InformationBox tests'), () => {
   it('Default', () => {
     mount(<Default />)
-    cy.get('.InformationBox-title').last().contains('Dica!')
+    cy.get('.InformationBox-title').last().contains('Informação')
   })
 
   it('Variants', () => {
