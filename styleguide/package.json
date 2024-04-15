@@ -148,8 +148,5 @@
     "react-text-mask": "^5.4.3",
     "react-toastify": "^7.0.4",
     "sonarqube-scanner": "^2.8.2"
-  },
-  "resolutions": {
-    "jackspeak": "2.1.1"
   }
 }
