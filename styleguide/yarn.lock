@@ -2165,10 +2165,10 @@
   resolved "https://registry.npmjs.org/@leichtgewicht/ip-codec/-/ip-codec-2.0.3.tgz"
   integrity sha512-nkalE/f1RvRGChwBnEIoBfSEYOXnCRdleKuv6+lePbMDrMZXeDQnqak5XDOeBgrPPyPfAdcCu/B5z+v3VhplGg==
 
-"@loja-integrada/tailwindcss-config@^1.7.4":
-  version "1.7.4"
-  resolved "https://registry.npmjs.org/@loja-integrada/tailwindcss-config/-/tailwindcss-config-1.7.4.tgz"
-  integrity sha512-4PTAwgY67g8cffuWzbiXnE/Am76e+PSwDa8Gs28OAgsxgIYiaLYSotHs2Ncm6t9uH/JDNJodu08npxVgmQkqxw==
+"@loja-integrada/tailwindcss-config@^1.7.6":
+  version "1.7.6"
+  resolved "https://registry.yarnpkg.com/@loja-integrada/tailwindcss-config/-/tailwindcss-config-1.7.6.tgz#fd0709dc061b372debe4d95ce758bf07480b3e39"
+  integrity sha512-xQd4qNM+B+QSRkAje6N5NG35ExjZukAHA2iJQ823e1FuNs5Ar2vJX5quecanKv3k9qBe+P5QCWEbGborQkls8g==
   dependencies:
     tailwindcss "^3.0.23"
 

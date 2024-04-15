@@ -134,7 +134,7 @@
     "tailwindcss": ">=3.1.0"
   },
   "dependencies": {
-    "@loja-integrada/tailwindcss-config": "^1.7.4",
+    "@loja-integrada/tailwindcss-config": "^1.7.6",
     "@tippyjs/react": "^4.2.5",
     "@types/react-select": "^4.0.17",
     "babel-jest": "^29.2.2",
