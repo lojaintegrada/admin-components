@@ -1,17 +1,17 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import { KnowMore, KnowMoreProps } from '.'
+import { HelpLink, HelpLinkProps } from '.'
 
 export default {
-  title: 'Navigation/KnowMore',
-  component: KnowMore,
+  title: 'Navigation/HelpLink',
+  component: HelpLink,
   parameters: {
     layout: 'padded',
   }
 } as Meta
 
-const Template: Story<KnowMoreProps> = args => <KnowMore {...args} />
+const Template: Story<HelpLinkProps> = args => <HelpLink {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

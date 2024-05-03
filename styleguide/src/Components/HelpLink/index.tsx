@@ -1,7 +1,7 @@
 import React from 'react'
 import { Icon } from '../../Icons'
 
-export const KnowMore: React.FC<KnowMoreProps> = React.memo(
+export const HelpLink: React.FC<HelpLinkProps> = React.memo(
   ({ className = '', text = '', href = '' }) => {
     return (
       <a
@@ -9,7 +9,7 @@ export const KnowMore: React.FC<KnowMoreProps> = React.memo(
         href={href}
         rel="noreferrer"
         target="_blank"
-        id="knowMoreContainer"
+        id="helpLinkContainer"
       >
         <Icon icon="questionCircle" size={4} />
         <span className="text-sm font-semibold">{text}</span>
@@ -18,7 +18,7 @@ export const KnowMore: React.FC<KnowMoreProps> = React.memo(
   }
 )
 
-export interface KnowMoreProps {
+export interface HelpLinkProps {
   /**
    * Custom class name
    * */
