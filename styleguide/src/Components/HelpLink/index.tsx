@@ -1,7 +1,8 @@
 import React from 'react'
 import { Icon } from '../../Icons'
 
-const defaultClass = 'w-full flex flex-row justify-start items-center gap-x-2 text-inverted-2'
+const defaultClass =
+  'w-full flex flex-row justify-start items-center gap-x-2 text-inverted-2'
 
 export const HelpLink: React.FC<HelpLinkProps> = React.memo(
   ({ className = '', text = '', href = '', as = 'hyperLink', onClick }) => {
@@ -20,7 +21,7 @@ export const HelpLink: React.FC<HelpLinkProps> = React.memo(
         target="_blank"
         id="helpLinkContainer"
       >
-        <Text/>
+        <Text />
       </a>
     )
 
@@ -30,13 +31,11 @@ export const HelpLink: React.FC<HelpLinkProps> = React.memo(
         id="helpLinkContainer"
         onClick={onClick}
       >
-        <Text/>
+        <Text />
       </button>
     )
 
-    return (
-      as == 'hyperLink' ? <HyperLink/> : <Button/>
-    )
+    return as == 'hyperLink' ? <HyperLink /> : <Button />
   }
 )
 
