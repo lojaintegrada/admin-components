@@ -16,6 +16,16 @@ const Template: Story<HelpLinkProps> = args => <HelpLink {...args} />
 export const Default = Template.bind({})
 Default.args = {
   text: 'Saiba mais',
+  as: 'hyperLink',
   href: 'https://www.lojaintegrada.com.br'
+}
+
+export const Button = Template.bind({})
+Button.args = {
+  text: 'Saiba mais',
+  as: 'button',
+  onClick: function() {
+    alert('Clicked!')
+  }
 }
 

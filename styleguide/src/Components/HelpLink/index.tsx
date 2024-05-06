@@ -1,19 +1,41 @@
 import React from 'react'
 import { Icon } from '../../Icons'
 
+const defaultClass = 'w-full flex flex-row justify-start items-center gap-x-2 text-inverted-2'
+
 export const HelpLink: React.FC<HelpLinkProps> = React.memo(
-  ({ className = '', text = '', href = '' }) => {
-    return (
+  ({ className = '', text = '', href = '', as = 'hyperLink', onClick }) => {
+    const Text = () => (
+      <>
+        <Icon icon="questionCircle" size={4} />
+        <span className="text-sm font-semibold">{text}</span>
+      </>
+    )
+
+    const HyperLink = () => (
       <a
-        className={`w-full flex flex-row justify-start items-center gap-x-2 text-inverted-2 ${className}`}
+        className={`${defaultClass} ${className}`}
         href={href}
         rel="noreferrer"
         target="_blank"
         id="helpLinkContainer"
       >
-        <Icon icon="questionCircle" size={4} />
-        <span className="text-sm font-semibold">{text}</span>
+        <Text/>
       </a>
+    )
+
+    const Button = () => (
+      <button
+        className={`${defaultClass} ${className}`}
+        id="helpLinkContainer"
+        onClick={onClick}
+      >
+        <Text/>
+      </button>
+    )
+
+    return (
+      as == 'hyperLink' ? <HyperLink/> : <Button/>
     )
   }
 )
@@ -28,7 +50,15 @@ export interface HelpLinkProps {
    * */
   text: string
   /**
+   * Component behaviour as hyper link or button
+   * */
+  as: 'hyperLink' | 'button'
+  /**
    * Href to the link where component redirects
    * */
-  href: string
+  href?: string
+  /**
+   * Button action when clicked
+   * */
+  onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
