@@ -94,7 +94,4 @@ export interface StepperProps {
    * Shows step text instead of linking lines
    * */
   showText?: boolean
-  /**
-   * Function to handle step click
-   * */
 }

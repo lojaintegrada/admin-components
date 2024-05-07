@@ -1,5 +1,6 @@
 import React from 'react'
 import { Icon } from '../../Icons/Icon'
+import { HelpLink } from '../../Components/HelpLink'
 
 const actionsDisplayClass = {
   both: 'flex',
@@ -84,28 +85,12 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = React.memo(
         <div className="header-navigation-content flex shrink-0 max-w-1/2 items-center flex-grow justify-end gap-5 ml-2 whitespace-nowrap">
           <div className="header-navigation-help help flex items-center">
             {help && (
-              <a
+              <HelpLink
+                text={help.title}
+                mobileText={help.mobileText}
+                as="hyperLink"
                 href={help.href}
-                target="_blank"
-                rel="noreferrer"
-                className={`flex p-1 pr-0 text-on-base-2 hover:text-on-base duration-200 transition-colors items-center`}
-              >
-                <Icon
-                  icon="questionCircle"
-                  size={4}
-                  className="shrink-0"
-                  block
-                />
-                {help.title && (
-                  <span
-                    className={`text-f6 font-semibold tracking-4 leading-6 ml-2 ${
-                      !help.mobileText ? 'hidden md:inline' : ''
-                    }`}
-                  >
-                    {help.title}
-                  </span>
-                )}
-              </a>
+              />
             )}
           </div>
           {actions && (
