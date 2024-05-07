@@ -11,14 +11,14 @@ describe(specTitle('HelpLink tests'), () => {
   it('Default', () => {
     mount(<Default />)
     cy.get('#helpLinkContainer').within(() => {
-      cy.get('span').should('have.class', 'text-sm').and('have.class', 'font-semibold').contains('Saiba mais')
+      cy.get('span').should('have.class', 'text-f6').and('have.class', 'font-semibold').contains('Saiba mais')
     })
   })
 
   it('Button', () => {
     mount(<Button />)
     cy.get('#helpLinkContainer').within(() => {
-      cy.get('span').should('have.class', 'text-sm').and('have.class', 'font-semibold').contains('Saiba mais')
+      cy.get('span').should('have.class', 'text-f6').and('have.class', 'font-semibold').contains('Saiba mais')
       cy.get('#helpLinkContainer').should(() => {alert(`Clicked!`)})
     })
   })
