@@ -2,14 +2,14 @@ import React from 'react'
 import { Icon } from '../../Icons'
 
 const defaultClass =
-  'w-full flex flex-row justify-start items-center gap-x-2 text-inverted-2'
+  'flex p-1 pr-0 text-on-base-2 hover:text-on-base duration-200 transition-colors items-center'
 
 export const HelpLink: React.FC<HelpLinkProps> = React.memo(
-  ({ className = '', text = '', href = '', as = 'hyperLink', onClick }) => {
+  ({ className = '', text = '', mobileText, href = '', as = 'hyperLink', onClick }) => {
     const Text = () => (
       <>
-        <Icon icon="questionCircle" size={4} />
-        <span className="text-sm font-semibold">{text}</span>
+        <Icon icon="questionCircle" size={4} className='shrink-0' block />
+        <span className={`text-f6 font-semibold tracking-4 leading-6 ml-2 ${!mobileText ? 'hidden md:inline' : ''}`}>{text}</span>
       </>
     )
 
@@ -47,7 +47,11 @@ export interface HelpLinkProps {
   /**
    * Text to be displayed
    * */
-  text: string
+  text?: string
+  /**
+   * Text will appear on mobile or not
+   * */
+  mobileText?: boolean
   /**
    * Component behaviour as hyper link or button
    * */

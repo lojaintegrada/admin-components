@@ -29,3 +29,11 @@ Button.args = {
   }
 }
 
+export const NoTextOnMobile = Template.bind({})
+NoTextOnMobile.args = {
+  text: 'Saiba mais',
+  as: 'hyperLink',
+  href: 'https://www.lojaintegrada.com.br',
+  mobileText: false,
+}
+

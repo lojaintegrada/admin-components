@@ -3,7 +3,7 @@ import { composeStories } from "@storybook/testing-react"
 import { mount } from "@cypress/react"
 import * as stories from "./HelpLink.stories"
 
-const { Default, Button } = composeStories(stories)
+const { Default, Button, NoTextOnMobile } = composeStories(stories)
 
 const specTitle = require('cypress-sonarqube-reporter/specTitle');
 describe(specTitle('HelpLink tests'), () => {
@@ -20,6 +20,13 @@ describe(specTitle('HelpLink tests'), () => {
     cy.get('#helpLinkContainer').within(() => {
       cy.get('span').should('have.class', 'text-sm').and('have.class', 'font-semibold').contains('Saiba mais')
       cy.get('#helpLinkContainer').should(() => {alert(`Clicked!`)})
+    })
+  })
+  
+  it('NoTextOnMobile', () => {
+    mount(<NoTextOnMobile />)
+    cy.get('#helpLinkContainer').within(() => {
+      cy.get('span').should('have.class', 'hidden').and('have.class', 'md:inline').contains('Saiba mais')
     })
   })
 
