@@ -85,7 +85,12 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = React.memo(
         <div className="header-navigation-content flex shrink-0 max-w-1/2 items-center flex-grow justify-end gap-5 ml-2 whitespace-nowrap">
           <div className="header-navigation-help help flex items-center">
             {help && (
-              <HelpLink text={help.title} mobileText={help.mobileText} as='hyperLink' href={help.href}/>
+              <HelpLink
+                text={help.title}
+                mobileText={help.mobileText}
+                as="hyperLink"
+                href={help.href}
+              />
             )}
           </div>
           {actions && (

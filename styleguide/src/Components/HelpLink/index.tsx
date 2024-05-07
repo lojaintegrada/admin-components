@@ -5,11 +5,24 @@ const defaultClass =
   'flex p-1 pr-0 text-on-base-2 hover:text-on-base duration-200 transition-colors items-center'
 
 export const HelpLink: React.FC<HelpLinkProps> = React.memo(
-  ({ className = '', text = '', mobileText, href = '', as = 'hyperLink', onClick }) => {
+  ({
+    className = '',
+    text = '',
+    mobileText,
+    href = '',
+    as = 'hyperLink',
+    onClick,
+  }) => {
     const Text = () => (
       <>
-        <Icon icon="questionCircle" size={4} className='shrink-0' block />
-        <span className={`text-f6 font-semibold tracking-4 leading-6 ml-2 ${!mobileText ? 'hidden md:inline' : ''}`}>{text}</span>
+        <Icon icon="questionCircle" size={4} className="shrink-0" block />
+        <span
+          className={`text-f6 font-semibold tracking-4 leading-6 ml-2
+            ${!mobileText ? 'hidden md:inline' : ''}
+          `}
+        >
+          {text}
+        </span>
       </>
     )
 
