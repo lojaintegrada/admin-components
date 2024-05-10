@@ -11,19 +11,14 @@ import {
   isEqual
 } from 'date-fns'
 import DatePicker, {registerLocale} from 'react-datepicker'
-import { ptBR } from "date-fns/locale/pt-BR"
-import './datepicker-custom.scss'
+import ptBR from "date-fns/locale/pt-BR"
 import { InputMask } from '../InputMask'
 import { Icon } from '../../Icons'
 import { icons } from '../../Icons/icons-path'
+import './datepicker-custom.scss'
 
 
 registerLocale('pt-BR', ptBR);
-
-const todayDate = new Date(),
-      yesterdayDate = subDays(todayDate, 1),
-      minDate = subMonths(todayDate, 3),
-      maxDate = yesterdayDate
 
 const defaultPeriods = [
   {
@@ -50,6 +45,11 @@ const defaultPeriods = [
 
 export const Calendar: React.FC<CalendarProps> = React.memo(
   ({ className='', periods=defaultPeriods, onDatesChange}) => {
+    const todayDate = new Date(),
+      yesterdayDate = subDays(todayDate, 1),
+      minDate = subMonths(todayDate, 3),
+      maxDate = yesterdayDate
+
     const [selectedPeriod, setSelectedPeriod] = useState<string>('ontem')
     const [customPeriodIsOpen, setCustomPeriodIsOpen] = useState<boolean>(false)
     const [startDate, setStartDate] = useState<Date>(yesterdayDate)
@@ -185,7 +185,7 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
                   selectsEnd
                   startDate={startDate}
                   endDate={endDate}
-                  minDate={minDate}
+                  minDate={startDate}
                   maxDate={maxDate}
                   inline
                   disabledKeyboardNavigation
