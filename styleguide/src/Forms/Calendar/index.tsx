@@ -15,8 +15,8 @@ import ptBR from "date-fns/locale/pt-BR"
 import { InputMask } from '../InputMask'
 import { Icon } from '../../Icons'
 import { icons } from '../../Icons/icons-path'
-import './datepicker-custom.scss'
-
+import './variables-custom.scss'
+import { getDayClassName } from './helper'
 
 registerLocale('pt-BR', ptBR);
 
@@ -177,6 +177,9 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
                   maxDate={maxDate}
                   inline
                   disabledKeyboardNavigation
+                  dayClassName={(day) => {
+                    return getDayClassName(day, startDate, endDate, 'start')
+                  }}
                 />
                 <DatePicker
                   selected={endDate}
@@ -189,6 +192,9 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
                   maxDate={maxDate}
                   inline
                   disabledKeyboardNavigation
+                  dayClassName={(day) => {
+                    return getDayClassName(day, startDate, endDate, 'end')
+                  }}
                 />
               </div>
             </div>
