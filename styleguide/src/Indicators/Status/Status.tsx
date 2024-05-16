@@ -3,6 +3,7 @@ import React from 'react'
 const statusTypes = {
   default: 'bg-inverted-2',
   success: 'bg-success',
+  successDark: 'bg-success-dark',
   warning: 'bg-warning',
   danger: 'bg-danger',
   dangerLight: 'bg-danger-light',
@@ -56,7 +57,7 @@ export interface StatusProps {
   /**
    * Status additional text
    * */
-  description?: string
+  description?: React.ReactNode | string
   /** Invert icon and text position
    * @default false
    * */

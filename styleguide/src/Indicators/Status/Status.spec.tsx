@@ -21,6 +21,9 @@ describe(specTitle('Status tests'), () => {
     mount(<Default type="success" />)
     cy.get('.indicator-status').find('.rounded-full').should('have.class', 'bg-success')
 
+    mount(<Default type="successDark" />)
+    cy.get('.indicator-status').find('.rounded-full').should('have.class', 'bg-success-dark')
+
     mount(<Default type="warning" />)
     cy.get('.indicator-status').find('.rounded-full').should('have.class', 'bg-warning')
 
@@ -34,6 +37,11 @@ describe(specTitle('Status tests'), () => {
   it('Inverted', () => {
     mount(<Default inverted={true} />)
     cy.get('.indicator-status *').first().contains('Aprovado')
+  })
+
+  it('Description', () => {
+    mount(<Default description={<strong>Aprovado</strong>} />)
+    cy.get('.indicator-status').find('strong').contains('Aprovado')
   })
 
 })
