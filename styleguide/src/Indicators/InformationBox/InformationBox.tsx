@@ -22,7 +22,7 @@ const InformationBoxTypes: Record<
     title: 'Atenção!',
     class: 'bg-warning-light border-warning',
     icon: 'infoCircle',
-    iconClass: 'text-warning-dark',
+    iconClass: 'text-warning-bold',
   },
   danger: {
     title: 'Cuidado!',

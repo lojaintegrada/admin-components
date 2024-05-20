@@ -1,13 +1,14 @@
 import React from 'react'
 
 const badgeTypes = {
-  neutral: 'bg-inverted-2',
-  neutralLight: 'bg-inverted-3',
-  primary: 'bg-primary-dark',
-  danger: 'bg-danger-dark',
-  success: 'bg-success-dark',
-  warning: 'bg-warning-dark',
-  focus: 'bg-focus',
+  neutral: 'bg-inverted-2 text-base-1',
+  neutralLight: 'bg-inverted-3 text-tertiary',
+  primary: 'bg-primary-dark text-base-1',
+  primaryLight: 'bg-primary-light text-primary-bold',
+  danger: 'bg-danger-dark text-base-1',
+  success: 'bg-success-dark text-base-1',
+  warning: 'bg-warning-dark text-base-1',
+  focus: 'bg-focus text-base-1',
 }
 
 const badgeRounded = {
@@ -43,13 +44,7 @@ const BadgeComponent = ({
         expanded ? 'flex w-full' : 'inline-flex'
       }`}
     >
-      <span
-        className={`badgeText tracking-4 font-semibold ${
-          type === 'neutralLight' ? 'text-tertiary' : 'text-base-1'
-        }`}
-      >
-        {text}
-      </span>
+      <span className="badgeText tracking-4 font-semibold">{text}</span>
     </div>
   )
 }
