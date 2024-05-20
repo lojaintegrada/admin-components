@@ -7,6 +7,7 @@ const InformationBoxTypes: Record<
   InformationBoxTypesOptions,
   {
     title: string
+    titleClass: string
     class: string
     icon: IconProps['icon']
     iconClass: string
@@ -14,24 +15,28 @@ const InformationBoxTypes: Record<
 > = {
   success: {
     title: 'Sucesso!',
+    titleClass: 'text-success-dark',
     class: 'bg-success-light dark:bg-success border-success',
     icon: 'check',
     iconClass: 'text-success-dark',
   },
   warning: {
     title: 'Atenção!',
+    titleClass: 'text-warning-bold',
     class: 'bg-warning-light border-warning',
     icon: 'infoCircle',
-    iconClass: 'text-warning-bold',
+    iconClass: 'text-warning-dark',
   },
   danger: {
     title: 'Cuidado!',
+    titleClass: 'text-danger-dark',
     class: 'bg-danger-light border-danger',
     icon: 'exclamationTriangle',
     iconClass: 'text-danger-dark',
   },
   info: {
     title: 'Informação',
+    titleClass: 'text-focus-dark',
     class: 'bg-focus-light border-focus-dark',
     icon: 'lightbulb',
     iconClass: 'text-focus-dark',
@@ -60,7 +65,7 @@ const InformationBoxComponent = ({
       <div className="flex-grow flex flex-col sm:flex-row items-start justify-between min-w-0">
         <div className="flex flex-col justify-center min-w-0 break-words tracking-4 leading-6 text-on-base">
           <span
-            className={`InformationBox-title text-f5 font-bold ${InformationBoxTypes[type].iconClass}`}
+            className={`InformationBox-title text-f5 font-bold ${InformationBoxTypes[type].titleClass}`}
           >
             {title || InformationBoxTypes[type].title}
           </span>
