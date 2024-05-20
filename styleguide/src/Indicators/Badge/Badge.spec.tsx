@@ -6,7 +6,6 @@ import { Badge } from "./Badge"
 
 const { Default, Small, Expanded } = composeStories(stories)
 const badgeClass = '.badge'
-const badgeTextClass = '.badgeText'
 
 const specTitle = require('cypress-sonarqube-reporter/specTitle');
 describe(specTitle('Badge tests'), () => {
@@ -49,25 +48,27 @@ describe(specTitle('Badge tests'), () => {
 
   it('Variants', () => {
     mount(<Default type="neutral" />)
-    cy.get(badgeClass).should('have.class', 'bg-inverted-2')
+    cy.get(badgeClass).should('have.class', 'bg-inverted-2 text-base-1')
 
     mount(<Default type="neutralLight" />)
-    cy.get(badgeClass).should('have.class', 'bg-inverted-3')
-    cy.get(badgeTextClass).should('have.class', 'text-tertiary')
+    cy.get(badgeClass).should('have.class', 'bg-inverted-3 text-tertiary')
 
     mount(<Default type="primary" />)
-    cy.get(badgeClass).should('have.class', 'bg-primary-dark')
+    cy.get(badgeClass).should('have.class', 'bg-primary-dark text-base-1')
+
+    mount(<Default type="primaryLight" />)
+    cy.get(badgeClass).should('have.class', 'bg-primary-light text-primary-bold')
 
     mount(<Default type="success" />)
-    cy.get(badgeClass).should('have.class', 'bg-success-dark')
+    cy.get(badgeClass).should('have.class', 'bg-success-dark text-base-1')
 
     mount(<Default type="warning" />)
-    cy.get(badgeClass).should('have.class', 'bg-warning-dark')
+    cy.get(badgeClass).should('have.class', 'bg-warning-dark text-base-1')
 
     mount(<Default type="danger" />)
-    cy.get(badgeClass).should('have.class', 'bg-danger-dark')
+    cy.get(badgeClass).should('have.class', 'bg-danger-dark text-base-1')
 
     mount(<Default type="focus" />)
-    cy.get(badgeClass).should('have.class', 'bg-focus')
+    cy.get(badgeClass).should('have.class', 'bg-focus text-base-1')
   })
 })
