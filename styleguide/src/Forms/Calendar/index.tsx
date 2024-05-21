@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { MouseEventHandler, useEffect, useRef, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import {
   subDays,
@@ -17,31 +17,9 @@ import { Icon } from '../../Icons'
 import { icons } from '../../Icons/icons-path'
 import './variables-custom.scss'
 import { getDayClassName } from './helper'
+import { defaultPeriods, months } from './constants'
 
 registerLocale('pt-BR', ptBR);
-
-const defaultPeriods = [
-  {
-    id: 'ontem',
-    label: 'Ontem',
-    value: 1
-  },
-  {
-    id: '7-dias',
-    label: '7 dias',
-    value: 7
-  },
-  {
-    id: '30-dias',
-    label: '30 dias',
-    value: 30
-  },
-  {
-    id: 'selecionar-periodo',
-    label: 'Selecionar período',
-    icon: 'calendarAlt'
-  }
-]
 
 export const Calendar: React.FC<CalendarProps> = React.memo(
   ({ className='', periods=defaultPeriods, onDatesChange}) => {
@@ -54,6 +32,8 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
     const [customPeriodIsOpen, setCustomPeriodIsOpen] = useState<boolean>(false)
     const [startDate, setStartDate] = useState<Date>(yesterdayDate)
     const [endDate, setEndDate] = useState<Date>(yesterdayDate)
+    const [startMonthsIsOpen, setStartOpenMonths] = useState<boolean>(false)
+    const [endMonthsIsOpen, setEndOpenMonths] = useState<boolean>(false)
 
     const customPeriodRef = useRef<HTMLDivElement>(null)
 
@@ -119,13 +99,36 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
   }
   
     const changeDateRange = (dates: [Date | null, Date | null]) => {
-      const [start, end] = dates
-  
-      if(start) setStartDate(start)
-      if(end) setEndDate(end)
-  
-      setCustomPeriodIsOpen(false)
-    }
+    const [start, end] = dates
+
+    if(start) setStartDate(start)
+    if(end) setEndDate(end)
+
+    setCustomPeriodIsOpen(false)
+  }
+
+  const getMonthName = (month: number) => {
+    return months[month].slice(0,3).toUpperCase()
+  };
+
+  const CustomHeader = (decreaseMonth: MouseEventHandler<HTMLDivElement>, increaseMonth: MouseEventHandler<HTMLDivElement>, date: Date, calendar: 'start' | 'end'): JSX.Element => (
+    <div className='flex justify-between'>
+      <div className='cursor-pointer' onClick={decreaseMonth}>
+        <Icon icon='angleLeft' size={4}/>
+      </div>
+      <div className='flex justify-center items-center gap-x-2'>
+        <span className='font-bold text-inverted-2'>
+          {months[date.getMonth()]} {date.getFullYear()}
+        </span>
+        <div className='cursor-pointer' onClick={() => calendar == 'start' ? setStartOpenMonths(!startMonthsIsOpen) : setEndOpenMonths(!endMonthsIsOpen)}>
+          <Icon icon='angleDown' size={4} className={`transition duration-300 ${(calendar == 'start' ? startMonthsIsOpen : endMonthsIsOpen) && 'rotate-180'}`}/>
+        </div>
+      </div>
+      <div className='cursor-pointer' onClick={increaseMonth}>
+        <Icon icon='angleRight' size={4}/>
+      </div>
+    </div>
+  )
     
     return (
       <div className={`relative ${className}`}>
@@ -175,6 +178,18 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
                   endDate={endDate}
                   minDate={minDate}
                   maxDate={maxDate}
+                  renderMonthContent={(month) => getMonthName(month)}
+                  renderCustomHeader={({
+                    date,
+                    // changeYear,
+                    // changeMonth,
+                    decreaseMonth,
+                    increaseMonth,
+                    // prevMonthButtonDisabled,
+                    // nextMonthButtonDisabled,
+                  }) => (CustomHeader(decreaseMonth, increaseMonth, date, 'start'))}
+                  showMonthYearPicker={startMonthsIsOpen}
+                  showFourColumnMonthYearPicker
                   inline
                   disabledKeyboardNavigation
                   dayClassName={(day) => {
@@ -190,6 +205,18 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
                   endDate={endDate}
                   minDate={startDate}
                   maxDate={maxDate}
+                  renderMonthContent={(month) => getMonthName(month)}
+                  renderCustomHeader={({
+                    date,
+                    // changeYear,
+                    // changeMonth,
+                    decreaseMonth,
+                    increaseMonth,
+                    // prevMonthButtonDisabled,
+                    // nextMonthButtonDisabled,
+                  }) => (CustomHeader(decreaseMonth, increaseMonth, date, 'end'))}
+                  showMonthYearPicker={endMonthsIsOpen}
+                  showFourColumnMonthYearPicker
                   inline
                   disabledKeyboardNavigation
                   dayClassName={(day) => {
