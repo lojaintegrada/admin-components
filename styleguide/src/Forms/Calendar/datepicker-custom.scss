@@ -228,21 +228,48 @@
 
   .react-datepicker__year-text {
     display: inline-block;
-    width: 4rem;
+    width: 3rem;
     margin: 2px;
   }
 }
 
 .react-datepicker__month {
-  margin: $datepicker__margin;
   text-align: center;
-
+  
   .react-datepicker__month-text,
   .react-datepicker__quarter-text {
-    display: inline-block;
-    width: 4rem;
-    margin: 2px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    border-radius: $datepicker__border-radius;
+    
+    &:hover:not(&--disabled) {
+      background-color: $datepicker__selected-color;
+      font-weight: 600;
+      color: $datepicker__background-color;
+    }
+
+    &--selected {
+      font-weight: 600;
+      color: $datepicker__background-color;
+    }
+
   }
+
+  .react-datepicker__month-wrapper {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+}
+
+.react-datepicker__monthPicker {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5rem;
+  width: 17.5rem;
+  margin-top: 0.75rem;
 }
 
 .react-datepicker__input-time-container {
@@ -414,9 +441,11 @@
 .react-datepicker__quarter-text,
 .react-datepicker__year-text {
   cursor: pointer;
+  width: 48px;
+  height: 40px;
 
   &:hover {
-    border-radius: 0;
+    border-radius: 0.25rem;
     background-color: $datepicker__background-color;
   }
 
@@ -474,8 +503,9 @@
   &--selected,
   &--in-selecting-range,
   &--in-range {
-    border-radius: 0px;
+    border-radius: 0;
     background-color: $datepicker__selected-interval-color;
+    color: #004852;
 
     &:hover {
       background-color: darken($datepicker__selected-color, 5%);
@@ -512,13 +542,13 @@
     background-color: rgba($datepicker__selected-color, 0.5);
   }
 
-  &--in-range:not(&--in-selecting-range) {
-    .react-datepicker__month--selecting-range &,
-    .react-datepicker__year--selecting-range & {
-      background-color: $datepicker__background-color;
-      color: $datepicker__text-color;
-    }
-  }
+  // &--in-range:not(&--in-selecting-range) {
+  //   .react-datepicker__month--selecting-range &,
+  //   .react-datepicker__year--selecting-range & {
+  //     background-color: red;
+  //     color: $datepicker__text-color;
+  //   }
+  // }
 
   &--disabled {
     cursor: default;
