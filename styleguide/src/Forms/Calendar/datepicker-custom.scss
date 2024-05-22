@@ -557,7 +557,7 @@
   }
 
   &--in-selecting-range:not(&--in-range) {
-    background-color: rgba($datepicker__selected-color, 0.5);
+    background-color: transparent;
   }
 
   &--disabled {
