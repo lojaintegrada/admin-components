@@ -16,7 +16,7 @@ import { InputMask } from '../InputMask'
 import { Icon } from '../../Icons'
 import { icons } from '../../Icons/icons-path'
 import './variables-custom.scss'
-import { getDayClassName } from './helper'
+import { getDayClassName, getMonthName } from './helper'
 import { defaultPeriods, months } from './constants'
 
 registerLocale('pt-BR', ptBR);
@@ -74,31 +74,37 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
       setEndDate(maxDate)
     }
   
-    const changeStartDate = (value: string) => {
+  const dayIsEnabled = (day: Date, period: 'start' | 'end') => {
+    if(period == 'start') {
+      if(!isValid(day)) return false
+
+      if(!isWithinInterval(day, { start: minDate, end: maxDate })) return false
+
+      if(!isBefore(day, endDate) && !isEqual(day, endDate)) return false
+    }
+    else {
+      if(!isValid(day)) return false
+
+      if(!isWithinInterval(day, { start: minDate, end: maxDate })) return false
+
+      if(!isBefore(startDate, day) && !isEqual(startDate, day)) return false
+    }
+    return true
+  }
+
+  const changeStartDate = (value: string) => {
     const date = parse(value, 'dd/MM/yyyy', todayDate)
 
-    if(!isValid(date)) return
-
-    if(!isWithinInterval(date, { start: minDate, end: maxDate })) return
-
-    if(!isBefore(date, endDate) && !isEqual(date, endDate)) return
-
-    setStartDate(date)
+    if(!dayIsEnabled(date, 'start')) setStartDate(date)
   }
 
   const changeEndDate = (value: string) => {
     const date = parse(value, 'dd/MM/yyyy', todayDate)
 
-    if(!isValid(date)) return
-
-    if(!isWithinInterval(date, { start: minDate, end: maxDate })) return
-
-    if(!isBefore(startDate, date) && !isEqual(startDate, date)) return
-
-    setEndDate(date)
+    if(!dayIsEnabled(date, 'end')) setEndDate(date)
   }
   
-    const changeDateRange = (dates: [Date | null, Date | null]) => {
+  const changeDateRange = (dates: [Date | null, Date | null]) => {
     const [start, end] = dates
 
     if(start) setStartDate(start)
@@ -106,10 +112,6 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
 
     setCustomPeriodIsOpen(false)
   }
-
-  const getMonthName = (month: number) => {
-    return months[month].slice(0,3).toUpperCase()
-  };
 
   const CustomHeader = (decreaseMonth: MouseEventHandler<HTMLDivElement>, increaseMonth: MouseEventHandler<HTMLDivElement>, date: Date, calendar: 'start' | 'end'): JSX.Element => (
     <div className='flex justify-between'>
@@ -181,19 +183,15 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
                   renderMonthContent={(month) => getMonthName(month)}
                   renderCustomHeader={({
                     date,
-                    // changeYear,
-                    // changeMonth,
                     decreaseMonth,
                     increaseMonth,
-                    // prevMonthButtonDisabled,
-                    // nextMonthButtonDisabled,
                   }) => (CustomHeader(decreaseMonth, increaseMonth, date, 'start'))}
                   showMonthYearPicker={startMonthsIsOpen}
                   showFourColumnMonthYearPicker
                   inline
                   disabledKeyboardNavigation
                   dayClassName={(day) => {
-                    return getDayClassName(day, startDate, endDate, 'start')
+                    return getDayClassName(day, dayIsEnabled(day, 'start'), startDate, endDate, 'start')
                   }}
                 />
                 <DatePicker
@@ -208,19 +206,15 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
                   renderMonthContent={(month) => getMonthName(month)}
                   renderCustomHeader={({
                     date,
-                    // changeYear,
-                    // changeMonth,
                     decreaseMonth,
                     increaseMonth,
-                    // prevMonthButtonDisabled,
-                    // nextMonthButtonDisabled,
                   }) => (CustomHeader(decreaseMonth, increaseMonth, date, 'end'))}
                   showMonthYearPicker={endMonthsIsOpen}
                   showFourColumnMonthYearPicker
                   inline
                   disabledKeyboardNavigation
                   dayClassName={(day) => {
-                    return getDayClassName(day, startDate, endDate, 'end')
+                    return getDayClassName(day, dayIsEnabled(day, 'end'), startDate, endDate, 'end')
                   }}
                 />
               </div>

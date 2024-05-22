@@ -517,14 +517,32 @@
     background-color: $datepicker__selected-color;
     position: relative;
 
+    color: white;
+    font-weight: 700;
+    border-radius: 0.25rem;
+
     &::before {
       content: '';
       position: absolute;
       top: 0px;
+      left: 20px;
       background: #E4F3F3;
       width: 20px;
       height: 24px;
       z-index: -1;
+    }
+
+  }
+
+  &--selecting-range-start {
+    &::before {
+      left: 20px;
+    }
+  }
+
+  &--selecting-range-end {
+    &::before {
+      left: 0px;
     }
   }
 
@@ -541,14 +559,6 @@
   &--in-selecting-range:not(&--in-range) {
     background-color: rgba($datepicker__selected-color, 0.5);
   }
-
-  // &--in-range:not(&--in-selecting-range) {
-  //   .react-datepicker__month--selecting-range &,
-  //   .react-datepicker__year--selecting-range & {
-  //     background-color: red;
-  //     color: $datepicker__text-color;
-  //   }
-  // }
 
   &--disabled {
     cursor: default;
