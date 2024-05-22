@@ -74,34 +74,43 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
       setEndDate(maxDate)
     }
   
-  const dayIsEnabled = (day: Date, period: 'start' | 'end') => {
-    if(period == 'start') {
-      if(!isValid(day)) return false
-
-      if(!isWithinInterval(day, { start: minDate, end: maxDate })) return false
-
-      if(!isBefore(day, endDate) && !isEqual(day, endDate)) return false
-    }
-    else {
-      if(!isValid(day)) return false
-
-      if(!isWithinInterval(day, { start: minDate, end: maxDate })) return false
-
-      if(!isBefore(startDate, day) && !isEqual(startDate, day)) return false
-    }
-    return true
-  }
-
   const changeStartDate = (value: string) => {
     const date = parse(value, 'dd/MM/yyyy', todayDate)
 
-    if(!dayIsEnabled(date, 'start')) setStartDate(date)
+    // trunca a data inicial como minDate quando a data selecionada é anterior a ela
+    if(isBefore(date, minDate)) {
+      setStartDate(minDate)
+      return
+    }
+
+    if(!isValid(date)) return
+
+    if(!isWithinInterval(date, { start: minDate, end: maxDate })) return
+
+    if(!isBefore(date, endDate) && !isEqual(date, endDate)) return
+
+    setStartDate(date)
+  }
+
+  const changeStartDateOnCalendar = (date: Date) => {
+    // trunca a data inicial como minDate quando a data selecionada é anterior a ela
+    if(isBefore(date, minDate)) {
+      setStartDate(minDate)
+      return
+    }
+    setStartDate(date)
   }
 
   const changeEndDate = (value: string) => {
     const date = parse(value, 'dd/MM/yyyy', todayDate)
 
-    if(!dayIsEnabled(date, 'end')) setEndDate(date)
+    if(!isValid(date)) return
+
+    if(!isWithinInterval(date, { start: minDate, end: maxDate })) return
+
+    if(!isBefore(startDate, date) && !isEqual(startDate, date)) return
+
+    setEndDate(date)
   }
   
   const changeDateRange = (dates: [Date | null, Date | null]) => {
@@ -111,6 +120,23 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
     if(end) setEndDate(end)
 
     setCustomPeriodIsOpen(false)
+  }
+
+  const dayIsEnabled = (day: Date, period: 'start' | 'end') => {
+    if(period == 'start') {
+      if(!isValid(day)) return false
+
+      if(!isWithinInterval(day, { start: minDate, end: maxDate })) return false
+
+      if(!isBefore(day, endDate) && !isEqual(day, endDate)) return false
+    } else {
+      if(!isValid(day)) return false
+
+      if(!isWithinInterval(day, { start: minDate, end: maxDate })) return false
+
+      if(!isBefore(startDate, day) && !isEqual(startDate, day)) return false
+    }
+    return true
   }
 
   const CustomHeader = (decreaseMonth: MouseEventHandler<HTMLDivElement>, increaseMonth: MouseEventHandler<HTMLDivElement>, date: Date, calendar: 'start' | 'end'): JSX.Element => (
@@ -173,7 +199,7 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
               <div className="flex gap-x-6">
                 <DatePicker
                   selected={startDate}
-                  onChange={(date: Date) => setStartDate(date)}
+                  onChange={(date: Date) => changeStartDateOnCalendar(date)}
                   locale="pt-BR"
                   selectsStart
                   startDate={startDate}
