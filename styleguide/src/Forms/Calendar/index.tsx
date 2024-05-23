@@ -22,10 +22,10 @@ import { defaultPeriods, months } from './constants'
 registerLocale('pt-BR', ptBR);
 
 export const Calendar: React.FC<CalendarProps> = React.memo(
-  ({ className='', periods=defaultPeriods, onDatesChange}) => {
+  ({ className='', periods=defaultPeriods, prevMonths=3, onDatesChange}) => {
     const todayDate = new Date(),
       yesterdayDate = subDays(todayDate, 1),
-      minDate = subMonths(todayDate, 3),
+      minDate = subMonths(todayDate, prevMonths),
       maxDate = yesterdayDate
 
     const [selectedPeriod, setSelectedPeriod] = useState<string>('ontem')
@@ -288,6 +288,10 @@ export interface CalendarProps {
    * Array of periods (yesterday, 7days, 30days and custom as default)
    * */
   periods?: PeriodsType[]
+  /**
+   * Number of months previous to today's date to be analyzed
+   * */
+  prevMonths?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24
   /**
    * Function triggered on each date change. 
    * */
