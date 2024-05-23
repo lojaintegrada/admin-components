@@ -170,7 +170,7 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
           {periods.map(period => (
             <button
               key={period.id}
-              className={`flex items-center gap-x-1 h-10 px-2 rounded-md font-semibold ${ selectedPeriod === period.id ? 'bg-primary-light text-primary-dark' : 'text-inverted-2' }`}
+              className={`flex items-center gap-x-1 py-2 px-2 text-f6 rounded-md font-semibold hover:text-primary-dark hover:bg-primary-light ${ selectedPeriod === period.id ? 'bg-primary-light text-primary-dark' : 'text-inverted-1' }`}
               onClick={() => changePeriod(period.id, period.value)}
             >
               {period.icon && (
