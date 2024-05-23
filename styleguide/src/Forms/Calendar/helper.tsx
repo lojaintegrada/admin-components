@@ -11,7 +11,10 @@ export const getDayClassName = (day: Date, dayIsEnabled: boolean, startDate: Dat
   if(period == 'end') {
     if (_day == _endDate) classname = '!bg-primary !rounded-l !rounded-r !text-base-1 !font-bold before:right-5'
   }
-  if((_day < _startDate || _day > _endDate) && dayIsEnabled) classname = '!bg-base-1 hover:!rounded-l hover:!rounded-r hover:!bg-primary hover:!text-base-1 hover:!font-bold'
+  if(dayIsEnabled) {
+    classname = 'hover:!text-base-1 hover:font-bold'
+    if(_day < _startDate || _day > _endDate) classname = '!bg-base-1 hover:!rounded-l hover:!rounded-r hover:!bg-primary hover:!text-base-1 hover:!font-bold'
+  }
   return classname
 }
 

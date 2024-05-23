@@ -98,6 +98,12 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
       setStartDate(minDate)
       return
     }
+    // trunca data inicial e final como a data selecionada quando data inicial selecionada é posterior a final
+    if(isBefore(endDate, date)) {
+      setStartDate(date)
+      setEndDate(date)
+      return
+    }
     setStartDate(date)
   }
 
