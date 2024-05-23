@@ -21,3 +21,9 @@ export const getDayClassName = (day: Date, dayIsEnabled: boolean, startDate: Dat
 export const getMonthName = (month: number) => {
   return months[month].slice(0,3).toUpperCase()
 };
+
+export const formatDate = (date: Date) => {
+  const day = date.getDate()
+  const month = months[date.getMonth()]
+  return `${day} de ${month}`
+};

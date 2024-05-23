@@ -16,7 +16,7 @@ import { InputMask } from '../InputMask'
 import { Icon } from '../../Icons'
 import { icons } from '../../Icons/icons-path'
 import './variables-custom.scss'
-import { getDayClassName, getMonthName } from './helper'
+import { formatDate, getDayClassName, getMonthName } from './helper'
 import { defaultPeriods, months } from './constants'
 
 registerLocale('pt-BR', ptBR);
@@ -34,6 +34,7 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
     const [endDate, setEndDate] = useState<Date>(yesterdayDate)
     const [startMonthsIsOpen, setStartOpenMonths] = useState<boolean>(false)
     const [endMonthsIsOpen, setEndOpenMonths] = useState<boolean>(false)
+    const [hasChangedDate, setHasChangedDate] = useState<boolean>(false)
 
     const customPeriodRef = useRef<HTMLDivElement>(null)
 
@@ -72,6 +73,7 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
   
       setStartDate(date)
       setEndDate(maxDate)
+      setHasChangedDate(false)
     }
   
   const changeStartDate = (value: string) => {
@@ -96,15 +98,18 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
     // trunca a data inicial como minDate quando a data selecionada é anterior a ela
     if(isBefore(date, minDate)) {
       setStartDate(minDate)
+      setHasChangedDate(true)
       return
     }
     // trunca data inicial e final como a data selecionada quando data inicial selecionada é posterior a final
     if(isBefore(endDate, date)) {
       setStartDate(date)
       setEndDate(date)
+      setHasChangedDate(true)
       return
     }
     setStartDate(date)
+    setHasChangedDate(true)
   }
 
   const changeEndDate = (value: string) => {
@@ -116,6 +121,11 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
 
     if(!isBefore(startDate, date) && !isEqual(startDate, date)) return
 
+    setEndDate(date)
+  }
+
+  const changeEndDateOnCalendar = (date: Date) => {
+    setHasChangedDate(true)
     setEndDate(date)
   }
   
@@ -176,14 +186,14 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
               {period.icon && (
                 <Icon icon={period.icon as any} />
               )}
-              <span>{period.label}</span>
+              <span>{(period.id == 'selecionar-periodo' && hasChangedDate) ? `${formatDate(startDate)} - ${formatDate(endDate)}` : period.label}</span>
             </button>
           ))}
         </div>
         {customPeriodIsOpen && (
           <>
           {viewPortIsDesktop ? (
-            <div ref={customPeriodRef} className="absolute top-full right-0 flex flex-col gap-y-6 px-5 py-6 border border-card-stroke rounded shadow bg-base-1 z-10">
+            <div ref={customPeriodRef} className="absolute top-full left-0 flex flex-col gap-y-6 px-5 py-6 border border-card-stroke rounded shadow bg-base-1 z-10">
               <div className="flex gap-x-6">
                 <InputMask
                   className="w-full"
@@ -228,7 +238,7 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
                 />
                 <DatePicker
                   selected={endDate}
-                  onChange={(date: Date) => setEndDate(date)}
+                  onChange={(date: Date) => changeEndDateOnCalendar(date)}
                   locale="pt-BR"
                   selectsEnd
                   startDate={startDate}
