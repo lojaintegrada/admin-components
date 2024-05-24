@@ -28,3 +28,11 @@ CustomPeriods.args = {
   },
   periods: [YESTERDAY, CUSTOM_PERIOD]
 }
+
+export const OnTheRight = Template.bind({})
+OnTheRight.args = {
+  onDatesChange: function (startDate: Date, endDate: Date) {
+    return [startDate, endDate]
+  },
+  position: 'right'
+}
