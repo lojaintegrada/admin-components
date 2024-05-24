@@ -22,8 +22,11 @@ export const getMonthName = (month: number) => {
   return months[month].slice(0,3).toUpperCase()
 };
 
-export const formatDate = (date: Date) => {
-  const day = date.getDate()
-  const month = months[date.getMonth()]
-  return `${day} de ${month}`
+export const formatDate = (startDate: Date, endDate: Date) => {
+  const _startDate = startDate.getDate()
+  const _endDate = endDate.getDate()
+  const startMonth = months[startDate.getMonth()]
+  const endMonth = months[endDate.getMonth()]
+  if(_startDate === _endDate) return `${_startDate} de ${startMonth} `
+  return `${_startDate} de ${startMonth} - ${_endDate} de ${endMonth}`
 };
