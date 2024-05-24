@@ -184,24 +184,24 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
     return true
   }
 
-  const CustomHeader = (decreaseMonth: MouseEventHandler<HTMLDivElement>, increaseMonth: MouseEventHandler<HTMLDivElement>, date: Date, calendar: 'start' | 'end'): JSX.Element => (
-    <div className='flex justify-between'>
-      <div className='cursor-pointer' onClick={decreaseMonth}>
-        <Icon icon='angleLeft' size={4}/>
-      </div>
-      <div className='flex justify-center items-center gap-x-2'>
-        <span className='font-bold text-inverted-2'>
-          {months[date.getMonth()]} {date.getFullYear()}
-        </span>
-        <div className='cursor-pointer' onClick={() => calendar == 'start' ? setStartOpenMonths(!startMonthsIsOpen) : setEndOpenMonths(!endMonthsIsOpen)}>
-          <Icon icon='angleDown' size={4} className={`transition duration-300 ${(calendar == 'start' ? startMonthsIsOpen : endMonthsIsOpen) && 'rotate-180'}`}/>
+  const CustomHeader = (date: Date, monthDate: Date, calendar: 'start' | 'end', decreaseMonth: MouseEventHandler<HTMLDivElement>, increaseMonth: MouseEventHandler<HTMLDivElement>): JSX.Element => (
+      <div className='flex justify-between'>
+        <div className='cursor-pointer' onClick={decreaseMonth}>
+          <Icon icon='angleLeft' size={4}/>
+        </div>
+        <div className='flex justify-center items-center gap-x-2'>
+          <span className='font-bold text-inverted-2'>
+            {months[monthDate.getMonth()]} {date.getFullYear()}
+          </span>
+          <div className='cursor-pointer' onClick={() => calendar == 'start' ? setStartOpenMonths(!startMonthsIsOpen) : setEndOpenMonths(!endMonthsIsOpen)}>
+            <Icon icon='angleDown' size={4} className={`transition duration-300 ${(calendar == 'start' ? startMonthsIsOpen : endMonthsIsOpen) && 'rotate-180'}`}/>
+          </div>
+        </div>
+        <div className='cursor-pointer' onClick={increaseMonth}>
+          <Icon icon='angleRight' size={4}/>
         </div>
       </div>
-      <div className='cursor-pointer' onClick={increaseMonth}>
-        <Icon icon='angleRight' size={4}/>
-      </div>
-    </div>
-  )
+    )
     
     return (
       <div className={`relative ${className}`}>
@@ -255,10 +255,11 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
                   maxDate={maxDate}
                   renderMonthContent={(month) => getMonthName(month)}
                   renderCustomHeader={({
+                    monthDate,
                     date,
                     decreaseMonth,
                     increaseMonth,
-                  }) => (CustomHeader(decreaseMonth, increaseMonth, date, 'start'))}
+                  }) => (CustomHeader(date, monthDate, 'start', decreaseMonth, increaseMonth))}
                   showMonthYearPicker={startMonthsIsOpen}
                   showFourColumnMonthYearPicker
                   inline
@@ -278,10 +279,11 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
                   maxDate={maxDate}
                   renderMonthContent={(month) => getMonthName(month)}
                   renderCustomHeader={({
+                    monthDate,
                     date,
                     decreaseMonth,
                     increaseMonth,
-                  }) => (CustomHeader(decreaseMonth, increaseMonth, date, 'end'))}
+                  }) => (CustomHeader(date, monthDate, 'end', decreaseMonth, increaseMonth))}
                   showMonthYearPicker={endMonthsIsOpen}
                   showFourColumnMonthYearPicker
                   inline
