@@ -2,6 +2,7 @@ import React, { MouseEventHandler, useEffect, useRef, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import {
   subDays,
+  addDays,
   subMonths,
   format,
   parse,
@@ -14,10 +15,10 @@ import DatePicker, {registerLocale} from 'react-datepicker'
 import ptBR from "date-fns/locale/pt-BR"
 import { InputMask } from '../InputMask'
 import { Icon } from '../../Icons'
-import { icons } from '../../Icons/icons-path'
 import './variables-custom.scss'
 import { formatDate, getDayClassName, getMonthName } from './helper'
-import { defaultPeriods, months } from './constants'
+import { CUSTOM_PERIOD, PREVIOUS_SEVEN_DAYS, PREVIOUS_THIRTY_DAYS, YESTERDAY, defaultPeriods, months } from './constants'
+import { icons } from '../../Icons/icons-path'
 
 registerLocale('pt-BR', ptBR);
 
@@ -25,10 +26,11 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
   ({ className='', periods=defaultPeriods, prevMonths=3, onDatesChange}) => {
     const todayDate = new Date(),
       yesterdayDate = subDays(todayDate, 1),
+      lastThirtyDays = subDays(yesterdayDate, 30),
       minDate = subMonths(todayDate, prevMonths),
       maxDate = yesterdayDate
 
-    const [selectedPeriod, setSelectedPeriod] = useState<string>('ontem')
+    const [selectedPeriod, setSelectedPeriod] = useState<string>(YESTERDAY.id)
     const [customPeriodIsOpen, setCustomPeriodIsOpen] = useState<boolean>(false)
     const [startDate, setStartDate] = useState<Date>(yesterdayDate)
     const [endDate, setEndDate] = useState<Date>(yesterdayDate)
@@ -39,6 +41,29 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
     const customPeriodRef = useRef<HTMLDivElement>(null)
 
     const viewPortIsDesktop = useMediaQuery({ query: '(min-width: 1024px)' })
+
+    const getIntervalName = (start: Date, end: Date, yesterday: Date, today: Date, lastThirtyDays: Date) => {
+      const _startDate = start.setHours(0, 0, 0 ,0)
+      const _endDate = end.setHours(0, 0, 0 ,0)
+      const _yesterdayDate = yesterday.setHours(0, 0, 0 ,0)
+      const _oneWeekAgo = subDays(today, 7).setHours(0, 0, 0, 0)
+      const _lastThirtyDays = addDays(lastThirtyDays, 1).setHours(0, 0, 0 ,0)
+      if(hasChangedDate) {
+        if(_startDate === _endDate && _startDate === _yesterdayDate) {
+          setHasChangedDate(false)
+          return YESTERDAY.id
+        }
+        if(_startDate === _oneWeekAgo && _endDate === _yesterdayDate) {
+          setHasChangedDate(false)
+          return PREVIOUS_SEVEN_DAYS.id
+        }
+        if(_startDate === _lastThirtyDays && _endDate === _yesterdayDate) {
+          setHasChangedDate(false)
+          return PREVIOUS_THIRTY_DAYS.id
+        }
+      }
+      return CUSTOM_PERIOD.id
+    }
 
     useEffect(() => {
       const handleClickOutside = (event: MouseEvent) => {
@@ -57,8 +82,12 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
     }, [viewPortIsDesktop])
 
     useEffect(() => {
+      if(periods === defaultPeriods) 
+        if(hasChangedDate) 
+          changePeriod(getIntervalName(startDate, endDate, yesterdayDate, todayDate, lastThirtyDays))
+        
       onDatesChange(startDate, endDate)
-    }, [startDate, endDate])
+    }, [startDate, endDate, hasChangedDate])
 
     const changePeriod = (id: string, value?: number) => {
       setSelectedPeriod(id)
@@ -177,7 +206,7 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
     return (
       <div className={`relative ${className}`}>
         <div className="flex flex-wrap gap-2">
-          {periods.map(period => (
+          {periods.length && periods.map(period => (
             <button
               key={period.id}
               className={`flex items-center gap-x-1 py-2 px-2 text-f6 rounded-md font-semibold hover:text-primary-dark hover:bg-primary-light ${ selectedPeriod === period.id ? 'bg-primary-light text-primary-dark' : 'text-inverted-1' }`}
@@ -186,7 +215,9 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
               {period.icon && (
                 <Icon icon={period.icon as any} />
               )}
-              <span>{(period.id == 'selecionar-periodo' && hasChangedDate) ? `${formatDate(startDate)} - ${formatDate(endDate)}` : period.label}</span>
+              <span>
+                {(period.id == CUSTOM_PERIOD.id && hasChangedDate) ? (`${formatDate(startDate, endDate)}`) : period.label}
+              </span>
             </button>
           ))}
         </div>
@@ -282,7 +313,7 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
   }
 )
 
-type PeriodsType = {
+export type PeriodsType = {
   id: string,
   label: string,
   value?: number,

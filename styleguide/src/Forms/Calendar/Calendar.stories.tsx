@@ -2,6 +2,7 @@ import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
 import { Calendar, CalendarProps } from '.'
+import { CUSTOM_PERIOD, YESTERDAY } from './constants'
 
 export default {
   title: 'Navigation/Calendar',
@@ -18,4 +19,12 @@ Default.args = {
   onDatesChange: function (startDate: Date, endDate: Date) {
     return [startDate, endDate]
   },
+}
+
+export const CustomPeriods = Template.bind({})
+CustomPeriods.args = {
+  onDatesChange: function (startDate: Date, endDate: Date) {
+    return [startDate, endDate]
+  },
+  periods: [YESTERDAY, CUSTOM_PERIOD]
 }
