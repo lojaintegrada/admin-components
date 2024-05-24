@@ -23,7 +23,7 @@ import { icons } from '../../Icons/icons-path'
 registerLocale('pt-BR', ptBR);
 
 export const Calendar: React.FC<CalendarProps> = React.memo(
-  ({ className='', periods=defaultPeriods, prevMonths=3, onDatesChange}) => {
+  ({ className='', periods=defaultPeriods, prevMonths=3, position='left', onDatesChange}) => {
     const todayDate = new Date(),
       yesterdayDate = subDays(todayDate, 1),
       lastThirtyDays = subDays(yesterdayDate, 30),
@@ -224,7 +224,7 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
         {customPeriodIsOpen && (
           <>
           {viewPortIsDesktop ? (
-            <div ref={customPeriodRef} className="absolute top-full left-0 flex flex-col gap-y-6 px-5 py-6 border border-card-stroke rounded shadow bg-base-1 z-10">
+            <div ref={customPeriodRef} className={`absolute top-full ${position}-0 flex flex-col gap-y-6 px-5 py-6 border border-card-stroke rounded shadow bg-base-1 z-10`}>
               <div className="flex gap-x-6">
                 <InputMask
                   className="w-full"
@@ -335,6 +335,10 @@ export interface CalendarProps {
    * Number of months previous to today's date to be analyzed
    * */
   prevMonths?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24
+  /**
+   * Side where calendar will open
+   * */
+  position?: 'left' | 'right'
   /**
    * Function triggered on each date change. 
    * */
