@@ -263,7 +263,6 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
                   showMonthYearPicker={startMonthsIsOpen}
                   showFourColumnMonthYearPicker
                   inline
-                  disabledKeyboardNavigation
                   dayClassName={(day) => {
                     return getDayClassName(day, dayIsEnabled(day, 'start'), startDate, endDate, 'start')
                   }}
@@ -287,7 +286,6 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
                   showMonthYearPicker={endMonthsIsOpen}
                   showFourColumnMonthYearPicker
                   inline
-                  disabledKeyboardNavigation
                   dayClassName={(day) => {
                     return getDayClassName(day, dayIsEnabled(day, 'end'), startDate, endDate, 'end')
                   }}
