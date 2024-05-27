@@ -124,6 +124,7 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
   }
 
   const changeStartDateOnCalendar = (date: Date) => {
+    setStartOpenMonths(false)
     // trunca a data inicial como minDate quando a data selecionada é anterior a ela
     if(isBefore(date, minDate)) {
       setStartDate(minDate)
@@ -154,6 +155,7 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
   }
 
   const changeEndDateOnCalendar = (date: Date) => {
+    setEndOpenMonths(false)
     setHasChangedDate(true)
     setEndDate(date)
   }
