@@ -546,16 +546,6 @@
     }
   }
 
-  &--keyboard-selected {
-    border-radius: $datepicker__border-radius;
-    background-color: lighten($datepicker__selected-color, 45%);
-    color: rgb(0, 0, 0);
-
-    &:hover {
-      background-color: darken($datepicker__selected-color, 5%);
-    }
-  }
-
   &--in-selecting-range:not(&--in-range) {
     background-color: transparent;
   }

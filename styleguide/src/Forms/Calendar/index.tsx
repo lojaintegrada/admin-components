@@ -25,10 +25,10 @@ registerLocale('pt-BR', ptBR);
 export const Calendar: React.FC<CalendarProps> = React.memo(
   ({ className='', periods=defaultPeriods, prevMonths=3, position='left', onDatesChange}) => {
     const todayDate = new Date(),
-      yesterdayDate = subDays(todayDate, 1),
-      lastThirtyDays = subDays(yesterdayDate, 30),
-      minDate = subMonths(todayDate, prevMonths),
-      maxDate = yesterdayDate
+      yesterdayDate = React.useMemo(() => subDays(todayDate, 1), [todayDate]),
+      lastThirtyDays = React.useMemo(() => subDays(yesterdayDate, 30), [yesterdayDate]),
+      minDate = React.useMemo(() => subMonths(todayDate, prevMonths), [todayDate, prevMonths]),
+      maxDate = React.useMemo(() => yesterdayDate, [yesterdayDate])
 
     const [selectedPeriod, setSelectedPeriod] = useState<string>(YESTERDAY.id)
     const [customPeriodIsOpen, setCustomPeriodIsOpen] = useState<boolean>(false)
@@ -41,29 +41,6 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
     const customPeriodRef = useRef<HTMLDivElement>(null)
 
     const viewPortIsDesktop = useMediaQuery({ query: '(min-width: 1024px)' })
-
-    const getIntervalName = (start: Date, end: Date, yesterday: Date, today: Date, lastThirtyDays: Date) => {
-      const _startDate = start.setHours(0, 0, 0 ,0)
-      const _endDate = end.setHours(0, 0, 0 ,0)
-      const _yesterdayDate = yesterday.setHours(0, 0, 0 ,0)
-      const _oneWeekAgo = subDays(today, 7).setHours(0, 0, 0, 0)
-      const _lastThirtyDays = addDays(lastThirtyDays, 1).setHours(0, 0, 0 ,0)
-      if(hasChangedDate) {
-        if(_startDate === _endDate && _startDate === _yesterdayDate) {
-          setHasChangedDate(false)
-          return YESTERDAY.id
-        }
-        if(_startDate === _oneWeekAgo && _endDate === _yesterdayDate) {
-          setHasChangedDate(false)
-          return PREVIOUS_SEVEN_DAYS.id
-        }
-        if(_startDate === _lastThirtyDays && _endDate === _yesterdayDate) {
-          setHasChangedDate(false)
-          return PREVIOUS_THIRTY_DAYS.id
-        }
-      }
-      return CUSTOM_PERIOD.id
-    }
 
     useEffect(() => {
       const handleClickOutside = (event: MouseEvent) => {
@@ -89,104 +66,151 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
       onDatesChange(startDate, endDate)
     }, [startDate, endDate, hasChangedDate])
 
-    const changePeriod = (id: string, value?: number) => {
-      setSelectedPeriod(id)
+    const getIntervalName = React.useCallback(
+      (start: Date, end: Date, yesterday: Date, today: Date, lastThirtyDays: Date) => {
+        const _startDate = start.setHours(0, 0, 0 ,0)
+        const _endDate = end.setHours(0, 0, 0 ,0)
+        const _yesterdayDate = yesterday.setHours(0, 0, 0 ,0)
+        const _oneWeekAgo = subDays(today, 7).setHours(0, 0, 0, 0)
+        const _lastThirtyDays = addDays(lastThirtyDays, 1).setHours(0, 0, 0 ,0)
+        if(hasChangedDate) {
+          if(_startDate === _endDate && _startDate === _yesterdayDate) {
+            setHasChangedDate(false)
+            return YESTERDAY.id
+          }
+          if(_startDate === _oneWeekAgo && _endDate === _yesterdayDate) {
+            setHasChangedDate(false)
+            return PREVIOUS_SEVEN_DAYS.id
+          }
+          if(_startDate === _lastThirtyDays && _endDate === _yesterdayDate) {
+            setHasChangedDate(false)
+            return PREVIOUS_THIRTY_DAYS.id
+          }
+        }
+        return CUSTOM_PERIOD.id
+      },
+      [hasChangedDate]
+    )
+
+    const changePeriod = React.useCallback(
+      (id: string, value?: number) => {
+        setSelectedPeriod(id)
+    
+        if(!value) {
+          setCustomPeriodIsOpen(true)
+    
+          return
+        }
+    
+        const date = subDays(todayDate, value)
+    
+        setStartDate(date)
+        setEndDate(maxDate)
+        setHasChangedDate(false)
+      },
+      [todayDate]
+    )
   
-      if(!value) {
-        setCustomPeriodIsOpen(true)
-  
-        return
-      }
-  
-      const date = subDays(todayDate, value)
-  
-      setStartDate(date)
-      setEndDate(maxDate)
-      setHasChangedDate(false)
-    }
-  
-  const changeStartDate = (value: string) => {
-    const date = parse(value, 'dd/MM/yyyy', todayDate)
+    const changeStartDate = React.useCallback(
+      (value: string) => {
+        const date = parse(value, 'dd/MM/yyyy', todayDate)
 
-    // trunca a data inicial como minDate quando a data selecionada é anterior a ela
-    if(isBefore(date, minDate)) {
-      setStartDate(minDate)
-      return
-    }
+        // trunca a data inicial como minDate quando a data selecionada é anterior a ela
+        if(isBefore(date, minDate)) {
+          setStartDate(minDate)
+          return
+        }
 
-    if(!isValid(date)) return
+        if(!isValid(date)) return
 
-    if(!isWithinInterval(date, { start: minDate, end: maxDate })) return
+        if(!isWithinInterval(date, { start: minDate, end: maxDate })) return
 
-    if(!isBefore(date, endDate) && !isEqual(date, endDate)) return
+        if(!isBefore(date, endDate) && !isEqual(date, endDate)) return
 
-    setStartDate(date)
-  }
+        setStartDate(date)
+      },
+      [todayDate, minDate, maxDate, endDate]
+    )
 
-  const changeStartDateOnCalendar = (date: Date) => {
-    setStartOpenMonths(false)
-    // trunca a data inicial como minDate quando a data selecionada é anterior a ela
-    if(isBefore(date, minDate)) {
-      setStartDate(minDate)
-      setHasChangedDate(true)
-      return
-    }
-    // trunca data inicial e final como a data selecionada quando data inicial selecionada é posterior a final
-    if(isBefore(endDate, date)) {
-      setStartDate(date)
-      setEndDate(date)
-      setHasChangedDate(true)
-      return
-    }
-    setStartDate(date)
-    setHasChangedDate(true)
-  }
+    const changeStartDateOnCalendar = React.useCallback(
+      (date: Date) => {
+        setStartOpenMonths(false)
+        // trunca a data inicial como minDate quando a data selecionada é anterior a ela
+        if(isBefore(date, minDate)) {
+          setStartDate(minDate)
+          setHasChangedDate(true)
+          return
+        }
+        // trunca data inicial e final como a data selecionada quando data inicial selecionada é posterior a final
+        if(isBefore(endDate, date)) {
+          setStartDate(date)
+          setEndDate(date)
+          setHasChangedDate(true)
+          return
+        }
+        setStartDate(date)
+        setHasChangedDate(true)
+      },
+      [minDate, endDate]
+    )
 
-  const changeEndDate = (value: string) => {
-    const date = parse(value, 'dd/MM/yyyy', todayDate)
+    const changeEndDate = React.useCallback(
+      (value: string) => {
+        const date = parse(value, 'dd/MM/yyyy', todayDate)
 
-    if(!isValid(date)) return
+        if(!isValid(date)) return
 
-    if(!isWithinInterval(date, { start: minDate, end: maxDate })) return
+        if(!isWithinInterval(date, { start: minDate, end: maxDate })) return
 
-    if(!isBefore(startDate, date) && !isEqual(startDate, date)) return
+        if(!isBefore(startDate, date) && !isEqual(startDate, date)) return
 
-    setEndDate(date)
-  }
+        setEndDate(date)
+      },
+      [todayDate, minDate, maxDate, startDate]
+    )
 
-  const changeEndDateOnCalendar = (date: Date) => {
-    setEndOpenMonths(false)
-    setHasChangedDate(true)
-    setEndDate(date)
-  }
-  
-  const changeDateRange = (dates: [Date | null, Date | null]) => {
-    const [start, end] = dates
+    const changeEndDateOnCalendar = React.useCallback(
+      (date: Date) => {
+        setEndOpenMonths(false)
+        setHasChangedDate(true)
+        setEndDate(date)
+      },
+      []
+    )
+    
+    const changeDateRange = React.useCallback(
+      (dates: [Date | null, Date | null]) => {
+        const [start, end] = dates
 
-    if(start) setStartDate(start)
-    if(end) setEndDate(end)
+        if(start) setStartDate(start)
+        if(end) setEndDate(end)
 
-    setCustomPeriodIsOpen(false)
-  }
+        setCustomPeriodIsOpen(false)
+      },
+      []
+    )
 
-  const dayIsEnabled = (day: Date, period: 'start' | 'end') => {
-    if(period == 'start') {
-      if(!isValid(day)) return false
+    const dayIsEnabled = React.useCallback(
+      (day: Date, period: 'start' | 'end') => {
+        if(period == 'start') {
+          if(!isValid(day)) return false
 
-      if(!isWithinInterval(day, { start: minDate, end: maxDate })) return false
+          if(!isWithinInterval(day, { start: minDate, end: maxDate })) return false
 
-      if(!isBefore(day, endDate) && !isEqual(day, endDate)) return false
-    } else {
-      if(!isValid(day)) return false
+          if(!isBefore(day, endDate) && !isEqual(day, endDate)) return false
+        } else {
+          if(!isValid(day)) return false
 
-      if(!isWithinInterval(day, { start: minDate, end: maxDate })) return false
+          if(!isWithinInterval(day, { start: minDate, end: maxDate })) return false
 
-      if(!isBefore(startDate, day) && !isEqual(startDate, day)) return false
-    }
-    return true
-  }
+          if(!isBefore(startDate, day) && !isEqual(startDate, day)) return false
+        }
+        return true
+      },
+      [minDate, maxDate, startDate, endDate]
+    )
 
-  const CustomHeader = (date: Date, monthDate: Date, calendar: 'start' | 'end', decreaseMonth: MouseEventHandler<HTMLDivElement>, increaseMonth: MouseEventHandler<HTMLDivElement>): JSX.Element => (
+    const CustomHeader = (date: Date, monthDate: Date, calendar: 'start' | 'end', decreaseMonth: MouseEventHandler<HTMLDivElement>, increaseMonth: MouseEventHandler<HTMLDivElement>): JSX.Element => (
       <div className='flex justify-between'>
         <div className='cursor-pointer' onClick={decreaseMonth}>
           <Icon icon='angleLeft' size={4}/>
