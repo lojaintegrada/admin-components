@@ -5,7 +5,7 @@ import { Calendar, CalendarProps } from '.'
 import { CUSTOM_PERIOD, YESTERDAY } from './constants'
 
 export default {
-  title: 'Navigation/Calendar',
+  title: 'Forms/Calendar',
   component: Calendar,
   parameters: {
     layout: 'padded',
