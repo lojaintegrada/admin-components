@@ -39,6 +39,6 @@ export const formatDate = (startDate: Date, endDate: Date) => {
   const _endDate = endDate.getDate()
   const startMonth = months[startDate.getMonth()]
   const endMonth = months[endDate.getMonth()]
-  if (_startDate === _endDate) return `${_startDate} de ${startMonth} `
+  if (_startDate === _endDate && startMonth === endMonth) return `${_startDate} de ${startMonth} `
   return `${_startDate} de ${startMonth} - ${_endDate} de ${endMonth}`
 }
