@@ -13,14 +13,12 @@ export const getDayClassName = (
   if (period === 'start') {
     if (_day === _startDate)
       return '!bg-primary !rounded-l !rounded-r !text-base-1 !font-bold before:left-5'
-    if (_day === _endDate)
-      return '!rounded-r'
+    if (_day === _endDate) return '!rounded-r'
   }
   if (period === 'end') {
     if (_day === _endDate)
       return '!bg-primary !rounded-l !rounded-r !text-base-1 !font-bold before:right-5'
-    if (_day === _startDate)
-      return '!rounded-l'
+    if (_day === _startDate) return '!rounded-l'
   }
   if (dayIsEnabled) {
     if (_day < _startDate || _day > _endDate)
@@ -39,6 +37,7 @@ export const formatDate = (startDate: Date, endDate: Date) => {
   const _endDate = endDate.getDate()
   const startMonth = months[startDate.getMonth()]
   const endMonth = months[endDate.getMonth()]
-  if (_startDate === _endDate && startMonth === endMonth) return `${_startDate} de ${startMonth} `
+  if (_startDate === _endDate && startMonth === endMonth)
+    return `${_startDate} de ${startMonth} `
   return `${_startDate} de ${startMonth} - ${_endDate} de ${endMonth}`
 }
