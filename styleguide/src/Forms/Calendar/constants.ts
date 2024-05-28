@@ -45,3 +45,6 @@ export const months = [
   'Novembro',
   'Dezembro',
 ]
+
+export const WIDTH_TRANSITION_DURATION = 100
+export const POSITION_TRANSITION_DURATION = 200

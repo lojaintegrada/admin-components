@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, useEffect, useRef, useState } from 'react'
+import React, { MouseEventHandler, RefObject, useEffect, useRef, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import {
   subDays,
@@ -17,7 +17,7 @@ import { InputMask } from '../InputMask'
 import { Icon } from '../../Icons'
 import './variables-custom.scss'
 import { formatDate, getDayClassName, getMonthName } from './helper'
-import { CUSTOM_PERIOD, PREVIOUS_SEVEN_DAYS, PREVIOUS_THIRTY_DAYS, YESTERDAY, defaultPeriods, months } from './constants'
+import { CUSTOM_PERIOD, POSITION_TRANSITION_DURATION, PREVIOUS_SEVEN_DAYS, PREVIOUS_THIRTY_DAYS, WIDTH_TRANSITION_DURATION, YESTERDAY, defaultPeriods, months } from './constants'
 import { icons } from '../../Icons/icons-path'
 
 registerLocale('pt-BR', ptBR);
@@ -37,10 +37,27 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
     const [startMonthsIsOpen, setStartOpenMonths] = useState<boolean>(false)
     const [endMonthsIsOpen, setEndOpenMonths] = useState<boolean>(false)
     const [hasChangedDate, setHasChangedDate] = useState<boolean>(false)
+    const [buttonOffset, setButtonOffset] = useState<number>(0)
+    const [buttonHeight, setButtonHeight] = useState<number>(0)
+    const [buttonWidth, setButtonWidth] = useState<number>(0)
+    const [customPeriodWidth, setCustomPeriodWidth] = useState<number>(0)
+    const [transitionDuration, setTransitionDuration] = useState<number>(POSITION_TRANSITION_DURATION)
 
     const customPeriodRef = useRef<HTMLDivElement>(null)
 
     const viewPortIsDesktop = useMediaQuery({ query: '(min-width: 1024px)' })
+
+    useEffect(() => {
+      const elem = document.getElementById(periods[0].id)
+      if (elem == undefined) return
+      setButtonOffset(elem.offsetLeft)
+      setButtonHeight(elem.offsetHeight || 0)
+      setButtonWidth(elem.offsetWidth || 0)
+    }, [])
+
+    useEffect(() => {
+      setCustomPeriodWidth(document.getElementById(CUSTOM_PERIOD.id)!.offsetWidth)
+    }, [startDate, endDate])
 
     useEffect(() => {
       const handleClickOutside = (event: MouseEvent) => {
@@ -48,6 +65,7 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
   
         if(!customPeriodRef.current?.contains(event.target as Node)) {
           setCustomPeriodIsOpen(false)
+          setTransitionDuration(POSITION_TRANSITION_DURATION)
         }
       }
   
@@ -75,18 +93,22 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
         const _lastThirtyDays = addDays(lastThirtyDays, 1).setHours(0, 0, 0 ,0)
         if(hasChangedDate) {
           if(_startDate === _endDate && _startDate === _yesterdayDate) {
+            setTransitionDuration(POSITION_TRANSITION_DURATION)
             setHasChangedDate(false)
             return YESTERDAY.id
           }
           if(_startDate === _oneWeekAgo && _endDate === _yesterdayDate) {
+            setTransitionDuration(POSITION_TRANSITION_DURATION)
             setHasChangedDate(false)
             return PREVIOUS_SEVEN_DAYS.id
           }
           if(_startDate === _lastThirtyDays && _endDate === _yesterdayDate) {
+            setTransitionDuration(POSITION_TRANSITION_DURATION)
             setHasChangedDate(false)
             return PREVIOUS_THIRTY_DAYS.id
           }
         }
+        setTransitionDuration(WIDTH_TRANSITION_DURATION)
         return CUSTOM_PERIOD.id
       },
       [hasChangedDate]
@@ -210,6 +232,13 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
       [minDate, maxDate, startDate, endDate]
     )
 
+    const handleButtonClick = (ref: RefObject<HTMLDivElement>, period: PeriodsType) => {
+      setButtonOffset(ref.current?.offsetLeft || 0)
+      setButtonHeight(ref.current?.offsetHeight || 0)
+      setButtonWidth(ref.current?.offsetWidth || 0)
+      changePeriod(period.id, period.value)
+    }
+
     const CustomHeader = (date: Date, monthDate: Date, calendar: 'start' | 'end', decreaseMonth: MouseEventHandler<HTMLDivElement>, increaseMonth: MouseEventHandler<HTMLDivElement>): JSX.Element => (
       <div className='flex justify-between'>
         <div className='cursor-pointer' onClick={decreaseMonth}>
@@ -231,21 +260,33 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
     
     return (
       <div className={`relative ${className}`}>
-        <div className="flex flex-wrap gap-2">
-          {periods.length && periods.map(period => (
-            <button
-              key={period.id}
-              className={`flex items-center gap-x-1 py-2 px-2 text-f6 rounded-md font-semibold hover:text-primary-dark hover:bg-primary-light ${ selectedPeriod === period.id ? 'bg-primary-light text-primary-dark' : 'text-inverted-1' }`}
-              onClick={() => changePeriod(period.id, period.value)}
-            >
-              {period.icon && (
-                <Icon icon={period.icon as any} />
-              )}
-              <span>
-                {(period.id == CUSTOM_PERIOD.id && hasChangedDate) ? (`${formatDate(startDate, endDate)}`) : period.label}
-              </span>
-            </button>
-          ))}
+        <div className="relative flex flex-wrap gap-2">
+          {periods.length && periods.map((period) => {
+            const buttonRef = useRef<HTMLDivElement>(null)
+            return (
+              <div
+                key={period.id}
+                id={period.id}
+                ref={buttonRef}
+              >
+                <button
+                  className={`flex items-center gap-x-1 py-2 px-2 text-f6 rounded-md font-semibold hover:text-primary-dark ${ selectedPeriod === period.id ? 'text-primary-dark' : 'text-inverted-1' } transition-colors duration-200`}
+                  onClick={() => handleButtonClick(buttonRef, period)}
+                >
+                  {period.icon && (
+                    <Icon icon={period.icon as any} />
+                  )}
+                  <span>
+                    {(period.id == CUSTOM_PERIOD.id && hasChangedDate) ? (`${formatDate(startDate, endDate)}`) : period.label}
+                  </span>
+                </button>
+              </div>
+            )
+          })}
+          <div
+            className='absolute rounded-l rounded-r bg-primary-light transition-all ease-out -z-1'
+            style={{left: `${buttonOffset}px`, height: `${buttonHeight}px`, width: `${selectedPeriod == CUSTOM_PERIOD.id ? customPeriodWidth : buttonWidth}px`, transitionDuration: `${transitionDuration}ms`}}
+          />
         </div>
         {customPeriodIsOpen && (
           <>
