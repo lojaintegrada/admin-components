@@ -12,7 +12,7 @@ import {
   isEqual,
 } from 'date-fns'
 import DatePicker, { registerLocale } from 'react-datepicker'
-import ptBR from 'date-fns/locale/pt-BR'
+import { ptBR } from 'date-fns/locale/pt-BR'
 import { InputMask } from '../InputMask'
 import { Icon } from '../../Icons'
 import './variables-custom.scss'
