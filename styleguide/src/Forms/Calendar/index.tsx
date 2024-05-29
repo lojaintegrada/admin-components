@@ -166,7 +166,7 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
     useEffect(() => {
       if (periods === defaultPeriods)
         if (hasChangedDate)
-          changePeriod(
+          setSelectedPeriod(
             getIntervalName(
               startDate,
               endDate,
