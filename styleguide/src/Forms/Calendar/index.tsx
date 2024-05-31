@@ -352,10 +352,10 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
                     } transition-colors duration-200`}
                     onClick={() => handleButtonClick(index, period)}
                   >
-                    {period.icon && <Icon icon={period.icon as any} />}
-                      {period.id === CUSTOM_PERIOD.id && hasChangedDate
-                        ? formatDate(startDate, endDate)
-                        : period.label}
+                  {period.icon && <Icon icon={period.icon as any} />}
+                    {period.id === CUSTOM_PERIOD.id && hasChangedDate
+                      ? formatDate(startDate, endDate)
+                      : period.label}
                   </button>
                 </div>
               )
