@@ -139,6 +139,7 @@
     "@types/react-datepicker": "^6.2.0",
     "@types/react-select": "^4.0.17",
     "babel-jest": "^29.2.2",
+    "babel-polyfill": "^6.26.0",
     "child-process": "^1.0.2",
     "dotenv": "^16.0.3",
     "react": "^17.0.2",
