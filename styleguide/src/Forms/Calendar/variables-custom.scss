@@ -1,12 +1,12 @@
-$datepicker__background-color: #FFFFFF !default;          // base-1
-$datepicker__border-color: transparent !default;            // transparent
-$datepicker__highlighted-color: #2BC4C3 !default;         // primary
-$datepicker__holidays-color: transparent !default;          // transparent
-$datepicker__muted-color: #CED4D8 !default;               // card-stroke
-$datepicker__selected-color: #2BC4C3 !default;            // primary
-$datepicker__selected-interval-color: #E4F3F3 !default;   // primary-light
-$datepicker__text-color: #371E56 !default;                // inverted-1
-$datepicker__header-color: #FFFFFF !default;              // base-1
+$datepicker__background-color: #FFFFFF !default;
+$datepicker__border-color: transparent !default;
+$datepicker__highlighted-color: #2BC4C3 !default;
+$datepicker__holidays-color: transparent !default;
+$datepicker__muted-color: #CED4D8 !default;
+$datepicker__selected-color: #2BC4C3 !default;
+$datepicker__selected-interval-color: #E4F3F3 !default;
+$datepicker__text-color: #371E56 !default;
+$datepicker__header-color: #FFFFFF !default;
 $datepicker__navigation-disabled-color: lighten(
   $datepicker__muted-color,
   10%
