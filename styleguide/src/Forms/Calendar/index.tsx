@@ -72,7 +72,8 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
     const customPeriodRef = useRef<HTMLDivElement>(null)
     const buttonsRef = useRef<(HTMLDivElement | null)[]>([])
 
-    const viewPortIsDesktop = testOnDesktop || useMediaQuery({ query: '(min-width: 1024px)' })
+    const deviceIsDesktop = useMediaQuery({ query: '(min-width: 1024px)' })
+    const viewPortIsDesktop = testOnDesktop || deviceIsDesktop
 
     useEffect(() => {
       const elem = document.getElementById(periods[0].id)
@@ -403,7 +404,7 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
                   />
                 </div>
                 <div className="flex gap-x-6">
-                  <div id='startCalendar'>
+                  <div id="startCalendar">
                     <DatePicker
                       selected={startDate}
                       onChange={(date: Date) => changeStartDateOnCalendar(date)}
@@ -442,7 +443,7 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
                       }}
                     />
                   </div>
-                  <div id='endCalendar'>
+                  <div id="endCalendar">
                     <DatePicker
                       selected={endDate}
                       onChange={(date: Date) => changeEndDateOnCalendar(date)}
