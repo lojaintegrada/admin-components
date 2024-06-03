@@ -31,6 +31,8 @@ import { icons } from '../../Icons/icons-path'
 
 registerLocale('pt-BR', ptBR)
 
+const todayDate = new Date()
+
 export const Calendar: React.FC<CalendarProps> = React.memo(
   ({
     className = '',
@@ -38,16 +40,16 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
     prevMonths = 3,
     position = 'left',
     onDatesChange,
+    today = todayDate
   }) => {
-    const todayDate = new Date(),
-      yesterdayDate = React.useMemo(() => subDays(todayDate, 1), [todayDate]),
+    const yesterdayDate = React.useMemo(() => subDays(today, 1), [today]),
       lastThirtyDays = React.useMemo(
         () => subDays(yesterdayDate, 30),
         [yesterdayDate]
       ),
       minDate = React.useMemo(
-        () => subMonths(todayDate, prevMonths),
-        [todayDate, prevMonths]
+        () => subMonths(today, prevMonths),
+        [today, prevMonths]
       ),
       maxDate = React.useMemo(() => yesterdayDate, [yesterdayDate])
 
@@ -154,13 +156,13 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
           return
         }
 
-        const date = subDays(todayDate, value)
+        const date = subDays(today, value)
 
         setStartDate(date)
         setEndDate(maxDate)
         setHasChangedDate(false)
       },
-      [todayDate, maxDate]
+      [today, maxDate]
     )
 
     useEffect(() => {
@@ -171,7 +173,7 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
               startDate,
               endDate,
               yesterdayDate,
-              todayDate,
+              today,
               lastThirtyDays
             )
           )
@@ -186,13 +188,13 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
       lastThirtyDays,
       onDatesChange,
       periods,
-      todayDate,
+      today,
       yesterdayDate,
     ])
 
     const changeStartDate = React.useCallback(
       (value: string) => {
-        const date = parse(value, 'dd/MM/yyyy', todayDate)
+        const date = parse(value, 'dd/MM/yyyy', today)
 
         // trunca a data inicial como minDate quando a data selecionada é anterior a ela
         if (isBefore(date, minDate)) {
@@ -208,7 +210,7 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
 
         setStartDate(date)
       },
-      [todayDate, minDate, maxDate, endDate]
+      [today, minDate, maxDate, endDate]
     )
 
     const changeStartDateOnCalendar = React.useCallback(
@@ -235,7 +237,7 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
 
     const changeEndDate = React.useCallback(
       (value: string) => {
-        const date = parse(value, 'dd/MM/yyyy', todayDate)
+        const date = parse(value, 'dd/MM/yyyy', today)
 
         if (!isValid(date)) return
 
@@ -245,7 +247,7 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
 
         setEndDate(date)
       },
-      [todayDate, minDate, maxDate, startDate]
+      [today, minDate, maxDate, startDate]
     )
 
     const changeEndDateOnCalendar = React.useCallback((date: Date) => {
@@ -400,80 +402,84 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
                   />
                 </div>
                 <div className="flex gap-x-6">
-                  <DatePicker
-                    selected={startDate}
-                    onChange={(date: Date) => changeStartDateOnCalendar(date)}
-                    locale="pt-BR"
-                    selectsStart
-                    startDate={startDate}
-                    endDate={endDate}
-                    minDate={minDate}
-                    maxDate={maxDate}
-                    renderMonthContent={(month) => getMonthName(month)}
-                    renderCustomHeader={({
-                      monthDate,
-                      date,
-                      decreaseMonth,
-                      increaseMonth,
-                    }) =>
-                      CustomHeader(
-                        date,
+                  <div id='startCalendar'>
+                    <DatePicker
+                      selected={startDate}
+                      onChange={(date: Date) => changeStartDateOnCalendar(date)}
+                      locale="pt-BR"
+                      selectsStart
+                      startDate={startDate}
+                      endDate={endDate}
+                      minDate={minDate}
+                      maxDate={maxDate}
+                      renderMonthContent={(month) => getMonthName(month)}
+                      renderCustomHeader={({
                         monthDate,
-                        'start',
-                        decreaseMonth,
-                        increaseMonth
-                      )
-                    }
-                    showMonthYearPicker={startMonthsIsOpen}
-                    showFourColumnMonthYearPicker
-                    inline
-                    dayClassName={(day) => {
-                      return getDayClassName(
-                        day,
-                        dayIsEnabled(day, 'start'),
-                        startDate,
-                        endDate,
-                        'start'
-                      )
-                    }}
-                  />
-                  <DatePicker
-                    selected={endDate}
-                    onChange={(date: Date) => changeEndDateOnCalendar(date)}
-                    locale="pt-BR"
-                    selectsEnd
-                    startDate={startDate}
-                    endDate={endDate}
-                    minDate={startDate}
-                    maxDate={maxDate}
-                    renderMonthContent={(month) => getMonthName(month)}
-                    renderCustomHeader={({
-                      monthDate,
-                      date,
-                      decreaseMonth,
-                      increaseMonth,
-                    }) =>
-                      CustomHeader(
                         date,
-                        monthDate,
-                        'end',
                         decreaseMonth,
-                        increaseMonth
-                      )
-                    }
-                    showMonthYearPicker={endMonthsIsOpen}
-                    showFourColumnMonthYearPicker
-                    inline
-                    dayClassName={(day) => {
-                      return getDayClassName(
-                        day,
-                        dayIsEnabled(day, 'end'),
-                        startDate,
-                        endDate,
-                        'end'
-                      )
-                    }}
-                  />
+                        increaseMonth,
+                      }) =>
+                        CustomHeader(
+                          date,
+                          monthDate,
+                          'start',
+                          decreaseMonth,
+                          increaseMonth
+                        )
+                      }
+                      showMonthYearPicker={startMonthsIsOpen}
+                      showFourColumnMonthYearPicker
+                      inline
+                      dayClassName={(day) => {
+                        return getDayClassName(
+                          day,
+                          dayIsEnabled(day, 'start'),
+                          startDate,
+                          endDate,
+                          'start'
+                        )
+                      }}
+                    />
+                  </div>
+                  <div id='endCalendar'>
+                    <DatePicker
+                      selected={endDate}
+                      onChange={(date: Date) => changeEndDateOnCalendar(date)}
+                      locale="pt-BR"
+                      selectsEnd
+                      startDate={startDate}
+                      endDate={endDate}
+                      minDate={startDate}
+                      maxDate={maxDate}
+                      renderMonthContent={(month) => getMonthName(month)}
+                      renderCustomHeader={({
+                        monthDate,
+                        date,
+                        decreaseMonth,
+                        increaseMonth,
+                      }) =>
+                        CustomHeader(
+                          date,
+                          monthDate,
+                          'end',
+                          decreaseMonth,
+                          increaseMonth
+                        )
+                      }
+                      showMonthYearPicker={endMonthsIsOpen}
+                      showFourColumnMonthYearPicker
+                      inline
+                      dayClassName={(day) => {
+                        return getDayClassName(
+                          day,
+                          dayIsEnabled(day, 'end'),
+                          startDate,
+                          endDate,
+                          'end'
+                        )
+                      }}
+                    />
+                  </div>
                 </div>
               </div>
             ) : (
@@ -549,4 +555,8 @@ export interface CalendarProps {
    * Function triggered on each date change
    * */
   onDatesChange: (startDate: Date, endDate: Date) => void
+  /**
+   * USED ONLY IN TESTS!
+   * */
+  today?: Date
 }
