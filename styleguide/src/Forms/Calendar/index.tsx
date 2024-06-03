@@ -40,7 +40,8 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
     prevMonths = 3,
     position = 'left',
     onDatesChange,
-    today = todayDate
+    today = todayDate,
+    testOnDesktop = true,
   }) => {
     const yesterdayDate = React.useMemo(() => subDays(today, 1), [today]),
       lastThirtyDays = React.useMemo(
@@ -71,7 +72,7 @@ export const Calendar: React.FC<CalendarProps> = React.memo(
     const customPeriodRef = useRef<HTMLDivElement>(null)
     const buttonsRef = useRef<(HTMLDivElement | null)[]>([])
 
-    const viewPortIsDesktop = useMediaQuery({ query: '(min-width: 1024px)' })
+    const viewPortIsDesktop = testOnDesktop || useMediaQuery({ query: '(min-width: 1024px)' })
 
     useEffect(() => {
       const elem = document.getElementById(periods[0].id)
@@ -559,4 +560,8 @@ export interface CalendarProps {
    * USED ONLY IN TESTS!
    * */
   today?: Date
+  /**
+   * USED ONLY IN TESTS!
+   * */
+  testOnDesktop?: boolean
 }
