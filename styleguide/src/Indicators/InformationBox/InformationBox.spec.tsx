@@ -33,4 +33,10 @@ describe(specTitle('InformationBox tests'), () => {
     cy.get('.InformationBox-icon').should('have.class', 'icon-lightbulb')
     cy.get('.InformationBox').should('have.class', 'bg-focus-light')
   })
+
+  it('Close button', () => {
+    mount(<Default />)
+    cy.get('.InformationBox-close').click()
+    cy.get('.InformationBox').should('not.exist')
+  })
 })

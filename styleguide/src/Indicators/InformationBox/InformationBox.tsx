@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Icon, IconProps } from '../../Icons'
 
 type InformationBoxTypesOptions = 'success' | 'warning' | 'danger' | 'info'
@@ -45,9 +45,20 @@ const InformationBoxTypes: Record<
 
 const InformationBoxComponent = ({
   type = 'info',
-  subtitle,
   title,
+  subtitle,
+  showClose = false,
+  onClose,
 }: InformationBoxProps) => {
+  const [isInformationBoxOpen, setIsInformationBoxOpen] = useState(true)
+
+  const handleOnClose = () => {
+    setIsInformationBoxOpen(false)
+    onClose?.()
+  }
+
+  if (!isInformationBoxOpen) return null
+
   return (
     <div
       className={`InformationBox pl-4 pr-6 pt-5 pb-6 rounded w-full relative flex items-start mb-3 ${InformationBoxTypes[type].class}`}
@@ -76,6 +87,18 @@ const InformationBoxComponent = ({
           )}
         </div>
       </div>
+
+      {showClose && (
+        <button
+          className="InformationBox-close absolute top-4 right-4 text-on-base-2"
+          onClick={handleOnClose}
+        >
+          <Icon
+            icon="close"
+            size={4}
+          />
+        </button>
+      )}
     </div>
   )
 }
@@ -95,4 +118,12 @@ export interface InformationBoxProps {
    * InformationBox text below title
    */
   subtitle?: string | React.ReactNode
+  /** Show close button
+   * @default false
+   */
+  showClose?: boolean
+  /**
+   * Function to close InformationBox (also activate `showClose`)
+   */
+  onClose?: () => void
 }
