@@ -3,6 +3,7 @@ import { Story, Meta } from '@storybook/react'
 import { withDesign } from 'storybook-addon-designs'
 
 import { Tabs, TabsProps } from './Tabs'
+import { Badge } from '../../Indicators'
 
 export default {
   title: 'Components/Tabs',
@@ -32,7 +33,13 @@ export default {
       },
       {
         id: 'relatorios',
-        title: 'Todos os relatorio da loja',
+        title: 'Todos os relatórios da loja',
+        titleComplement: (
+          <Badge
+            text="NOVO"
+            type="primary"
+          />
+        ),
       },
       {
         id: 'vendas',

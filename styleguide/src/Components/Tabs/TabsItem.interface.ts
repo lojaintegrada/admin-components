@@ -8,6 +8,10 @@ export interface TabsItemInterface {
    */
   title: string
   /**
+   * Complement to title
+   * */
+  titleComplement?: string | React.ReactNode
+  /**
    * Disabled a specific tab
    */
   disabled?: boolean
