@@ -21,6 +21,7 @@ interface TabsItemProps extends TabsItemInterface {
 export const TabsItem = ({
   id,
   title,
+  titleComplement,
   active = false,
   disabled = false,
   onChange,
@@ -44,6 +45,7 @@ export const TabsItem = ({
         data-title={title}
       >
         {title}
+        {titleComplement && <span className="ml-2">{titleComplement}</span>}
       </span>
     </button>
   )

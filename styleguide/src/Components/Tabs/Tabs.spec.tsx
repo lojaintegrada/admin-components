@@ -35,4 +35,11 @@ describe(specTitle('Tabs tests'), () => {
       .get('span').contains('Cupons de desconto')
   })
 
+  it('Title complement', () => {
+    mount(<Default />)
+    cy.get('.tabs .tabs-item').eq(2).within(() => {
+      cy.get('span').contains('Todos os relatórios da loja')
+      cy.get('span').contains('NOVO')
+    })
+  })
 })
