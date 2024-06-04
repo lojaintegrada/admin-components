@@ -88,7 +88,7 @@ const InformationBoxComponent = ({
         </div>
       </div>
 
-      {showClose && (
+      {(showClose || onClose) && (
         <button
           className="InformationBox-close absolute top-4 right-4 text-on-base-2"
           onClick={handleOnClose}

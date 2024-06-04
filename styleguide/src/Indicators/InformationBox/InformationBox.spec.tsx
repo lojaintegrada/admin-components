@@ -35,7 +35,7 @@ describe(specTitle('InformationBox tests'), () => {
   })
 
   it('Close button', () => {
-    mount(<Default />)
+    mount(<Default showClose={true} />)
     cy.get('.InformationBox-close').click()
     cy.get('.InformationBox').should('not.exist')
   })
