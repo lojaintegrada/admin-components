@@ -93,10 +93,7 @@ const InformationBoxComponent = ({
           className="InformationBox-close absolute top-4 right-4 text-on-base-2"
           onClick={handleOnClose}
         >
-          <Icon
-            icon="close"
-            size={4}
-          />
+          <Icon icon="close" size={4} />
         </button>
       )}
     </div>
