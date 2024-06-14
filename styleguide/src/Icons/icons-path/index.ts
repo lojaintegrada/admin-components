@@ -67,6 +67,7 @@ import { Search } from './Search'
 import { ShoppingCart } from './ShoppingCart'
 import { SortDown } from './SortDown'
 import { Sync } from './Sync'
+import { Table } from './Table'
 import { ThinAngleRight } from './ThinAngleRight'
 import { TimesCircle } from './TimesCircle'
 import { Trash } from './Trash'
@@ -160,6 +161,7 @@ export const icons = {
   shoppingCart: ShoppingCart,
   sortDown: SortDown,
   sync: Sync,
+  table: Table,
   thinAngleRight: ThinAngleRight,
   times: Close,
   timesCircle: TimesCircle,
