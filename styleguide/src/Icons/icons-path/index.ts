@@ -90,6 +90,7 @@ import { DashedCircle } from './DashedCircle'
 import { MinusCircle } from './MinusCircle'
 import { MinusCircleSolid } from './MinusCircleSolid'
 import { DotsThree } from './DotsThree'
+import { Instagram } from './Instagram'
 
 export const icons = {
   adjust: Adjust,
@@ -185,4 +186,5 @@ export const icons = {
   minusCircle: MinusCircle,
   minusCircleSolid: MinusCircleSolid,
   dotsThree: DotsThree,
+  instagram: Instagram,
 }
