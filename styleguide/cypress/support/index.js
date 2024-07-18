@@ -17,5 +17,6 @@ import './commands'
 import '@cypress/code-coverage/support'
 import { setGlobalConfig } from "@storybook/testing-react"
 import * as sbPreview from "../../.storybook/preview"
+import 'babel-polyfill'
 
 setGlobalConfig(sbPreview)
