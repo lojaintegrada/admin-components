@@ -28,7 +28,7 @@ const commonFocus =
 const listOfStyles = {
   primary: `bg-primary text-base-1 ${listOfStylesHover['primary']} ${listOfStylesActive['primary']} ${commonFocus}`,
   secondary: `bg-primary-light text-primary-bold  ${listOfStylesHover['secondary']} ${listOfStylesActive['secondary']} ${commonFocus}`,
-  outlineSecondary: `bg-transparent text-primary border border-primary ${listOfStylesHover['outlineSecondary']} ${listOfStylesActive['outlineSecondary']} ${commonFocus}`,
+  outlineSecondary: `bg-transparent text-primary-dark border border-primary-dark ${listOfStylesHover['outlineSecondary']} ${listOfStylesActive['outlineSecondary']} ${commonFocus}`,
   tertiary: `bg-inverted-2 text-on-primary ${listOfStylesHover['tertiary']} ${listOfStylesActive['tertiary']} ${commonFocus}`,
   warning: `bg-warning text-on-base ${listOfStylesHover['warning']} ${listOfStylesActive['warning']} ${commonFocus}`,
   danger: `bg-danger text-base-1 ${listOfStylesHover['danger']} ${listOfStylesActive['danger']} ${commonFocus}`,
