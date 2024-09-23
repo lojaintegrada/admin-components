@@ -91,6 +91,7 @@ import { MinusCircle } from './MinusCircle'
 import { MinusCircleSolid } from './MinusCircleSolid'
 import { DotsThree } from './DotsThree'
 import { Instagram } from './Instagram'
+import { ProgressiveDiscount } from './ProgressiveDiscount'
 
 export const icons = {
   adjust: Adjust,
@@ -187,4 +188,5 @@ export const icons = {
   minusCircleSolid: MinusCircleSolid,
   dotsThree: DotsThree,
   instagram: Instagram,
+  progressiveDiscount: ProgressiveDiscount,
 }
