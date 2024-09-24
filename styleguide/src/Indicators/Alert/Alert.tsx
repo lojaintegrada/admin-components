@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Icon, IconProps } from '../../Icons'
 
-type alertTypesOptions = 'success' | 'warning' | 'danger' | 'info' | 'primary'
+type alertTypesOptions = 'success' | 'warning' | 'danger' | 'info' | 'infoOutline' | 'infoDark' | 'primary'
 
 const alertTypes: Record<
   alertTypesOptions,
@@ -17,9 +17,9 @@ const alertTypes: Record<
     iconClass: 'text-success',
   },
   warning: {
-    class: 'bg-warning-light border-warning',
+    class: 'bg-warning-light border-warning-dark',
     icon: 'exclamationTriangle',
-    iconClass: 'text-warning',
+    iconClass: 'text-warning-dark',
   },
   danger: {
     class: 'bg-danger-light border-danger',
@@ -27,9 +27,19 @@ const alertTypes: Record<
     iconClass: 'text-danger',
   },
   info: {
-    class: 'bg-base-1 border-inverted-2',
+    class: 'bg-focus-light border-focus-dark',
     icon: 'infoCircle',
-    iconClass: 'text-inverted-2',
+    iconClass: 'text-focus-dark',
+  },
+  infoOutline: {
+    class: 'bg-base-1 border-focus-dark',
+    icon: 'infoCircle',
+    iconClass: 'text-focus-dark',
+  },
+  infoDark: {
+    class: 'bg-base-1 border-[#607081]',
+    icon: 'infoCircle',
+    iconClass: 'text-[#607081]',
   },
   primary: {
     class: 'bg-primary-light border-primary',
@@ -47,6 +57,7 @@ const AlertComponent = ({
   showClose = false,
   onClose,
   hideIcon = false,
+  hideBorder = false,
   customIcon,
 }: AlertProps) => {
   const [alertIsOpen, setAlertIsOpen] = useState(isOpen)
@@ -62,7 +73,7 @@ const AlertComponent = ({
   if (!alertIsOpen) return null
   return (
     <div
-      className={`alert border border-l-4 py-4 px-5 rounded w-full relative flex items-start sm:items-center ${alertTypes[type].class}`}
+      className={`alert border-l-4 py-4 pl-6 pr-5 rounded w-full relative flex items-start sm:items-center ${alertTypes[type].class}${hideBorder ? '' : ' border'}`}
     >
       {!hideIcon && (
         <div
@@ -75,7 +86,7 @@ const AlertComponent = ({
         </div>
       )}
       <div className="flex-grow flex flex-col sm:flex-row items-start sm:items-center justify-between min-w-0">
-        <div className="flex flex-col justify-center min-w-0 break-words text-f6 tracking-4 leading-5 text-on-base">
+        <div className="flex flex-col justify-center min-w-0 break-words text-f6 tracking-4 leading-6 text-on-base">
           <span className="alert-title font-semibold">{title}</span>
           {subtitle && <span className="alert-subtitle mt-1">{subtitle}</span>}
         </div>
@@ -86,7 +97,7 @@ const AlertComponent = ({
         )}
       </div>
       {(showClose || onClose) && (
-        <div className={`alert-close flex-shrink-0 flex ml-5`}>
+        <div className={`alert-close flex-shrink-0 flex self-start ml-5`}>
           <button
             className="p-2 -m-2 text-inverted-2 hover:text-inverted-1"
             onClick={handleOnClose}
@@ -130,6 +141,10 @@ export interface AlertProps {
    * @default false
    */
   hideIcon?: boolean
+  /** Hide alert border
+   * @default false
+   */
+  hideBorder?: boolean
   /**
    * Custom icon
    */
