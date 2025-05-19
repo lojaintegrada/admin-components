@@ -49,6 +49,7 @@ import { Loading } from './Loading'
 import { Minus } from './Minus'
 import { Mobile } from './Mobile'
 import { MoneyBill } from './MoneyBill'
+import { MoneyReturn } from './MoneyReturn'
 import { Move } from './Move'
 import { Nav } from './Nav'
 import { Order } from './Order'
@@ -145,6 +146,7 @@ export const icons = {
   minus: Minus,
   mobile: Mobile,
   moneyBill: MoneyBill,
+  moneyReturn: MoneyReturn,
   move: Move,
   nav: Nav,
   order: Order,

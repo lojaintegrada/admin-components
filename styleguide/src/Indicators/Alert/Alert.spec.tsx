@@ -36,7 +36,7 @@ describe(specTitle('Alert tests'), () => {
     cy.get('.alert').should('have.class', 'bg-danger-light')
 
     mount(<Default type="info" />)
-    cy.get('.alert').should('have.class', 'border-inverted-2')
+    cy.get('.alert').should('have.class', 'bg-focus-light')
 
     mount(<Default type="primary" />)
     cy.get('.alert').should('have.class', 'bg-primary-light')

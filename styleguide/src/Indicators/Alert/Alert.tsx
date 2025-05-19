@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { Icon, IconProps } from '../../Icons'
 
-type alertTypesOptions = 'success' | 'warning' | 'danger' | 'info' | 'infoOutline' | 'infoDark' | 'primary'
+type alertTypesOptions =
+  | 'success'
+  | 'warning'
+  | 'danger'
+  | 'info'
+  | 'infoOutline'
+  | 'infoDark'
+  | 'primary'
 
 const alertTypes: Record<
   alertTypesOptions,
@@ -73,7 +80,9 @@ const AlertComponent = ({
   if (!alertIsOpen) return null
   return (
     <div
-      className={`alert border-l-4 py-4 pl-6 pr-5 rounded w-full relative flex items-start sm:items-center ${alertTypes[type].class}${hideBorder ? '' : ' border'}`}
+      className={`alert border-l-4 py-4 pl-6 pr-5 rounded w-full relative flex items-start sm:items-center ${
+        alertTypes[type].class
+      }${hideBorder ? '' : ' border'}`}
     >
       {!hideIcon && (
         <div
