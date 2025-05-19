@@ -1,0 +1,1 @@
+(self.webpackChunk_loja_integrada_admin_components=self.webpackChunk_loja_integrada_admin_components||[]).push([[177],{"?6eb0":()=>{}}]);
