@@ -1,0 +1,117 @@
+// CÓPIA de `packages/tailwindcss-config/styles/_komea.scss` do repo `front-library`, onde o gerador
+// vive. NÃO editar à mão, e NÃO regenerar daqui: `npm run komea:mirror:check` falha se as duas
+// divergirem.
+//
+// A TIPOGRAFIA vale em todo lugar: métrica e peso dos papéis não dependem de qual chrome está ativa.
+// COR e RAIO ficam escopados em [data-chrome="new"], porque conviver com a paleta legada é o
+// requisito — fora da chrome nova, os valores antigos seguem valendo.
+
+:root {
+  --text-title-large-size: 1.5rem;
+  --text-title-large-lh: 2rem;
+  --text-title-large-ls: -0.019em;
+  --text-title-large-weight: 600;
+  --text-title-size: 1.25rem;
+  --text-title-lh: 1.75rem;
+  --text-title-ls: -0.017em;
+  --text-title-weight: 500;
+  --text-body-large-size: 1rem;
+  --text-body-large-lh: 1.5rem;
+  --text-body-large-ls: -0.011em;
+  --text-body-large-weight: 400;
+  --text-body-size: 0.875rem;
+  --text-body-lh: 1.25rem;
+  --text-body-ls: -0.006em;
+  --text-body-weight: 400;
+  --text-caption-size: 0.75rem;
+  --text-caption-lh: 1rem;
+  --text-caption-ls: normal;
+  --text-caption-weight: 400;
+  --text-action-size: 0.875rem;
+  --text-action-lh: 1rem;
+  --text-action-ls: -0.006em;
+  --text-action-weight: 500;
+  --text-code-size: 0.875rem;
+  --text-code-lh: 1.25rem;
+  --text-code-ls: normal;
+  --text-code-weight: 400;
+}
+
+// TEMPORARIO: as regras de peso por papel estao desligadas — estavam interferindo em hierarquias
+// existentes. O peso volta a ser o que o autor escreveu (font-semibold e afins) ou o herdado.
+// Para religar, reponha weightLines e a regra de b/strong neste ponto do template.
+
+// ---------- cor e raio: só na chrome nova ----------
+:root[data-chrome='new'] {
+  color-scheme: light;
+  --color-base-1: 255 255 255;
+  --color-base-2: 253 252 251;
+  --color-base-3: 243 242 239;
+  --color-base-4: 227 226 223;
+  --color-on-base: 11 10 8;
+  --color-on-base-2: 116 115 113;
+  --color-on-base-3: 156 155 153;
+  --color-card-stroke: 227 226 223;
+  --color-card-stroke-2: 183 182 179;
+  --color-primary: 23 23 21;
+  --color-primary-light: 243 242 239;
+  --color-primary-dark: 16 16 14;
+  --color-primary-bold: 10 9 8;
+  --color-on-primary: 253 252 251;
+  --color-success: 94 165 0;
+  --color-success-light: 235 245 228;
+  --color-success-dark: 74 132 0;
+  --color-danger: 231 0 11;
+  --color-danger-light: 255 231 228;
+  --color-danger-dark: 186 0 7;
+  --color-warning: 225 113 0;
+  --color-warning-light: 253 239 228;
+  --color-warning-dark: 181 90 0;
+  --color-success-bold: 55 101 0;
+  --color-danger-bold: 143 0 4;
+  --color-warning-bold: 139 67 0;
+  --color-warning-black: 151 60 0;
+  --color-on-success: 250 250 250;
+  --color-on-danger: 250 250 250;
+  --color-on-warning: 250 250 250;
+  --color-secondary: 227 226 223;
+  --color-secondary-light: 241 240 239;
+  --color-secondary-dark: 203 202 199;
+  --color-secondary-bold: 23 23 21;
+  --color-tertiary: 116 115 113;
+  --color-tertiary-light: 116 115 113;
+  --color-tertiary-dark: 129 128 126;
+  --color-tertiary-bold: 11 10 8;
+  --color-inverted-1: 11 10 8;
+  --color-inverted-2: 116 115 113;
+  --color-inverted-3: 243 242 239;
+  --color-inverted-4: 253 252 251;
+  --color-on-inverted: 253 252 251;
+  --color-focus: 159 158 155;
+  --color-focus-light: 243 243 243;
+  --color-focus-dark: 127 126 124;
+  --color-focus-bold: 96 96 94;
+  --color-card-shadow: 227 226 223;
+  --color-ai: 152 16 250;
+  --radius: 14px;
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 12px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+}
+
+// Squircle. O inherits:false é o que impede o fator de vazar para os filhos, e o @supports é o que
+// dá o fallback redondo em quem não tem corner-shape. Espelha o bloco do design system, escopado.
+@property --radius-squircle-scale {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 1;
+}
+
+@supports (corner-shape: superellipse(1.5)) {
+  :where(:root[data-chrome='new']) :where([class~='rounded'], [class*='rounded-']):not([class*='rounded-full']):not(.rounded-none) {
+    --radius-squircle-scale: 1.5;
+    corner-shape: superellipse(1.5);
+  }
+}
