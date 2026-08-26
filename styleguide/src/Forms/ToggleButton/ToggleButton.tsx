@@ -58,7 +58,7 @@ const ToggleButtonComponent = (
 
   return (
     <div
-      className={`${className} inline-flex justify-center items-center h-12 ${toggleClasses}} rounded text-f6 tracking-4 font-semibold`}
+      className={`${className} inline-flex justify-center items-center h-12 ${toggleClasses}} rounded text-f6 font-semibold`}
     >
       <ul className="list-none inline-flex justify-center items-center h-12">
         {toggleItems}

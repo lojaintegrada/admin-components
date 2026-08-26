@@ -44,7 +44,7 @@ const BadgeComponent = ({
         expanded ? 'flex w-full' : 'inline-flex'
       }`}
     >
-      <span className="badgeText tracking-4 font-semibold">{text}</span>
+      <span className="badgeText font-semibold">{text}</span>
     </div>
   )
 }

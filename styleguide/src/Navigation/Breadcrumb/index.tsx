@@ -62,7 +62,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = React.memo(
         <div
           className={`header-navigation-breadcrumb max-w-full truncate w-full`}
         >
-          <div className="w-full inline-flex self-center items-center font-semibold tracking-5 text-f5 sm:text-f4 lg:text-f3">
+          <div className="w-full inline-flex self-center items-center font-semibold text-f5 sm:text-f4 lg:text-f3">
             {(previousTitle || previousHref || Link) && (
               <span className="header-navigation-previous inline-flex items-center text-on-base-2 text-xl -mr-px truncate">
                 {renderPrevLink()}
@@ -72,7 +72,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = React.memo(
               </span>
             )}
             <span
-              className={`header-navigation-current text-on-base truncate leading-relaxed ${
+              className={`header-navigation-current text-on-base truncate ${
                 mobileAlign === 'center'
                   ? 'w-full lg:w-auto text-center lg:text-left'
                   : ''

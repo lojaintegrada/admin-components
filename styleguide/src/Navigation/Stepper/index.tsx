@@ -35,7 +35,7 @@ export const Stepper: React.FC<StepperProps> = React.memo(
               >
                 <span
                   onClick={() => item.handleClick?.()}
-                  className={`font-bold ${
+                  className={`font-semibold ${
                     item.handleClick ? 'cursor-pointer' : ''
                   }`}
                 >
@@ -47,7 +47,7 @@ export const Stepper: React.FC<StepperProps> = React.memo(
                   onClick={() => item.handleClick?.()}
                   className={`text-center my-auto text-sm ${showText ? '' : ''}
                   ${item.step < 2 ? 'cursor-pointer' : ''}
-                  ${currentStep === item.step ? 'font-bold' : ''}`}
+                  ${currentStep === item.step ? 'font-semibold' : ''}`}
                 >
                   {item.text}
                 </span>

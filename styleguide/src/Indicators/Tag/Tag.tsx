@@ -19,7 +19,7 @@ const TagComponent = ({
     <div
       className={`tag ${
         fullWidth ? 'flex' : 'inline-flex'
-      } items-center justify-between border rounded px-4 py-2 tracking-4 leading-6 text-f6 text-primary-bold ${
+      } items-center justify-between border rounded px-4 py-2 text-f6 text-primary-bold ${
         TagTypes[type]
       } ${className}`}
     >

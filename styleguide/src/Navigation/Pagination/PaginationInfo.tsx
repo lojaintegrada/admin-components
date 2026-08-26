@@ -19,7 +19,7 @@ const PaginationInfoComponent = ({
 
   return (
     <div className="pagination-info hidden sm:flex">
-      <div className="flex items-center mr-5 text-inverted-2 tracking-4 text-f6">
+      <div className="flex items-center mr-5 text-inverted-2 text-f6">
         {itemsLengthOptions ? (
           <Select
             id="selectItemsPerPage"

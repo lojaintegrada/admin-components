@@ -211,7 +211,7 @@ const TableComponent = ({
             <tr>
               <td colSpan={columnsLength || 1} className={`${TdClasses}`}>
                 <TdWrapper>
-                  <div className="text-center py-16 text-xl font-semibold text-on-base-2">
+                  <div className="text-center py-16 text-xl font-medium text-on-base-2">
                     {emptyText}
                   </div>
                 </TdWrapper>

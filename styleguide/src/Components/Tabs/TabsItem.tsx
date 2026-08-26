@@ -39,7 +39,7 @@ export const TabsItem = ({
       disabled={disabled}
     >
       <span
-        className={`block tracking-4 text-f6 text-sm py-4 border-b-4 break-words ${
+        className={`block text-f6 py-4 border-b-4 break-words ${
           disabled ? '' : 'group-hover:font-semibold'
         } ${activeStyles(active)} ${boldFixStyle}`}
         data-title={title}

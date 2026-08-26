@@ -21,7 +21,7 @@ const Tag = ({ type, text }: ListActionsTagProps) => {
 
   return (
     <span
-      className={`top-3 left-3 px-0.5 py-px rounded-sm text-f8 font-semibold leading-3 text-base-1 ${commonClasses}`}
+      className={`top-3 left-3 px-0.5 py-px rounded-sm text-f8 font-semibold text-base-1 ${commonClasses}`}
     >
       <Badge
         size="xsmall"
@@ -60,7 +60,7 @@ const ListActionButton = ({
         <Icon icon={icon} size={5} className="p-px" />
         {tagType || tagText ? <Tag type={tagType} text={tagText} /> : null}
       </span>
-      <p className="lg:w-24 text-f8 lg:text-f7 font-semibold tracking-4 text-center select-none leading-tight">
+      <p className="lg:w-24 text-f8 lg:text-f7 font-semibold text-center select-none">
         {text}
       </p>
     </button>

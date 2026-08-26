@@ -74,7 +74,7 @@ const InformationBoxComponent = ({
       </div>
 
       <div className="flex-grow flex flex-col sm:flex-row items-start justify-between min-w-0">
-        <div className="flex flex-col justify-center min-w-0 break-words tracking-4 leading-6 text-on-base">
+        <div className="flex flex-col justify-center min-w-0 break-words leading-6 text-on-base">
           <span
             className={`InformationBox-title text-f5 font-semibold ${InformationBoxTypes[type].titleClass}`}
           >
