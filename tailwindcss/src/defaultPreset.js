@@ -106,6 +106,9 @@ module.exports = {
         "7": "1.875rem",
         "13": "3.125rem"
       },
+      "borderRadius": {
+        "xs": "0.25rem"
+      },
       "fontSize": {
         "f1": "3rem",
         "f2": "2.25rem",
