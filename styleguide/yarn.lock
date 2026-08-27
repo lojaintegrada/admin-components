@@ -2182,10 +2182,10 @@
   resolved "https://registry.npmjs.org/@leichtgewicht/ip-codec/-/ip-codec-2.0.3.tgz"
   integrity sha512-nkalE/f1RvRGChwBnEIoBfSEYOXnCRdleKuv6+lePbMDrMZXeDQnqak5XDOeBgrPPyPfAdcCu/B5z+v3VhplGg==
 
-"@loja-integrada/tailwindcss-config@^2.0.3":
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/@loja-integrada/tailwindcss-config/-/tailwindcss-config-2.0.3.tgz#d758f794ec44633f7978553f37b1cf8528a84c07"
-  integrity sha512-Jl709hUC+1B30LMhq1q5GPAWR5jvbFBDQeLXVyZVVTMJNo6qGzLCaihK02MJD5nDjzIbeOsTJ3oQa3t20EddWw==
+"@loja-integrada/tailwindcss-config@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@loja-integrada/tailwindcss-config/-/tailwindcss-config-2.3.0.tgz#525464cb39b61718fbc286d2bf7a9475ff8fb890"
+  integrity sha512-eqcaPINAuOQdQf5wOoCz390+HRBnncC1OaWup29qfSL0ncitainzr3tLk8RXIMHHu9oBCU0dMGCboko+lpjJTg==
 
 "@mdx-js/mdx@^1.6.22":
   version "1.6.22"
