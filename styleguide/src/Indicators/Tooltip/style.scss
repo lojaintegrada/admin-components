@@ -1,5 +1,5 @@
 .tippy-box {
-  @apply relative bg-inverted-1 text-base-1 rounded text-f7 tracking-4 leading-4 outline-0 transition-all;
+  @apply relative bg-inverted-1 text-base-1 rounded text-f7 outline-0 transition-all;
 
   &[data-animation='fade'][data-state='hidden'] {
     @apply opacity-0;

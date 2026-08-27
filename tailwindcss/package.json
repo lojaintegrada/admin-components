@@ -11,12 +11,14 @@
   "main": "src/defaultPreset.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tailwind-config-viewer": "tailwind-config-viewer -o"
+    "tailwind-config-viewer": "tailwind-config-viewer -o",
+    "komea:mirror:check": "node scripts/check-komea-mirror.js"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.4",
     "postcss": "^8.4.12",
-    "tailwind-config-viewer": "^1.6.3"
+    "tailwind-config-viewer": "^1.6.3",
+    "tailwindcss-config-v2": "npm:@loja-integrada/tailwindcss-config@^2.2.0"
   },
   "peerDependency": {
     "tailwindcss": ">=3.0.0"

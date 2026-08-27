@@ -19,7 +19,7 @@ export const TimelineItem = ({ item }: TimelineItemProps) => {
       </div>
       <div className="ml-7 pt-px">
         <div
-          className={`timeline-title group py-1 text-f6 leading-6 tracking-4 text-inverted-1 font-semibold break-words ${
+          className={`timeline-title group py-1 text-f6 text-inverted-1 font-semibold break-words ${
             showToggle ? 'cursor-pointer' : ''
           }`}
           onClick={() => showToggle && setIsOpen((isOpen) => !isOpen)}
@@ -41,14 +41,14 @@ export const TimelineItem = ({ item }: TimelineItemProps) => {
           <span className="inline break-words">{item.title}</span>
         </div>
         {item.timestamp && (
-          <div className="timeline-timestamp mb-1 inline-flex items-center text-xs tracking-4 text-inverted-2 break-words">
+          <div className="timeline-timestamp mb-1 inline-flex items-center text-xs text-inverted-2 break-words">
             <Icon icon="clock" size={3} className="mr-1" />
             {item.timestamp}
           </div>
         )}
         {item.description && (
           <div
-            className={`timeline-description mt-1 overflow-hidden text-sm tracking-4 text-inverted-1 break-words transition-max-height ${
+            className={`timeline-description mt-1 overflow-hidden text-sm text-inverted-1 break-words transition-max-height ${
               isOpen ? 'max-h-96' : 'max-h-0'
             }`}
           >

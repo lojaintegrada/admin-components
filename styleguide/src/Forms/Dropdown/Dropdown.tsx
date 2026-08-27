@@ -175,7 +175,7 @@ const formatGroupLabel = (
 const CustomGroupHeading = (props: any) => (
   <GroupHeading
     {...props}
-    className="p-2 pt-0 pb-3 text-inverted-1 uppercase font-bold text-xs"
+    className="p-2 pt-0 pb-3 text-inverted-1 uppercase font-semibold text-xs"
   />
 )
 
@@ -189,7 +189,7 @@ const CustomPlaceholder = (
 ) => (
   <Placeholder
     {...props}
-    className={`tracking-4 w-full pr-2 truncate ${valueFontSizesClasses[fontSize]}`}
+    className={`w-full pr-2 truncate ${valueFontSizesClasses[fontSize]}`}
   />
 )
 
@@ -200,7 +200,7 @@ const CustomSingleValue = (
 ) => (
   <SingleValue
     {...props}
-    className={`tracking-4 truncate ${variantValueClasses[variant]} ${valueFontSizesClasses[fontSize]}`}
+    className={`truncate ${variantValueClasses[variant]} ${valueFontSizesClasses[fontSize]}`}
   />
 )
 

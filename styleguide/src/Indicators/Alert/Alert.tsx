@@ -95,7 +95,7 @@ const AlertComponent = ({
         </div>
       )}
       <div className="flex-grow flex flex-col sm:flex-row items-start sm:items-center justify-between min-w-0">
-        <div className="flex flex-col justify-center min-w-0 break-words text-f6 tracking-4 leading-6 text-on-base">
+        <div className="flex flex-col justify-center min-w-0 break-words text-f6 text-on-base">
           <span className="alert-title font-semibold">{title}</span>
           {subtitle && <span className="alert-subtitle mt-1">{subtitle}</span>}
         </div>

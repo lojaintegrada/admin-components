@@ -46,7 +46,7 @@ const PaginationNavComponent = ({
 
   return (
     <div className="pagination-nav flex items-center justify-between w-full sm:w-auto">
-      <div className="text-inverted-2 text-f6 tracking-4">
+      <div className="text-inverted-2 text-f6">
         <span
           id="btnPaginationActualPage"
           className="pagination-nav-current inline-block w-9 bg-base-1 border border-card-stroke/50 rounded font-semibold leading-8 text-center text-primary"

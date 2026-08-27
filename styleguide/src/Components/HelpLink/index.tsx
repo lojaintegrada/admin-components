@@ -17,7 +17,7 @@ export const HelpLink: React.FC<HelpLinkProps> = React.memo(
       <>
         <Icon icon="questionCircle" size={4} className="shrink-0" block />
         <span
-          className={`text-f6 font-semibold tracking-4 leading-6 ml-2
+          className={`text-f6 font-semibold ml-2
             ${!mobileText ? 'hidden md:inline' : ''}
           `}
         >

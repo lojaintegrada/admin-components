@@ -58,10 +58,10 @@ const CheckboxComponent = (
         : 'bg-base-1'
     }
     ${isCenterBoxAlign ? 'items-center' : ''}
-    rounded w-4 h-4 flex justify-center m-px
+    rounded-xs w-4 h-4 flex justify-center m-px
   `
 
-  const checkboxLabelClasses = `ml-1 input-label text-f6 tracking-4 leading-6 ${
+  const checkboxLabelClasses = `ml-1 input-label text-f6 ${
     hasErrorState ? 'text-danger' : disabled ? 'text-inverted-2' : ''
   }`
 
@@ -87,7 +87,7 @@ const CheckboxComponent = (
         htmlFor={inputId}
         className={`inline-flex ${alignOptions[boxAlign]} cursor-pointer`}
       >
-        <span className="relative rounded z-10 flex items-center justify-center focus-within:ring-2 ring-focus">
+        <span className="relative rounded-xs z-10 flex items-center justify-center focus-within:ring-2 ring-focus">
           <input
             ref={ref || inputRef}
             type="checkbox"
