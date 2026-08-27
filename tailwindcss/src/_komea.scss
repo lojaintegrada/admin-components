@@ -37,9 +37,8 @@
   --text-code-weight: 400;
 }
 
-// TEMPORARIO: as regras de peso por papel estao desligadas — estavam interferindo em hierarquias
-// existentes. O peso volta a ser o que o autor escreveu (font-semibold e afins) ou o herdado.
-// Para religar, reponha weightLines e a regra de b/strong neste ponto do template.
+// TEMPORÁRIO: as regras de peso por papel estão desligadas — estavam interferindo em hierarquias
+// existentes. Para religar, reponha weightLines e a regra de b/strong neste ponto do template.
 
 // ---------- cor e raio: só na chrome nova ----------
 :root[data-chrome='new'] {
@@ -101,8 +100,8 @@
   --radius-xl: 18px;
 }
 
-// Squircle. O inherits:false é o que impede o fator de vazar para os filhos, e o @supports é o que
-// dá o fallback redondo em quem não tem corner-shape. Espelha o bloco do design system, escopado.
+// Espelha o bloco de squircle do design system, escopado. O inherits:false impede o fator de vazar
+// para os filhos; o @supports dá o fallback redondo em quem não tem corner-shape.
 @property --radius-squircle-scale {
   syntax: '<number>';
   inherits: false;

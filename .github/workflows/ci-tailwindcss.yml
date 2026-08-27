@@ -1,0 +1,34 @@
+name: CI Tailwindcss
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'tailwindcss/**'
+      - '.github/workflows/ci-tailwindcss.yml'
+
+defaults:
+  run:
+    working-directory: tailwindcss
+
+jobs:
+  check:
+    name: Verify the komea mirror
+    runs-on: self-hosted
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Use Node 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+
+      - name: Install deps
+        run: yarn install --frozen-lockfile
+
+      # `src/_komea.scss` é cópia da folha gerada no front-library. O gerador vive só lá; aqui a 2.x
+      # entra sob alias para o check poder comparar sem PAT nem checkout cruzado.
+      - name: Mirror check
+        run: yarn komea:mirror:check
