@@ -29,9 +29,9 @@ describe(specTitle('InformationBox tests'), () => {
     cy.get('.InformationBox').should('have.class', 'bg-danger-light')
 
     mount(<Default type="info" />)
-    cy.get('.InformationBox-title').should('have.class', 'text-focus-dark')
+    cy.get('.InformationBox-title').should('have.class', 'text-info-dark')
     cy.get('.InformationBox-icon').should('have.class', 'icon-lightbulb')
-    cy.get('.InformationBox').should('have.class', 'bg-focus-light')
+    cy.get('.InformationBox').should('have.class', 'bg-info-light')
   })
 
   it('Close button', () => {

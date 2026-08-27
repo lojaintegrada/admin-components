@@ -57,7 +57,7 @@ const ModalComponent = ({
         <div {...props}>
           <div className="ReactModal__header w-full flex justify-between items-start">
             <span
-              className={`min-w-0 text-inverted-2 text-xs font-semibold uppercase break-words ${
+              className={`min-w-0 text-inverted-2 text-xs font-semibold uppercase komea:font-medium komea:normal-case break-words ${
                 headerTitle ? 'pb-3' : ''
               }`}
             >

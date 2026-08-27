@@ -36,10 +36,10 @@ const InformationBoxTypes: Record<
   },
   info: {
     title: 'Informação',
-    titleClass: 'text-focus-dark',
-    class: 'bg-focus-light border-focus-dark',
+    titleClass: 'text-info-dark',
+    class: 'bg-info-light border-info-dark komea:border-info-stroke',
     icon: 'lightbulb',
-    iconClass: 'text-focus-dark',
+    iconClass: 'text-info-dark',
   },
 }
 

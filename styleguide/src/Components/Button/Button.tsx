@@ -27,12 +27,12 @@ const commonFocus =
 
 const listOfStyles = {
   primary: `bg-primary text-base-1 ${listOfStylesHover['primary']} ${listOfStylesActive['primary']} ${commonFocus}`,
-  secondary: `bg-primary-light text-primary-bold  ${listOfStylesHover['secondary']} ${listOfStylesActive['secondary']} ${commonFocus}`,
+  secondary: `bg-primary-light text-primary-bold komea:bg-secondary komea:text-secondary-bold komea:hover:bg-secondary/80 komea:active:bg-secondary/60 komea:active:shadow-none  ${listOfStylesHover['secondary']} ${listOfStylesActive['secondary']} ${commonFocus}`,
   outlineSecondary: `bg-transparent text-primary border border-primary ${listOfStylesHover['outlineSecondary']} ${listOfStylesActive['outlineSecondary']} ${commonFocus}`,
   tertiary: `bg-inverted-2 text-on-primary ${listOfStylesHover['tertiary']} ${listOfStylesActive['tertiary']} ${commonFocus}`,
   warning: `bg-warning text-on-base ${listOfStylesHover['warning']} ${listOfStylesActive['warning']} ${commonFocus}`,
   danger: `bg-danger text-base-1 ${listOfStylesHover['danger']} ${listOfStylesActive['danger']} ${commonFocus}`,
-  outline: `bg-transparent text-inverted-2 border border-inverted-2 ${listOfStylesHover['outline']} ${listOfStylesActive['outline']} ${commonFocus}`,
+  outline: `bg-transparent text-inverted-2 border border-inverted-2 komea:border-card-stroke komea:bg-base-2 komea:text-on-base komea:hover:bg-primary-light komea:active:bg-secondary komea:active:shadow-none ${listOfStylesHover['outline']} ${listOfStylesActive['outline']} ${commonFocus}`,
   onlyText: `bg-transparent border-transparent text-inverted-2 px-0 ${listOfStylesHover['onlyText']} ${listOfStylesActive['onlyText']} ${commonFocus}`,
 }
 
@@ -49,9 +49,9 @@ const listOfStylesDisabled = {
 }
 
 const listOfSizes = {
-  small: `text-f6 h-10`,
-  default: `text-f6 h-12`,
-  large: `text-f5 h-14`,
+  small: `text-f6 komea:h-8 komea:px-3 h-10`,
+  default: `text-f6 komea:h-9 h-12`,
+  large: `text-f5 komea:h-10 komea:px-6 h-14`,
 }
 
 const ButtonType = React.forwardRef(
@@ -97,7 +97,7 @@ const ButtonComponent = (
     ;(!disabled || !loading) && onClick && onClick(event)
   }
 
-  let classes = `inline-flex font-medium items-center justify-center px-5 text-center no-underline cursor-pointer transition rounded-md after:align-middle focus:outline-none `
+  let classes = `inline-flex font-medium items-center justify-center px-5 komea:px-4 text-center no-underline cursor-pointer transition rounded-md after:align-middle focus:outline-none `
 
   if (loading) {
     classes +=

@@ -69,6 +69,6 @@ describe(specTitle('Badge tests'), () => {
     cy.get(badgeClass).should('have.class', 'bg-danger-dark text-base-1')
 
     mount(<Default type="focus" />)
-    cy.get(badgeClass).should('have.class', 'bg-focus text-base-1')
+    cy.get(badgeClass).should('have.class', 'bg-info text-base-1')
   })
 })
