@@ -8,7 +8,7 @@ const badgeTypes = {
   danger: 'bg-danger-dark text-base-1',
   success: 'bg-success-dark text-base-1',
   warning: 'bg-warning-dark text-base-1',
-  focus: 'bg-focus text-base-1',
+  focus: 'bg-info text-base-1',
 }
 
 const badgeRounded = {

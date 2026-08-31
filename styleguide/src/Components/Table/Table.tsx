@@ -150,7 +150,7 @@ const TableComponent = ({
       <table
         {...getTableProps()}
         id={id}
-        className={`w-full bg-base-1 rounded border-separate border border-card-stroke`}
+        className={`w-full bg-base-1 rounded komea:rounded-xs border-separate border border-card-stroke`}
         cellSpacing="0"
       >
         <thead className={`text-left`}>

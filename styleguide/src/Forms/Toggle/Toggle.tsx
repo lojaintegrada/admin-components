@@ -51,7 +51,7 @@ const ToggleComponent = (
 
   const toggleCircleClasses = `transform  ${toggleClasses.circle[toggleCheckText][toggleStatusText]} absolute left-[6px] top-[6px] w-5 h-5 rounded-full transition`
 
-  const toggleLabelClasses = `ml-2 text-inverted-1 text-f6 label`
+  const toggleLabelClasses = `ml-2 text-inverted-1 text-f6 komea:font-medium label`
 
   return (
     <label

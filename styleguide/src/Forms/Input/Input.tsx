@@ -59,7 +59,7 @@ const InputComponent = (
     inputContainerClass += ` ${defaultBorderClasses}`
   }
 
-  const inputClass = `w-full px-4 appearance-none shadow-none outline-none bg-transparent box-border ${focusClass} ${
+  const inputClass = `w-full px-4 komea:px-3 appearance-none shadow-none outline-none bg-transparent box-border ${focusClass} ${
     hasErrorState ? errorBorderClasses : defaultBorderClasses
   } ${prefix && prefixBorder ? 'border-l' : ''}  ${
     sufix && sufixBorder ? 'border-r' : ''

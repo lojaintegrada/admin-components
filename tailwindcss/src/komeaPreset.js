@@ -1,5 +1,6 @@
 const plugin = require('tailwindcss/plugin')
 const variablePreset = require('./variablePreset')
+const chromeVariant = require('../plugins/chromeVariant')
 
 // Raio e tipografia como CSS var, com o valor de hoje no fallback. Sem a folha `_komea.scss` que
 // declara as variáveis, o CSS gerado é o mesmo do `variablePreset` — é isso que permite adotar este
@@ -22,9 +23,18 @@ const RADIUS = {
   '3xl': '1.5rem'
 }
 
+// O design system declara a escala até `xl`. `2xl` e `3xl` não têm par, então ficam no valor legado
+// cru, sem consultar token e sem o fator: multiplicar por 1.5 um valor que nunca foi calibrado para a
+// superelipse dá o "canto redondo inflado" que a doc do komea diz que o design evita.
+const KOMEA_STEPS = ['DEFAULT', 'xs', 'sm', 'md', 'lg', 'xl']
+
 // O fator do squircle multiplica aqui, na utility, e não na variável: uma custom property declarada
 // no :root resolve o calc no contexto do :root, onde o fator ainda vale 1, e o bump nunca aconteceria.
 const borderRadius = Object.keys(RADIUS).reduce(function (acc, step) {
+  if (KOMEA_STEPS.indexOf(step) === -1) {
+    acc[step] = RADIUS[step]
+    return acc
+  }
   const name = step === 'DEFAULT' ? '' : '-' + step
   acc[step] =
     'calc(var(--radius' +
@@ -138,7 +148,10 @@ Object.keys(NATIVE_STEPS).forEach(function (step) {
     role(spec.role, 'size', spec.size),
     {
       lineHeight: role(spec.role, 'lh', spec.lineHeight),
-      letterSpacing: role(spec.role, 'ls', 'normal'),
+      // `inherit` no fallback pelo mesmo motivo do peso, logo abaixo: o `defaultPreset` não declara
+      // `letter-spacing` nesses degraus, então quem escrevia `text-sm` seguia herdando o tracking do
+      // pai. Com `normal` a utility passaria a zerar essa herança.
+      letterSpacing: role(spec.role, 'ls', 'inherit'),
       fontWeight: role(spec.role, 'weight', 'inherit')
     }
   ]
@@ -181,5 +194,5 @@ module.exports = Object.assign({}, variablePreset, {
       bold: false
     })
   }),
-  plugins: (variablePreset.plugins || []).concat([roleClasses])
+  plugins: (variablePreset.plugins || []).concat([roleClasses, chromeVariant])
 })

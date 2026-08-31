@@ -1,4 +1,5 @@
 import '../src/tailwind.scss'
+import { withChrome, chromeGlobalType } from './withChrome'
 
 export const parameters = {
   // https://storybook.js.org/docs/react/essentials/actions#automatically-matching-args
@@ -18,3 +19,9 @@ export const parameters = {
     },
   },
 };
+
+export const globalTypes = {
+  chrome: chromeGlobalType,
+}
+
+export const decorators = [withChrome]
