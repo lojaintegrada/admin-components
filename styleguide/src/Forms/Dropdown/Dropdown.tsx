@@ -13,9 +13,9 @@ import { InputHelpText } from '../InputHelpText'
 import { InputLabel, InputLabelProps } from '../InputLabel'
 
 export const sizeClasses = {
-  default: 'h-12',
+  default: 'komea:h-9 h-12',
   small: 'h-8',
-  large: 'h-14',
+  large: 'komea:h-10 h-14',
   xlarge: 'h-24',
 }
 
@@ -27,7 +27,8 @@ export const valueFontSizesClasses = {
 }
 
 export const variantControlClasses = {
-  default: 'border-card-stroke rounded pl-2',
+  default:
+    'border-card-stroke rounded pl-2 komea:border-input-stroke komea:shadow-sm',
   secondary:
     'border-inverted-2 hover:bg-base-3 rounded-md focus:ring-2 focus:ring-focus focus:ring-offset-2 focus:bg-base-1 pl-2',
   simple: 'border-0 border-b border-on-base-3',

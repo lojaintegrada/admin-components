@@ -49,7 +49,7 @@ const CheckboxComponent = (
     isChecked || isIndeterminate ? 'scale-100' : 'scale-0'
   }`
 
-  const checkboxIconContainerClasses = `border border-card-stroke transition duration-200 ease-in-out
+  const checkboxIconContainerClasses = `border border-card-stroke komea:border-input-stroke komea:shadow-sm transition duration-200 ease-in-out
     ${
       disabled
         ? 'bg-base-4'
@@ -87,7 +87,7 @@ const CheckboxComponent = (
         htmlFor={inputId}
         className={`inline-flex ${alignOptions[boxAlign]} cursor-pointer`}
       >
-        <span className="relative rounded-xs z-10 flex items-center justify-center focus-within:ring-2 ring-focus">
+        <span className="relative rounded-xs z-10 flex items-center justify-center focus-within:ring-2 komea:focus-within:ring-[3px] ring-focus komea:ring-focus/50">
           <input
             ref={ref || inputRef}
             type="checkbox"

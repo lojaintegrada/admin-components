@@ -65,6 +65,7 @@ defaultPreset.theme.colors = {
   'google-yellow': 'rgb(var(--color-google-yellow) / <alpha-value>)',
   'card-stroke': 'rgb(var(--color-card-stroke) / <alpha-value>)',
   'card-stroke-2': 'rgb(var(--color-card-stroke-2) / <alpha-value>)',
+  'input-stroke': 'rgb(var(--color-input-stroke) / <alpha-value>)',
   'card-shadow': 'rgb(var(--color-card-shadow) / <alpha-value>)',
   focus: 'rgb(var(--color-focus) / <alpha-value>)',
   'focus-light': 'rgb(var(--color-focus-light) / <alpha-value>)',
