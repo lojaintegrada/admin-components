@@ -21,9 +21,12 @@ const babelLoaderConfig = {
   }
 }
 
+// `sass-loader` no fim da cadeia porque a regra casa `.scss`: sem ele o postcss recebe sintaxe Sass
+// crua e quebra no primeiro comentário `//`. Passava despercebido enquanto o único scss no grafo era
+// o `tailwind.scss`, que não usa recurso nenhum do Sass.
 const tailwindLoader = {
   test: /\.(s)?css$/i,
-  use: ['style-loader', 'css-loader', 'postcss-loader'],
+  use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
 }
 
 /**
