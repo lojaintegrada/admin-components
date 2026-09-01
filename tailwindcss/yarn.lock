@@ -1207,10 +1207,10 @@ tailwind-config-viewer@^1.6.3:
     portfinder "^1.0.26"
     replace-in-file "^6.1.0"
 
-"tailwindcss-config-v2@npm:@loja-integrada/tailwindcss-config@^2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@loja-integrada/tailwindcss-config/-/tailwindcss-config-2.4.0.tgz#d5e54553bef88f1bec9bd7a8d28321d236d4be18"
-  integrity sha512-d0qia8kj8lZVCZ0ZdOBolLSMUX0omnPcmLVk6LCDL1nkLfogCQ44PZsa+0Gh2ErXmoPDOQ5hSCRIwoV1dhRhHQ==
+"tailwindcss-config-v2@npm:@loja-integrada/tailwindcss-config@^2.5.0":
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@loja-integrada/tailwindcss-config/-/tailwindcss-config-2.5.0.tgz#ed41e754418e5a60f897653638549913fa5f6918"
+  integrity sha512-qKj/DadbFgVYgqdt/s2l+2a4VyYt/G/SyLcvDtyMU/lOVfCMnE+C462PNJpzDDFJufE8SzeoipMHBPZ+8Vpkww==
 
 tailwindcss@^3.0.23:
   version "3.0.23"
