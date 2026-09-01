@@ -2,11 +2,10 @@
 // vive. NÃO editar à mão, e NÃO regenerar daqui: `npm run komea:mirror:check` falha se as duas
 // divergirem.
 //
-// A TIPOGRAFIA vale em todo lugar: métrica e peso dos papéis não dependem de qual chrome está ativa.
-// COR e RAIO ficam escopados em [data-chrome="new"], porque conviver com a paleta legada é o
-// requisito — fora da chrome nova, os valores antigos seguem valendo.
+// Tipografia, cor e raio ficam escopados em [data-chrome="new"]: a chrome legada tem de ficar intacta.
+// Fora dela as variáveis não existem e os degraus caem no fallback que o preset desta linha traz.
 
-:root {
+:root[data-chrome='new'] {
   --text-title-large-size: 1.5rem;
   --text-title-large-lh: 2rem;
   --text-title-large-ls: -0.019em;
@@ -35,6 +34,17 @@
   --text-code-lh: 1.25rem;
   --text-code-ls: normal;
   --text-code-weight: 400;
+  // Onde `font-bold` resolve: 700 no legado, topo da escala do design system aqui.
+  --weight-bold: 600;
+}
+
+// Custom property herda: sem este reset, um filho com `leading-6` pegaria o papel do pai. Mesmo
+// `initial` que o Tailwind aplica nas suas `--tw-*`, e perde da classe do degrau por especificidade.
+*,
+::before,
+::after {
+  --role-lh: initial;
+  --role-ls: initial;
 }
 
 // TEMPORÁRIO: as regras de peso por papel estão desligadas — estavam interferindo em hierarquias
