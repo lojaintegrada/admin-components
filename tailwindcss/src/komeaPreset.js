@@ -1,4 +1,5 @@
 const plugin = require('tailwindcss/plugin')
+const defaultTheme = require('tailwindcss/defaultTheme')
 const variablePreset = require('./variablePreset')
 const chromeVariant = require('../plugins/chromeVariant')
 
@@ -133,11 +134,10 @@ Object.keys(TYPE_SCALE).forEach(function (step) {
   fontSize[step] = [
     role(spec.role, 'size', spec.size),
     {
-      // `inherit` no fallback reproduz exatamente o comportamento de hoje, onde o degrau declara só
-      // o tamanho e estas três propriedades vêm da herança.
+      // `inherit` reproduz o comportamento de hoje, onde o degrau declara só o tamanho. O peso não
+      // entra aqui: ver `roleClasses`.
       lineHeight: role(spec.role, 'lh', 'inherit'),
-      letterSpacing: role(spec.role, 'ls', 'inherit'),
-      fontWeight: role(spec.role, 'weight', 'inherit')
+      letterSpacing: role(spec.role, 'ls', 'inherit')
     }
   ]
 })
@@ -148,28 +148,61 @@ Object.keys(NATIVE_STEPS).forEach(function (step) {
     role(spec.role, 'size', spec.size),
     {
       lineHeight: role(spec.role, 'lh', spec.lineHeight),
-      // `inherit` no fallback pelo mesmo motivo do peso, logo abaixo: o `defaultPreset` não declara
-      // `letter-spacing` nesses degraus, então quem escrevia `text-sm` seguia herdando o tracking do
-      // pai. Com `normal` a utility passaria a zerar essa herança.
-      letterSpacing: role(spec.role, 'ls', 'inherit'),
-      fontWeight: role(spec.role, 'weight', 'inherit')
+      // `inherit` no fallback porque o `defaultPreset` não declara `letter-spacing` nesses degraus,
+      // então quem escrevia `text-sm` seguia herdando o tracking do pai. Com `normal` a utility
+      // passaria a zerar essa herança.
+      letterSpacing: role(spec.role, 'ls', 'inherit')
     }
   ]
 })
+
+// O que a escala de `leading-*`/`tracking-*` consulta (ver `deferToRole`): assim a utility escrita ao
+// lado do degrau deriva do papel, em vez de vencê-lo por ordem de emissão. Sem a folha, a
+// substituição falha e cada utility fica no seu próprio valor.
+const roleMetric = function (name) {
+  return {
+    '--role-lh': 'var(--text-' + name + '-lh)',
+    '--role-ls': 'var(--text-' + name + '-ls)'
+  }
+}
 
 const roleClasses = plugin(function (api) {
   const components = {}
   Object.keys(ROLES).forEach(function (name) {
     const spec = ROLES[name]
-    components['.text-' + name] = {
-      fontSize: role(name, 'size', spec.size),
-      lineHeight: role(name, 'lh', spec.lineHeight),
-      letterSpacing: role(name, 'ls', spec.letterSpacing),
-      fontWeight: role(name, 'weight', spec.weight)
-    }
+    components['.text-' + name] = Object.assign(
+      {
+        fontSize: role(name, 'size', spec.size),
+        lineHeight: role(name, 'lh', spec.lineHeight),
+        letterSpacing: role(name, 'ls', spec.letterSpacing),
+        fontWeight: role(name, 'weight', spec.weight)
+      },
+      roleMetric(name)
+    )
+  })
+  // A tupla de `theme.extend.fontSize` não aceita custom property, e o peso fica em `:where()`
+  // porque nele o autor vence: (0,0,0) perde de um `font-semibold` escrito ao lado, mesmo quando o
+  // degrau é variante responsiva, emitida depois dele.
+  ;[TYPE_SCALE, NATIVE_STEPS].forEach(function (table) {
+    Object.keys(table).forEach(function (step) {
+      const spec = table[step]
+      if (!spec.role) return
+      components['.text-' + step] = roleMetric(spec.role)
+      components[':where(.text-' + step + ')'] = {
+        fontWeight: role(spec.role, 'weight', 'inherit')
+      }
+    })
   })
   api.addComponents(components)
 })
+
+const deferToRole = function (scale, cssVar) {
+  const out = {}
+  Object.keys(scale).forEach(function (step) {
+    out[step] = 'var(' + cssVar + ', ' + scale[step] + ')'
+  })
+  return out
+}
 
 // O `variablePreset` muta e reexporta o `variablePreset`; a guarda quebra o build se ele deixar de
 // trazer a escala legada em `theme.extend.fontSize`, que é o que este preset substitui.
@@ -183,15 +216,31 @@ module.exports = Object.assign({}, variablePreset, {
   theme: Object.assign({}, variablePreset.theme, {
     extend: Object.assign({}, variablePreset.theme.extend, {
       borderRadius: borderRadius,
-      fontSize: fontSize
+      fontSize: fontSize,
+      lineHeight: deferToRole(
+        Object.assign(
+          {},
+          defaultTheme.lineHeight,
+          variablePreset.theme.extend.lineHeight
+        ),
+        '--role-lh'
+      ),
+      letterSpacing: deferToRole(
+        Object.assign(
+          {},
+          defaultTheme.letterSpacing,
+          variablePreset.theme.extend.letterSpacing
+        ),
+        '--role-ls'
+      )
     }),
     fontWeight: Object.assign({}, variablePreset.theme.fontWeight, {
       // Os papéis usam 500 em título, ação e labels. Nesta linha a chave vinha como `false`, então a
       // classe não existia e o browser sintetizava o peso.
       medium: 500,
-      // 700 não existe na escala do design system. Fica desligado só aqui, e não no `defaultPreset`,
-      // porque aquele ainda atende apps de hex que não estão adotando o design system.
-      bold: false
+      // Tirar a chave não escoparia nada: a classe simplesmente deixa de gerar CSS e `font-bold` cai
+      // no peso herdado, no legado inclusive. A folha declara `--weight-bold` só na chrome nova.
+      bold: 'var(--weight-bold, 700)'
     })
   }),
   plugins: (variablePreset.plugins || []).concat([roleClasses, chromeVariant])
