@@ -8,7 +8,8 @@ export const inputContainerReadonlyClasses = '!bg-base-2'
 export const errorBorderClasses =
   'border-danger focus:border-danger komea:focus:ring-danger/20'
 
-export const defaultBorderClasses = 'border-card-stroke komea:border-input-stroke'
+export const defaultBorderClasses =
+  'border-card-stroke komea:border-input-stroke'
 
 export const focusClass = 'focus:border-inverted-1'
 
