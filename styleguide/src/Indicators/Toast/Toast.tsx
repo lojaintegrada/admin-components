@@ -34,7 +34,7 @@ const Container = () => {
   return (
     <ToastContainer
       toastClassName={(props) =>
-        `mb-3 border flex items-top justify-between p-3 pb-4 pr-4 relative rounded shadow-md ${
+        `mb-3 border flex items-top justify-between p-3 pb-4 pr-4 relative rounded shadow-md overflow-hidden ${
           contextClass[props?.type || 'info']
         }`
       }
