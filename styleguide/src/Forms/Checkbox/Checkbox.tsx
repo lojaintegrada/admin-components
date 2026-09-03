@@ -54,7 +54,7 @@ const CheckboxComponent = (
       disabled
         ? 'bg-base-4'
         : isChecked || isIndeterminate
-        ? 'bg-primary border-primary'
+        ? 'bg-primary border-primary komea:border-primary'
         : 'bg-base-1'
     }
     ${isCenterBoxAlign ? 'items-center' : ''}
