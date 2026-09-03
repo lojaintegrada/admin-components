@@ -48,10 +48,16 @@ const listOfStylesDisabled = {
   onlyText: `bg-transparent text-on-base-3 shadow-none ring-0 border-0 `,
 }
 
+const listOfSizePaddings = {
+  small: `komea:px-3`,
+  default: ``,
+  large: `komea:px-6`,
+}
+
 const listOfSizes = {
-  small: `text-f6 komea:h-8 komea:px-3 h-10`,
+  small: `text-f6 komea:h-8 h-10`,
   default: `text-f6 komea:h-9 h-12`,
-  large: `text-f5 komea:h-10 komea:px-6 h-14`,
+  large: `text-f5 komea:h-10 h-14`,
 }
 
 const ButtonType = React.forwardRef(
@@ -97,7 +103,13 @@ const ButtonComponent = (
     ;(!disabled || !loading) && onClick && onClick(event)
   }
 
-  let classes = `inline-flex font-medium items-center justify-center px-5 komea:px-4 text-center no-underline cursor-pointer transition rounded-md after:align-middle focus:outline-none `
+  // `onlyText` é o único que não tem caixa, e o padding horizontal fica fora dele. Não dá para
+  // apenas parear com `komea:px-0`: as duas classes empatam em especificidade e o Tailwind emite
+  // `px-0` antes de `px-3`/`px-4`/`px-6`, então o zero perderia pela ordem.
+  const horizontalPadding =
+    variant === 'onlyText' ? '' : `px-5 komea:px-4 ${listOfSizePaddings[size]}`
+
+  let classes = `inline-flex font-medium items-center justify-center ${horizontalPadding} text-center no-underline cursor-pointer transition rounded-md after:align-middle focus:outline-none `
 
   if (loading) {
     classes +=

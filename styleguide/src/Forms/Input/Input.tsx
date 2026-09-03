@@ -9,7 +9,9 @@ import {
   defaultBorderClasses,
   inputContainerClasses,
   variantClasses,
+  prefixBorderlessKomeaClasses,
   prefixClasses,
+  sufixBorderlessKomeaClasses,
   sufixClasses,
   focusClass,
 } from '../commonStyles'
@@ -42,11 +44,11 @@ const InputComponent = (
 
   const prefixClass = `${prefixClasses} ${variantClasses[variant]} ${
     hasErrorState ? errorBorderClasses : ''
-  }`
+  } ${prefixBorder ? '' : prefixBorderlessKomeaClasses}`
 
   const sufixClass = `${sufixClasses} ${variantClasses[variant]} ${
     hasErrorState ? errorBorderClasses : ''
-  }`
+  } ${sufixBorder ? '' : sufixBorderlessKomeaClasses}`
 
   let inputContainerClass = `${inputContainerClasses} ${variantClasses[variant]}`
   if (disabled) {
@@ -63,8 +65,8 @@ const InputComponent = (
     hasErrorState ? errorBorderClasses : defaultBorderClasses
   } ${prefix && prefixBorder ? 'border-l' : ''}  ${
     sufix && sufixBorder ? 'border-r' : ''
-  } ${prefix && !prefixBorder ? 'pl-0' : ''} ${
-    sufix && !sufixBorder ? 'pr-0' : ''
+  } ${prefix && !prefixBorder ? 'pl-0 komea:pl-2' : ''} ${
+    sufix && !sufixBorder ? 'pr-0 komea:pr-2' : ''
   }`
 
   const LabelComponent = (
