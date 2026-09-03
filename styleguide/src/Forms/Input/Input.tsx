@@ -65,8 +65,8 @@ const InputComponent = (
     hasErrorState ? errorBorderClasses : defaultBorderClasses
   } ${prefix && prefixBorder ? 'border-l' : ''}  ${
     sufix && sufixBorder ? 'border-r' : ''
-  } ${prefix && !prefixBorder ? 'pl-0 komea:pl-0' : ''} ${
-    sufix && !sufixBorder ? 'pr-0 komea:pr-0' : ''
+  } ${prefix && !prefixBorder ? 'pl-0 komea:pl-2' : ''} ${
+    sufix && !sufixBorder ? 'pr-0 komea:pr-2' : ''
   }`
 
   const LabelComponent = (

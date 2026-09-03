@@ -19,17 +19,25 @@ export const inputContainerClasses = `flex focus-within:border-inverted-1 bg-bas
 
 const adornmentClasses = `adornment flex justify-center items-center relative w-16 text-f6 text-inverted-2 -mt-px`
 
-// Sem borda o adorno não é uma caixa, é o addon do komea-ds: 12px de recuo e o valor logo depois.
-// Os mesmos 40px que a linha 2.x usa, de propósito — com largura do conteúdo o respiro fecharia nos
-// 8px exatos do DS, mas o campo ficaria diferente numa app 0.x e numa 2.x no meio da migração, e um
-// botão dentro do adorno (a lupa do campo de busca) perderia área clicável ao encolher junto.
-// `shrink-0` porque o adorno é item flex: sem ele o `w-10` é só uma base e o navegador comprime a
-// caixa quando o campo é estreito, levando o respiro junto.
-export const prefixBorderlessKomeaClasses =
-  'komea:w-10 komea:shrink-0 komea:justify-start komea:pl-3'
+// Sem borda o adorno não é uma caixa, é o addon do komea-ds: 12px de recuo, ícone de 16px e 8px até
+// o valor.
+//
+// O ícone é normalizado porque o default do nosso `Icon` é 5 (20px) e o DS usa 16 nos campos — é o
+// que torna a geometria determinística em vez de depender do `size` que a app passou. Descendente e
+// não filho direto (`[&_svg]`, não `[&>svg]`) porque a app pode embrulhar o ícone: o campo de busca
+// põe um `<button>` no meio. E `h-4 w-4` em vez de `size-4`, porque `size-*` só existe do Tailwind
+// 3.4 em diante e há app desta linha pinada em 3.3.0, onde a classe não seria gerada.
+//
+// Os 8px até o valor saem do padding do **campo**, não do adorno: um filho `w-full` — o botão do
+// campo de busca — ocuparia a caixa de conteúdo inteira e comeria um padding posto aqui.
+//
+// `shrink-0` porque o adorno é item flex: sem ele o `w-7` é só uma base e o navegador comprime a
+// caixa quando o campo é estreito, levando a geometria junto.
+const borderlessKomeaIcon = 'komea:[&_svg]:h-4 komea:[&_svg]:w-4'
 
-export const sufixBorderlessKomeaClasses =
-  'komea:w-10 komea:shrink-0 komea:justify-end komea:pr-3'
+export const prefixBorderlessKomeaClasses = `komea:w-7 komea:shrink-0 komea:justify-start komea:pl-3 ${borderlessKomeaIcon}`
+
+export const sufixBorderlessKomeaClasses = `komea:w-7 komea:shrink-0 komea:justify-end komea:pr-3 ${borderlessKomeaIcon}`
 
 export const prefixClasses = `${adornmentClasses} rounded-l left-0`
 
