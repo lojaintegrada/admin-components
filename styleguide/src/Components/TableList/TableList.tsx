@@ -60,7 +60,7 @@ const TableListComponent = ({
               {empty.illustration}
             </div>
           )}
-          <div className="table-list-empty-title text-center text-f4 font-medium text-primary-bold">
+          <div className="table-list-empty-title text-center text-f4 font-semibold komea:font-medium text-primary-bold">
             {empty.title}
           </div>
           {empty.subTitle && (
