@@ -109,7 +109,7 @@ const ButtonComponent = (
   const horizontalPadding =
     variant === 'onlyText' ? '' : `px-5 komea:px-4 ${listOfSizePaddings[size]}`
 
-  let classes = `inline-flex font-medium items-center justify-center ${horizontalPadding} text-center no-underline cursor-pointer transition rounded-md after:align-middle focus:outline-none `
+  let classes = `inline-flex font-semibold komea:font-medium items-center justify-center ${horizontalPadding} text-center no-underline cursor-pointer transition rounded-md after:align-middle focus:outline-none `
 
   if (loading) {
     classes +=

@@ -30,7 +30,7 @@ export const BoxHeader = React.memo(
             >
               <div className="flex-1 min-w-0 mr-2">
                 {title && (
-                  <h3 className="text-f5 font-medium break-words lg:text-f4">
+                  <h3 className="text-f5 font-semibold komea:font-medium break-words lg:text-f4">
                     {title}
                   </h3>
                 )}
