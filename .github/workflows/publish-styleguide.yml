@@ -49,14 +49,6 @@ jobs:
         with:
           node-version: "14.x"
 
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Published tag for Styleguide
-          branch: main
-          push_options: --force
-          file_pattern: styleguide/package.json
-
       - name: Send to GitHub Pages 🔧
         run: yarn deploy-storybook --ci --source-branch=main
         working-directory: styleguide
