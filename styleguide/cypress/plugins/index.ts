@@ -54,11 +54,5 @@ module.exports = (on, config) => {
     })
   }
 
-  on('after:run', (results) => {
-    return require('cypress-sonarqube-reporter/mergeReports')(results, {
-      mergeFileName: "sonar.xml"
-    })
-  });
-
   return config
 }
