@@ -17,8 +17,6 @@ jobs:
     if: ${{ startsWith(github.ref, 'refs/tags/tailwindcss@') }}
     steps:
       - uses: actions/checkout@v2
-        with:
-          ref: main
 
       - uses: actions/setup-node@v2
         with:
@@ -30,8 +28,14 @@ jobs:
         with:
           working-directory: tailwindcss
 
-      - name: Update version
-        run: yarn version --new-version "${GITHUB_REF#refs/tags/tailwindcss@}" --no-git-tag-version
+      - name: Check version matches tag
+        run: |
+          expected="${GITHUB_REF#refs/tags/tailwindcss@}"
+          actual="$(node -p "require('./package.json').version")"
+          if [ "$expected" != "$actual" ]; then
+            echo "::error::Tag tailwindcss@$expected não bate com a versão $actual do package.json. Suba a versão no PR antes de criar a release."
+            exit 1
+          fi
         working-directory: tailwindcss
 
       - uses: actions/setup-node@v4
