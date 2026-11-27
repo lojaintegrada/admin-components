@@ -10,8 +10,9 @@ defaults:
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     permissions:
+      id-token: write
       contents: write
     if: ${{ startsWith(github.ref, 'refs/tags/styleguide@') }}
     steps:
@@ -33,13 +34,20 @@ jobs:
         run: yarn version --new-version "${GITHUB_REF#refs/tags/styleguide@}" --no-git-tag-version
         working-directory: styleguide
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24.x"
+          registry-url: 'https://registry.npmjs.org'
+
       # Linha de manutenção: o dist-tag `latest` no npm pertence ao @loja-integrada/admin-components@1.x,
       # publicado a partir do front-library. Sem `--tag legacy` este publish o rebaixaria.
       - name: Publish to NPM
-        run: yarn publish --access public --tag legacy
+        run: npm publish --access public --tag legacy --ignore-scripts
         working-directory: styleguide
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_STYLEGUIDE }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "14.x"
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
