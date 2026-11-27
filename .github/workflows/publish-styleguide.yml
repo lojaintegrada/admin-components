@@ -17,8 +17,6 @@ jobs:
     if: ${{ startsWith(github.ref, 'refs/tags/styleguide@') }}
     steps:
       - uses: actions/checkout@v2
-        with:
-          ref: main
 
       - uses: actions/setup-node@v2
         with:
@@ -30,8 +28,14 @@ jobs:
         with:
           working-directory: styleguide
 
-      - name: Update version
-        run: yarn version --new-version "${GITHUB_REF#refs/tags/styleguide@}" --no-git-tag-version
+      - name: Check version matches tag
+        run: |
+          expected="${GITHUB_REF#refs/tags/styleguide@}"
+          actual="$(node -p "require('./package.json').version")"
+          if [ "$expected" != "$actual" ]; then
+            echo "::error::Tag styleguide@$expected não bate com a versão $actual do package.json. Suba a versão no PR antes de criar a release."
+            exit 1
+          fi
         working-directory: styleguide
 
       - uses: actions/setup-node@v4
@@ -48,14 +52,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "14.x"
-
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Published tag for Styleguide
-          branch: main
-          push_options: --force
-          file_pattern: styleguide/package.json
 
       - name: Send to GitHub Pages 🔧
         run: yarn deploy-storybook --ci --source-branch=main
