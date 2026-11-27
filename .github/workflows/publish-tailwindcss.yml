@@ -10,8 +10,9 @@ defaults:
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     permissions:
+      id-token: write
       contents: write
     if: ${{ startsWith(github.ref, 'refs/tags/tailwindcss@') }}
     steps:
@@ -33,13 +34,16 @@ jobs:
         run: yarn version --new-version "${GITHUB_REF#refs/tags/tailwindcss@}" --no-git-tag-version
         working-directory: tailwindcss
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24.x"
+          registry-url: 'https://registry.npmjs.org'
+
       # Linha de manutenção: o dist-tag `latest` no npm pertence ao @loja-integrada/tailwindcss-config@2.x,
       # publicado a partir do front-library. Sem `--tag legacy` este publish o rebaixaria.
       - name: Publish to NPM
-        run: yarn publish --access public --tag legacy
+        run: npm publish --access public --tag legacy
         working-directory: tailwindcss
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_STYLEGUIDE }}
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
