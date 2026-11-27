@@ -127,7 +127,7 @@
     "tslib": "^2.4.0",
     "typescript": "^4.6.4",
     "webpack": "^5.76.0",
-    "webpack-dev-server": "^4.9.0"
+    "webpack-dev-server": "^5.2.6"
   },
   "peerDependency": {
     "@loja-integrada/tailwindcss-config": ">=1.5.0",
